@@ -84,12 +84,12 @@ ul{list-style:none}
    ============================================ */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 28px;border-radius:999px;font-weight:600;font-size:.875rem;transition:all .3s var(--ease);cursor:pointer}
 .btn:active{transform:scale(.97)}
-.btn-primary{background:var(--accent);color:#fff;transition:all .5s ease}
-.btn-primary:hover{background-color:#6366f1;box-shadow:none;transform:none;border-color:rgba(255,255,255,0.2)}
-.btn-white{background:#fff;color:#111113;transition:all .5s ease}
+.btn-primary{background:var(--accent);color:#fff;transition:all 1s ease}
+.btn-primary:hover{background-color:#7c3aed;box-shadow:none;transform:none;border-color:rgba(255,255,255,0.2)}
+.btn-white{background:#fff;color:#111113;transition:all 1s ease}
 .btn-white:hover{background-color:#f4f4f5;box-shadow:none;transform:none}
-.btn-ghost{color:var(--text-secondary);border:1px solid var(--border);transition:all .5s ease}
-.btn-ghost:hover{background:#fff;color:#111113;border-color:#fff;transform:none;box-shadow:none}
+.btn-ghost{background:#fff;color:#111113;border:1px solid #fff;transition:all 1s ease}
+.btn-ghost:hover{background:#f4f4f5;border-color:#f4f4f5;transform:none;box-shadow:none}
 .btn-accent{background:var(--accent);color:#fff}
 .btn-accent:hover{box-shadow:0 4px 28px var(--accent-glow);transform:translateY(-1px)}
 .btn-sm{padding:8px 18px;font-size:.8rem}
