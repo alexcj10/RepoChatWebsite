@@ -182,10 +182,10 @@ export default function Landing() {
               { title: 'Theming', desc: '6 accent colors, default and compact view support.', bg: '/cfe5d5ef-9b51-4931-a76f-9a817afff2dd.jpg' },
               { title: 'Keyboard Shortcuts', desc: 'Navigate fast with professional keyboard workflows.', bg: '/ee477f25-3b2a-45a2-8614-f79f0a8c3200.jpg' },
               { title: 'Pin Users', desc: 'Pin up to 3 users for instant access in the share popup.', bg: '/f6fe7ed3-21ce-4297-9abb-9f41d6779c69.jpg' },
-              { title: 'Message Templates', desc: 'Save time with up to 6 custom message templates.', bg: '/abstract-gradient-background-with-grain-texture-captivating-noise-airbrush-minimalist-wallpaper.jpg' },
+              { title: 'Message Templates', desc: 'Save time with up to 6 custom message templates.', bg: '/a9cdf66f-befe-413a-bf99-83c54794d266.jpg' },
               { title: 'Notes & Tasks', desc: 'Add notes in Pad, mark as complete, and share easily.', bg: '/eve-dFIYU7xOl0w-unsplash.jpg' },
-              { title: 'Smart Archive', desc: 'Archive and pin chats to keep your workspace tidy.', bg: '/abstract-gradient-background-with-grain-texture-captivating-noise-airbrush-minimalist-wallpaper (1).jpg' },
-              { title: 'Quick Share', desc: 'Share panel via dedicated module or keyboard shortcut.', bg: '/513b98f7-9dc5-4844-86ca-379ae723b77f.jpg' },
+              { title: 'Smart Archive', desc: 'Archive and pin chats to keep your workspace tidy.', bg: '/abstract-gradient-background-with-grain-texture-captivating-noise-airbrush-minimalist-wallpaper.jpg' },
+              { title: 'Quick Share', desc: 'Share panel via dedicated module or keyboard shortcut.', bg: '/abstract-gradient-background-with-grain-texture-captivating-noise-airbrush-minimalist-wallpaper (1).jpg' },
             ].map((f, i) => (
               <ScrollReveal key={i} delay={(i % 3) as 0 | 1 | 2 | 3}>
                 <div className="mini-feature-card" style={{ backgroundImage: `url(${f.bg})` }}>
