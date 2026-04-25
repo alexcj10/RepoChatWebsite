@@ -5,40 +5,6 @@ import ScrollReveal from '../components/ScrollReveal'
 import FAQ from '../components/FAQ'
 import Logo from '../components/Logo'
 
-/* ─── Horizontal Scroll ─── */
-function HorizontalShowcase() {
-  const ref = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] })
-  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-62.5%'])
-
-  const items = [
-    { label: 'Context Sharing', title: 'Share PRs & Issues instantly', desc: 'Select any PR or Issue on GitHub, choose a friend or group, and share — with full context attached.', img: '/RC_share_popup.png' },
-    { label: 'Comment on GitHub', title: 'Post comments from chat', desc: 'Write comments and post them directly to GitHub Issues. No tab switching needed.', img: '/RC_comment.png' },
-    { label: 'Shared via RepoChat', title: 'Perfect context cards', desc: 'Recipients see a formatted context card with PR title, description, and your message — attributed with "Shared via RepoChat".', img: '/RC_shared_via_RC.png' },
-  ]
-
-  return (
-    <section ref={ref} className="hscroll-outer">
-      <div className="hscroll-sticky">
-        <motion.div className="hscroll-track" style={{ x }}>
-          {items.map((item, i) => (
-            <div key={i} className={`hscroll-card ${i % 2 !== 0 ? 'reverse' : ''}`}>
-              <div className="hscroll-card-head">
-                <div className="badge mb-4">{item.label}</div>
-                <h3 className="h3">{item.title}</h3>
-                <p className="body-sm mt-2">{item.desc}</p>
-              </div>
-              <div className="hscroll-card-media">
-                <img src={item.img} alt={item.title} />
-              </div>
-            </div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  )
-}
-
 export default function Landing() {
   const heroRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress: heroProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
@@ -157,12 +123,45 @@ export default function Landing() {
                 <img src="/RC_group.png" alt="Group Chat" />
               </div>
             </div>
+
+            {/* 6: Context Sharing */}
+            <div className="stack-card reverse">
+              <div className="feature-text">
+                <div className="badge">Context Sharing</div>
+                <h3 className="h3 mt-4">Share PRs & Issues instantly</h3>
+                <p className="body-md">Select any PR or Issue on GitHub, choose a friend or group, and share — with full context attached.</p>
+              </div>
+              <div className="feature-media">
+                <img src="/RC_share_popup.png" alt="Context Sharing" />
+              </div>
+            </div>
+
+            {/* 7: Comment on GitHub */}
+            <div className="stack-card">
+              <div className="feature-text">
+                <div className="badge">Comment on GitHub</div>
+                <h3 className="h3 mt-4">Post comments from chat</h3>
+                <p className="body-md">Write comments and post them directly to GitHub Issues. No tab switching needed.</p>
+              </div>
+              <div className="feature-media">
+                <img src="/RC_comment.png" alt="Comment on GitHub" />
+              </div>
+            </div>
+
+            {/* 8: Shared via RepoChat */}
+            <div className="stack-card reverse">
+              <div className="feature-text">
+                <div className="badge">Shared via RepoChat</div>
+                <h3 className="h3 mt-4">Perfect context cards</h3>
+                <p className="body-md">Recipients see a formatted context card with PR title, description, and your message — attributed with "Shared via RepoChat".</p>
+              </div>
+              <div className="feature-media">
+                <img src="/RC_shared_via_RC.png" alt="Shared via RepoChat" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
-
-      {/* ═══ HORIZONTAL SCROLL ═══ */}
-      <HorizontalShowcase />
 
       {/* ═══ MINI FEATURE GRID ═══ */}
       <section className="section">
