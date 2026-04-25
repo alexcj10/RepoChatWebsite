@@ -267,7 +267,8 @@ textarea.form-input{min-height:110px;resize:vertical}
   flex-wrap: nowrap;
   overflow-x: auto;
   gap: 24px;
-  padding: 32px 0;
+  padding: 48px var(--space-m);
+  margin: 0 calc(var(--space-m) * -1);
   scrollbar-width: none;
   -ms-overflow-style: none;
   scroll-snap-type: x mandatory;
