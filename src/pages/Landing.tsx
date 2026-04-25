@@ -377,39 +377,97 @@ export default function Landing() {
             </div>
           </ScrollReveal>
 
-          <div className="pricing-grid">
-            <ScrollReveal delay={1}>
-              <div className="price-card">
-                <p style={{ fontWeight: 600, fontSize: '1.05rem' }}>Free</p>
-                <p className="body-sm">Everything to get started.</p>
-                <div className="mt-6 mb-8"><span className="price">$0</span> <span className="period">/mo</span></div>
-                <ul className="price-features">
-                  <li><span className="ck">✓</span> 15 Friends & 5 Groups</li>
-                  <li><span className="ck">✓</span> GitHub Context Sharing</li>
-                  <li><span className="ck">✓</span> Smart Triage Actions</li>
-                  <li><span className="ck">✓</span> 10 Pad entries</li>
-                  <li><span className="no">✗</span> <span className="dis">Unlimited limits</span></li>
-                  <li><span className="no">✗</span> <span className="dis">Cloud Data Sync</span></li>
-                </ul>
-                <a href="#install" className="btn btn-ghost btn-lg mt-8" style={{ width: '100%' }}>Get Started</a>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={2}>
-              <div className="price-card featured">
-                <p style={{ fontWeight: 600, fontSize: '1.05rem', color: 'var(--accent)' }}>Pro</p>
-                <p className="body-sm">Unlimited power.</p>
-                <div className="mt-6 mb-8"><span className="price gradient-text">$4.99</span> <span className="period">/mo</span></div>
-                <ul className="price-features">
-                  <li><span className="ck">✓</span> <strong>Unlimited</strong> Friends & Groups</li>
-                  <li><span className="ck">✓</span> <strong>Unlimited</strong> Pad & Lists</li>
-                  <li><span className="ck">✓</span> Continuous Cloud Sync</li>
-                  <li><span className="ck">✓</span> Priority Feature Access</li>
-                  <li><span className="ck">✓</span> Premium Support</li>
-                </ul>
-                <a href="#install" className="btn btn-accent btn-lg mt-8" style={{ width: '100%' }}>Upgrade to Pro</a>
-              </div>
-            </ScrollReveal>
+          <div className="pricing-matrix-container">
+            <table className="pricing-table">
+              <thead>
+                <tr>
+                  <th className="feature-col">Feature</th>
+                  <th className="tier-col">Free</th>
+                  <th className="tier-col pro-col">Pro</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="tier-header">
+                  <td className="feature-col">
+                    <p className="body-sm">Start your journey with essential features.</p>
+                  </td>
+                  <td className="tier-col">
+                    <h3>Free</h3>
+                    <span className="price">$0</span>
+                    <button className="btn btn-ghost w-full">Get Started</button>
+                  </td>
+                  <td className="tier-col pro-col">
+                    <h3 style={{ color: '#8B5CF6' }}>Pro</h3>
+                    <span className="price">$4.99</span>
+                    <button className="btn btn-accent w-full" onClick={() => window.open('https://buy.stripe.com/8wM8xM3Tj7Yx608eUU', '_blank')}>Upgrade</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="feature-col">
+                    Direct Messages
+                    <span className="feature-info">1-on-1 private messaging</span>
+                  </td>
+                  <td className="tier-col">15 Friends</td>
+                  <td className="tier-col pro-col"><strong>Unlimited</strong></td>
+                </tr>
+                <tr>
+                  <td className="feature-col">
+                    Group Chats
+                    <span className="feature-info">Collaborative group environments</span>
+                  </td>
+                  <td className="tier-col">5 Groups</td>
+                  <td className="tier-col pro-col"><strong>Unlimited</strong></td>
+                </tr>
+                <tr>
+                  <td className="feature-col">
+                    GitHub Context
+                    <span className="feature-info">Attach PRs, Issues & Branches</span>
+                  </td>
+                  <td className="tier-col"><span className="status-icon check">✓</span></td>
+                  <td className="tier-col pro-col"><span className="status-icon check">✓</span></td>
+                </tr>
+                <tr>
+                  <td className="feature-col">
+                    Smart Triage
+                    <span className="feature-info">Custom GitHub actions in chat</span>
+                  </td>
+                  <td className="tier-col"><span className="status-icon check">✓</span></td>
+                  <td className="tier-col pro-col"><span className="status-icon check">✓</span></td>
+                </tr>
+                <tr>
+                  <td className="feature-col">
+                    Pad Entries
+                    <span className="feature-info">Note and task management</span>
+                  </td>
+                  <td className="tier-col">10 Entries</td>
+                  <td className="tier-col pro-col"><strong>Unlimited</strong></td>
+                </tr>
+                <tr>
+                  <td className="feature-col">
+                    Cloud Data Sync
+                    <span className="feature-info">Cross-device persistence</span>
+                  </td>
+                  <td className="tier-col"><span className="status-icon cross">✕</span></td>
+                  <td className="tier-col pro-col"><span className="status-icon check">✓</span></td>
+                </tr>
+                <tr>
+                  <td className="feature-col">
+                    Custom Accents
+                    <span className="feature-info">Personalize your UI colors</span>
+                  </td>
+                  <td className="tier-col"><span className="status-icon cross">✕</span></td>
+                  <td className="tier-col pro-col"><span className="status-icon check">✓</span></td>
+                </tr>
+                <tr>
+                  <td className="feature-col">
+                    Support
+                    <span className="feature-info">Response time and priority</span>
+                  </td>
+                  <td className="tier-col">Community</td>
+                  <td className="tier-col pro-col">Priority</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>

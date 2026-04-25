@@ -369,8 +369,127 @@ textarea.form-input{min-height:110px;resize:vertical}
   opacity: 0.85;
 }
 
-.mini-feature-card h4 { font-size: 1.25rem; margin-bottom: 8px; color: #fff; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-.mini-feature-card p { font-size: 0.95rem; line-height: 1.6; color: rgba(255,255,255,0.9); text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
-@media(max-width: 768px) {
-  .mini-features-grid > .reveal { flex: 0 0 320px; }
+/* ============================================
+   PRICING COMPARISON MATRIX
+   ============================================ */
+.pricing-matrix-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  background: rgba(15, 15, 20, 0.4);
+  backdrop-filter: blur(30px);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.6);
+}
+
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.pricing-table th, 
+.pricing-table td {
+  padding: 24px 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pricing-table th {
+  background: rgba(255, 255, 255, 0.02);
+  font-weight: 700;
+  color: #fff;
+}
+
+.pricing-table tr:last-child td {
+  border-bottom: none;
+}
+
+.pricing-table .feature-col {
+  width: 40%;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.pricing-table .tier-col {
+  width: 30%;
+  text-align: center;
+}
+
+.pricing-table .pro-col {
+  background: rgba(139, 92, 246, 0.03);
+  position: relative;
+}
+
+.pricing-table .pro-col::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-left: 1px solid rgba(139, 92, 246, 0.15);
+  border-right: 1px solid rgba(139, 92, 246, 0.15);
+  pointer-events: none;
+}
+
+.pricing-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.pricing-table .tier-header {
+  padding: 48px 32px;
+}
+
+.tier-header h3 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.tier-header .price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  display: block;
+  margin: 12px 0;
+}
+
+.pricing-table .status-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.pricing-table .status-icon.check {
+  color: #10B981;
+}
+
+.pricing-table .status-icon.cross {
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.pricing-table .feature-info {
+  font-size: 0.85rem;
+  display: block;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 4px;
+}
+
+.pricing-table .footer-btn {
+  padding: 12px 24px;
+  border-radius: var(--radius-m);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s var(--ease);
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .pricing-matrix-container {
+    overflow-x: auto;
+  }
+  .pricing-table {
+    min-width: 700px;
+  }
 }
