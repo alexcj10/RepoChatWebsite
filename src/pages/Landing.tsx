@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { ArrowRight, Shield, Zap, MessageSquare, GitPullRequest, Tag, ClipboardList, Share2 } from 'lucide-react'
+import { ArrowRight, Shield, Zap } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import ScrollReveal from '../components/ScrollReveal'
 import FAQ from '../components/FAQ'
@@ -174,16 +174,15 @@ export default function Landing() {
 
           <div className="mini-features-grid">
             {[
-              { icon: <MessageSquare size={18} />, title: 'DM & Group Chat', desc: 'Real-time messaging with friends and groups.' },
-              { icon: <GitPullRequest size={18} />, title: 'GitHub Context', desc: 'Attach PRs, Issues, and branches to any message.' },
-              { icon: <Tag size={18} />, title: 'Reactions & Stars', desc: 'React to messages, star them for quick access.' },
-              { icon: <ClipboardList size={18} />, title: 'Custom Lists', desc: 'Organize chats by project, team, or context.' },
-              { icon: <Share2 size={18} />, title: 'Online Presence', desc: 'See who is online with last-seen timestamps.' },
-              { icon: <Zap size={18} />, title: 'Theming', desc: '20+ accent colors, dark/light mode, compact layout.' },
+              { title: 'DM & Group Chat', desc: 'Real-time messaging with friends and groups.', bg: '/513b98f7-9dc5-4844-86ca-379ae723b77f.jpg' },
+              { title: 'GitHub Context', desc: 'Attach PRs, Issues, and branches to any message.', bg: '/5b55f314-eba4-42a9-adae-c25514fe5d5f.jpg' },
+              { title: 'Reactions & Stars', desc: 'React to messages, star them for quick access.', bg: '/5d255d44-b559-4630-b0a7-e763dda69fb2.jpg' },
+              { title: 'Custom Lists', desc: 'Organize chats by project, team, or context.', bg: '/b318345d-f5f6-4972-81be-c61b1cd538b1.jpg' },
+              { title: 'Online Presence', desc: 'See who is online with last-seen timestamps.', bg: '/c2ef792a-71cf-420e-9dc6-39673be2a4ff.jpg' },
+              { title: 'Theming', desc: '20+ accent colors, dark/light mode, compact layout.', bg: '/cfe5d5ef-9b51-4931-a76f-9a817afff2dd.jpg' },
             ].map((f, i) => (
               <ScrollReveal key={i} delay={(i % 3) as 0 | 1 | 2 | 3}>
-                <div className="mini-feature-card">
-                  <div className="card-icon">{f.icon}</div>
+                <div className="mini-feature-card" style={{ backgroundImage: `url(${f.bg})` }}>
                   <h4 className="h4">{f.title}</h4>
                   <p className="body-sm mt-2">{f.desc}</p>
                 </div>

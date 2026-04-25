@@ -282,8 +282,9 @@ textarea.form-input{min-height:110px;resize:vertical}
   display: flex;
 }
 .mini-feature-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius);
   padding: 40px 32px;
   transition: all 0.3s var(--ease);
@@ -294,15 +295,29 @@ textarea.form-input{min-height:110px;resize:vertical}
   display: flex;
   flex-direction: column;
   width: 100%;
-  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+  color: white;
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+}
+.mini-feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+  z-index: 1;
+}
+.mini-feature-card > * {
+  position: relative;
+  z-index: 2;
 }
 .mini-feature-card:hover {
-  border-color: var(--accent);
+  border-color: rgba(255,255,255,0.3);
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px -15px var(--accent-glow);
+  box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6);
 }
-.mini-feature-card h4 { font-size: 1.25rem; margin-bottom: 8px; color: var(--text-primary); }
-.mini-feature-card p { font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); }
+.mini-feature-card h4 { font-size: 1.25rem; margin-bottom: 8px; color: #fff; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+.mini-feature-card p { font-size: 0.95rem; line-height: 1.6; color: rgba(255,255,255,0.9); text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
 @media(max-width: 768px) {
   .mini-features-grid > .reveal { flex: 0 0 320px; }
 }
