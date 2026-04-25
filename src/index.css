@@ -20,7 +20,14 @@
   --radius-sm: 10px;
   --nav-h: 64px;
   --ease: cubic-bezier(.22,1,.36,1);
-  --max-w: 1100px;
+  --max-w: 1240px;
+
+  /* Fluid Spacing System */
+  --space-xs: clamp(0.75rem, 0.7rem + 0.25vw, 1rem);
+  --space-s: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
+  --space-m: clamp(1.5rem, 1.3rem + 1vw, 2.5rem);
+  --space-l: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+  --space-xl: clamp(4rem, 3rem + 5vw, 7.5rem);
 }
 
 /* ============================================
@@ -38,28 +45,27 @@ ul{list-style:none}
 /* ============================================
    TYPOGRAPHY
    ============================================ */
-.h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:800;line-height:.96;letter-spacing:-.045em}
-.h2{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;line-height:1.08;letter-spacing:-.03em}
-.h3{font-size:clamp(1.3rem,2.5vw,1.7rem);font-weight:600;line-height:1.25;letter-spacing:-.015em}
+.h1{font-size:clamp(2.2rem, 6vw, 4.2rem);font-weight:800;line-height:0.96;letter-spacing:-0.045em}
+.h2{font-size:clamp(1.8rem, 5vw, 3.2rem);font-weight:700;line-height:1.05;letter-spacing:-0.03em}
+.h3{font-size:clamp(1.25rem, 3vw, 1.75rem);font-weight:600;line-height:1.2;letter-spacing:-0.015em}
 .h4{font-size:1.1rem;font-weight:600;line-height:1.3;letter-spacing:-.01em}
-.body-lg{font-size:1.1rem;line-height:1.7;color:var(--text-secondary)}
-.body-md{font-size:.95rem;line-height:1.65;color:var(--text-secondary)}
-.body-sm{font-size:.85rem;line-height:1.5;color:var(--text-secondary)}
+.body-lg{font-size:clamp(1rem, 1.2vw, 1.15rem);line-height:1.65;color:var(--text-secondary)}
+.body-md{font-size:0.95rem;line-height:1.65;color:var(--text-secondary)}
+.body-sm{font-size:0.85rem;line-height:1.5;color:var(--text-secondary)}
 .gradient-text{background:linear-gradient(135deg,#a78bfa 0%,#8b5cf6 50%,#7c3aed 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
 /* ============================================
    LAYOUT
    ============================================ */
-.container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
-.section{padding:120px 0}
-@media(max-width:768px){.section{padding:72px 0}}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 var(--space-m)}
+.section{padding:var(--space-xl) 0}
 
 /* ============================================
    NAVBAR
    ============================================ */
 .navbar{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;transition:all .4s var(--ease);display:flex;align-items:center}
 .navbar.scrolled{background:rgba(17,17,19,.85);backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid var(--border)}
-.nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 var(--space-m);width:100%;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem;letter-spacing:-.01em}
 .nav-links{display:flex;align-items:center;gap:28px}
 .nav-links li a{font-size:.875rem;font-weight:500;color:var(--text-secondary);transition:color .2s}
@@ -92,16 +98,16 @@ ul{list-style:none}
 /* ============================================
    HERO
    ============================================ */
-.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nav-h) + 40px) 24px 0;overflow:hidden}
+.hero{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:calc(var(--nav-h) + clamp(40px, 8vh, 80px));padding-bottom:var(--space-xl);overflow:visible}
 .hero-glow{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
 .hero-glow-1{width:500px;height:500px;background:var(--accent);top:-180px;left:50%;transform:translateX(-50%);opacity:.08}
-.hero-glow-2{width:350px;height:350px;background:#6366f1;bottom:10%;right:-100px;opacity:.06}
-.hero-inner{position:relative;z-index:2;max-width:720px}
-.hero p.body-lg{max-width:520px;margin:20px auto 0}
-.hero-actions{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:36px;flex-wrap:wrap}
+.hero-glow-2{width:350px;height:350px;background:#6366f1;top:40%;right:-100px;opacity:.06}
+.hero-inner{position:relative;z-index:2;max-width:clamp(600px, 70vw, 840px);margin-bottom:32px}
+.hero p.body-lg{max-width:580px;margin:var(--space-s) auto 0}
+.hero-actions{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:var(--space-s);flex-wrap:wrap}
 
 /* Hero mockup — contained properly */
-.hero-mockup{position:relative;z-index:2;width:100%;max-width:900px;margin:64px auto 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:0 32px 80px -20px rgba(0,0,0,.8),0 0 60px -20px var(--accent-glow)}
+.hero-mockup{position:relative;z-index:2;width:100%;max-width:clamp(800px, 85vw, 1080px);margin:0 auto;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:0 32px 80px -20px rgba(0,0,0,.8),0 0 60px -20px var(--accent-glow)}
 .hero-mockup img{width:100%;display:block}
 
 /* ============================================
@@ -112,8 +118,8 @@ ul{list-style:none}
 /* ============================================
    SECTION HEADERS
    ============================================ */
-.section-head{text-align:center;max-width:560px;margin:0 auto 64px}
-.section-head p{color:var(--text-secondary);font-size:1.05rem;margin-top:14px}
+.section-head{text-align:center;max-width:clamp(500px, 50vw, 640px);margin:0 auto var(--space-l)}
+.section-head p{color:var(--text-secondary);font-size:clamp(0.95rem, 1.1vw, 1.05rem);margin-top:14px}
 
 /* ============================================
    STACKING FEATURE CARDS
@@ -121,9 +127,9 @@ ul{list-style:none}
 .stack-cards {
   display: flex;
   flex-direction: column;
-  gap: 120px;
+  gap: var(--space-xl);
   position: relative;
-  padding-bottom: 60px;
+  padding-bottom: var(--space-l);
 }
 
 .stack-card {
@@ -131,12 +137,12 @@ ul{list-style:none}
   top: calc(var(--nav-h) + 40px);
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: 60px;
+  gap: var(--space-m);
   align-items: center;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 48px;
+  padding: var(--space-m);
   box-shadow: 0 -20px 60px rgba(0,0,0,0.4), 0 0 0 1px var(--border);
 }
 
@@ -156,8 +162,8 @@ ul{list-style:none}
 @media(max-width: 900px) {
   .stack-card {
     grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 32px;
+    gap: var(--space-m);
+    padding: var(--space-m);
     position: relative;
     top: auto;
   }
@@ -176,28 +182,30 @@ ul{list-style:none}
    HORIZONTAL SCROLL
    ============================================ */
 .hscroll-outer{position:relative;height:500vh}
-.hscroll-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
-.hscroll-track{display:flex;gap:20px;padding:0 5vw;will-change:transform}
-.hscroll-card{flex:0 0 85vw;max-width:920px;height:440px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--bg-card);display:grid;grid-template-columns:1fr 1.3fr;align-items:center}
+.hscroll-sticky{position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));overflow:hidden;display:flex;align-items:center}
+.hscroll-track{display:flex;gap:var(--space-m);padding:0 5vw;will-change:transform}
+.hscroll-card{flex:0 0 85vw;max-width:920px;height:clamp(380px, 45vh, 440px);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--bg-card);display:grid;grid-template-columns:1fr 1.3fr;align-items:center}
 .hscroll-card.reverse{grid-template-columns:1.3fr 1fr}
 .hscroll-card.reverse .hscroll-card-media{order:-1}
-.hscroll-card-head{padding:40px}
+.hscroll-card-head{padding:var(--space-m)}
 .hscroll-card-head .h3{margin-bottom:12px}
-.hscroll-card-media{height:100%;padding:24px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.015)}
+.hscroll-card-media{height:100%;padding:var(--space-m);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.015)}
 .hscroll-card-media img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:var(--radius-sm);border:1px solid var(--border);box-shadow:0 15px 35px rgba(0,0,0,0.3)}
 @media(max-width:768px){
   .hscroll-outer{height:auto}
-  .hscroll-sticky{position:relative;height:auto;flex-direction:column;gap:20px;padding:0 16px}
+  .hscroll-sticky{position:relative;height:auto;flex-direction:column;gap:20px;padding:var(--space-m) var(--space-s)}
   .hscroll-track{flex-direction:column;padding:0;gap:20px;transform:none !important}
-  .hscroll-card{flex:0 0 auto;max-width:100%}
+  .hscroll-card{flex:0 0 auto;max-width:100%;height:auto;grid-template-columns:1fr}
+  .hscroll-card.reverse{grid-template-columns:1fr}
+  .hscroll-card.reverse .hscroll-card-media{order:0}
 }
 
 /* ============================================
    PRICING
    ============================================ */
-.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:740px;margin:0 auto}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-m);max-width:800px;margin:0 auto}
 @media(max-width:700px){.pricing-grid{grid-template-columns:1fr}}
-.price-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:36px;transition:border-color .3s var(--ease)}
+.price-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:var(--space-m);transition:border-color .3s var(--ease)}
 .price-card:hover{border-color:var(--border-hover)}
 .price-card.featured{border-color:rgba(139,92,246,.25);box-shadow:0 0 50px -16px var(--accent-glow)}
 .price-card .price{font-size:3rem;font-weight:800;letter-spacing:-.04em;line-height:1}
@@ -221,7 +229,7 @@ ul{list-style:none}
 /* ============================================
    FOOTER
    ============================================ */
-.footer{border-top:1px solid var(--border);padding:56px 0 24px;background:var(--bg)}
+.footer{border-top:1px solid var(--border);padding:var(--space-l) 0 var(--space-s);background:var(--bg)}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px}
 @media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;gap:24px}}
 .footer-brand p{color:var(--text-muted);font-size:.82rem;margin-top:10px;max-width:240px;line-height:1.6}

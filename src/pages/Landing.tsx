@@ -56,7 +56,7 @@ export default function Landing() {
 
 
           <ScrollReveal delay={1}>
-            <h1 className="h1 mt-6">
+            <h1 className="h1">
               Chat where the<br /><span className="gradient-text">code lives.</span>
             </h1>
           </ScrollReveal>
@@ -79,8 +79,8 @@ export default function Landing() {
           </ScrollReveal>
         </div>
 
-        {/* Hero mockup — contained at max 900px */}
-        <motion.div className="hero-mockup" style={{ scale: mockupScale, opacity: mockupOpacity, maxWidth: 900, margin: '64px auto 0', width: 'calc(100% - 48px)' }}>
+        {/* Hero mockup — fluid scaling */}
+        <motion.div className="hero-mockup" style={{ scale: mockupScale, opacity: mockupOpacity, width: 'calc(100% - 48px)' }}>
           <img src="/RC_main_UI.png" alt="RepoChat — Main UI" />
         </motion.div>
       </section>
