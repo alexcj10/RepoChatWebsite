@@ -259,7 +259,7 @@ textarea.form-input{min-height:110px;resize:vertical}
 .card-icon{width:40px;height:40px;border-radius:var(--radius-sm);background:var(--accent-soft);border:1px solid rgba(139,92,246,.1);display:flex;align-items:center;justify-content:center;color:var(--accent);margin-bottom:16px}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
 @media(max-width:768px){.grid-2{grid-template-columns:1fr}}
-.section-head{text-align:center;max-width:560px;margin:0 auto 56px}
+.section-head{text-align:center;max-width:560px;margin:0 auto 32px}
 
 /* Mini Features Slider */
 .mini-features-grid {
@@ -267,7 +267,7 @@ textarea.form-input{min-height:110px;resize:vertical}
   flex-wrap: nowrap;
   overflow-x: auto;
   gap: 24px;
-  padding: 48px var(--space-m);
+  padding: 12px var(--space-m) 48px;
   margin: 0 calc(var(--space-m) * -1);
   scrollbar-width: none;
   -ms-overflow-style: none;
