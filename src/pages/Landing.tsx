@@ -53,11 +53,7 @@ export default function Landing() {
         <div className="hero-glow hero-glow-2" />
 
         <div className="hero-inner">
-          <ScrollReveal>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <Logo size={72} />
-            </div>
-          </ScrollReveal>
+
 
           <ScrollReveal delay={1}>
             <h1 className="h1 mt-6">
