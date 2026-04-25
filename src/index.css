@@ -317,23 +317,24 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 
 .mini-feature-visual {
-  height: 120px;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(8px);
+  height: 130px;
+  width: 85%;
+  margin: var(--space-s) auto 0 auto;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
   border-radius: var(--radius-m);
-  margin-top: var(--space-m);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
+  position: relative;
 }
 
 .visual-svg {
-  width: 100%;
-  height: 100%;
-  opacity: 0.6;
+  width: 90%;
+  height: 90%;
+  opacity: 0.85;
 }
 
 .mini-feature-card h4 { font-size: 1.25rem; margin-bottom: 8px; color: #fff; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }

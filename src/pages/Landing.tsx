@@ -180,15 +180,8 @@ export default function Landing() {
                 bg: '/c2ef792a-71cf-420e-9dc6-39673be2a4ff.jpg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
-                    <circle cx="20" cy="30" r="3" fill="white" opacity="0.8" />
-                    <circle cx="50" cy="20" r="3" fill="white" opacity="0.8" />
-                    <circle cx="80" cy="30" r="3" fill="white" opacity="0.8" />
-                    <circle cx="50" cy="45" r="3" fill="white" opacity="0.8" />
-                    <line x1="20" y1="30" x2="50" y2="20" stroke="white" strokeWidth="0.5" opacity="0.4" />
-                    <line x1="50" y1="20" x2="80" y2="30" stroke="white" strokeWidth="0.5" opacity="0.4" />
-                    <line x1="80" y1="30" x2="50" y2="45" stroke="white" strokeWidth="0.5" opacity="0.4" />
-                    <line x1="50" y1="45" x2="20" y2="30" stroke="white" strokeWidth="0.5" opacity="0.4" />
-                    <line x1="20" y1="30" x2="80" y2="30" stroke="white" strokeWidth="0.5" opacity="0.2" />
+                    <path d="M25 15 Q40 12 55 15 Q65 18 65 30 Q65 42 50 45 L40 55 L42 45 Q20 42 20 30 Q20 18 25 15" fill="none" stroke="white" strokeWidth="1.5" opacity="0.8" />
+                    <path d="M40 20 Q55 18 70 20 Q80 23 80 35 Q80 47 65 50 L55 58 L57 50 Q35 47 35 35" fill="none" stroke="white" strokeWidth="1.2" opacity="0.5" />
                   </svg>
                 )
               },
@@ -198,10 +191,12 @@ export default function Landing() {
                 bg: '/5b55f314-eba4-42a9-adae-c25514fe5d5f.jpg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
-                    <path d="M20 10 V50 M20 30 H40 M40 20 V40 M20 50 H60 M60 40 V50" stroke="white" strokeWidth="1" fill="none" opacity="0.5" />
-                    <circle cx="20" cy="10" r="2" fill="white" />
-                    <circle cx="40" cy="20" r="2" fill="white" />
-                    <circle cx="60" cy="40" r="2" fill="white" />
+                    <path d="M20 10 Q22 30 20 50" fill="none" stroke="white" strokeWidth="2" opacity="0.8" />
+                    <path d="M20 30 Q45 30 50 15" fill="none" stroke="white" strokeWidth="1.5" opacity="0.6" />
+                    <path d="M20 40 Q55 40 60 25" fill="none" stroke="white" strokeWidth="1.5" opacity="0.4" />
+                    <circle cx="20" cy="10" r="3" fill="none" stroke="white" strokeWidth="1" />
+                    <circle cx="50" cy="15" r="3" fill="none" stroke="white" strokeWidth="1" />
+                    <circle cx="60" cy="25" r="3" fill="none" stroke="white" strokeWidth="1" />
                   </svg>
                 )
               },
@@ -211,10 +206,9 @@ export default function Landing() {
                 bg: '/5d255d44-b559-4630-b0a7-e763dda69fb2.jpg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
-                    {[...Array(12)].map((_, i) => (
-                      <circle key={i} cx={15 + Math.random() * 70} cy={10 + Math.random() * 40} r={0.5 + Math.random() * 1.5} fill="white" opacity={0.3 + Math.random() * 0.5} />
-                    ))}
-                    <path d="M50 15 L53 23 L61 23 L55 28 L57 36 L50 31 L43 36 L45 28 L39 23 L47 23 Z" fill="white" opacity="0.6" />
+                    <path d="M50 10 Q52 25 65 25 Q52 25 50 40 Q48 25 35 25 Q48 25 50 10" fill="none" stroke="white" strokeWidth="1.5" opacity="0.8" />
+                    <path d="M75 35 Q76 42 82 42 Q76 42 75 50 Q74 42 68 42 Q74 42 75 35" fill="none" stroke="white" strokeWidth="1" opacity="0.5" />
+                    <path d="M25 35 Q26 40 30 40 Q26 40 25 45 Q24 40 20 40 Q24 40 25 35" fill="none" stroke="white" strokeWidth="1" opacity="0.4" />
                   </svg>
                 )
               },
@@ -224,9 +218,9 @@ export default function Landing() {
                 bg: '/b318345d-f5f6-4972-81be-c61b1cd538b1.jpg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
-                    <rect x="30" y="15" width="40" height="6" rx="1" fill="white" opacity="0.6" />
-                    <rect x="30" y="25" width="40" height="6" rx="1" fill="white" opacity="0.4" />
-                    <rect x="30" y="35" width="40" height="6" rx="1" fill="white" opacity="0.2" />
+                    <path d="M30 15 Q50 12 70 15 L72 45 Q50 48 28 45 Z" fill="none" stroke="white" strokeWidth="1.5" opacity="0.7" />
+                    <path d="M35 25 H60 M35 32 H55 M35 39 H50" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity="0.4" />
+                    <path d="M70 15 L75 10" stroke="white" strokeWidth="1" opacity="0.3" />
                   </svg>
                 )
               },
@@ -236,11 +230,9 @@ export default function Landing() {
                 bg: '/josiah-rock-7EnvCCL8XGE-unsplash.jpg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
-                    <circle cx="50" cy="30" r="5" fill="white" opacity="0.8" />
-                    <circle cx="50" cy="30" r="10" stroke="white" strokeWidth="0.5" fill="none" opacity="0.4">
-                      <animate attributeName="r" from="5" to="25" dur="2s" repeatCount="indefinite" />
-                      <animate attributeName="opacity" from="0.4" to="0" dur="2s" repeatCount="indefinite" />
-                    </circle>
+                    <path d="M50 30 Q55 20 65 20 M50 30 Q45 20 35 20" fill="none" stroke="white" strokeWidth="1.5" opacity="0.8" />
+                    <path d="M50 30 Q65 10 80 15 M50 30 Q35 10 20 15" fill="none" stroke="white" strokeWidth="1" opacity="0.4" />
+                    <circle cx="50" cy="30" r="4" fill="white" opacity="0.9" />
                   </svg>
                 )
               },
@@ -250,9 +242,10 @@ export default function Landing() {
                 bg: '/cfe5d5ef-9b51-4931-a76f-9a817afff2dd.jpg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
-                    <path d="M20 10 L80 10 L50 50 Z" fill="white" opacity="0.2" />
-                    <path d="M10 40 L40 10 L70 40 Z" fill="white" opacity="0.3" />
-                    <circle cx="50" cy="30" r="15" stroke="white" strokeWidth="0.5" fill="none" opacity="0.4" />
+                    <path d="M30 20 Q40 10 50 20 Q60 30 70 20 Q80 10 85 25 Q85 45 70 50 Q50 55 30 50 Q15 45 15 25 Q15 10 30 20" fill="none" stroke="white" strokeWidth="1.5" opacity="0.8" />
+                    <circle cx="35" cy="30" r="3" fill="white" opacity="0.4" />
+                    <circle cx="50" cy="40" r="4" fill="white" opacity="0.4" />
+                    <circle cx="65" cy="30" r="3" fill="white" opacity="0.4" />
                   </svg>
                 )
               },
@@ -262,10 +255,10 @@ export default function Landing() {
                 bg: '/ee477f25-3b2a-45a2-8614-f79f0a8c3200.jpg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
-                    <rect x="25" y="20" width="15" height="15" rx="2" stroke="white" strokeWidth="1" fill="none" opacity="0.6" />
-                    <rect x="45" y="20" width="15" height="15" rx="2" stroke="white" strokeWidth="1" fill="none" opacity="0.6" />
-                    <rect x="65" y="20" width="15" height="15" rx="2" stroke="white" strokeWidth="1" fill="none" opacity="0.6" />
-                    <path d="M32 27 L38 27 M52 27 L58 27 M72 27 L78 27" stroke="white" strokeWidth="1" opacity="0.4" />
+                    <path d="M25 20 Q35 18 45 20 L45 40 Q35 42 25 40 Z" fill="none" stroke="white" strokeWidth="1.5" opacity="0.8" />
+                    <path d="M55 20 Q70 18 85 20 L85 40 Q70 42 55 40 Z" fill="none" stroke="white" strokeWidth="1.5" opacity="0.8" />
+                    <text x="30" y="33" fill="white" fontSize="10" fontWeight="bold" opacity="0.6">⌘</text>
+                    <text x="65" y="33" fill="white" fontSize="10" fontWeight="bold" opacity="0.6">K</text>
                   </svg>
                 )
               },
@@ -275,10 +268,9 @@ export default function Landing() {
                 bg: '/f6fe7ed3-21ce-4297-9abb-9f41d6779c69.jpg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
-                    <circle cx="35" cy="30" r="8" stroke="white" strokeWidth="1" fill="none" opacity="0.6" />
-                    <circle cx="50" cy="30" r="10" stroke="white" strokeWidth="1" fill="none" opacity="0.8" />
-                    <circle cx="65" cy="30" r="8" stroke="white" strokeWidth="1" fill="none" opacity="0.6" />
-                    <path d="M50 20 V15 M50 40 V45" stroke="white" strokeWidth="1" opacity="0.4" />
+                    <path d="M50 15 L50 45 M35 45 L65 45" stroke="white" strokeWidth="2" strokeLinecap="round" opacity="0.8" />
+                    <path d="M35 25 Q50 20 65 25 L60 45 H40 Z" fill="none" stroke="white" strokeWidth="1.5" opacity="0.6" />
+                    <path d="M50 15 Q55 10 50 5" stroke="white" strokeWidth="1" opacity="0.4" />
                   </svg>
                 )
               },
@@ -288,14 +280,9 @@ export default function Landing() {
                 bg: '/a9cdf66f-befe-413a-bf99-83c54794d266.jpg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
-                    <g opacity="0.4">
-                      <rect x="20" y="15" width="25" height="4" rx="1" fill="white" />
-                      <rect x="20" y="22" width="15" height="4" rx="1" fill="white" />
-                      <rect x="55" y="15" width="25" height="4" rx="1" fill="white" />
-                      <rect x="55" y="22" width="20" height="4" rx="1" fill="white" />
-                      <rect x="20" y="35" width="30" height="4" rx="1" fill="white" />
-                      <rect x="60" y="35" width="20" height="4" rx="1" fill="white" />
-                    </g>
+                    <path d="M30 10 Q50 8 70 10 L72 50 Q50 52 28 50 Z" fill="none" stroke="white" strokeWidth="1.5" opacity="0.8" />
+                    <path d="M35 20 H65 M35 30 H60 M35 40 H55" stroke="white" strokeWidth="1" opacity="0.4" />
+                    <path d="M70 10 L78 5" stroke="white" strokeWidth="1" opacity="0.3" />
                   </svg>
                 )
               },
@@ -305,8 +292,8 @@ export default function Landing() {
                 bg: '/eve-dFIYU7xOl0w-unsplash.jpg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
-                    <path d="M30 30 L45 45 L75 15" stroke="white" strokeWidth="2" fill="none" opacity="0.6" />
-                    <circle cx="50" cy="30" r="25" stroke="white" strokeWidth="0.5" fill="none" opacity="0.2" />
+                    <path d="M30 35 Q40 45 50 50 Q70 20 85 10" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.9" />
+                    <path d="M20 15 Q50 12 80 15 Q82 35 80 55 Q50 58 20 55 Q18 35 20 15" fill="none" stroke="white" strokeWidth="1" opacity="0.2" />
                   </svg>
                 )
               },
@@ -316,8 +303,9 @@ export default function Landing() {
                 bg: '/513b98f7-9dc5-4844-86ca-379ae723b77f.jpg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
-                    <path d="M50 10 L80 25 V45 L50 55 L20 45 V25 Z" stroke="white" strokeWidth="1" fill="none" opacity="0.6" />
-                    <path d="M50 10 V35 M50 35 L80 25 M50 35 L20 25" stroke="white" strokeWidth="0.5" opacity="0.4" />
+                    <path d="M25 20 L50 10 L75 20 L75 45 L50 55 L25 45 Z" fill="none" stroke="white" strokeWidth="1.5" opacity="0.8" />
+                    <path d="M25 20 L50 30 L75 20 M50 30 V55" fill="none" stroke="white" strokeWidth="1" opacity="0.5" />
+                    <path d="M40 16 L65 26" stroke="white" strokeWidth="0.5" opacity="0.3" />
                   </svg>
                 )
               },
@@ -327,9 +315,9 @@ export default function Landing() {
                 bg: '/cocoloris-co-mTdkTShJMfU-unsplash.jpg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
-                    <path d="M10 30 H90 M70 20 L90 30 L70 40" stroke="white" strokeWidth="1" fill="none" opacity="0.6" />
-                    <line x1="10" y1="20" x2="40" y2="20" stroke="white" strokeWidth="0.5" opacity="0.2" />
-                    <line x1="10" y1="40" x2="40" y2="40" stroke="white" strokeWidth="0.5" opacity="0.2" />
+                    <path d="M20 30 Q50 10 85 30 L45 40 L20 30" fill="none" stroke="white" strokeWidth="1.5" opacity="0.8" />
+                    <path d="M45 40 L50 55 L55 40" fill="none" stroke="white" strokeWidth="1" opacity="0.5" />
+                    <path d="M20 30 L55 40" stroke="white" strokeWidth="0.5" opacity="0.3" />
                   </svg>
                 )
               },
