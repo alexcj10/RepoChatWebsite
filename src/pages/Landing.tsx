@@ -174,7 +174,7 @@ export default function Landing() {
 
           <div className="mini-features-grid">
             {[
-              { title: 'DM & Group Chat', desc: 'Real-time messaging with friends and groups.', bg: '/513b98f7-9dc5-4844-86ca-379ae723b77f.jpg' },
+              { title: 'DM & Group Chat', desc: 'Real-time messaging with friends and groups.', bg: '/josiah-rock-7EnvCCL8XGE-unsplash.jpg' },
               { title: 'GitHub Context', desc: 'Attach PRs, Issues, and branches to any message.', bg: '/5b55f314-eba4-42a9-adae-c25514fe5d5f.jpg' },
               { title: 'Reactions & Stars', desc: 'React to messages, star them for quick access.', bg: '/5d255d44-b559-4630-b0a7-e763dda69fb2.jpg' },
               { title: 'Custom Lists', desc: 'Organize chats by project, team, or context.', bg: '/b318345d-f5f6-4972-81be-c61b1cd538b1.jpg' },
@@ -184,8 +184,8 @@ export default function Landing() {
               { title: 'Pin Users', desc: 'Pin up to 3 users for instant access in the share popup.', bg: '/f6fe7ed3-21ce-4297-9abb-9f41d6779c69.jpg' },
               { title: 'Message Templates', desc: 'Save time with up to 6 custom message templates.', bg: '/a9cdf66f-befe-413a-bf99-83c54794d266.jpg' },
               { title: 'Notes & Tasks', desc: 'Add notes in Pad, mark as complete, and share easily.', bg: '/eve-dFIYU7xOl0w-unsplash.jpg' },
-              { title: 'Smart Archive', desc: 'Archive and pin chats to keep your workspace tidy.', bg: '/b94cde70-d79f-46ac-a51b-3780cd9f9bf0.jpg' },
-              { title: 'Quick Share', desc: 'Share panel via dedicated module or keyboard shortcut.', bg: '/abstract-gradient-background-with-grain-texture-captivating-noise-airbrush-minimalist-wallpaper (1).jpg' },
+              { title: 'Smart Archive', desc: 'Archive and pin chats to keep your workspace tidy.', bg: '/josiah-rock-SeB089y6bXQ-unsplash.jpg' },
+              { title: 'Quick Share', desc: 'Share panel via dedicated module or keyboard shortcut.', bg: '/cocoloris-co-mTdkTShJMfU-unsplash.jpg' },
             ].map((f, i) => (
               <ScrollReveal key={i} delay={(i % 3) as 0 | 1 | 2 | 3}>
                 <div className="mini-feature-card" style={{ backgroundImage: `url(${f.bg})` }}>
