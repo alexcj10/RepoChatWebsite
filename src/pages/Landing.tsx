@@ -9,7 +9,7 @@ import Logo from '../components/Logo'
 function HorizontalShowcase() {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] })
-  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-57.4%'])
+  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-62.5%'])
 
   const items = [
     { label: 'Context Sharing', title: 'Share PRs & Issues instantly', desc: 'Select any PR or Issue on GitHub, choose a friend or group, and share — with full context attached.', img: '/RC_share_popup.png' },
@@ -22,7 +22,7 @@ function HorizontalShowcase() {
       <div className="hscroll-sticky">
         <motion.div className="hscroll-track" style={{ x }}>
           {items.map((item, i) => (
-            <div key={i} className="hscroll-card">
+            <div key={i} className={`hscroll-card ${i % 2 !== 0 ? 'reverse' : ''}`}>
               <div className="hscroll-card-head">
                 <div className="badge mb-4">{item.label}</div>
                 <h3 className="h3">{item.title}</h3>
