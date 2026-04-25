@@ -3,7 +3,6 @@ import { ArrowRight, Shield, Zap } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import ScrollReveal from '../components/ScrollReveal'
 import FAQ from '../components/FAQ'
-import Logo from '../components/Logo'
 
 export default function Landing() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -496,17 +495,10 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ═══ CTA ═══ */}
-      <section className="section" style={{ borderTop: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }}>
-        <div className="hero-glow hero-glow-1" style={{ top: '50%', opacity: .06 }} />
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+      <section className="section" style={{ padding: '80px 0 120px', position: 'relative', overflow: 'hidden', textAlign: 'center' }}>
+        <div className="container">
           <ScrollReveal>
-            <div className="text-center" style={{ maxWidth: 640, margin: '0 auto' }}>
-              <Logo size={48} />
-              <h2 className="h1 mt-6 mb-6">Chat where the<br /><span className="gradient-text">code lives.</span></h2>
-              <p className="body-lg mb-8">Join developers who ship faster by collaborating right where they code.</p>
-              <a href="#install" className="btn btn-primary btn-lg">Add to Chrome — Free</a>
-            </div>
+            <h2 className="h1" style={{ fontSize: 'clamp(5rem, 15vw, 12rem)', fontWeight: 200, letterSpacing: '-0.03em', marginBottom: 0, lineHeight: 1, color: 'rgba(255,255,255,0.9)' }}>RepoChat.</h2>
           </ScrollReveal>
         </div>
       </section>
