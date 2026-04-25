@@ -174,23 +174,175 @@ export default function Landing() {
 
           <div className="mini-features-grid">
             {[
-              { title: 'DM & Group Chat', desc: 'Real-time messaging with friends and groups.', bg: '/josiah-rock-7EnvCCL8XGE-unsplash.jpg' },
-              { title: 'GitHub Context', desc: 'Attach PRs, Issues, and branches to any message.', bg: '/5b55f314-eba4-42a9-adae-c25514fe5d5f.jpg' },
-              { title: 'Reactions & Stars', desc: 'React to messages, star them for quick access.', bg: '/5d255d44-b559-4630-b0a7-e763dda69fb2.jpg' },
-              { title: 'Custom Lists', desc: 'Organize chats by project, team, or context.', bg: '/b318345d-f5f6-4972-81be-c61b1cd538b1.jpg' },
-              { title: 'Online Presence', desc: 'See who is online with last-seen timestamps.', bg: '/c2ef792a-71cf-420e-9dc6-39673be2a4ff.jpg' },
-              { title: 'Theming', desc: '6 accent colors, default and compact view support.', bg: '/cfe5d5ef-9b51-4931-a76f-9a817afff2dd.jpg' },
-              { title: 'Keyboard Shortcuts', desc: 'Navigate fast with professional keyboard workflows.', bg: '/ee477f25-3b2a-45a2-8614-f79f0a8c3200.jpg' },
-              { title: 'Pin Users', desc: 'Pin up to 3 users for instant access in the share popup.', bg: '/f6fe7ed3-21ce-4297-9abb-9f41d6779c69.jpg' },
-              { title: 'Message Templates', desc: 'Save time with up to 6 custom message templates.', bg: '/a9cdf66f-befe-413a-bf99-83c54794d266.jpg' },
-              { title: 'Notes & Tasks', desc: 'Add notes in Pad, mark as complete, and share easily.', bg: '/eve-dFIYU7xOl0w-unsplash.jpg' },
-              { title: 'Smart Archive', desc: 'Archive and pin chats to keep your workspace tidy.', bg: '/513b98f7-9dc5-4844-86ca-379ae723b77f.jpg' },
-              { title: 'Quick Share', desc: 'Share panel via dedicated module or keyboard shortcut.', bg: '/cocoloris-co-mTdkTShJMfU-unsplash.jpg' },
+              { 
+                title: 'DM & Group Chat', 
+                desc: 'Real-time messaging with friends and groups.', 
+                bg: '/c2ef792a-71cf-420e-9dc6-39673be2a4ff.jpg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    <circle cx="20" cy="30" r="3" fill="white" opacity="0.8" />
+                    <circle cx="50" cy="20" r="3" fill="white" opacity="0.8" />
+                    <circle cx="80" cy="30" r="3" fill="white" opacity="0.8" />
+                    <circle cx="50" cy="45" r="3" fill="white" opacity="0.8" />
+                    <line x1="20" y1="30" x2="50" y2="20" stroke="white" strokeWidth="0.5" opacity="0.4" />
+                    <line x1="50" y1="20" x2="80" y2="30" stroke="white" strokeWidth="0.5" opacity="0.4" />
+                    <line x1="80" y1="30" x2="50" y2="45" stroke="white" strokeWidth="0.5" opacity="0.4" />
+                    <line x1="50" y1="45" x2="20" y2="30" stroke="white" strokeWidth="0.5" opacity="0.4" />
+                    <line x1="20" y1="30" x2="80" y2="30" stroke="white" strokeWidth="0.5" opacity="0.2" />
+                  </svg>
+                )
+              },
+              { 
+                title: 'GitHub Context', 
+                desc: 'Attach PRs, Issues, and branches to any message.', 
+                bg: '/5b55f314-eba4-42a9-adae-c25514fe5d5f.jpg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    <path d="M20 10 V50 M20 30 H40 M40 20 V40 M20 50 H60 M60 40 V50" stroke="white" strokeWidth="1" fill="none" opacity="0.5" />
+                    <circle cx="20" cy="10" r="2" fill="white" />
+                    <circle cx="40" cy="20" r="2" fill="white" />
+                    <circle cx="60" cy="40" r="2" fill="white" />
+                  </svg>
+                )
+              },
+              { 
+                title: 'Reactions & Stars', 
+                desc: 'React to messages, star them for quick access.', 
+                bg: '/5d255d44-b559-4630-b0a7-e763dda69fb2.jpg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    {[...Array(12)].map((_, i) => (
+                      <circle key={i} cx={15 + Math.random() * 70} cy={10 + Math.random() * 40} r={0.5 + Math.random() * 1.5} fill="white" opacity={0.3 + Math.random() * 0.5} />
+                    ))}
+                    <path d="M50 15 L53 23 L61 23 L55 28 L57 36 L50 31 L43 36 L45 28 L39 23 L47 23 Z" fill="white" opacity="0.6" />
+                  </svg>
+                )
+              },
+              { 
+                title: 'Custom Lists', 
+                desc: 'Organize chats by project, team, or context.', 
+                bg: '/b318345d-f5f6-4972-81be-c61b1cd538b1.jpg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    <rect x="30" y="15" width="40" height="6" rx="1" fill="white" opacity="0.6" />
+                    <rect x="30" y="25" width="40" height="6" rx="1" fill="white" opacity="0.4" />
+                    <rect x="30" y="35" width="40" height="6" rx="1" fill="white" opacity="0.2" />
+                  </svg>
+                )
+              },
+              { 
+                title: 'Online Presence', 
+                desc: 'See who is online with last-seen timestamps.', 
+                bg: '/josiah-rock-7EnvCCL8XGE-unsplash.jpg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    <circle cx="50" cy="30" r="5" fill="white" opacity="0.8" />
+                    <circle cx="50" cy="30" r="10" stroke="white" strokeWidth="0.5" fill="none" opacity="0.4">
+                      <animate attributeName="r" from="5" to="25" dur="2s" repeatCount="indefinite" />
+                      <animate attributeName="opacity" from="0.4" to="0" dur="2s" repeatCount="indefinite" />
+                    </circle>
+                  </svg>
+                )
+              },
+              { 
+                title: 'Theming', 
+                desc: '6 accent colors, default and compact view support.', 
+                bg: '/cfe5d5ef-9b51-4931-a76f-9a817afff2dd.jpg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    <path d="M20 10 L80 10 L50 50 Z" fill="white" opacity="0.2" />
+                    <path d="M10 40 L40 10 L70 40 Z" fill="white" opacity="0.3" />
+                    <circle cx="50" cy="30" r="15" stroke="white" strokeWidth="0.5" fill="none" opacity="0.4" />
+                  </svg>
+                )
+              },
+              { 
+                title: 'Keyboard Shortcuts', 
+                desc: 'Navigate fast with professional keyboard workflows.', 
+                bg: '/ee477f25-3b2a-45a2-8614-f79f0a8c3200.jpg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    <rect x="25" y="20" width="15" height="15" rx="2" stroke="white" strokeWidth="1" fill="none" opacity="0.6" />
+                    <rect x="45" y="20" width="15" height="15" rx="2" stroke="white" strokeWidth="1" fill="none" opacity="0.6" />
+                    <rect x="65" y="20" width="15" height="15" rx="2" stroke="white" strokeWidth="1" fill="none" opacity="0.6" />
+                    <path d="M32 27 L38 27 M52 27 L58 27 M72 27 L78 27" stroke="white" strokeWidth="1" opacity="0.4" />
+                  </svg>
+                )
+              },
+              { 
+                title: 'Pin Users', 
+                desc: 'Pin up to 3 users for instant access in the share popup.', 
+                bg: '/f6fe7ed3-21ce-4297-9abb-9f41d6779c69.jpg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    <circle cx="35" cy="30" r="8" stroke="white" strokeWidth="1" fill="none" opacity="0.6" />
+                    <circle cx="50" cy="30" r="10" stroke="white" strokeWidth="1" fill="none" opacity="0.8" />
+                    <circle cx="65" cy="30" r="8" stroke="white" strokeWidth="1" fill="none" opacity="0.6" />
+                    <path d="M50 20 V15 M50 40 V45" stroke="white" strokeWidth="1" opacity="0.4" />
+                  </svg>
+                )
+              },
+              { 
+                title: 'Message Templates', 
+                desc: 'Save time with up to 6 custom message templates.', 
+                bg: '/a9cdf66f-befe-413a-bf99-83c54794d266.jpg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    <g opacity="0.4">
+                      <rect x="20" y="15" width="25" height="4" rx="1" fill="white" />
+                      <rect x="20" y="22" width="15" height="4" rx="1" fill="white" />
+                      <rect x="55" y="15" width="25" height="4" rx="1" fill="white" />
+                      <rect x="55" y="22" width="20" height="4" rx="1" fill="white" />
+                      <rect x="20" y="35" width="30" height="4" rx="1" fill="white" />
+                      <rect x="60" y="35" width="20" height="4" rx="1" fill="white" />
+                    </g>
+                  </svg>
+                )
+              },
+              { 
+                title: 'Notes & Tasks', 
+                desc: 'Add notes in Pad, mark as complete, and share easily.', 
+                bg: '/eve-dFIYU7xOl0w-unsplash.jpg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    <path d="M30 30 L45 45 L75 15" stroke="white" strokeWidth="2" fill="none" opacity="0.6" />
+                    <circle cx="50" cy="30" r="25" stroke="white" strokeWidth="0.5" fill="none" opacity="0.2" />
+                  </svg>
+                )
+              },
+              { 
+                title: 'Smart Archive', 
+                desc: 'Archive and pin chats to keep your workspace tidy.', 
+                bg: '/513b98f7-9dc5-4844-86ca-379ae723b77f.jpg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    <path d="M50 10 L80 25 V45 L50 55 L20 45 V25 Z" stroke="white" strokeWidth="1" fill="none" opacity="0.6" />
+                    <path d="M50 10 V35 M50 35 L80 25 M50 35 L20 25" stroke="white" strokeWidth="0.5" opacity="0.4" />
+                  </svg>
+                )
+              },
+              { 
+                title: 'Quick Share', 
+                desc: 'Share panel via dedicated module or keyboard shortcut.', 
+                bg: '/cocoloris-co-mTdkTShJMfU-unsplash.jpg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    <path d="M10 30 H90 M70 20 L90 30 L70 40" stroke="white" strokeWidth="1" fill="none" opacity="0.6" />
+                    <line x1="10" y1="20" x2="40" y2="20" stroke="white" strokeWidth="0.5" opacity="0.2" />
+                    <line x1="10" y1="40" x2="40" y2="40" stroke="white" strokeWidth="0.5" opacity="0.2" />
+                  </svg>
+                )
+              },
             ].map((f, i) => (
               <ScrollReveal key={i} delay={(i % 3) as 0 | 1 | 2 | 3}>
                 <div className="mini-feature-card" style={{ backgroundImage: `url(${f.bg})` }}>
-                  <h4 className="h4">{f.title}</h4>
-                  <p className="body-sm mt-2">{f.desc}</p>
+                  <div>
+                    <h4 className="h4">{f.title}</h4>
+                    <p className="body-sm mt-2">{f.desc}</p>
+                  </div>
+                  <div className="mini-feature-visual">
+                    {f.visual}
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
