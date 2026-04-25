@@ -98,7 +98,7 @@ ul{list-style:none}
 /* ============================================
    HERO
    ============================================ */
-.hero{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:calc(var(--nav-h) + clamp(40px, 8vh, 80px));padding-bottom:var(--space-xl);overflow:visible}
+.hero{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:calc(var(--nav-h) + clamp(40px, 8vh, 80px));padding-bottom:var(--space-m);overflow:visible}
 .hero-glow{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
 .hero-glow-1{width:500px;height:500px;background:var(--accent);top:-180px;left:50%;transform:translateX(-50%);opacity:.08}
 .hero-glow-2{width:350px;height:350px;background:#6366f1;top:40%;right:-100px;opacity:.06}
