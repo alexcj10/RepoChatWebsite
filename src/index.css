@@ -58,7 +58,8 @@ ul{list-style:none}
    LAYOUT
    ============================================ */
 .container{max-width:var(--max-w);margin:0 auto;padding:0 var(--space-m)}
-.section{padding:var(--space-xl) 0}
+.section{padding:var(--space-l) 0}
+.section-xl{padding:var(--space-xl) 0}
 
 /* ============================================
    NAVBAR
@@ -129,7 +130,7 @@ ul{list-style:none}
   flex-direction: column;
   gap: var(--space-xl);
   position: relative;
-  padding-bottom: var(--space-l);
+  padding-bottom: 0;
 }
 
 .stack-card {
