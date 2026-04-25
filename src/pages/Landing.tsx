@@ -179,7 +179,13 @@ export default function Landing() {
               { title: 'Reactions & Stars', desc: 'React to messages, star them for quick access.', bg: '/5d255d44-b559-4630-b0a7-e763dda69fb2.jpg' },
               { title: 'Custom Lists', desc: 'Organize chats by project, team, or context.', bg: '/b318345d-f5f6-4972-81be-c61b1cd538b1.jpg' },
               { title: 'Online Presence', desc: 'See who is online with last-seen timestamps.', bg: '/c2ef792a-71cf-420e-9dc6-39673be2a4ff.jpg' },
-              { title: 'Theming', desc: '20+ accent colors, dark/light mode, compact layout.', bg: '/cfe5d5ef-9b51-4931-a76f-9a817afff2dd.jpg' },
+              { title: 'Theming', desc: '6 accent colors, default and compact view support.', bg: '/cfe5d5ef-9b51-4931-a76f-9a817afff2dd.jpg' },
+              { title: 'Keyboard Shortcuts', desc: 'Navigate fast with professional keyboard workflows.', bg: '/ee477f25-3b2a-45a2-8614-f79f0a8c3200.jpg' },
+              { title: 'Pin Users', desc: 'Pin up to 3 users for instant access in the share popup.', bg: '/f6fe7ed3-21ce-4297-9abb-9f41d6779c69.jpg' },
+              { title: 'Message Templates', desc: 'Save time with up to 6 custom message templates.', bg: '/abstract-gradient-background-with-grain-texture-captivating-noise-airbrush-minimalist-wallpaper.jpg' },
+              { title: 'Notes & Tasks', desc: 'Add notes in Pad, mark as complete, and share easily.', bg: '/eve-dFIYU7xOl0w-unsplash.jpg' },
+              { title: 'Smart Archive', desc: 'Archive and pin chats to keep your workspace tidy.', bg: '/abstract-gradient-background-with-grain-texture-captivating-noise-airbrush-minimalist-wallpaper (1).jpg' },
+              { title: 'Quick Share', desc: 'Share panel via dedicated module or keyboard shortcut.', bg: '/513b98f7-9dc5-4844-86ca-379ae723b77f.jpg' },
             ].map((f, i) => (
               <ScrollReveal key={i} delay={(i % 3) as 0 | 1 | 2 | 3}>
                 <div className="mini-feature-card" style={{ backgroundImage: `url(${f.bg})` }}>
