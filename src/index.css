@@ -128,7 +128,7 @@ ul{list-style:none}
 .stack-cards {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: 64px;
   position: relative;
   padding-bottom: 0;
 }
@@ -137,6 +137,7 @@ ul{list-style:none}
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 48px;
+  min-height: 480px;
   align-items: center;
   background: 
     radial-gradient(circle at top left, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
