@@ -363,6 +363,46 @@ export default function Landing() {
                     <path d="M10 10 L20 20 M90 50 L80 40" stroke="white" strokeWidth="0.5" opacity="0.2" />
                   </svg>
                 )
+              },
+              { 
+                title: 'Shared Notes', 
+                desc: 'Collaborate on notes with your team in real-time.', 
+                hue: '170deg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    <path d="M20 10 H60 L70 20 V50 H20 Z" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.8" />
+                    <path d="M60 10 V20 H70" stroke="white" strokeWidth="1" opacity="0.4" />
+                    <path d="M30 25 H50 M30 35 H55 M30 45 H40" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round" opacity="0.7" />
+                    <path d="M75 35 Q85 35 85 45 T75 55" fill="none" stroke="white" strokeWidth="1.5" opacity="0.5" />
+                  </svg>
+                )
+              },
+              { 
+                title: 'Project Pulse', 
+                desc: 'Visual analytics of your team activity and chat frequency.', 
+                hue: '80deg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    <path d="M20 50 L35 25 L50 40 L65 15 L80 45" fill="none" stroke="#06B6D4" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.9" />
+                    <path d="M20 50 H80" stroke="white" strokeWidth="0.5" opacity="0.3" />
+                    <circle cx="35" cy="25" r="2" fill="white" opacity="0.8" />
+                    <circle cx="65" cy="15" r="2" fill="#8B5CF6" opacity="0.8" />
+                    <path d="M50 10 V50" stroke="white" strokeWidth="0.5" opacity="0.1" strokeDasharray="2 2" />
+                  </svg>
+                )
+              },
+              { 
+                title: 'Smart Mentions', 
+                desc: 'Notify team members with context-aware @mentions.', 
+                hue: '300deg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    <circle cx="50" cy="30" r="15" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.8" />
+                    <path d="M50 22 V38 M42 30 H58" stroke="white" strokeWidth="1.5" opacity="0.4" />
+                    <path d="M50 30 L65 45" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round" opacity="0.7" />
+                    <text x="44" y="34" fill="white" fontSize="14" fontWeight="bold" opacity="0.9">@</text>
+                  </svg>
+                )
               }
             ].map((f, i) => (
               <ScrollReveal key={i} delay={(i % 3) as 0 | 1 | 2 | 3}>
