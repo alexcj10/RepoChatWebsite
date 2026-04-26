@@ -3,6 +3,33 @@
 /* ============================================
    DESIGN TOKENS — Single dark palette
    ============================================ */
+/* ═══ CUSTOM SCROLLBAR ═══ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 10px;
+  border: 2px solid #0a0a0a;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Firefox Support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #222 #0a0a0a;
+}
+
 :root {
   --bg: #111113;
   --bg-elevated: #111113;
