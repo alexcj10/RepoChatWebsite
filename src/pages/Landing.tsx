@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { ArrowRight, Shield, Zap } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import ScrollReveal from '../components/ScrollReveal'
@@ -6,6 +6,30 @@ import FAQ from '../components/FAQ'
 
 export default function Landing() {
   const heroRef = useRef<HTMLDivElement>(null)
+  const cardsContainerRef = useRef<HTMLDivElement>(null)
+  const [firstCardHeight, setFirstCardHeight] = useState<number | undefined>(undefined)
+
+  useEffect(() => {
+    const measureHeight = () => {
+      if (!cardsContainerRef.current) return;
+      const cards = cardsContainerRef.current.querySelectorAll('.stack-card');
+      if (cards.length > 0) {
+        const firstCard = cards[0] as HTMLElement;
+        // Temporarily clear explicit height to measure natural content size
+        firstCard.style.height = 'auto';
+        const height = firstCard.getBoundingClientRect().height;
+        setFirstCardHeight(height);
+      }
+    };
+
+    // Small delay to ensure images/fonts are loaded initially
+    setTimeout(measureHeight, 100);
+    window.addEventListener('resize', measureHeight);
+    return () => window.removeEventListener('resize', measureHeight);
+  }, []);
+
+  const cardStyle = { height: firstCardHeight ? `${firstCardHeight}px` : 'auto' };
+
   const { scrollYProgress: heroProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
   const mockupScale = useTransform(heroProgress, [0, 1], [1, .9])
   const mockupOpacity = useTransform(heroProgress, [0, .8, 1], [1, 1, 0])
@@ -62,9 +86,9 @@ export default function Landing() {
           </ScrollReveal>
 
           {/* ═══ STACKING CARDS ═══ */}
-          <div className="stack-cards">
+          <div className="stack-cards" ref={cardsContainerRef}>
             {/* 1: Dev DNA */}
-            <div className="stack-card">
+            <div className="stack-card" style={cardStyle}>
               <div className="feature-text">
                 <div className="badge">Developer Profile</div>
                 <h3 className="h3 mt-4">Dev DNA & Power Stats</h3>
@@ -76,7 +100,7 @@ export default function Landing() {
             </div>
 
             {/* 2: Triage */}
-            <div className="stack-card reverse">
+            <div className="stack-card reverse" style={cardStyle}>
               <div className="feature-text">
                 <div className="badge">Smart Triage</div>
                 <h3 className="h3 mt-4">Triage issues from chat</h3>
@@ -88,7 +112,7 @@ export default function Landing() {
             </div>
 
             {/* 3: Pad */}
-            <div className="stack-card">
+            <div className="stack-card" style={cardStyle}>
               <div className="feature-text">
                 <div className="badge">Built-in Notepad</div>
                 <h3 className="h3 mt-4">Pad — Notes & Tasks</h3>
@@ -100,7 +124,7 @@ export default function Landing() {
             </div>
 
             {/* 4: View GitHub */}
-            <div className="stack-card reverse">
+            <div className="stack-card reverse" style={cardStyle}>
               <div className="feature-text">
                 <div className="badge">Deep Integration</div>
                 <h3 className="h3 mt-4">Everything connected</h3>
@@ -112,7 +136,7 @@ export default function Landing() {
             </div>
 
             {/* 5: Group Chat */}
-            <div className="stack-card">
+            <div className="stack-card" style={cardStyle}>
               <div className="feature-text">
                 <div className="badge">Collaboration</div>
                 <h3 className="h3 mt-4">Powerful Group Chats</h3>
@@ -124,7 +148,7 @@ export default function Landing() {
             </div>
 
             {/* 6: Context Sharing */}
-            <div className="stack-card reverse">
+            <div className="stack-card reverse" style={cardStyle}>
               <div className="feature-text">
                 <div className="badge">Context Sharing</div>
                 <h3 className="h3 mt-4">Share PRs & Issues instantly</h3>
@@ -136,7 +160,7 @@ export default function Landing() {
             </div>
 
             {/* 7: Comment on GitHub */}
-            <div className="stack-card">
+            <div className="stack-card" style={cardStyle}>
               <div className="feature-text">
                 <div className="badge">Comment on GitHub</div>
                 <h3 className="h3 mt-4">Post comments from chat</h3>
@@ -148,7 +172,7 @@ export default function Landing() {
             </div>
 
             {/* 8: Shared via RepoChat */}
-            <div className="stack-card reverse">
+            <div className="stack-card reverse" style={cardStyle}>
               <div className="feature-text">
                 <div className="badge">Shared via RepoChat</div>
                 <h3 className="h3 mt-4">Perfect context cards</h3>
