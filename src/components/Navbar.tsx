@@ -32,7 +32,7 @@ export default function Navbar() {
   }, [mobileOpen]);
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${mobileOpen ? 'menu-open' : ''}`}>
       <div className="nav-inner">
         <Link to="/" className="nav-logo" onClick={() => setMobileOpen(false)}>
           <Logo size={28} />

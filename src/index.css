@@ -78,6 +78,12 @@ ul{list-style:none}
   .desktop-only { display: none; }
   .nav-toggle{display:block}
   .nav-cta:not(.open){display:none}
+  
+  .navbar.menu-open {
+    background: var(--bg);
+    backdrop-filter: none;
+    border-bottom: none;
+  }
 }
 
 /* Mobile Glassmorphic Overlay */
@@ -87,9 +93,9 @@ ul{list-style:none}
   left: 0;
   right: 0;
   height: calc(100vh - var(--nav-h));
-  background: rgba(17, 17, 19, 0.95);
-  backdrop-filter: blur(24px) saturate(1.5);
-  border-top: 1px solid var(--border);
+  background: var(--bg);
+  backdrop-filter: none;
+  border-top: none;
   display: flex;
   flex-direction: column;
   padding: 32px 24px;
