@@ -101,7 +101,7 @@ export default function Landing() {
                   <p className="body-md">Instantly share PR details. Just click the Plus icon to attach the current PR or search for any PR/Issue in the repo.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_main_UI.png" alt="Pull Request Context" loading="lazy" decoding="async" />
+                  <img src="/RC_share_popup.png" alt="Pull Request Context" loading="lazy" decoding="async" />
                 </div>
               </div>
             </ScrollReveal>
