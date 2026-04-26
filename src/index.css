@@ -348,6 +348,7 @@ textarea.form-input{min-height:110px;resize:vertical}
   scrollbar-width: none;
   -ms-overflow-style: none;
   scroll-snap-type: x mandatory;
+  scroll-padding-left: var(--space-m);
   cursor: grab;
 }
 .mini-features-grid:active { cursor: grabbing; }
@@ -364,6 +365,7 @@ textarea.form-input{min-height:110px;resize:vertical}
     margin-right: 0;
     padding-left: 24px;
     padding-right: 24px;
+    scroll-padding-left: 24px;
   }
 }
 .mini-feature-card {
