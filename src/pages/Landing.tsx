@@ -408,14 +408,12 @@ export default function Landing() {
                     <p className="body-sm">Start your journey with essential features.</p>
                   </td>
                   <td className="tier-col">
-                    <h3>Free</h3>
                     <span className="price">$0</span>
-                    <button className="btn btn-ghost w-full">Get Started</button>
+                    <button className="btn btn-ghost w-full mt-2">Get Started</button>
                   </td>
                   <td className="tier-col pro-col">
-                    <h3 style={{ color: '#8B5CF6' }}>Pro</h3>
                     <span className="price">$4.99</span>
-                    <button className="btn btn-accent w-full" onClick={() => window.open('https://buy.stripe.com/8wM8xM3Tj7Yx608eUU', '_blank')}>Upgrade</button>
+                    <button className="btn btn-accent w-full mt-2" onClick={() => window.open('https://buy.stripe.com/8wM8xM3Tj7Yx608eUU', '_blank')}>Upgrade</button>
                   </td>
                 </tr>
                 <tr>
