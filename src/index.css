@@ -196,6 +196,9 @@ ul{list-style:none}
 }
 
 /* Reverse cards: image on the LEFT, text on the RIGHT */
+.stack-card.reverse {
+  grid-template-columns: 1.2fr 1fr;
+}
 .stack-card.reverse .feature-media {
   order: -1;
 }
