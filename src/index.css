@@ -471,7 +471,7 @@ textarea.form-input{min-height:110px;resize:vertical}
 
 @media(max-width: 900px) {
   .mini-features-grid > .reveal {
-    flex: 0 0 300px;
+    flex: 0 0 340px;
   }
   .mini-feature-card {
     padding: 24px 20px;
@@ -481,7 +481,7 @@ textarea.form-input{min-height:110px;resize:vertical}
 
 @media(max-width: 480px) {
   .mini-features-grid > .reveal {
-    flex: 0 0 260px;
+    flex: 0 0 300px;
   }
   .mini-feature-card {
     padding: 20px 16px;
