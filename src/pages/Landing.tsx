@@ -106,16 +106,16 @@ export default function Landing() {
               </div>
             </ScrollReveal>
 
-            {/* 4: View GitHub */}
+            {/* 4: GitHub Profiles */}
             <ScrollReveal>
               <div className="stack-card reverse">
                 <div className="feature-text">
-                  <div className="badge">Real-time Sync</div>
-                  <h3 className="h3 mt-4">Multi-device data sync</h3>
-                  <p className="body-md">Your chats, notes, and preferences sync instantly across all your devices. Pro users get unlimited cloud persistence.</p>
+                  <div className="badge">GitHub Profiles</div>
+                  <h3 className="h3 mt-4">View GitHub Profiles</h3>
+                  <p className="body-md">Instantly view your own or any group member's GitHub profile details and profile picture directly within the chat interface.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_share_popup.png" alt="Real-time Sync" loading="lazy" decoding="async" />
+                  <img src="/RC_github.png" alt="GitHub Profiles" loading="lazy" decoding="async" />
                 </div>
               </div>
             </ScrollReveal>
