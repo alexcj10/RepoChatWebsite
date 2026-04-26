@@ -193,7 +193,7 @@ export default function Landing() {
               { 
                 title: 'DM & Group Chat', 
                 desc: 'Real-time messaging with friends and groups.', 
-                bg: 'linear-gradient(135deg, #4338ca 0%, #6d28d9 50%, #db2777 100%)',
+                hue: '0deg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M25 15 Q40 12 55 15 Q65 18 65 30 Q65 42 50 45 L40 55 L42 45 Q20 42 20 30 Q20 18 25 15" fill="none" stroke="white" strokeWidth="1.5" opacity="0.8" />
@@ -209,7 +209,7 @@ export default function Landing() {
               { 
                 title: 'GitHub Context', 
                 desc: 'Attach PRs, Issues, and branches to any message.', 
-                bg: 'linear-gradient(135deg, #0f766e 0%, #0369a1 100%)',
+                hue: '190deg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M20 10 Q22 30 20 50" fill="none" stroke="#06B6D4" strokeWidth="2.5" opacity="0.9" />
@@ -227,7 +227,7 @@ export default function Landing() {
               { 
                 title: 'Reactions & Stars', 
                 desc: 'React to messages, star them for quick access.', 
-                bg: 'linear-gradient(135deg, #be185d 0%, #7e22ce 100%)',
+                hue: '320deg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M50 10 Q52 25 65 25 Q52 25 50 40 Q48 25 35 25 Q48 25 50 10" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.9" />
@@ -242,7 +242,7 @@ export default function Landing() {
               { 
                 title: 'Custom Lists', 
                 desc: 'Organize chats by project, team, or context smartly.', 
-                bg: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 100%)',
+                hue: '240deg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M30 15 Q50 12 70 15 L72 45 Q50 48 28 45 Z" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.8" />
@@ -256,7 +256,7 @@ export default function Landing() {
               { 
                 title: 'Online Presence', 
                 desc: 'See who is online with last-seen timestamps.', 
-                bg: 'linear-gradient(135deg, #111827 0%, #3b82f6 100%)',
+                hue: '150deg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M50 30 Q55 20 65 20 M50 30 Q45 20 35 20" fill="none" stroke="#06B6D4" strokeWidth="2" opacity="0.8" />
@@ -270,7 +270,7 @@ export default function Landing() {
               { 
                 title: 'Theming', 
                 desc: '6 accent colors, default and compact view support.', 
-                bg: 'linear-gradient(135deg, #4c1d95 0%, #9333ea 100%)',
+                hue: '280deg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M30 20 Q40 10 50 20 Q60 30 70 20 Q80 10 85 25 Q85 45 70 50 Q50 55 30 50 Q15 45 15 25 Q15 10 30 20" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.8" />
@@ -285,7 +285,7 @@ export default function Landing() {
               { 
                 title: 'Keyboard Shortcuts', 
                 desc: 'Navigate fast with professional keyboard workflows.', 
-                bg: 'linear-gradient(135deg, #065f46 0%, #059669 100%)',
+                hue: '45deg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M25 20 Q35 18 45 20 L45 40 Q35 42 25 40 Z" fill="none" stroke="#06B6D4" strokeWidth="2" opacity="0.9" />
@@ -300,7 +300,7 @@ export default function Landing() {
               { 
                 title: 'Pin Users', 
                 desc: 'Pin up to 3 users for instant access in the share popup.', 
-                bg: 'linear-gradient(135deg, #312e81 0%, #1e1b4b 100%)',
+                hue: '210deg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M50 15 L50 45 M35 45 L65 45" stroke="#8B5CF6" strokeWidth="3" strokeLinecap="round" opacity="0.9" />
@@ -314,7 +314,7 @@ export default function Landing() {
               { 
                 title: 'Message Templates', 
                 desc: 'Save time with up to 6 custom message templates.', 
-                bg: 'linear-gradient(135deg, #0369a1 0%, #0c4a6e 100%)',
+                hue: '260deg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M30 10 Q50 8 70 10 L72 50 Q50 52 28 50 Z" fill="none" stroke="white" strokeWidth="1.5" opacity="0.8" />
@@ -327,7 +327,7 @@ export default function Landing() {
               { 
                 title: 'Notes & Tasks', 
                 desc: 'Add notes in Pad, mark as complete, and share easily.', 
-                bg: 'linear-gradient(135deg, #4338ca 0%, #1e1b4b 100%)',
+                hue: '340deg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M30 35 Q40 45 50 50 Q70 20 85 10" fill="none" stroke="#06B6D4" strokeWidth="4" strokeLinecap="round" opacity="0.9" />
@@ -340,7 +340,7 @@ export default function Landing() {
               { 
                 title: 'Smart Archive', 
                 desc: 'Archive and pin chats to keep your workspace tidy.', 
-                bg: 'linear-gradient(135deg, #111827 0%, #1f2937 100%)',
+                hue: '110deg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M25 20 L50 10 L75 20 L75 45 L50 55 L25 45 Z" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.9" />
@@ -353,7 +353,7 @@ export default function Landing() {
               { 
                 title: 'Quick Share', 
                 desc: 'Share panel via dedicated module or keyboard shortcut.', 
-                bg: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+                hue: '20deg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M20 30 Q50 10 85 30 L45 40 L20 30" fill="none" stroke="#06B6D4" strokeWidth="2" opacity="0.9" />
@@ -366,7 +366,10 @@ export default function Landing() {
               }
             ].map((f, i) => (
               <ScrollReveal key={i} delay={(i % 3) as 0 | 1 | 2 | 3}>
-                <div className="mini-feature-card" style={{ background: f.bg }}>
+                <div 
+                  className="mini-feature-card" 
+                  style={{ '--card-hue': f.hue } as any}
+                >
                   <div className="mini-feature-content">
                     <h4 className="h4">{f.title}</h4>
                     <p className="body-sm mt-2" style={{ opacity: 0.7 }}>{f.desc}</p>
