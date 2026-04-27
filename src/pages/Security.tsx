@@ -358,7 +358,7 @@ export default function Security() {
             borderRadius: 20,
             padding: '32px',
             '--card-glow': 'rgba(245, 158, 11, 0.4)',
-            '--card-glow-bg': 'rgba(245, 158, 11, 0.30)',
+            '--card-glow-bg': 'rgba(245, 158, 11, 0.25)',
           } as React.CSSProperties}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
               <div style={{
