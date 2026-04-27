@@ -125,8 +125,8 @@ export default function Features() {
           {features.map((f, i) => (
             <ScrollReveal key={i} delay={(i % 3) as 0 | 1 | 2 | 3}>
               <div className="feature-card-full" style={{
-                '--card-glow': 'rgba(139, 92, 246, 0.35)',
-                '--card-glow-bg': 'rgba(139, 92, 246, 0.08)',
+                '--card-glow': 'rgba(139, 92, 246, 0.4)',
+                '--card-glow-bg': 'rgba(139, 92, 246, 0.22)',
               } as React.CSSProperties}>
                 <div className="feature-card-header">
                   <div className="feature-card-icon">{f.icon}</div>
