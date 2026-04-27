@@ -842,13 +842,22 @@ textarea.form-input{min-height:110px;resize:vertical}
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.03em;
-  color: var(--accent);
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.15);
   padding: 2px 8px;
   border-radius: 999px;
   margin-top: 4px;
   text-transform: uppercase;
+}
+
+.feature-tier-badge.all {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.18);
+}
+
+.feature-tier-badge.limit {
+  color: var(--accent);
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.15);
 }
 
 .feature-card-desc {

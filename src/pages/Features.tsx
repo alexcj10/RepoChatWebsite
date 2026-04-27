@@ -14,14 +14,14 @@ const features = [
     title: 'GitHub Context Sharing',
     desc: 'Attach Pull Requests, Issues, Branches, and Code snippets to any message. Share context from the exact page you\'re on with a single click.',
     details: ['PR and Issue context cards', 'Branch and code file references', 'Auto-detected context from current page', 'Personalized messages per recipient'],
-    tier: null
+    tier: 'All Plans'
   },
   {
     icon: <Tag size={22} />,
     title: 'Smart Triage',
     desc: 'Label and comment on GitHub Issues without ever leaving the chat. Apply labels, add comments, and manage your issue workflow inline.',
     details: ['Apply GitHub labels directly', 'Comment on issues from chat', 'Visual label color matching', 'Action sheet UI for quick actions'],
-    tier: null
+    tier: 'All Plans'
   },
   {
     icon: <ClipboardList size={22} />,
@@ -49,7 +49,7 @@ const features = [
     title: 'Message Reactions',
     desc: 'React to messages with emoji. Full emoji picker with categorized browsing — express yourself without typing a full reply.',
     details: ['Full emoji picker with categories', 'Multiple reactions per message', 'Visual reaction counts with tooltips', 'One-tap to toggle reactions'],
-    tier: null
+    tier: 'All Plans'
   },
   {
     icon: <FolderOpen size={22} />,
@@ -63,7 +63,7 @@ const features = [
     title: 'Online Presence',
     desc: 'See who\'s online in real-time. Know when your teammates are available before messaging them.',
     details: ['Real-time online/offline status', 'Last seen timestamps', 'Visual presence indicators', 'Privacy-respecting design'],
-    tier: null
+    tier: 'All Plans'
   },
   {
     icon: <Archive size={22} />,
@@ -77,35 +77,35 @@ const features = [
     title: 'Theming & Personalization',
     desc: 'Make RepoChat yours. Choose from 6 curated accent colors, pick your theme, adjust background effects, and set your preferred density.',
     details: ['6 curated accent colors', 'Light, Dark, and System themes', 'Background blur & dimming controls', 'Default and Compact density modes'],
-    tier: null
+    tier: 'All Plans'
   },
   {
     icon: <Users size={22} />,
     title: 'Group Management',
     desc: 'Full admin controls for group chats. Promote members, manage roles, update group info, and control who can join.',
     details: ['Admin and member roles', 'Promote/demote members', 'Custom group avatars', 'Group description editing'],
-    tier: null
+    tier: 'All Plans'
   },
   {
     icon: <Dna size={22} />,
     title: 'Dev DNA & Power Stats',
     desc: 'View any developer\'s tech stack, commit pulse, power stats radar chart, and earned badges — all generated from their GitHub activity.',
     details: ['Radar chart of developer stats', 'Weekly commit pulse visualization', 'Automatic tech stack detection', 'Earned badges and archetype titles'],
-    tier: null
+    tier: 'All Plans'
   },
   {
     icon: <Share2 size={22} />,
     title: 'Quick Share & Templates',
     desc: 'Share code context in one click. Pin your top 3 contacts for instant access and create up to 6 message templates for rapid sharing.',
     details: ['Solid or Glass share panel style', 'Pin up to 3 users for quick access', 'Up to 6 custom message templates', 'Share via button or keyboard shortcut'],
-    tier: null
+    tier: 'All Plans'
   },
   {
     icon: <Download size={22} />,
     title: 'Chat Export',
     desc: 'Export any conversation as a clean .txt file. Perfect for archiving decisions, sharing meeting notes, or keeping records offline.',
     details: ['Export as formatted .txt file', 'Includes timestamps and senders', 'Works for DMs and group chats', 'One-click download'],
-    tier: null
+    tier: 'All Plans'
   },
 ]
 
@@ -129,7 +129,7 @@ export default function Features() {
                   <div className="feature-card-icon">{f.icon}</div>
                   <div>
                     <h3 className="feature-card-title">{f.title}</h3>
-                    {f.tier && <span className="feature-tier-badge">{f.tier}</span>}
+                    <span className={f.tier === 'All Plans' ? 'feature-tier-badge all' : 'feature-tier-badge limit'}>{f.tier}</span>
                   </div>
                 </div>
                 <p className="feature-card-desc">{f.desc}</p>
