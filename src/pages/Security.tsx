@@ -344,32 +344,31 @@ export default function Security() {
             maxWidth: 860, margin: '0 auto var(--space-l)',
             borderRadius: 20,
             padding: '32px',
-            display: 'flex',
-            gap: 20,
-            alignItems: 'flex-start',
             '--card-glow': '#f59e0b50',
             '--card-glow-bg': '#f59e0b35',
           } as React.CSSProperties}>
-            <div style={{
-              width: 44, height: 44, borderRadius: 12,
-              background: 'rgba(245, 158, 11, 0.12)',
-              border: '1px solid rgba(245, 158, 11, 0.2)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              color: '#f59e0b', flexShrink: 0,
-            }}>
-              <Bug size={22} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
+              <div style={{
+                width: 44, height: 44, borderRadius: 12,
+                background: 'rgba(245, 158, 11, 0.12)',
+                border: '1px solid rgba(245, 158, 11, 0.2)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: '#f59e0b', flexShrink: 0,
+              }}>
+                <Bug size={22} />
+              </div>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>Responsible Disclosure</h3>
             </div>
-            <div>
-              <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 8 }}>Responsible Disclosure</h3>
-              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: 12 }}>
+            <div style={{ paddingLeft: 0 }}>
+              <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: 20 }}>
                 If you discover a security vulnerability in RepoChat, please report it to us privately. We take all security reports seriously and will respond within 48 hours. We appreciate responsible disclosure and will credit reporters if desired.
               </p>
               <a href="mailto:alexcj10@yahoo.com" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
-                padding: '8px 20px', borderRadius: 999,
+                padding: '10px 24px', borderRadius: 999,
                 background: 'rgba(245, 158, 11, 0.12)',
                 border: '1px solid rgba(245, 158, 11, 0.25)',
-                color: '#f59e0b', fontWeight: 600, fontSize: '0.82rem',
+                color: '#f59e0b', fontWeight: 600, fontSize: '0.85rem',
                 transition: 'all 0.3s ease',
                 textDecoration: 'none',
               }}>
