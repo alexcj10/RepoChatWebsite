@@ -1017,6 +1017,11 @@ textarea.form-input{min-height:110px;resize:vertical}
   transform: rotate(-1deg);
 }
 
+.mini-feature-card:hover .mini-feature-visual {
+  border-radius: 50%;
+  transform: scale(1.04) rotate(1deg);
+}
+
 
 
 .visual-svg {
