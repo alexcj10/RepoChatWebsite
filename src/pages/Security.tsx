@@ -130,7 +130,7 @@ export default function Security() {
                   '--card-glow': `${color}40`,
                   '--card-glow-bg': `${color}30`,
                   background: `
-                    radial-gradient(circle at top left, ${color}25 0%, transparent 70%),
+                    radial-gradient(circle at top left, ${color}30 0%, transparent 70%),
                     linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
                     linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
                     rgba(15, 15, 20, 0.5)
