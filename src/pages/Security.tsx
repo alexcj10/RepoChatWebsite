@@ -106,7 +106,7 @@ export default function Security() {
 
         {/* ─── Hero Header ─── */}
         <ScrollReveal>
-          <div className="section-head" style={{ marginBottom: 32 }}>
+          <div className="section-head" style={{ marginBottom: 'var(--space-m)' }}>
             <div className="badge mb-6"><Shield size={14} /> Security</div>
             <h1 className="h2">Security at<br /><span className="gradient-text">Every Layer</span></h1>
             <p>RepoChat is built with security as a foundational requirement — not an afterthought. Every layer of our stack enforces strict data isolation and authentication.</p>
@@ -150,7 +150,7 @@ export default function Security() {
 
         {/* ─── Architecture Layers ─── */}
         <ScrollReveal>
-          <div style={{ textAlign: 'center', marginBottom: 32, paddingTop: 'var(--space-m)' }}>
+          <div style={{ textAlign: 'center', marginBottom: 'var(--space-m)', paddingTop: 'var(--space-m)' }}>
             <h2 className="h3">Security Architecture</h2>
             <p className="body-md" style={{ marginTop: 8 }}>Four layers of defense protecting your data</p>
           </div>
@@ -239,7 +239,7 @@ export default function Security() {
 
         {/* ─── Chrome Extension Permissions ─── */}
         <ScrollReveal>
-          <div style={{ textAlign: 'center', marginBottom: 32, paddingTop: 'var(--space-m)' }}>
+          <div style={{ textAlign: 'center', marginBottom: 'var(--space-m)', paddingTop: 'var(--space-m)' }}>
             <h2 className="h3">Chrome Extension Permissions</h2>
             <p className="body-md" style={{ marginTop: 8 }}>Only the absolute minimum permissions required</p>
           </div>
@@ -306,7 +306,7 @@ export default function Security() {
 
         {/* ─── Server-Side Security ─── */}
         <ScrollReveal>
-          <div style={{ textAlign: 'center', marginBottom: 32, paddingTop: 'var(--space-m)' }}>
+          <div style={{ textAlign: 'center', marginBottom: 'var(--space-m)', paddingTop: 'var(--space-m)' }}>
             <h2 className="h3">Server-Side Protections</h2>
             <p className="body-md" style={{ marginTop: 8 }}>Backend security measures across Supabase Edge Functions and database triggers</p>
           </div>
