@@ -387,7 +387,7 @@ html.nav-open-lock body {
     linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
     rgba(15, 15, 20, 0.5);
   background-size: 100% 100%, 24px 24px, 24px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--card-glow, rgba(255, 255, 255, 0.2));
   border-radius: 20px;
   padding: 32px 28px;
   display: flex;
@@ -396,33 +396,7 @@ html.nav-open-lock body {
   overflow: hidden;
 }
 
-.plan-card:hover {
-  border-color: var(--card-glow, rgba(255, 255, 255, 0.2)) !important;
-  background:
-    radial-gradient(circle at top left, var(--card-glow-bg, rgba(255, 255, 255, 0.05)) 0%, transparent 50%),
-    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    rgba(20, 20, 30, 0.6) !important;
-  background-size: 100% 100%, 24px 24px, 24px 24px !important;
-  transform: translateY(-4px);
-}
 
-.plan-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--card-glow, rgba(139, 92, 246, 0.4)), transparent);
-  opacity: 0;
-  transition: opacity 0.5s var(--ease);
-  z-index: 5;
-}
-
-.plan-card:hover::before {
-  opacity: 1;
-}
 
 .plan-card.pro {
   background:
@@ -431,18 +405,7 @@ html.nav-open-lock body {
     linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
     rgba(15, 15, 20, 0.5);
   background-size: 100% 100%, 24px 24px, 24px 24px;
-  border-color: var(--card-glow, rgba(139, 92, 246, 0.3)) !important;
-}
-
-.plan-card.pro:hover {
   border-color: var(--card-glow, rgba(139, 92, 246, 0.5)) !important;
-  background:
-    radial-gradient(circle at top right, var(--card-glow-bg, rgba(139, 92, 246, 0.25)) 0%, transparent 60%),
-    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    rgba(20, 20, 30, 0.6) !important;
-  background-size: 100% 100%, 24px 24px, 24px 24px !important;
-  transform: translateY(-4px);
 }
 
 .plan-badge {
@@ -1198,7 +1161,7 @@ textarea.form-input{min-height:110px;resize:vertical}
     linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
     rgba(15, 15, 20, 0.5);
   background-size: 100% 100%, 20px 20px, 20px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--card-glow, rgba(255, 255, 255, 0.14));
   border-radius: 20px;
   padding: 28px 24px;
   display: flex;
@@ -1208,33 +1171,7 @@ textarea.form-input{min-height:110px;resize:vertical}
   height: 100%;
 }
 
-.feature-card-full::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--card-glow, rgba(139, 92, 246, 0.35)), transparent);
-  opacity: 0;
-  transition: opacity 0.5s var(--ease);
-  z-index: 5;
-}
 
-.feature-card-full:hover {
-  border-color: var(--card-glow, rgba(255, 255, 255, 0.14)) !important;
-  background:
-    radial-gradient(circle at top left, var(--card-glow-bg, rgba(255, 255, 255, 0.05)) 0%, transparent 50%),
-    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    rgba(20, 20, 30, 0.6) !important;
-  background-size: 100% 100%, 20px 20px, 20px 20px !important;
-  transform: translateY(-4px);
-}
-
-.feature-card-full:hover::before {
-  opacity: 1;
-}
 
 .feature-card-header {
   display: flex;
@@ -1256,12 +1193,7 @@ textarea.form-input{min-height:110px;resize:vertical}
   transition: all 0.4s var(--ease);
 }
 
-.feature-card-full:hover .feature-card-icon {
-  background: rgba(139, 92, 246, 0.18);
-  border-color: rgba(139, 92, 246, 0.3);
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
-  transform: scale(1.05);
-}
+
 
 .feature-card-title {
   font-size: 1.05rem;
@@ -1367,38 +1299,12 @@ textarea.form-input{min-height:110px;resize:vertical}
     linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
     rgba(15, 15, 20, 0.5) !important;
   background-size: 100% 100%, 24px 24px, 24px 24px !important;
-  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid var(--card-glow, rgba(255, 255, 255, 0.2)) !important;
   transition: all 0.4s var(--ease);
   overflow: hidden;
 }
 
-.security-grid-card:hover {
-  border-color: var(--card-glow, rgba(255, 255, 255, 0.2)) !important;
-  background:
-    radial-gradient(circle at top left, var(--card-glow-bg, rgba(255, 255, 255, 0.02)) 0%, transparent 50%),
-    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    rgba(20, 20, 30, 0.6) !important;
-  background-size: 100% 100%, 24px 24px, 24px 24px !important;
-  transform: translateY(-4px);
-}
 
-.security-grid-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--card-glow, rgba(139, 92, 246, 0.3)), transparent);
-  opacity: 0;
-  transition: opacity 0.5s var(--ease);
-  z-index: 5;
-}
-
-.security-grid-card:hover::before {
-  opacity: 1;
-}
 
 .security-grid-card.expanded {
   border-color: var(--card-glow, rgba(139, 92, 246, 0.25)) !important;
