@@ -562,8 +562,7 @@ html.nav-open-lock body {
 }
 
 .plan-btn.pro:hover {
-  filter: brightness(1.1);
-  transform: translateY(-1px);
+  background: #6366f1;
 }
 
 .plan-footer-note {
