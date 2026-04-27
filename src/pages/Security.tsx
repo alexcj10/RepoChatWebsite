@@ -106,12 +106,10 @@ export default function Security() {
 
         {/* ─── Hero Header ─── */}
         <ScrollReveal>
-          <div className="section-header" style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto var(--space-l)' }}>
-            <div className="badge mb-4"><Shield size={14} /> Security</div>
-            <h1 className="h1" style={{ marginBottom: 16 }}>Security at<br /><span className="gradient-text">Every Layer</span></h1>
-            <p className="body-lg" style={{ maxWidth: 560, margin: '0 auto' }}>
-              RepoChat is built with security as a foundational requirement — not an afterthought. Every layer of our stack enforces strict data isolation and authentication.
-            </p>
+          <div className="section-head" style={{ marginBottom: 'var(--space-l)' }}>
+            <div className="badge mb-6"><Shield size={14} /> Security</div>
+            <h1 className="h2">Security at<br /><span className="gradient-text">Every Layer</span></h1>
+            <p>RepoChat is built with security as a foundational requirement — not an afterthought. Every layer of our stack enforces strict data isolation and authentication.</p>
           </div>
         </ScrollReveal>
 
