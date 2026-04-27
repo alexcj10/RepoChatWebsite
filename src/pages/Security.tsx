@@ -124,7 +124,7 @@ export default function Security() {
           }}>
             {rlsStats.map((s, i) => {
               const hues = ['#10b981', '#8b5cf6', '#3b82f6', '#f59e0b']
-              const opacities = ['20', '22', '25', '35']
+              const opacities = ['35', '35', '35', '35']
               const color = hues[i]
               return (
               <div key={i} className="security-grid-card" style={{
@@ -244,7 +244,7 @@ export default function Security() {
             borderRadius: 20,
             padding: '32px',
             '--card-glow': 'rgba(139, 92, 246, 0.4)',
-            '--card-glow-bg': 'rgba(139, 92, 246, 0.22)',
+            '--card-glow-bg': 'rgba(139, 92, 246, 0.35)',
           } as React.CSSProperties}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
               {extensionSecurity.permissions.map((perm, i) => (
@@ -348,8 +348,8 @@ export default function Security() {
             maxWidth: 860, margin: '0 auto var(--space-l)',
             borderRadius: 20,
             padding: '32px',
-            '--card-glow': '#f59e0b50',
-            '--card-glow-bg': '#f59e0b35',
+            '--card-glow': 'rgba(245, 158, 11, 0.4)',
+            '--card-glow-bg': 'rgba(245, 158, 11, 0.35)',
           } as React.CSSProperties}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
               <div style={{

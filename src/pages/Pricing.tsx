@@ -110,7 +110,7 @@ export default function Pricing() {
           <ScrollReveal delay={2}>
             <div className="plan-card pro" style={{
               '--card-glow': 'rgba(139, 92, 246, 0.4)',
-              '--card-glow-bg': 'rgba(139, 92, 246, 0.22)',
+              '--card-glow-bg': 'rgba(139, 92, 246, 0.35)',
             } as React.CSSProperties}>
               <div className="plan-badge">Recommended</div>
               <div className="plan-card-head">
