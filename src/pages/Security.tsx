@@ -121,7 +121,7 @@ export default function Security() {
           }}>
             {rlsStats.map((s, i) => {
               const hues = ['#10b981', '#8b5cf6', '#3b82f6', '#f59e0b']
-              const opacities = ['30', '40', '40', '30']
+              const opacities = ['30', '30', '30', '30']
               const color = hues[i]
               return (
                 <div key={i} className="security-grid-card" style={{
@@ -177,7 +177,7 @@ export default function Security() {
                     padding: '28px 32px',
                     cursor: 'pointer',
                     '--card-glow': `${layer.color}40`,
-                    '--card-glow-bg': `${layer.color}${['#8b5cf6', '#3b82f6'].includes(layer.color) ? '40' : '30'}`,
+                    '--card-glow-bg': `${layer.color}30`,
                   } as React.CSSProperties}
                   onClick={() => setExpandedLayer(isExpanded ? null : i)}
                 >
@@ -253,7 +253,7 @@ export default function Security() {
             borderRadius: 20,
             padding: '32px',
             '--card-glow': 'rgba(139, 92, 246, 0.4)',
-            '--card-glow-bg': 'rgba(139, 92, 246, 0.4)',
+            '--card-glow-bg': 'rgba(139, 92, 246, 0.3)',
           } as React.CSSProperties}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
               {extensionSecurity.permissions.map((perm, i) => (
@@ -318,7 +318,7 @@ export default function Security() {
         }}>
           {serverSecurity.map((item, i) => {
             const hues = ['#8b5cf6', '#a855f7', '#3b82f6', '#f59e0b']
-            const opacities = ['40', '40', '40', '30']
+            const opacities = ['30', '30', '30', '30']
             const color = hues[i]
             return (
               <ScrollReveal key={i} delay={(i % 3) + 1}>
@@ -358,7 +358,7 @@ export default function Security() {
             borderRadius: 20,
             padding: '32px',
             '--card-glow': 'rgba(245, 158, 11, 0.4)',
-            '--card-glow-bg': 'rgba(245, 158, 11, 0.25)',
+            '--card-glow-bg': 'rgba(245, 158, 11, 0.30)',
           } as React.CSSProperties}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
               <div style={{
