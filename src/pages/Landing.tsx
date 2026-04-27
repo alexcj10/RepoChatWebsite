@@ -455,7 +455,7 @@ export default function Landing() {
                   </td>
                   <td className="tier-col pro-col">
                     <span className="price">$4.99</span>
-                    <button className="btn btn-accent w-full mt-2" onClick={() => window.open('https://buy.stripe.com/8wM8xM3Tj7Yx608eUU', '_blank')}>Upgrade</button>
+                    <button className="btn btn-primary w-full mt-2" onClick={() => window.open('https://buy.stripe.com/8wM8xM3Tj7Yx608eUU', '_blank')}>Upgrade</button>
                   </td>
                 </tr>
                 <tr>
