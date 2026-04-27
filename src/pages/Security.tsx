@@ -172,8 +172,8 @@ export default function Security() {
                   } as React.CSSProperties}
                   onClick={() => setExpandedLayer(isExpanded ? null : i)}
                 >
-                  {/* Header */}
-                  <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
+                  {/* Header Row */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
                     <div style={{
                       width: 44, height: 44, borderRadius: 12,
                       background: `${layer.color}15`,
@@ -185,23 +185,25 @@ export default function Security() {
                     }}>
                       {layer.icon}
                     </div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                        <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.01em' }}>{layer.title}</h3>
-                        <div style={{
-                          width: 28, height: 28, borderRadius: 8,
-                          background: 'rgba(255,255,255,0.04)',
-                          display: 'flex', alignItems: 'center', justifyContent: 'center',
-                          color: 'var(--text-muted)', fontSize: '0.85rem', fontWeight: 600,
-                          transition: 'transform 0.3s ease',
-                          transform: isExpanded ? 'rotate(180deg)' : 'rotate(0)',
-                          flexShrink: 0,
-                        }}>
-                          ▾
-                        </div>
+                    <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.01em', margin: 0 }}>{layer.title}</h3>
+                      <div style={{
+                        width: 28, height: 28, borderRadius: 8,
+                        background: 'rgba(255,255,255,0.04)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        color: 'var(--text-muted)', fontSize: '0.85rem', fontWeight: 600,
+                        transition: 'transform 0.3s ease',
+                        transform: isExpanded ? 'rotate(180deg)' : 'rotate(0)',
+                        flexShrink: 0,
+                      }}>
+                        ▾
                       </div>
-                      <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.7, marginTop: 6 }}>{layer.desc}</p>
                     </div>
+                  </div>
+
+                  {/* Body Content */}
+                  <div style={{ paddingLeft: 0 }}>
+                    <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>{layer.desc}</p>
                   </div>
 
                   {/* Expandable Details */}
