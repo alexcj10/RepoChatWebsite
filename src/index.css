@@ -1040,9 +1040,14 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 
 .pricing-table th {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(8px);
   font-weight: 700;
-  color: #fff;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .pricing-table tr:last-child td {
@@ -1064,6 +1069,10 @@ textarea.form-input{min-height:110px;resize:vertical}
 .pricing-table .pro-col {
   background: rgba(139, 92, 246, 0.03);
   position: relative;
+}
+
+.pricing-table th.pro-col {
+  color: var(--accent);
 }
 
 .pricing-table .pro-col::after {
