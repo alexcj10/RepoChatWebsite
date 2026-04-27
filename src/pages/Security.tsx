@@ -319,16 +319,18 @@ export default function Security() {
                 '--card-glow': `${color}40`,
                 '--card-glow-bg': `${color}${opacities[i]}`,
               } as React.CSSProperties}>
-                <div style={{
-                  width: 40, height: 40, borderRadius: 12,
-                  background: `${color}15`,
-                  border: `1px solid ${color}25`,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: color,
-                }}>
-                  {item.icon}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                  <div style={{
+                    width: 40, height: 40, borderRadius: 12,
+                    background: `${color}15`,
+                    border: `1px solid ${color}25`,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    color: color,
+                  }}>
+                    {item.icon}
+                  </div>
+                  <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.01em', margin: 0 }}>{item.title}</h3>
                 </div>
-                <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.01em' }}>{item.title}</h3>
                 <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>{item.desc}</p>
               </div>
             </ScrollReveal>
