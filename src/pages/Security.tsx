@@ -121,6 +121,7 @@ export default function Security() {
           }}>
             {rlsStats.map((s, i) => {
               const hues = ['#10b981', '#8b5cf6', '#3b82f6', '#f59e0b']
+              const opacities = ['30', '40', '40', '30']
               const color = hues[i]
               return (
                 <div key={i} className="security-grid-card" style={{
@@ -128,9 +129,9 @@ export default function Security() {
                   padding: '24px 20px',
                   textAlign: 'center',
                   '--card-glow': `${color}40`,
-                  '--card-glow-bg': `${color}30`,
+                  '--card-glow-bg': `${color}${opacities[i]}`,
                   background: `
-                    radial-gradient(circle at top left, ${color}30 0%, transparent 70%),
+                    radial-gradient(circle at top left, ${color}${opacities[i]} 0%, transparent 70%),
                     linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
                     linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
                     rgba(15, 15, 20, 0.5)
@@ -176,7 +177,7 @@ export default function Security() {
                     padding: '28px 32px',
                     cursor: 'pointer',
                     '--card-glow': `${layer.color}40`,
-                    '--card-glow-bg': `${layer.color}30`,
+                    '--card-glow-bg': `${layer.color}${['#8b5cf6', '#3b82f6'].includes(layer.color) ? '40' : '30'}`,
                   } as React.CSSProperties}
                   onClick={() => setExpandedLayer(isExpanded ? null : i)}
                 >
@@ -252,7 +253,7 @@ export default function Security() {
             borderRadius: 20,
             padding: '32px',
             '--card-glow': 'rgba(139, 92, 246, 0.4)',
-            '--card-glow-bg': 'rgba(139, 92, 246, 0.3)',
+            '--card-glow-bg': 'rgba(139, 92, 246, 0.4)',
           } as React.CSSProperties}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
               {extensionSecurity.permissions.map((perm, i) => (
@@ -317,7 +318,7 @@ export default function Security() {
         }}>
           {serverSecurity.map((item, i) => {
             const hues = ['#8b5cf6', '#a855f7', '#3b82f6', '#f59e0b']
-            const opacities = ['30', '30', '30', '30']
+            const opacities = ['40', '40', '40', '30']
             const color = hues[i]
             return (
               <ScrollReveal key={i} delay={(i % 3) + 1}>
