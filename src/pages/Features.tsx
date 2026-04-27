@@ -114,7 +114,7 @@ export default function Features() {
     <div className="legal-page">
       <div className="container">
         <ScrollReveal>
-          <div className="section-head" style={{ marginBottom: 'var(--space-l)' }}>
+          <div className="section-head" style={{ marginBottom: 'var(--space-m)' }}>
             <div className="badge mb-6"><Zap size={12} /> Features</div>
             <h1 className="h2">Built for the Way<br /><span className="gradient-text">Developers Actually Work</span></h1>
             <p>Every feature designed to keep you in flow on GitHub.</p>
