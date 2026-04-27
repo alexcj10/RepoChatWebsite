@@ -309,7 +309,7 @@ export default function Security() {
         }}>
           {serverSecurity.map((item, i) => {
             const hues = ['#8b5cf6', '#a855f7', '#3b82f6', '#f59e0b']
-            const opacities = ['22', '22', '25', '35']
+            const opacities = ['35', '35', '35', '35']
             const color = hues[i]
             return (
             <ScrollReveal key={i} delay={(i % 3) + 1}>
