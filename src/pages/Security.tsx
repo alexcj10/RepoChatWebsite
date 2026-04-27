@@ -131,6 +131,7 @@ export default function Security() {
                 padding: '24px 20px',
                 textAlign: 'center',
                 '--card-glow': `${color}40`,
+                '--card-glow-bg': `${color}10`,
               } as React.CSSProperties}>
                 <div style={{ 
                   fontSize: '2rem', fontWeight: 800, 
@@ -314,6 +315,7 @@ export default function Security() {
                 flexDirection: 'column',
                 gap: 12,
                 '--card-glow': `${color}40`,
+                '--card-glow-bg': `${color}10`,
               } as React.CSSProperties}>
                 <div style={{
                   width: 40, height: 40, borderRadius: 12,
@@ -341,7 +343,9 @@ export default function Security() {
             display: 'flex',
             gap: 20,
             alignItems: 'flex-start',
-          }}>
+            '--card-glow': '#f59e0b50',
+            '--card-glow-bg': '#f59e0b15',
+          } as React.CSSProperties}>
             <div style={{
               width: 44, height: 44, borderRadius: 12,
               background: 'rgba(245, 158, 11, 0.12)',

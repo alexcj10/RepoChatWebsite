@@ -1351,7 +1351,12 @@ textarea.form-input{min-height:110px;resize:vertical}
 
 .security-grid-card:hover {
   border-color: var(--card-glow, rgba(255, 255, 255, 0.2)) !important;
-  background-color: rgba(20, 20, 30, 0.6) !important;
+  background:
+    radial-gradient(circle at top left, var(--card-glow-bg, rgba(255, 255, 255, 0.02)) 0%, transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    rgba(20, 20, 30, 0.6) !important;
+  background-size: 100% 100%, 24px 24px, 24px 24px !important;
   transform: translateY(-4px);
 }
 
