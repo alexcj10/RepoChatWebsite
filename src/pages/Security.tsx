@@ -124,6 +124,7 @@ export default function Security() {
           }}>
             {rlsStats.map((s, i) => {
               const hues = ['#10b981', '#8b5cf6', '#3b82f6', '#f59e0b']
+              const opacities = ['20', '22', '25', '35']
               const color = hues[i]
               return (
               <div key={i} className="security-grid-card" style={{
@@ -131,7 +132,7 @@ export default function Security() {
                 padding: '24px 20px',
                 textAlign: 'center',
                 '--card-glow': `${color}40`,
-                '--card-glow-bg': `${color}10`,
+                '--card-glow-bg': `${color}${opacities[i]}`,
               } as React.CSSProperties}>
                 <div style={{ 
                   fontSize: '2rem', fontWeight: 800, 
@@ -167,7 +168,7 @@ export default function Security() {
                     padding: '28px 32px',
                     cursor: 'pointer',
                     '--card-glow': `${layer.color}50`,
-                    '--card-glow-bg': `${layer.color}15`,
+                    '--card-glow-bg': `${layer.color}${layer.color === '#f59e0b' ? '35' : '22'}`,
                   } as React.CSSProperties}
                   onClick={() => setExpandedLayer(isExpanded ? null : i)}
                 >
@@ -304,6 +305,7 @@ export default function Security() {
         }}>
           {serverSecurity.map((item, i) => {
             const hues = ['#8b5cf6', '#a855f7', '#3b82f6', '#f59e0b']
+            const opacities = ['22', '22', '25', '35']
             const color = hues[i]
             return (
             <ScrollReveal key={i} delay={(i % 3) + 1}>
@@ -315,7 +317,7 @@ export default function Security() {
                 flexDirection: 'column',
                 gap: 12,
                 '--card-glow': `${color}40`,
-                '--card-glow-bg': `${color}10`,
+                '--card-glow-bg': `${color}${opacities[i]}`,
               } as React.CSSProperties}>
                 <div style={{
                   width: 40, height: 40, borderRadius: 12,
@@ -344,7 +346,7 @@ export default function Security() {
             gap: 20,
             alignItems: 'flex-start',
             '--card-glow': '#f59e0b50',
-            '--card-glow-bg': '#f59e0b15',
+            '--card-glow-bg': '#f59e0b35',
           } as React.CSSProperties}>
             <div style={{
               width: 44, height: 44, borderRadius: 12,
