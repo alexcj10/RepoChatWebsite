@@ -552,8 +552,9 @@ html.nav-open-lock body {
 }
 
 .plan-btn.free:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.18);
+  background: #fff;
+  color: #000;
+  border-color: #fff;
 }
 
 .plan-btn.pro {
