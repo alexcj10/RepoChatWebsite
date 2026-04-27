@@ -69,7 +69,7 @@ export default function Pricing() {
     <div className="legal-page">
       <div className="container">
         <ScrollReveal>
-          <div className="section-head" style={{ marginBottom: 'var(--space-l)' }}>
+          <div className="section-head" style={{ marginBottom: 'var(--space-m)' }}>
             <div className="badge mb-6"><Zap size={12} /> Pricing</div>
             <h1 className="h2">Simple, Transparent<br /><span className="gradient-text">Pricing</span></h1>
             <p>Start free. Upgrade when you need more. Cancel anytime.</p>
@@ -139,9 +139,9 @@ export default function Pricing() {
         </div>
 
         {/* ===== COMPARISON TABLE ===== */}
-        <div className="section" style={{ marginTop: 'var(--space-l)' }}>
+        <div className="section" style={{ marginTop: 'var(--space-m)' }}>
           <ScrollReveal>
-            <div className="section-head" style={{ marginBottom: 'var(--space-l)' }}>
+            <div className="section-head" style={{ marginBottom: 'var(--space-m)' }}>
               <h2 className="h3">Full Comparison</h2>
               <p>See exactly what you get on each plan.</p>
             </div>
@@ -176,7 +176,7 @@ export default function Pricing() {
         {/* ===== FAQ ===== */}
         <div className="section">
           <ScrollReveal>
-            <div className="section-head" style={{ marginBottom: 'var(--space-l)' }}>
+            <div className="section-head" style={{ marginBottom: 'var(--space-m)' }}>
               <h2 className="h3">Frequently Asked Questions</h2>
             </div>
           </ScrollReveal>
