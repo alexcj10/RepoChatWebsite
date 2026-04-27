@@ -425,7 +425,10 @@ html.nav-open-lock body {
 }
 
 .plan-card.pro:hover {
-  border-color: rgba(139, 92, 246, 0.4);
+  border-color: rgba(139, 92, 246, 0.5);
+  background-color: rgba(25, 25, 35, 0.7);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.2);
 }
 
 .plan-badge {
