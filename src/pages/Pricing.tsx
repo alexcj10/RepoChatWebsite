@@ -139,9 +139,9 @@ export default function Pricing() {
         </div>
 
         {/* ===== COMPARISON TABLE ===== */}
-        <div className="section" style={{ marginTop: 'var(--space-m)' }}>
+        <div>
           <ScrollReveal>
-            <div className="section-head" style={{ marginBottom: 'var(--space-m)' }}>
+            <div className="section-head" style={{ marginTop: 'var(--space-l)', marginBottom: 'var(--space-m)', paddingTop: 'var(--space-m)' }}>
               <h2 className="h3">Full Comparison</h2>
               <p>See exactly what you get on each plan.</p>
             </div>
@@ -174,9 +174,9 @@ export default function Pricing() {
         </div>
 
         {/* ===== FAQ ===== */}
-        <div className="section">
+        <div style={{ paddingBottom: 'var(--space-l)' }}>
           <ScrollReveal>
-            <div className="section-head" style={{ marginBottom: 'var(--space-m)' }}>
+            <div className="section-head" style={{ marginTop: 'var(--space-l)', marginBottom: 'var(--space-m)', paddingTop: 'var(--space-m)' }}>
               <h2 className="h3">Frequently Asked Questions</h2>
             </div>
           </ScrollReveal>
