@@ -815,6 +815,19 @@ html.nav-open-lock body {
 .legal-content a{color:var(--text-primary);text-decoration:underline;text-decoration-color:rgba(255,255,255,.12);text-underline-offset:3px}
 
 /* ============================================
+   SECURITY PAGE RESPONSIVE
+   ============================================ */
+@media(max-width: 768px) {
+  .legal-page .section-header .h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); }
+}
+@media(max-width: 640px) {
+  .legal-page [style*="grid-template-columns: repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; }
+  .legal-page [style*="grid-template-columns: repeat(2, 1fr)"] { grid-template-columns: 1fr !important; }
+  .legal-page [style*="padding: 28px 32px"] { padding: 20px !important; }
+  .legal-page [style*="paddingLeft: 64"] { padding-left: 0 !important; }
+}
+
+/* ============================================
    CONTACT FORM
    ============================================ */
 .form-group{margin-bottom:18px}
