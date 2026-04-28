@@ -16,6 +16,9 @@ const freeFeatures = [
   { text: 'Unlimited Everything', included: false },
   { text: 'Continuous Cloud Sync', included: false },
   { text: 'Priority Support', included: false },
+  { text: 'STA (Smart Task Assignments)', included: false },
+  { text: 'RLC (Repo-Linked Channels)', included: false },
+  { text: 'CTG (Conversation Threads)', included: false },
 ]
 
 const proFeatures = [
@@ -30,6 +33,9 @@ const proFeatures = [
   { text: 'Continuous Cloud Data Sync', highlight: false },
   { text: 'Priority Access to Features', highlight: false },
   { text: 'Premium Developer Support', highlight: false },
+  { text: 'STA (Smart Task Assignments)', highlight: true },
+  { text: 'RLC (Repo-Linked Channels)', highlight: true },
+  { text: 'CTG (Conversation Threads)', highlight: true },
 ]
 
 const comparisonRows = [
@@ -53,6 +59,9 @@ const comparisonRows = [
   { feature: 'Cloud Data Sync', free: false, pro: true },
   { feature: 'Priority Feature Access', free: false, pro: true },
   { feature: 'Premium Developer Support', free: false, pro: true },
+  { feature: 'STA (Smart Task Assignments)', free: false, pro: true },
+  { feature: 'RLC (Repo-Linked Channels)', free: false, pro: true },
+  { feature: 'CTG (Conversation Threads)', free: false, pro: true },
 ]
 
 function CellValue({ value }: { value: string | boolean }) {

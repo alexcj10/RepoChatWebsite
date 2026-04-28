@@ -26,6 +26,9 @@ const comparisonRows = [
   { feature: 'Cloud Data Sync', free: false, pro: true },
   { feature: 'Priority Feature Access', free: false, pro: true },
   { feature: 'Premium Developer Support', free: false, pro: true },
+  { feature: 'STA (Smart Task Assignments)', free: false, pro: true },
+  { feature: 'RLC (Repo-Linked Channels)', free: false, pro: true },
+  { feature: 'CTG (Conversation Threads)', free: false, pro: true },
 ]
 
 function CellValue({ value }: { value: string | boolean }) {
