@@ -211,6 +211,48 @@ export default function Landing() {
                 </div>
               </div>
             </ScrollReveal>
+
+            {/* 9: Smart Task Assignments */}
+            <ScrollReveal>
+              <div className="stack-card">
+                <div className="feature-text">
+                  <div className="badge">Task Management</div>
+                  <h3 className="h3 mt-4">Smart Task Assignments</h3>
+                  <p className="body-md">Assign reviewers to PRs or owners to Issues directly in chat. Track task status from pending to resolved without context switching.</p>
+                </div>
+                <div className="feature-media">
+                  <img src="/RC_STA.png" alt="Smart Task Assignments" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* 10: Repo-Linked Channels */}
+            <ScrollReveal>
+              <div className="stack-card reverse">
+                <div className="feature-text">
+                  <div className="badge">Repo Integration</div>
+                  <h3 className="h3 mt-4">Repo-Linked Channels</h3>
+                  <p className="body-md">Link group chats to specific repositories. Automatically context-sync your channel with the repository's activity and updates.</p>
+                </div>
+                <div className="feature-media">
+                  <img src="/RC_RLC.png" alt="Repo-Linked Channels" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* 11: Conversation Threads */}
+            <ScrollReveal>
+              <div className="stack-card">
+                <div className="feature-text">
+                  <div className="badge">Threaded Chats</div>
+                  <h3 className="h3 mt-4">Conversation Threads</h3>
+                  <p className="body-md">Keep discussions organized. Start threaded conversations directly on PR and Issue context cards to keep main chats clutter-free.</p>
+                </div>
+                <div className="feature-media">
+                  <img src="/RC_CTG.png" alt="Conversation Threads" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
