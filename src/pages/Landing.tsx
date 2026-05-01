@@ -65,7 +65,7 @@ export default function Landing() {
 
           <ScrollReveal delay={2}>
             <p className="body-lg">
-              Real-time messaging, code context sharing, and smart issue triage — built directly into GitHub.
+              Turn GitHub into a real-time workspace. Discuss PRs, assign tasks, and triage issues instantly without ever breaking your flow.
             </p>
           </ScrollReveal>
 
@@ -93,8 +93,8 @@ export default function Landing() {
           <ScrollReveal>
             <div className="section-head">
               <div className="badge mb-6"><Zap size={12} /> Core Features</div>
-              <h2 className="h2">Everything you need,<br />built into RepoChat.</h2>
-              <p>No more context switching. Chat, triage, and take notes without leaving your repo.</p>
+              <h2 className="h2">Your entire workflow,<br />in one sidebar.</h2>
+              <p>Eliminate context switching. Chat with your team, manage GitHub issues, and share code context—all without leaving the repository.</p>
             </div>
           </ScrollReveal>
 
