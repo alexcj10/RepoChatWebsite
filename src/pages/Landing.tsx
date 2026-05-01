@@ -132,9 +132,9 @@ export default function Landing() {
             <ScrollReveal>
               <div className="stack-card">
                 <div className="feature-text">
-                  <div className="badge">Pull Requests</div>
+                  <div className="badge">Context Sharing</div>
                   <h3 className="h3 mt-4">Attach PR Context</h3>
-                  <p className="body-md">Instantly share PR details. Just click the Plus icon to attach the current PR or search for any PR/Issue in the repo.</p>
+                  <p className="body-md">Instantly share PR details. Just click the share icon to attach the current PR or search for any PR/Issue in the repo.</p>
                 </div>
                 <div className="feature-media">
                   <img src="/RC_share_popup.png" alt="Pull Request Context" loading="lazy" decoding="async" />
