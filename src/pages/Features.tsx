@@ -1,4 +1,4 @@
-import { MessageSquare, GitPullRequest, Tag, ClipboardList, Pin, Star, Palette, Users, Smile, Eye, FolderOpen, Archive, Zap, Share2, Download, Dna } from 'lucide-react'
+import { MessageSquare, GitPullRequest, Tag, ClipboardList, Pin, Star, Palette, Users, Smile, Eye, FolderOpen, Archive, Zap, Share2, Download, Dna, ListTodo, Link, MessagesSquare } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 
 const features = [
@@ -15,6 +15,27 @@ const features = [
     desc: 'Attach Pull Requests, Issues, Branches, and Code snippets to any message. Share context from the exact page you\'re on with a single click.',
     details: ['PR and Issue context cards', 'Branch and code file references', 'Auto-detected context from current page', 'Personalized messages per recipient'],
     tier: 'All Plans'
+  },
+  {
+    icon: <Link size={22} />,
+    title: 'Repo-Linked Channels',
+    desc: 'Bind group chats to specific repositories. The channel automatically syncs with repository activity and scopes context searches strictly to that repo.',
+    details: ['1-click repository binding', 'Scoped PR & Issue search', 'Syncs with repository events', 'Keeps discussions highly focused'],
+    tier: 'Pro Only'
+  },
+  {
+    icon: <ListTodo size={22} />,
+    title: 'Smart Task Assignments',
+    desc: 'Assign PR reviewers and Issue owners directly from the chat. Track task progression from pending to review to done in real-time.',
+    details: ['Assign tasks without leaving chat', 'Track pending, review, and done states', 'Visual task status indicators', 'Automated sync with GitHub assignees'],
+    tier: 'Pro Only'
+  },
+  {
+    icon: <MessagesSquare size={22} />,
+    title: 'Conversation Threads',
+    desc: 'Keep main channels clutter-free by starting threaded discussions directly on PR and Issue context cards.',
+    details: ['Spawn threads from context cards', 'Dedicated thread viewing panel', 'Thread reply counters & timestamps', 'Keeps main chats organized'],
+    tier: 'Pro Only'
   },
   {
     icon: <Tag size={22} />,
