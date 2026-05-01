@@ -269,51 +269,32 @@ export default function Landing() {
           <div className="mini-features-grid">
             {[
               { 
-                title: 'DM & Group Chat', 
-                desc: 'Real-time messaging with friends and groups.', 
-                hue: '0deg',
-                visual: (
-                  <svg viewBox="0 0 100 60" className="visual-svg">
-                    <path d="M25 15 Q40 12 55 15 Q65 18 65 30 Q65 42 50 45 L40 55 L42 45 Q20 42 20 30 Q20 18 25 15" fill="none" stroke="white" strokeWidth="1.5" opacity="0.8" />
-                    <path d="M28 20 L35 20 M28 25 L40 25 M28 30 L38 30" stroke="white" strokeWidth="0.5" opacity="0.3" />
-                    <path d="M40 20 Q55 18 70 20 Q80 23 80 35 Q80 47 65 50 L55 58 L57 50 Q35 47 35 35" fill="none" stroke="#8B5CF6" strokeWidth="1.2" opacity="0.6" />
-                    <circle cx="35" cy="30" r="1" fill="white" opacity="0.4" />
-                    <circle cx="45" cy="30" r="1" fill="white" opacity="0.4" />
-                    <circle cx="55" cy="30" r="1" fill="white" opacity="0.4" />
-                    <path d="M15 10 L25 15 M85 50 L75 45" stroke="white" strokeWidth="0.5" opacity="0.2" />
-                  </svg>
-                )
-              },
-              { 
-                title: 'GitHub Context', 
-                desc: 'Attach PRs, Issues, and branches to any message.', 
-                hue: '190deg',
-                visual: (
-                  <svg viewBox="0 0 100 60" className="visual-svg">
-                    <path d="M20 10 Q22 30 20 50" fill="none" stroke="#06B6D4" strokeWidth="2.5" opacity="0.9" />
-                    <path d="M20 30 Q45 30 50 15" fill="none" stroke="white" strokeWidth="1.5" opacity="0.6" />
-                    <path d="M50 15 L55 10 M50 15 L45 10" stroke="white" strokeWidth="1" opacity="0.4" />
-                    <path d="M20 40 Q55 40 60 25" fill="none" stroke="white" strokeWidth="1.5" opacity="0.4" />
-                    <circle cx="20" cy="10" r="3" fill="#06B6D4" opacity="0.8" />
-                    <circle cx="50" cy="15" r="3" fill="white" opacity="0.8" />
-                    <circle cx="60" cy="25" r="3" fill="white" opacity="0.8" />
-                    <path d="M65 20 L75 15" stroke="white" strokeWidth="0.5" opacity="0.3" strokeDasharray="2 2" />
-                    <text x="70" y="12" fill="white" fontSize="4" opacity="0.4">HEAD</text>
-                  </svg>
-                )
-              },
-              { 
-                title: 'Reactions & Stars', 
-                desc: 'React to messages, star them for quick access.', 
+                title: 'Message Reactions', 
+                desc: 'React with emojis to any message in real-time.', 
                 hue: '320deg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M50 10 Q52 25 65 25 Q52 25 50 40 Q48 25 35 25 Q48 25 50 10" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.9" />
                     <path d="M48 15 L52 15 M48 20 L52 20 M48 30 L52 30" stroke="white" strokeWidth="0.5" opacity="0.3" />
-                    <path d="M75 35 Q76 42 82 42 Q76 42 75 50 Q74 42 68 42 Q74 42 75 35" fill="none" stroke="#06B6D4" strokeWidth="1.5" opacity="0.7" />
-                    <path d="M25 35 Q26 40 30 40 Q26 40 25 45 Q24 40 20 40 Q24 40 25 35" fill="none" stroke="white" strokeWidth="1" opacity="0.5" />
-                    <circle cx="10" cy="10" r="1" fill="white" opacity="0.2" />
-                    <circle cx="90" cy="50" r="1" fill="white" opacity="0.2" />
+                    <circle cx="20" cy="15" r="5" fill="none" stroke="#06B6D4" strokeWidth="1.5" opacity="0.7" />
+                    <path d="M17 13 L18 13 M22 13 L23 13" stroke="white" strokeWidth="1" strokeLinecap="round" />
+                    <path d="M17 18 Q20 21 23 18" fill="none" stroke="white" strokeWidth="1" strokeLinecap="round" />
+                    <circle cx="80" cy="45" r="5" fill="none" stroke="#06B6D4" strokeWidth="1.5" opacity="0.7" />
+                    <path d="M77 43 L78 43 M82 43 L83 43" stroke="white" strokeWidth="1" strokeLinecap="round" />
+                    <path d="M77 48 Q80 51 83 48" fill="none" stroke="white" strokeWidth="1" strokeLinecap="round" />
+                  </svg>
+                )
+              },
+              { 
+                title: 'Starred Messages', 
+                desc: 'Star important messages for quick access later.', 
+                hue: '45deg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    <path d="M50 15 L55 30 L70 30 L58 40 L62 55 L50 45 L38 55 L42 40 L30 30 L45 30 Z" fill="none" stroke="#06B6D4" strokeWidth="2" strokeLinejoin="round" opacity="0.9" />
+                    <path d="M50 15 L55 30 L70 30 L58 40" fill="none" stroke="white" strokeWidth="1" strokeLinejoin="round" opacity="0.4" />
+                    <circle cx="20" cy="20" r="1" fill="white" opacity="0.2" />
+                    <circle cx="80" cy="40" r="1" fill="white" opacity="0.2" />
                   </svg>
                 )
               },
@@ -363,7 +344,7 @@ export default function Landing() {
               { 
                 title: 'Keyboard Shortcuts', 
                 desc: 'Navigate fast with professional keyboard workflows.', 
-                hue: '45deg',
+                hue: '0deg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M25 20 Q35 18 45 20 L45 40 Q35 42 25 40 Z" fill="none" stroke="#06B6D4" strokeWidth="2" opacity="0.9" />
@@ -376,16 +357,16 @@ export default function Landing() {
                 )
               },
               { 
-                title: 'Pin Users', 
-                desc: 'Pin up to 3 users for instant access in the share popup.', 
-                hue: '210deg',
+                title: 'Pinned & Archived Chats', 
+                desc: 'Keep the sidebar clean by managing your chat list.', 
+                hue: '110deg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
-                    <path d="M50 15 L50 45 M35 45 L65 45" stroke="#8B5CF6" strokeWidth="3" strokeLinecap="round" opacity="0.9" />
-                    <path d="M48 30 L52 30" stroke="white" strokeWidth="1" opacity="0.4" />
-                    <path d="M35 25 Q50 20 65 25 L60 45 H40 Z" fill="none" stroke="white" strokeWidth="1.5" opacity="0.6" />
-                    <path d="M50 15 Q55 10 50 5" stroke="#06B6D4" strokeWidth="1.5" opacity="0.8" />
-                    <path d="M30 10 L35 15 M70 10 L65 15" stroke="white" strokeWidth="0.5" opacity="0.2" />
+                    <path d="M25 20 L50 10 L75 20 L75 45 L50 55 L25 45 Z" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.9" />
+                    <path d="M25 20 L50 30 L75 20 M50 30 V55" fill="none" stroke="#06B6D4" strokeWidth="1.5" opacity="0.7" />
+                    <path d="M30 25 L45 35 M55 35 L70 25" stroke="white" strokeWidth="0.5" opacity="0.2" />
+                    <circle cx="50" cy="15" r="2" fill="white" opacity="0.6" />
+                    <path d="M40 16 L65 26" stroke="white" strokeWidth="1" opacity="0.3" />
                   </svg>
                 )
               },
@@ -403,28 +384,71 @@ export default function Landing() {
                 )
               },
               { 
-                title: 'Notes & Tasks', 
-                desc: 'Add notes in Pad, mark as complete, and share easily.', 
-                hue: '340deg',
+                title: 'Cloud Data Sync', 
+                desc: 'Seamlessly sync chats and settings across devices.', 
+                hue: '190deg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
-                    <path d="M30 35 Q40 45 50 50 Q70 20 85 10" fill="none" stroke="#06B6D4" strokeWidth="4" strokeLinecap="round" opacity="0.9" />
-                    <path d="M30 35 L25 40" stroke="white" strokeWidth="1" opacity="0.4" />
-                    <path d="M20 15 Q50 12 80 15 Q82 35 80 55 Q50 58 20 55 Q18 35 20 15" fill="none" stroke="#8B5CF6" strokeWidth="1.5" opacity="0.4" />
-                    <path d="M25 20 H50 M25 28 H40" stroke="white" strokeWidth="0.5" opacity="0.2" />
+                    <path d="M30 35 Q30 20 45 20 Q50 10 65 15 Q75 20 75 35 Z" fill="none" stroke="#06B6D4" strokeWidth="2" strokeLinejoin="round" opacity="0.9" />
+                    <path d="M45 40 L50 30 L55 40" fill="none" stroke="white" strokeWidth="1.5" strokeLinejoin="round" opacity="0.6" />
+                    <path d="M50 30 V50" stroke="white" strokeWidth="1.5" opacity="0.6" />
+                    <path d="M35 45 H65" stroke="#8B5CF6" strokeWidth="2" strokeLinecap="round" opacity="0.7" />
                   </svg>
                 )
               },
               { 
-                title: 'Smart Archive', 
-                desc: 'Archive and pin chats to keep your workspace tidy.', 
-                hue: '110deg',
+                title: 'Chat Export', 
+                desc: 'Download your group discussions in markdown format.', 
+                hue: '170deg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
-                    <path d="M25 20 L50 10 L75 20 L75 45 L50 55 L25 45 Z" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.9" />
-                    <path d="M25 20 L50 30 L75 20 M50 30 V55" fill="none" stroke="#06B6D4" strokeWidth="1.5" opacity="0.7" />
-                    <path d="M30 25 L45 35 M55 35 L70 25" stroke="white" strokeWidth="0.5" opacity="0.2" />
-                    <path d="M40 16 L65 26" stroke="white" strokeWidth="1" opacity="0.3" />
+                    <path d="M30 15 H60 L75 30 V50 H30 Z" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.8" />
+                    <path d="M60 15 V30 H75" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.8" />
+                    <path d="M45 25 L52.5 35 L60 25" fill="none" stroke="#06B6D4" strokeWidth="2" strokeLinejoin="round" opacity="0.9" />
+                    <path d="M52.5 15 V35" stroke="#06B6D4" strokeWidth="2" opacity="0.9" />
+                    <path d="M40 45 H65" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity="0.4" />
+                  </svg>
+                )
+              },
+              { 
+                title: 'Pinned Messages', 
+                desc: 'Pin crucial decisions to the top of any group chat.', 
+                hue: '210deg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    <path d="M50 15 L50 45 M35 45 L65 45" stroke="#8B5CF6" strokeWidth="3" strokeLinecap="round" opacity="0.9" />
+                    <path d="M48 30 L52 30" stroke="white" strokeWidth="1" opacity="0.4" />
+                    <path d="M35 25 Q50 20 65 25 L60 45 H40 Z" fill="none" stroke="white" strokeWidth="1.5" opacity="0.6" />
+                    <path d="M50 15 Q55 10 50 5" stroke="#06B6D4" strokeWidth="1.5" opacity="0.8" />
+                    <path d="M30 10 L35 15 M70 10 L65 15" stroke="white" strokeWidth="0.5" opacity="0.2" />
+                  </svg>
+                )
+              },
+              { 
+                title: 'Notification Center', 
+                desc: 'A dedicated inbox for mentions and friend requests.', 
+                hue: '340deg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    <path d="M40 25 Q50 15 60 25 V40 L65 45 H35 L40 40 V25 Z" fill="none" stroke="#06B6D4" strokeWidth="2" strokeLinejoin="round" opacity="0.9" />
+                    <path d="M45 45 Q50 55 55 45" fill="none" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round" opacity="0.9" />
+                    <circle cx="65" cy="20" r="4" fill="#8B5CF6" opacity="0.9" />
+                    <path d="M63 20 H67 M65 18 V22" stroke="white" strokeWidth="1" />
+                    <path d="M25 25 H30 M25 35 H35" stroke="white" strokeWidth="0.5" opacity="0.3" strokeLinecap="round" />
+                  </svg>
+                )
+              },
+              { 
+                title: 'Friend System', 
+                desc: 'Add colleagues to see their status and quick-message.', 
+                hue: '80deg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    <circle cx="35" cy="25" r="8" fill="none" stroke="#06B6D4" strokeWidth="2" opacity="0.9" />
+                    <path d="M20 50 Q35 35 50 50" fill="none" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round" opacity="0.9" />
+                    <circle cx="65" cy="25" r="8" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.7" />
+                    <path d="M50 50 Q65 35 80 50" fill="none" stroke="#8B5CF6" strokeWidth="2" strokeLinecap="round" opacity="0.7" />
+                    <circle cx="42" cy="18" r="3" fill="#8B5CF6" opacity="0.9" />
                   </svg>
                 )
               },
@@ -439,33 +463,6 @@ export default function Landing() {
                     <path d="M30 35 L35 38" stroke="white" strokeWidth="1" opacity="0.4" />
                     <path d="M20 30 L55 40" stroke="white" strokeWidth="0.8" opacity="0.3" />
                     <path d="M10 10 L20 20 M90 50 L80 40" stroke="white" strokeWidth="0.5" opacity="0.2" />
-                  </svg>
-                )
-              },
-              { 
-                title: 'Shared Notes', 
-                desc: 'Collaborate on notes with your team in real-time.', 
-                hue: '170deg',
-                visual: (
-                  <svg viewBox="0 0 100 60" className="visual-svg">
-                    <path d="M20 10 H60 L70 20 V50 H20 Z" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.8" />
-                    <path d="M60 10 V20 H70" stroke="white" strokeWidth="1" opacity="0.4" />
-                    <path d="M30 25 H50 M30 35 H55 M30 45 H40" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round" opacity="0.7" />
-                    <path d="M75 35 Q85 35 85 45 T75 55" fill="none" stroke="white" strokeWidth="1.5" opacity="0.5" />
-                  </svg>
-                )
-              },
-              { 
-                title: 'Project Pulse', 
-                desc: 'Visual analytics of your team activity and chat frequency.', 
-                hue: '80deg',
-                visual: (
-                  <svg viewBox="0 0 100 60" className="visual-svg">
-                    <path d="M20 50 L35 25 L50 40 L65 15 L80 45" fill="none" stroke="#06B6D4" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.9" />
-                    <path d="M20 50 H80" stroke="white" strokeWidth="0.5" opacity="0.3" />
-                    <circle cx="35" cy="25" r="2" fill="white" opacity="0.8" />
-                    <circle cx="65" cy="15" r="2" fill="#8B5CF6" opacity="0.8" />
-                    <path d="M50 10 V50" stroke="white" strokeWidth="0.5" opacity="0.1" strokeDasharray="2 2" />
                   </svg>
                 )
               },
