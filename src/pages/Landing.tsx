@@ -100,35 +100,35 @@ export default function Landing() {
 
           {/* ═══ STACKING CARDS ═══ */}
           <div className="stack-cards">
-            {/* 1: Dev DNA */}
+            {/* 1: Group Chats */}
             <ScrollReveal>
               <div className="stack-card">
                 <div className="feature-text">
-                  <div className="badge">Developer Profile</div>
-                  <h3 className="h3 mt-4">Dev DNA & Power Stats</h3>
-                  <p className="body-md">View any developer's tech stack, commit pulse, power stats radar chart, and earned badges — all in one beautiful profile card.</p>
+                  <div className="badge">Team Collaboration</div>
+                  <h3 className="h3 mt-4">Group Chats & Teams</h3>
+                  <p className="body-md">Create project-specific group chats. Add team members and collaborate in real-time right next to your codebase.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_Dev_DNA.png" alt="Dev DNA & Power Stats" loading="lazy" decoding="async" />
+                  <img src="/RC_group.png" alt="Group Chats" loading="lazy" decoding="async" />
                 </div>
               </div>
             </ScrollReveal>
 
-            {/* 2: Triage */}
+            {/* 2: Repo-Linked Channels */}
             <ScrollReveal>
               <div className="stack-card reverse">
                 <div className="feature-text">
-                  <div className="badge">Smart Triage</div>
-                  <h3 className="h3 mt-4">Smart GitHub Triage</h3>
-                  <p className="body-md">Manage issues without leaving your chat. Add labels, assign developers, and close issues with a single click in the sidebar.</p>
+                  <div className="badge">Repo Integration</div>
+                  <h3 className="h3 mt-4">Repo-Linked Channels</h3>
+                  <p className="body-md">Link group chats to specific repositories. Automatically context-sync your channel with the repository's activity and updates.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_triage.png" alt="Smart Triage" loading="lazy" decoding="async" />
+                  <img src="/RC_RLC.png" alt="Repo-Linked Channels" loading="lazy" decoding="async" />
                 </div>
               </div>
             </ScrollReveal>
 
-            {/* 3: Pad */}
+            {/* 3: Attach PR Context */}
             <ScrollReveal>
               <div className="stack-card">
                 <div className="feature-text">
@@ -142,44 +142,44 @@ export default function Landing() {
               </div>
             </ScrollReveal>
 
-            {/* 4: GitHub Profiles */}
+            {/* 4: Conversation Threads */}
             <ScrollReveal>
               <div className="stack-card reverse">
                 <div className="feature-text">
-                  <div className="badge">GitHub Profiles</div>
-                  <h3 className="h3 mt-4">View GitHub Profiles</h3>
-                  <p className="body-md">Instantly view your own or any group member's GitHub profile details and profile picture directly within the chat interface.</p>
+                  <div className="badge">Threaded Chats</div>
+                  <h3 className="h3 mt-4">Conversation Threads</h3>
+                  <p className="body-md">Keep discussions organized. Start threaded conversations directly on PR and Issue context cards to keep main chats clutter-free.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_github.png" alt="GitHub Profiles" loading="lazy" decoding="async" />
+                  <img src="/RC_CTG.png" alt="Conversation Threads" loading="lazy" decoding="async" />
                 </div>
               </div>
             </ScrollReveal>
 
-            {/* 5: Group Chat */}
+            {/* 5: Smart Triage */}
             <ScrollReveal>
               <div className="stack-card">
                 <div className="feature-text">
-                  <div className="badge">Built-in Notepad</div>
-                  <h3 className="h3 mt-4">Pad — Notes & Tasks</h3>
-                  <p className="body-md">Quick notes, code snippets, and task tracking with completion progress. Pro users get cloud sync.</p>
+                  <div className="badge">Smart Triage</div>
+                  <h3 className="h3 mt-4">Smart GitHub Triage</h3>
+                  <p className="body-md">Manage issues without leaving your chat. Add labels, assign developers, and close issues with a single click in the sidebar.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_pad.png" alt="Notes & Tasks" loading="lazy" decoding="async" />
+                  <img src="/RC_triage.png" alt="Smart Triage" loading="lazy" decoding="async" />
                 </div>
               </div>
             </ScrollReveal>
 
-            {/* 6: Context Sharing */}
+            {/* 6: Smart Task Assignments */}
             <ScrollReveal>
               <div className="stack-card reverse">
                 <div className="feature-text">
-                  <div className="badge">Team Collaboration</div>
-                  <h3 className="h3 mt-4">Group Chats & Teams</h3>
-                  <p className="body-md">Create project-specific group chats. Add team members and collaborate in real-time right next to your codebase.</p>
+                  <div className="badge">Task Management</div>
+                  <h3 className="h3 mt-4">Smart Task Assignments</h3>
+                  <p className="body-md">Assign reviewers to PRs or owners to Issues directly in chat. Track task status from pending to resolved without context switching.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_group.png" alt="Group Chats" loading="lazy" decoding="async" />
+                  <img src="/RC_STA.png" alt="Smart Task Assignments" loading="lazy" decoding="async" />
                 </div>
               </div>
             </ScrollReveal>
@@ -212,44 +212,44 @@ export default function Landing() {
               </div>
             </ScrollReveal>
 
-            {/* 9: Smart Task Assignments */}
+            {/* 9: Dev DNA */}
             <ScrollReveal>
               <div className="stack-card">
                 <div className="feature-text">
-                  <div className="badge">Task Management</div>
-                  <h3 className="h3 mt-4">Smart Task Assignments</h3>
-                  <p className="body-md">Assign reviewers to PRs or owners to Issues directly in chat. Track task status from pending to resolved without context switching.</p>
+                  <div className="badge">Developer Profile</div>
+                  <h3 className="h3 mt-4">Dev DNA & Power Stats</h3>
+                  <p className="body-md">View any developer's tech stack, commit pulse, power stats radar chart, and earned badges — all in one beautiful profile card.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_STA.png" alt="Smart Task Assignments" loading="lazy" decoding="async" />
+                  <img src="/RC_Dev_DNA.png" alt="Dev DNA & Power Stats" loading="lazy" decoding="async" />
                 </div>
               </div>
             </ScrollReveal>
 
-            {/* 10: Repo-Linked Channels */}
+            {/* 10: GitHub Profiles */}
             <ScrollReveal>
               <div className="stack-card reverse">
                 <div className="feature-text">
-                  <div className="badge">Repo Integration</div>
-                  <h3 className="h3 mt-4">Repo-Linked Channels</h3>
-                  <p className="body-md">Link group chats to specific repositories. Automatically context-sync your channel with the repository's activity and updates.</p>
+                  <div className="badge">GitHub Profiles</div>
+                  <h3 className="h3 mt-4">View GitHub Profiles</h3>
+                  <p className="body-md">Instantly view your own or any group member's GitHub profile details and profile picture directly within the chat interface.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_RLC.png" alt="Repo-Linked Channels" loading="lazy" decoding="async" />
+                  <img src="/RC_github.png" alt="GitHub Profiles" loading="lazy" decoding="async" />
                 </div>
               </div>
             </ScrollReveal>
 
-            {/* 11: Conversation Threads */}
+            {/* 11: Pad */}
             <ScrollReveal>
               <div className="stack-card">
                 <div className="feature-text">
-                  <div className="badge">Threaded Chats</div>
-                  <h3 className="h3 mt-4">Conversation Threads</h3>
-                  <p className="body-md">Keep discussions organized. Start threaded conversations directly on PR and Issue context cards to keep main chats clutter-free.</p>
+                  <div className="badge">Built-in Notepad</div>
+                  <h3 className="h3 mt-4">Pad — Notes & Tasks</h3>
+                  <p className="body-md">Quick notes, code snippets, and task tracking with completion progress. Pro users get cloud sync.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_CTG.png" alt="Conversation Threads" loading="lazy" decoding="async" />
+                  <img src="/RC_pad.png" alt="Notes & Tasks" loading="lazy" decoding="async" />
                 </div>
               </div>
             </ScrollReveal>
