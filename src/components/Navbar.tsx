@@ -4,12 +4,14 @@ import { Menu, X, LogOut, Sparkles } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Logo from './Logo'
 import { useAuth } from '../context/AuthContext'
+import AuthModal from './AuthModal'
 
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [authModalOpen, setAuthModalOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const location = useLocation()
   const { user, profile, signOut, loading } = useAuth()
@@ -130,8 +132,14 @@ export default function Navbar() {
                 )}
               </AnimatePresence>
             </div>
+          ) : !loading ? (
+            <button
+              className="nav-signin-btn"
+              onClick={() => setAuthModalOpen(true)}
+            >
+              Sign in
+            </button>
           ) : (
-            /* Invisible spacer to keep nav links centered even when no avatar */
             <div style={{ width: 32 }} />
           )}
         </div>
@@ -161,7 +169,7 @@ export default function Navbar() {
               <li><Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link></li>
             </ul>
 
-            {!loading && user && (
+            {!loading && user ? (
               <div className="mobile-user-section">
                 <div className="mobile-user-info">
                   {avatarUrl && <img src={avatarUrl} alt="" className="mobile-user-avatar" />}
@@ -182,10 +190,24 @@ export default function Navbar() {
                   <LogOut size={14} /> Sign out
                 </button>
               </div>
-            )}
+            ) : !loading ? (
+              <div className="mobile-signin-section">
+                <button
+                  className="mobile-signin-btn"
+                  onClick={() => {
+                    setMobileOpen(false)
+                    setAuthModalOpen(true)
+                  }}
+                >
+                  Sign in with GitHub
+                </button>
+              </div>
+            ) : null}
           </motion.div>
         )}
       </AnimatePresence>
+
+      <AuthModal isOpen={authModalOpen} onClose={() => setAuthModalOpen(false)} />
     </nav>
   )
 }
