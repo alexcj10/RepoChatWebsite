@@ -54,8 +54,8 @@ const features = [
   {
     icon: <Pin size={22} />,
     title: 'Pin Messages',
-    desc: 'Pin important messages to the top of any chat. Set expiry times for temporary pins or pin permanently for critical context.',
-    details: ['Pin with optional expiry duration', 'Visual pin indicator on messages', 'Quick unpin from context menu', '5 pins on Free, unlimited on Pro'],
+    desc: 'Pin important messages to the top of any chat. Choose from 24-hour, 7-day, or 30-day expiry times to keep the context relevant.',
+    details: ['Pin for 24h, 7d, or 30d', 'Visual pin indicator on messages', 'Quick unpin from context menu', '5 pins on Free, unlimited on Pro'],
     tier: '5 on Free'
   },
   {
