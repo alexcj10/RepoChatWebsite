@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { ArrowRight, Shield, Zap, Check, X, Sparkles } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
@@ -42,10 +42,23 @@ function CellValue({ value }: { value: string | boolean }) {
 
 export default function Landing() {
   const heroRef = useRef<HTMLDivElement>(null)
+  const [activeMiniFeature, setActiveMiniFeature] = useState(0)
   
   const { scrollYProgress: heroProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
   const mockupScale = useTransform(heroProgress, [0, 1], [1, .9])
   const mockupOpacity = useTransform(heroProgress, [0, .8, 1], [1, 1, 0])
+
+  const handleGridScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const target = e.currentTarget;
+    const scrollLeft = target.scrollLeft;
+    const maxScrollLeft = target.scrollWidth - target.clientWidth;
+    if (maxScrollLeft <= 0) return;
+    const progress = scrollLeft / maxScrollLeft;
+    const newIndex = Math.round(progress * 14); // 15 items total, index 0 to 14
+    if (newIndex !== activeMiniFeature) {
+      setActiveMiniFeature(newIndex);
+    }
+  };
 
   return (
     <>
@@ -266,7 +279,7 @@ export default function Landing() {
             </div>
           </ScrollReveal>
 
-          <div className="mini-features-grid">
+          <div className="mini-features-grid" onScroll={handleGridScroll}>
             {[
               { 
                 title: 'Message Reactions', 
@@ -494,6 +507,15 @@ export default function Landing() {
                   </div>
                 </div>
               </ScrollReveal>
+            ))}
+          </div>
+
+          <div className="mini-features-pagination">
+            {Array.from({ length: 15 }).map((_, i) => (
+              <div 
+                key={i} 
+                className={`pagination-dot ${i === activeMiniFeature ? 'active' : ''}`}
+              />
             ))}
           </div>
         </div>
