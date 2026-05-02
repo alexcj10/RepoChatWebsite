@@ -1576,7 +1576,7 @@ textarea.form-input{min-height:110px;resize:vertical}
 .auth-modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .auth-modal-card {
