@@ -53,6 +53,7 @@ export default function Navbar() {
   const avatarUrl = profile?.avatar_url || user?.user_metadata?.avatar_url
 
   return (
+    <>
     <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${mobileOpen ? 'menu-open' : ''}`}>
       <div className="nav-inner">
         <Link 
@@ -206,8 +207,9 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <AuthModal isOpen={authModalOpen} onClose={() => setAuthModalOpen(false)} />
     </nav>
+
+    <AuthModal isOpen={authModalOpen} onClose={() => setAuthModalOpen(false)} />
+    </>
   )
 }
