@@ -204,7 +204,7 @@ export default function Landing() {
                 <div className="feature-text">
                   <div className="badge">Shared via RepoChat</div>
                   <h3 className="h3 mt-4">Clear Comment Attribution</h3>
-                  <p className="body-md">Comments posted from RepoChat are synced directly to the respective PRs and Issues on GitHub, including a small "Shared via RepoChat" attribution so others know where it came from.</p>
+                  <p className="body-md">Comments sync directly to GitHub PRs and Issues, featuring a "Shared via RepoChat" tag so your team knows their origin.</p>
                 </div>
                 <div className="feature-media">
                   <img src="/RC_shared_via_RC.png" alt="Shared via RepoChat" loading="lazy" decoding="async" />
