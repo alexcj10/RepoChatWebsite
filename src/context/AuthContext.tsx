@@ -116,8 +116,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
         if (session?.user) {
           setUser(session.user)
-          // Set metadata profile immediately for instant avatar
-          setProfile(buildMetaProfile(session.user))
+          // Only set metadata profile if we haven't fetched the real DB profile yet
+          // This prevents overwriting `is_pro` when switching tabs (which triggers a token refresh)
+          setProfile(prev => profileFetchedRef.current && prev ? prev : buildMetaProfile(session.user))
         } else {
           setUser(null)
           setProfile(null)
@@ -132,7 +133,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (!isMounted) return
       if (session?.user) {
         setUser(session.user)
-        setProfile(buildMetaProfile(session.user))
+        setProfile(prev => profileFetchedRef.current && prev ? prev : buildMetaProfile(session.user))
       }
       setLoading(false)
     })
