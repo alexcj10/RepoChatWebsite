@@ -8,114 +8,180 @@ interface AuthModalProps {
   onClose: () => void
 }
 
-// Animated SVG path that draws itself — gives a premium "hand-drawn" feel
+// Animated, colorful SVG banner representing "Humanity & Computers"
 function AnimatedIllustration() {
   return (
-    <div className="auth-modal-illustration">
-      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* Outer orbit ring */}
-        <motion.circle
-          cx="100" cy="100" r="80"
-          stroke="rgba(139, 92, 246, 0.25)"
-          strokeWidth="1.5"
-          strokeDasharray="6 6"
-          fill="none"
-          initial={{ rotate: 0 }}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-        />
-        {/* Inner orbit ring */}
-        <motion.circle
-          cx="100" cy="100" r="55"
-          stroke="rgba(139, 92, 246, 0.15)"
-          strokeWidth="1"
-          strokeDasharray="4 8"
-          fill="none"
-          initial={{ rotate: 360 }}
-          animate={{ rotate: 0 }}
-          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-        />
-        {/* Animated draw-in circle path */}
-        <motion.circle
-          cx="100" cy="100" r="68"
-          stroke="url(#authGrad)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          fill="none"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 1 }}
-          transition={{ duration: 2, ease: 'easeInOut', delay: 0.3 }}
-        />
-        {/* Chat bubble path — draws in */}
-        <motion.path
-          d="M80 85 Q80 75 90 75 L110 75 Q120 75 120 85 L120 105 Q120 115 110 115 L95 115 L85 125 L87 115 L90 115 Q80 115 80 105 Z"
-          stroke="rgba(139, 92, 246, 0.8)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="rgba(139, 92, 246, 0.06)"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 1 }}
-          transition={{ duration: 1.5, ease: 'easeInOut', delay: 0.8 }}
-        />
-        {/* Code brackets inside bubble */}
-        <motion.path
-          d="M95 90 L90 95 L95 100"
-          stroke="rgba(139, 92, 246, 0.9)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 0.8, ease: 'easeInOut', delay: 1.8 }}
-        />
-        <motion.path
-          d="M105 90 L110 95 L105 100"
-          stroke="rgba(139, 92, 246, 0.9)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 0.8, ease: 'easeInOut', delay: 2.0 }}
-        />
-        {/* Floating dots */}
-        <motion.circle
-          cx="40" cy="60" r="3"
-          fill="rgba(139, 92, 246, 0.4)"
-          initial={{ scale: 0 }}
-          animate={{ scale: [0, 1, 0.8, 1] }}
-          transition={{ duration: 1, delay: 2.5 }}
-        />
-        <motion.circle
-          cx="160" cy="140" r="2.5"
-          fill="rgba(139, 92, 246, 0.3)"
-          initial={{ scale: 0 }}
-          animate={{ scale: [0, 1, 0.8, 1] }}
-          transition={{ duration: 1, delay: 2.7 }}
-        />
-        <motion.circle
-          cx="155" cy="55" r="2"
-          fill="rgba(6, 182, 212, 0.4)"
-          initial={{ scale: 0 }}
-          animate={{ scale: [0, 1, 0.8, 1] }}
-          transition={{ duration: 1, delay: 2.9 }}
-        />
-        <motion.circle
-          cx="50" cy="150" r="2"
-          fill="rgba(6, 182, 212, 0.3)"
-          initial={{ scale: 0 }}
-          animate={{ scale: [0, 1, 0.8, 1] }}
-          transition={{ duration: 1, delay: 3.1 }}
-        />
+    <div className="auth-modal-banner-illustration">
+      <svg width="100%" height="100%" viewBox="0 0 320 140" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="authGrad" x1="20" y1="20" x2="180" y2="180">
-            <stop offset="0%" stopColor="#8b5cf6" />
-            <stop offset="100%" stopColor="#06b6d4" />
+          {/* Human side gradient (warm, organic) */}
+          <linearGradient id="humanGrad" x1="0" y1="0" x2="160" y2="140">
+            <stop offset="0%" stopColor="#f43f5e" /> {/* Rose */}
+            <stop offset="100%" stopColor="#f59e0b" /> {/* Amber */}
           </linearGradient>
+          
+          {/* Computer side gradient (cool, structured) */}
+          <linearGradient id="compGrad" x1="160" y1="0" x2="320" y2="140">
+            <stop offset="0%" stopColor="#0ea5e9" /> {/* Sky */}
+            <stop offset="100%" stopColor="#8b5cf6" /> {/* Violet */}
+          </linearGradient>
+
+          {/* Connection glow */}
+          <radialGradient id="glow" cx="160" cy="70" r="80">
+            <stop offset="0%" stopColor="rgba(255,255,255,0.4)" />
+            <stop offset="100%" stopColor="transparent" />
+          </radialGradient>
         </defs>
+
+        {/* Background panel glow */}
+        <motion.rect
+          x="0" y="0" width="320" height="140" rx="16"
+          fill="rgba(255,255,255,0.02)"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        />
+
+        {/* ========================================== */}
+        {/* LEFT SIDE: Humanity (Organic, Flowing) */}
+        {/* ========================================== */}
+        
+        {/* Organic abstract wave shapes (Brain/Creativity) */}
+        <motion.path
+          d="M 20 100 Q 40 40 80 50 T 130 70"
+          stroke="url(#humanGrad)"
+          strokeWidth="6"
+          strokeLinecap="round"
+          fill="none"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 2, ease: "easeInOut" }}
+        />
+        <motion.path
+          d="M 30 120 Q 70 80 100 110 T 140 90"
+          stroke="url(#humanGrad)"
+          strokeWidth="4"
+          strokeLinecap="round"
+          fill="none"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 2, ease: "easeInOut", delay: 0.3 }}
+        />
+        
+        {/* Floating human "sparks" (Ideas) */}
+        {[
+          { cx: 40, cy: 60, r: 8 },
+          { cx: 80, cy: 30, r: 5 },
+          { cx: 110, cy: 50, r: 12 },
+        ].map((circle, i) => (
+          <motion.circle
+            key={`h-${i}`}
+            cx={circle.cx}
+            cy={circle.cy}
+            r={circle.r}
+            fill="url(#humanGrad)"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: [0, 1.2, 1], opacity: 0.8 }}
+            transition={{ duration: 0.8, delay: 1 + i * 0.2 }}
+          />
+        ))}
+
+        {/* ========================================== */}
+        {/* RIGHT SIDE: Computers (Structured, Code) */}
+        {/* ========================================== */}
+        
+        {/* Abstract Laptop / Screen */}
+        <motion.rect
+          x="190" y="40" width="100" height="60" rx="4"
+          stroke="url(#compGrad)"
+          strokeWidth="3"
+          fill="rgba(14, 165, 233, 0.1)"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        />
+        <motion.rect
+          x="180" y="100" width="120" height="6" rx="3"
+          fill="url(#compGrad)"
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+        />
+
+        {/* Code elements inside screen */}
+        <motion.path
+          d="M 205 60 L 215 70 L 205 80"
+          stroke="#0ea5e9"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.8, delay: 1.5 }}
+        />
+        <motion.path
+          d="M 230 60 L 220 70 L 230 80"
+          stroke="#0ea5e9"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.8, delay: 1.7 }}
+        />
+        <motion.line
+          x1="240" y1="70" x2="270" y2="70"
+          stroke="#8b5cf6"
+          strokeWidth="4"
+          strokeLinecap="round"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.5, delay: 2.0 }}
+        />
+
+        {/* ========================================== */}
+        {/* CENTER: The Connection (Data flow) */}
+        {/* ========================================== */}
+
+        {/* Central glowing orb */}
+        <motion.circle
+          cx="160" cy="70" r="15"
+          fill="url(#glow)"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: [1, 1.2, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* Data lines connecting human and computer */}
+        <motion.path
+          d="M 120 70 L 200 70"
+          stroke="url(#compGrad)"
+          strokeWidth="2"
+          strokeDasharray="4 4"
+          fill="none"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 1.5, delay: 2.5 }}
+        />
+        
+        {/* Pulsing data packets */}
+        <motion.circle
+          cx="130" cy="70" r="3"
+          fill="#fff"
+          initial={{ x: 0, opacity: 0 }}
+          animate={{ x: 60, opacity: [0, 1, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, delay: 3 }}
+        />
+        <motion.circle
+          cx="130" cy="70" r="3"
+          fill="#fff"
+          initial={{ x: 0, opacity: 0 }}
+          animate={{ x: 60, opacity: [0, 1, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, delay: 3.75 }}
+        />
+
       </svg>
     </div>
   )
