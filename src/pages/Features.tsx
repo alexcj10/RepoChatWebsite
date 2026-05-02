@@ -48,7 +48,7 @@ const features = [
     icon: <ClipboardList size={22} />,
     title: 'Pad — Notes & Tasks',
     desc: 'A built-in notepad for quick thoughts, code snippets, and task lists. Pin important notes, mark tasks complete, and keep everything organized.',
-    details: ['Quick note creation with titles', 'Task completion tracking with progress', 'Pin and star important notes', 'Cloud sync for Pro users'],
+    details: ['Quick note creation with titles', 'Task completion tracking with progress', 'Pin important notes', 'Cloud sync for Pro users'],
     tier: '10 entries on Free'
   },
   {
