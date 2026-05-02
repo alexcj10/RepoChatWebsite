@@ -314,10 +314,10 @@ html.nav-open-lock body {
   }
   .stack-card {
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    padding: 24px;
+    gap: 32px;
+    padding: 40px;
     border-radius: 18px;
-    min-height: auto;
+    min-height: 360px;
   }
   .stack-card.reverse {
     grid-template-columns: 1fr 1fr;
