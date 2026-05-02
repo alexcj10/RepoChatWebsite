@@ -310,7 +310,7 @@ html.nav-open-lock body {
 
 @media(max-width: 900px) {
   .stack-cards {
-    gap: var(--space-xl);
+    gap: 40px;
   }
   .stack-card {
     grid-template-columns: 1fr 1fr;
