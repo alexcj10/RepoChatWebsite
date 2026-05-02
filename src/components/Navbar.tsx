@@ -106,7 +106,7 @@ export default function Navbar() {
                   >
                     <div className="nav-dropdown-header">
                       <img src={avatarUrl} alt="" className="nav-dropdown-avatar" />
-                      <div>
+                      <div className="nav-dropdown-name-row">
                         <p className="nav-dropdown-name">{profile?.username || 'User'}</p>
                         {profile?.is_pro && (
                           <span className="nav-dropdown-pro-badge">
@@ -136,11 +136,8 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Mobile: avatar + hamburger */}
+        {/* Mobile: hamburger only */}
         <div className="nav-right-mobile">
-          {!loading && user && avatarUrl && (
-            <img src={avatarUrl} alt="" className="nav-avatar nav-avatar-mobile" />
-          )}
           <button className="nav-toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -168,7 +165,7 @@ export default function Navbar() {
               <div className="mobile-user-section">
                 <div className="mobile-user-info">
                   {avatarUrl && <img src={avatarUrl} alt="" className="mobile-user-avatar" />}
-                  <div>
+                  <div className="nav-dropdown-name-row">
                     <p className="mobile-user-name">{profile?.username || 'User'}</p>
                     {profile?.is_pro && (
                       <span className="nav-dropdown-pro-badge"><Sparkles size={10} /> Pro</span>
