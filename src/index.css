@@ -149,13 +149,14 @@ html.nav-open-lock body {
 .mobile-nav-links li a {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   display: inline-block;
-  transition: color 0.2s;
+  transition: all 0.2s;
 }
 
-.mobile-nav-links li a:hover {
-  color: var(--text-primary);
+.mobile-nav-links li a:hover,
+.mobile-nav-links li a:active {
+  opacity: 0.7;
 }
 
 /* ============================================
