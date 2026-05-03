@@ -163,11 +163,11 @@ html.nav-open-lock body {
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 28px;border-radius:999px;font-weight:600;font-size:.875rem;transition:all 0.4s var(--ease);cursor:pointer}
 .btn:active{transform:scale(.97)}
 .btn-primary{background-color:var(--accent);color:#fff}
-.btn-primary:hover{background-color:#6366f1;box-shadow:none;transform:none;border-color:rgba(255,255,255,0.2)}
+.btn-primary:hover{filter:brightness(1.15);transform:none;box-shadow:none}
 .btn-white{background-color:#fff;color:#111113}
 .btn-white:hover{background-color:#f4f4f5;box-shadow:none;transform:none}
 .btn-ghost{background-color:transparent;color:var(--text-secondary);border:1px solid var(--border)}
-.btn-ghost:hover{background-color:#fff;color:#111113;border-color:#fff;transform:none;box-shadow:none}
+.btn-ghost:hover{background-color:rgba(255,255,255,0.08);transform:none;box-shadow:none}
 .btn-accent{background:var(--accent);color:#fff}
 .btn-accent:hover{box-shadow:0 4px 28px var(--accent-glow);transform:translateY(-1px)}
 .btn-sm{padding:8px 18px;font-size:.8rem}
