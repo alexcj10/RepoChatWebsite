@@ -147,7 +147,18 @@ export default function Navbar() {
         {/* Mobile: hamburger only */}
         <div className="nav-right-mobile">
           <button className="nav-toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={mobileOpen ? 'close' : 'open'}
+                initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                transition={{ duration: 0.15, ease: "easeOut" }}
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              >
+                {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+              </motion.div>
+            </AnimatePresence>
           </button>
         </div>
       </div>
