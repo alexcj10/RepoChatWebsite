@@ -110,6 +110,7 @@ ul{list-style:none}
     background: var(--bg);
     backdrop-filter: none;
     border-bottom: none;
+    transition: none;
   }
 }
 
