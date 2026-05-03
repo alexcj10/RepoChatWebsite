@@ -555,9 +555,9 @@ html.nav-open-lock body {
 }
 
 .plan-btn.free:hover {
-  background: #fff;
-  color: #000;
-  border-color: #fff;
+  background-color: rgba(255, 255, 255, 0.08);
+  transform: none;
+  box-shadow: none;
 }
 
 .plan-btn.pro {
@@ -566,7 +566,8 @@ html.nav-open-lock body {
 }
 
 .plan-btn.pro:hover {
-  background: #6366f1;
+  transform: none;
+  box-shadow: none;
 }
 
 .plan-footer-note {
@@ -1602,9 +1603,9 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 
 .nav-signin-btn:hover {
-  background: #fff;
-  color: #000;
-  border-color: #fff;
+  background-color: rgba(255, 255, 255, 0.08);
+  transform: none;
+  box-shadow: none;
 }
 
 .nav-signin-btn:active {
@@ -1637,8 +1638,8 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 
 .mobile-signin-btn:hover {
-  background: #6366f1;
-  border-color: #6366f1;
+  transform: none;
+  box-shadow: none;
 }
 
 .mobile-signin-btn:active {
@@ -1786,9 +1787,8 @@ body.modal-open {
 }
 
 .auth-modal-github-btn:hover {
-  background: #fff;
-  color: #000;
-  border-color: #fff;
+  transform: none;
+  box-shadow: none;
 }
 
 .auth-modal-github-btn:active {
