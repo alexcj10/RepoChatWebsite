@@ -40,7 +40,6 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} RepoChat. All rights reserved.</span>
-          <span>Made with ❤️ for developers</span>
         </div>
       </div>
     </footer>
