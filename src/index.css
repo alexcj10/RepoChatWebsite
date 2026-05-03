@@ -148,13 +148,13 @@ html.nav-open-lock body {
 .mobile-nav-links li a {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   display: block;
   transition: color 0.2s;
 }
 
 .mobile-nav-links li a:hover {
-  color: var(--accent);
+  color: var(--text-primary);
 }
 
 /* ============================================
@@ -1629,18 +1629,17 @@ textarea.form-input{min-height:110px;resize:vertical}
   border-radius: 14px;
   font-size: 0.95rem;
   font-weight: 700;
-  color: #fff;
-  background: var(--accent);
-  border: 1px solid rgba(139, 92, 246, 0.4);
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
-  transition: all 0.3s var(--ease);
+  transition: all 0.15s ease;
   letter-spacing: -0.01em;
-
 }
 
 .mobile-signin-btn:hover {
-  background-color: #7c3aed;
-  border-color: #7c3aed;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
   transform: none;
   box-shadow: none;
 }
