@@ -1794,6 +1794,41 @@ textarea.form-input{min-height:110px;resize:vertical}
   line-height: 1.5;
 }
 
+/* ============================================
+   AUTH MODAL TABLET UPSCALING
+   ============================================ */
+@media (min-width: 481px) and (max-width: 1024px) {
+  .auth-modal-card {
+    max-width: 520px;
+    padding: 56px 48px 48px;
+  }
+
+  .auth-modal-banner-illustration {
+    width: calc(100% + 96px);
+    margin-left: -48px;
+    margin-right: -48px;
+    margin-top: -56px;
+    margin-bottom: 36px;
+    height: 180px;
+  }
+
+  .auth-modal-title {
+    font-size: 1.7rem;
+    margin-bottom: 12px;
+  }
+
+  .auth-modal-desc {
+    font-size: 1rem;
+    max-width: 400px;
+    margin-bottom: 40px;
+  }
+
+  .auth-modal-github-btn {
+    font-size: 1rem;
+    padding: 16px 24px;
+  }
+}
+
 @media (max-width: 480px) {
   .auth-modal-card {
     max-width: 100%;
