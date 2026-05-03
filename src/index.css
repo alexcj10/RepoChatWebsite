@@ -235,9 +235,9 @@ html.nav-open-lock body {
 
 .stack-card {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 48px;
-  min-height: 480px;
+  grid-template-columns: 1fr 1.25fr;
+  gap: clamp(24px, 4vw, 48px);
+  min-height: clamp(400px, 40vw, 480px);
   align-items: center;
   background: 
     radial-gradient(circle at top left, var(--card-glow-bg, rgba(139, 92, 246, 0.15)) 0%, transparent 40%),
@@ -248,7 +248,7 @@ html.nav-open-lock body {
   backdrop-filter: blur(30px);
   border: 1.5px solid var(--card-glow, rgba(139, 92, 246, 0.4));
   border-radius: 24px;
-  padding: 60px;
+  padding: clamp(32px, 5vw, 60px) clamp(24px, 4vw, 60px);
   box-shadow: 
     0 -20px 80px rgba(0,0,0,0.5),
     inset 0 0 40px rgba(0,0,0,0.3);
@@ -315,7 +315,7 @@ html.nav-open-lock body {
   .stack-card {
     grid-template-columns: 1fr;
     gap: 28px;
-    padding: 36px 32px;
+    padding: clamp(28px, 5vw, 36px) clamp(20px, 4vw, 32px);
     border-radius: 20px;
     min-height: auto;
   }
@@ -340,6 +340,18 @@ html.nav-open-lock body {
   }
   .stack-card:hover .feature-media {
     transform: translateY(-4px) scale(1.01);
+  }
+  
+  .stack-card.reverse {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet explicit adjustments (landscape mode mostly) */
+@media(max-width: 1100px) and (min-width: 901px) {
+  .stack-card {
+    padding: 40px 32px;
+    gap: 32px;
   }
 }
 
