@@ -2399,7 +2399,7 @@ button.plan-btn {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
-  padding: 28px 24px;
+  padding: 24px 24px 20px 24px;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto;
