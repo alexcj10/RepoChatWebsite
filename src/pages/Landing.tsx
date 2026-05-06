@@ -246,47 +246,102 @@ export default function Landing() {
       {/* ═══ WHY REPOCHAT ═══ */}
       <section className="section why-section">
         <div className="container">
+
+          {/* Top Hero Card */}
           <ScrollReveal>
-            <div className="section-head">
-              <div className="badge mb-6">The Problem</div>
-              <h2 className="h2">Dev workflows are broken.</h2>
+            <div className="why-hero-card">
+              <div className="why-badge">Why RepoChat</div>
+              <h2 className="why-hero-title">
+                Context lives in one place.<br />Your team doesn't.
+              </h2>
+              <p className="why-hero-desc">
+                Developers juggle GitHub, Slack, Jira, and browser tabs just to discuss a single pull request. Critical decisions get buried in DMs. Code context never reaches the people who need it most.
+              </p>
             </div>
           </ScrollReveal>
 
+          {/* Two Problem Cards */}
           <div className="why-grid">
             <ScrollReveal>
               <div className="why-card">
-                <div className="why-icon">
-                  <GitPullRequest size={18} />
+                <div className="why-card-top">
+                  <div className="why-icon">
+                    <GitPullRequest size={18} />
+                  </div>
+                  <p className="why-statement">Developers lose hours context-switching between GitHub and Slack.</p>
                 </div>
-                <p className="why-statement">Developers lose hours context-switching between GitHub and Slack.</p>
+                <div className="why-card-visual">
+                  <svg viewBox="0 0 400 200" className="why-svg">
+                    {/* Scattered disconnected tools */}
+                    <rect x="30" y="40" width="80" height="36" rx="8" fill="none" stroke="rgba(249,115,22,0.4)" strokeWidth="1.5" />
+                    <text x="70" y="63" fill="rgba(249,115,22,0.8)" fontSize="11" textAnchor="middle" fontWeight="600">GitHub</text>
+                    
+                    <rect x="160" y="20" width="80" height="36" rx="8" fill="none" stroke="rgba(139,92,246,0.4)" strokeWidth="1.5" />
+                    <text x="200" y="43" fill="rgba(139,92,246,0.8)" fontSize="11" textAnchor="middle" fontWeight="600">Slack</text>
+                    
+                    <rect x="290" y="45" width="80" height="36" rx="8" fill="none" stroke="rgba(59,130,246,0.4)" strokeWidth="1.5" />
+                    <text x="330" y="68" fill="rgba(59,130,246,0.8)" fontSize="11" textAnchor="middle" fontWeight="600">Jira</text>
+                    
+                    <rect x="100" y="120" width="80" height="36" rx="8" fill="none" stroke="rgba(6,182,212,0.4)" strokeWidth="1.5" />
+                    <text x="140" y="143" fill="rgba(6,182,212,0.8)" fontSize="11" textAnchor="middle" fontWeight="600">Notion</text>
+                    
+                    <rect x="230" y="130" width="80" height="36" rx="8" fill="none" stroke="rgba(244,63,94,0.4)" strokeWidth="1.5" />
+                    <text x="270" y="153" fill="rgba(244,63,94,0.8)" fontSize="11" textAnchor="middle" fontWeight="600">Email</text>
+
+                    {/* Broken connection lines */}
+                    <line x1="110" y1="58" x2="140" y2="42" stroke="rgba(255,255,255,0.1)" strokeWidth="1" strokeDasharray="4 4" />
+                    <line x1="240" y1="38" x2="270" y2="50" stroke="rgba(255,255,255,0.1)" strokeWidth="1" strokeDasharray="4 4" />
+                    <line x1="180" y1="56" x2="160" y2="120" stroke="rgba(255,255,255,0.1)" strokeWidth="1" strokeDasharray="4 4" />
+                    <line x1="270" y1="81" x2="250" y2="130" stroke="rgba(255,255,255,0.1)" strokeWidth="1" strokeDasharray="4 4" />
+                    
+                    {/* X marks for broken connections */}
+                    <g transform="translate(148,48)" stroke="rgba(244,63,94,0.6)" strokeWidth="1.5">
+                      <line x1="-4" y1="-4" x2="4" y2="4" /><line x1="4" y1="-4" x2="-4" y2="4" />
+                    </g>
+                    <g transform="translate(260,44)" stroke="rgba(244,63,94,0.6)" strokeWidth="1.5">
+                      <line x1="-4" y1="-4" x2="4" y2="4" /><line x1="4" y1="-4" x2="-4" y2="4" />
+                    </g>
+                    <g transform="translate(168,88)" stroke="rgba(244,63,94,0.6)" strokeWidth="1.5">
+                      <line x1="-4" y1="-4" x2="4" y2="4" /><line x1="4" y1="-4" x2="-4" y2="4" />
+                    </g>
+                  </svg>
+                </div>
               </div>
             </ScrollReveal>
+
             <ScrollReveal delay={1}>
               <div className="why-card">
-                <div className="why-icon">
-                  <AlertCircle size={18} />
+                <div className="why-card-top">
+                  <div className="why-icon why-icon-purple">
+                    <AlertCircle size={18} />
+                  </div>
+                  <p className="why-statement">Code reviews and decisions get buried in DMs that nobody can find.</p>
                 </div>
-                <p className="why-statement">Code discussions die in DMs. Context never reaches the repo.</p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={2}>
-              <div className="why-card">
-                <div className="why-icon">
-                  <Code size={18} />
+                <div className="why-card-visual">
+                  <svg viewBox="0 0 400 200" className="why-svg">
+                    {/* Fading message bubbles */}
+                    <rect x="40" y="20" width="180" height="32" rx="10" fill="rgba(139,92,246,0.12)" stroke="rgba(139,92,246,0.25)" strokeWidth="1" />
+                    <text x="55" y="41" fill="rgba(255,255,255,0.6)" fontSize="10">"Can you review the auth PR?"</text>
+                    
+                    <rect x="180" y="65" width="190" height="32" rx="10" fill="rgba(59,130,246,0.12)" stroke="rgba(59,130,246,0.25)" strokeWidth="1" />
+                    <text x="195" y="86" fill="rgba(255,255,255,0.5)" fontSize="10">"I fixed the race condition in..."</text>
+                    
+                    <rect x="30" y="110" width="160" height="32" rx="10" fill="rgba(6,182,212,0.08)" stroke="rgba(6,182,212,0.15)" strokeWidth="1" />
+                    <text x="45" y="131" fill="rgba(255,255,255,0.3)" fontSize="10">"We decided to use Redis..."</text>
+                    
+                    <rect x="210" y="150" width="170" height="32" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
+                    <text x="225" y="171" fill="rgba(255,255,255,0.15)" fontSize="10">"The deploy config needs..."</text>
+
+                    {/* Fade arrows going down */}
+                    <path d="M200 55 L200 62" stroke="rgba(255,255,255,0.15)" strokeWidth="1" markerEnd="none" />
+                    <path d="M200 100 L200 107" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+                    <path d="M200 145 L200 148" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+                  </svg>
                 </div>
-                <p className="why-statement">PRs and issues need triage — not another browser tab.</p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={3}>
-              <div className="why-card">
-                <div className="why-icon">
-                  <Zap size={18} />
-                </div>
-                <p className="why-statement">Teams need real-time sync, not async notifications.</p>
               </div>
             </ScrollReveal>
           </div>
+
         </div>
       </section>
 
