@@ -393,7 +393,7 @@ html.nav-open-lock body {
   width: 100%;
   aspect-ratio: 4/3; /* Set to match 1920x1440 as requested */
   overflow: hidden;
-  background: #ffffff; /* Changed to white to blend with image edges */
+  background: rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
