@@ -206,6 +206,79 @@ html.nav-open-lock body {
   opacity: 0.7;
 }
 
+/* Mobile User / Sign In Section */
+.mobile-user-section,
+.mobile-signin-section {
+  margin-top: auto; /* Push it down */
+  padding: 16px;
+  padding-bottom: 24px; /* Explicit forced padding */
+  margin-bottom: 8px; /* Force it off the bottom of the overlay */
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobile-user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-user-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  object-fit: cover;
+}
+
+.mobile-user-name {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.mobile-signout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 8px; /* Force internal gap below button */
+  border-radius: 12px;
+  background: rgba(239, 68, 68, 0.08);
+  color: #f87171;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  transition: all 0.2s ease;
+}
+
+.mobile-signout-btn:active {
+  background: rgba(239, 68, 68, 0.15);
+  transform: scale(0.98);
+}
+
+.mobile-signin-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  text-align: center;
+  background: var(--text-primary);
+  color: var(--bg);
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.mobile-signin-btn:active {
+  transform: scale(0.98);
+}
 
 /* ============================================
    BUTTONS
