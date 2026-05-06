@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
 import FAQ from '../components/FAQ'
+import Earth3D from '../components/Earth3D'
 
 const comparisonRows = [
   { feature: 'Friends', free: '15', pro: 'Unlimited' },
@@ -44,44 +45,7 @@ export default function Landing() {
   const heroRef = useRef<HTMLDivElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
-  const taxRef = useRef<HTMLDivElement>(null)
   const [activeMiniFeature, setActiveMiniFeature] = useState(0)
-  const [taxInView, setTaxInView] = useState(false)
-  const [animProgress, setAnimProgress] = useState(0)
-
-  // Counter animation — fires once when section enters viewport
-  useEffect(() => {
-    const el = taxRef.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setTaxInView(true); io.disconnect(); } },
-      { threshold: 0.15 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!taxInView) return;
-    const dur = 2500;
-    const t0 = performance.now();
-    let raf: number;
-    const tick = (now: number) => {
-      const p = Math.min((now - t0) / dur, 1);
-      setAnimProgress(1 - Math.pow(1 - p, 3));
-      if (p < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [taxInView]);
-
-  const totalSec = Math.round(1395 * animProgress);
-  const ctrMin = String(Math.floor(totalSec / 60)).padStart(2, '0');
-  const ctrSec = String(totalSec % 60).padStart(2, '0');
-  const stat40 = Math.round(40 * animProgress);
-  const stat94 = (9.4 * animProgress).toFixed(1);
-  const stat10k = Math.round(10400 * animProgress).toLocaleString();
-  const stat62 = Math.round(62 * animProgress);
 
   // Fluid ecosystem graph scaling — continuously maps container width
   // to a zoom level so the horizontal layout never overflows or jumps.
@@ -280,154 +244,70 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ═══ THE CONTEXT TAX ═══ */}
-      <section className="section tax-section" ref={taxRef}>
+      {/* ═══ THE CONTEXT TAX — 3D EARTH WITH STATS ═══ */}
+      <section className="section tax-section">
         <div className="container">
-
-          {/* ── Big Counter Panel ── */}
           <ScrollReveal>
-            <div className="tax-hero-panel">
-              <div className="tax-badge">The Context Crisis</div>
-              <div className="tax-counter">
-                <span className="tax-digit">{ctrMin}</span>
-                <span className="tax-colon">:</span>
-                <span className="tax-digit">{ctrSec}</span>
-              </div>
-              <p className="tax-label">minutes to refocus after a single context switch.</p>
-              <p className="tax-source">Source: UC Irvine — Gloria Mark, PhD</p>
+            <div className="section-head">
+              <div className="badge mb-6">The Context Crisis</div>
+              <h2 className="h2">Context switching costs<br/><span className="gradient-text">more than you think.</span></h2>
+              <p>Developers lose hours daily to fragmented workflows. The data speaks for itself.</p>
             </div>
           </ScrollReveal>
 
-          {/* ── 2×2 Stat Cards ── */}
-          <div className="tax-stats-grid">
-            <ScrollReveal>
-              <div className="tax-stat-card">
-                <span className="tax-stat-num">{stat40}%</span>
-                <span className="tax-stat-desc">of productivity lost daily to context switching</span>
-                <span className="tax-stat-src">APA Research</span>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={1}>
-              <div className="tax-stat-card">
-                <span className="tax-stat-num">{stat94}</span>
-                <span className="tax-stat-desc">tools used daily on average by developers</span>
-                <span className="tax-stat-src">Atlassian</span>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={2}>
-              <div className="tax-stat-card">
-                <span className="tax-stat-num">${stat10k}</span>
-                <span className="tax-stat-desc">lost per developer per year to task switching</span>
-                <span className="tax-stat-src">Asana</span>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={3}>
-              <div className="tax-stat-card">
-                <span className="tax-stat-num">{stat62}%</span>
-                <span className="tax-stat-desc">say context switching is their biggest bottleneck</span>
-                <span className="tax-stat-src">Stack Overflow</span>
-              </div>
-            </ScrollReveal>
-          </div>
-
-          {/* ── Globe Visualization ── */}
+          {/* ── 3D Earth with floating stats ── */}
           <ScrollReveal>
-            <div className="tax-globe-wrap">
-              <div className="globe-atmos" />
-              <div className="globe-body">
-                <svg viewBox="0 0 400 400" className="globe-svg" aria-hidden="true">
-                  <defs>
-                    <radialGradient id="gG" cx="35%" cy="35%">
-                      <stop offset="0%" stopColor="#1e3a5f" />
-                      <stop offset="50%" stopColor="#0f1d30" />
-                      <stop offset="100%" stopColor="#060a12" />
-                    </radialGradient>
-                  </defs>
-                  <circle cx="200" cy="200" r="198" fill="url(#gG)" />
-                  {/* Longitude lines */}
-                  <g className="globe-lon" fill="none" stroke="rgba(99,102,241,0.1)" strokeWidth="0.8">
-                    <ellipse cx="200" cy="200" rx="30" ry="186" />
-                    <ellipse cx="200" cy="200" rx="70" ry="186" />
-                    <ellipse cx="200" cy="200" rx="110" ry="186" />
-                    <ellipse cx="200" cy="200" rx="150" ry="186" />
-                    <ellipse cx="200" cy="200" rx="186" ry="186" />
-                  </g>
-                  {/* Latitude lines */}
-                  <g fill="none" stroke="rgba(99,102,241,0.07)" strokeWidth="0.8">
-                    <ellipse cx="200" cy="80" rx="170" ry="20" />
-                    <ellipse cx="200" cy="130" rx="183" ry="16" />
-                    <ellipse cx="200" cy="200" rx="186" ry="10" />
-                    <ellipse cx="200" cy="270" rx="183" ry="16" />
-                    <ellipse cx="200" cy="320" rx="170" ry="20" />
-                  </g>
-                  {/* Continent hints — subtle abstract shapes */}
-                  <g fill="rgba(99,102,241,0.06)" stroke="none">
-                    <ellipse cx="150" cy="140" rx="40" ry="25" />
-                    <ellipse cx="240" cy="160" rx="30" ry="35" />
-                    <ellipse cx="120" cy="220" rx="25" ry="20" />
-                    <ellipse cx="290" cy="200" rx="35" ry="22" />
-                    <ellipse cx="200" cy="290" rx="30" ry="18" />
-                  </g>
-                </svg>
-
-                {/* Pulse dots — developer hubs */}
-                <div className="globe-dot" style={{top:'28%',left:'25%',animationDelay:'0s'}} />
-                <div className="globe-dot" style={{top:'35%',left:'38%',animationDelay:'0.6s'}} />
-                <div className="globe-dot" style={{top:'30%',left:'52%',animationDelay:'1.2s'}} />
-                <div className="globe-dot" style={{top:'32%',left:'60%',animationDelay:'0.3s'}} />
-                <div className="globe-dot" style={{top:'42%',left:'72%',animationDelay:'0.9s'}} />
-                <div className="globe-dot" style={{top:'55%',left:'78%',animationDelay:'1.5s'}} />
-                <div className="globe-dot" style={{top:'65%',left:'30%',animationDelay:'0.4s'}} />
-                <div className="globe-dot" style={{top:'50%',left:'48%',animationDelay:'1.1s'}} />
-
-                {/* Arc connections */}
-                <svg viewBox="0 0 400 400" className="globe-arcs" aria-hidden="true">
-                  <path d="M100,112 Q160,70 208,140" fill="none" stroke="rgba(163,230,53,0.2)" strokeWidth="1" className="arc-line" />
-                  <path d="M152,140 Q220,100 240,128" fill="none" stroke="rgba(163,230,53,0.15)" strokeWidth="1" className="arc-line" style={{animationDelay:'1s'}} />
-                  <path d="M240,128 Q300,110 288,160" fill="none" stroke="rgba(99,102,241,0.2)" strokeWidth="1" className="arc-line" style={{animationDelay:'2s'}} />
-                  <path d="M192,200 Q240,170 312,220" fill="none" stroke="rgba(99,102,241,0.15)" strokeWidth="1" className="arc-line" style={{animationDelay:'1.5s'}} />
-                  <path d="M120,260 Q180,220 192,200" fill="none" stroke="rgba(163,230,53,0.12)" strokeWidth="1" className="arc-line" style={{animationDelay:'0.5s'}} />
-                </svg>
-              </div>
-
-              {/* Floating stat callouts */}
-              <div className="globe-callout globe-callout-left">
-                <span className="callout-val">23 min</span>
-                <span className="callout-label">avg refocus time</span>
-              </div>
-              <div className="globe-callout globe-callout-right">
-                <span className="callout-val">9.4 tools</span>
-                <span className="callout-label">daily average</span>
-              </div>
-            </div>
+            <Earth3D />
           </ScrollReveal>
 
-          {/* ── Before / After Timeline ── */}
+          {/* ── Before / After — Responsive Redesign ── */}
           <ScrollReveal>
-            <div className="tax-comparison">
-              <div className="comparison-col">
-                <h4 className="comparison-title comparison-title-red">Without RepoChat</h4>
-                <div className="timeline-bar">
-                  <div className="tl-block tl-github" style={{flex:2}}>GitHub</div>
-                  <div className="tl-block tl-slack" style={{flex:1.5}}>Slack</div>
-                  <div className="tl-block tl-jira" style={{flex:1}}>Jira</div>
-                  <div className="tl-block tl-github" style={{flex:1.5}}>GitHub</div>
-                  <div className="tl-block tl-email" style={{flex:1}}>Email</div>
-                  <div className="tl-block tl-slack" style={{flex:1.5}}>Slack</div>
-                  <div className="tl-block tl-github" style={{flex:1}}>GitHub</div>
-                  <div className="tl-block tl-notion" style={{flex:1}}>Notion</div>
+            <div className="workflow-comparison">
+              {/* WITHOUT panel */}
+              <div className="workflow-panel workflow-panel-without">
+                <div className="workflow-panel-header">
+                  <div className="workflow-indicator workflow-indicator-red" />
+                  <h4 className="workflow-panel-title">Without RepoChat</h4>
                 </div>
-                <p className="comparison-note">8+ switches · fragmented attention · context lost</p>
+                <div className="workflow-timeline">
+                  <div className="wf-block wf-github"><span>GitHub</span></div>
+                  <div className="wf-block wf-slack"><span>Slack</span></div>
+                  <div className="wf-block wf-jira"><span>Jira</span></div>
+                  <div className="wf-block wf-github"><span>GitHub</span></div>
+                  <div className="wf-block wf-email"><span>Email</span></div>
+                  <div className="wf-block wf-slack"><span>Slack</span></div>
+                  <div className="wf-block wf-github"><span>GitHub</span></div>
+                  <div className="wf-block wf-notion"><span>Notion</span></div>
+                </div>
+                <div className="workflow-meta">
+                  <span className="workflow-switches">8+ switches</span>
+                  <span className="workflow-desc">fragmented attention · context lost</span>
+                </div>
               </div>
-              <div className="comparison-col">
-                <h4 className="comparison-title comparison-title-green">With RepoChat</h4>
-                <div className="timeline-bar">
-                  <div className="tl-block tl-rc" style={{flex:3}}>RepoChat</div>
-                  <div className="tl-block tl-code" style={{flex:4}}>Deep Work</div>
-                  <div className="tl-block tl-rc" style={{flex:2}}>RepoChat</div>
-                  <div className="tl-block tl-code" style={{flex:4}}>Deep Work</div>
+
+              {/* Divider */}
+              <div className="workflow-divider">
+                <div className="workflow-divider-line" />
+                <span className="workflow-divider-label">vs</span>
+                <div className="workflow-divider-line" />
+              </div>
+
+              {/* WITH panel */}
+              <div className="workflow-panel workflow-panel-with">
+                <div className="workflow-panel-header">
+                  <div className="workflow-indicator workflow-indicator-green" />
+                  <h4 className="workflow-panel-title">With RepoChat</h4>
                 </div>
-                <p className="comparison-note">2 switches · focused flow · context preserved</p>
+                <div className="workflow-timeline">
+                  <div className="wf-block wf-rc"><span>RepoChat</span></div>
+                  <div className="wf-block wf-deep"><span>Deep Work</span></div>
+                  <div className="wf-block wf-rc"><span>RepoChat</span></div>
+                  <div className="wf-block wf-deep"><span>Deep Work</span></div>
+                </div>
+                <div className="workflow-meta">
+                  <span className="workflow-switches workflow-switches-green">2 switches</span>
+                  <span className="workflow-desc">focused flow · context preserved</span>
+                </div>
               </div>
             </div>
           </ScrollReveal>
