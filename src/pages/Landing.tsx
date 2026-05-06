@@ -561,8 +561,8 @@ export default function Landing() {
       <section className="section">
         <div className="container">
           <ScrollReveal>
-            <div className="section-head">
-              <h2 className="h2">And so much more.</h2>
+            <div className="section-head ecosystem-head">
+              <h2 className="h2 ecosystem-h2">And so <span className="gradient-text">much more.</span></h2>
             </div>
           </ScrollReveal>
 
