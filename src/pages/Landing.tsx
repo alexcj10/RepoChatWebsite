@@ -142,12 +142,12 @@ export default function Landing() {
         <div className="container">
           <ScrollReveal>
             <div className="section-head ecosystem-head">
-              <div className="ecosystem-badge">THE PLATFORM</div>
+              <div className="ecosystem-badge">How It Works</div>
               <h2 className="h2 ecosystem-h2">
-                The AI-Native Developer Workspace
+                Everything Connects to Your Repo
               </h2>
               <p className="body-lg ecosystem-p">
-                RepoChat bridges the gap between your codebase and your team. Stop context-switching between GitHub and Slack. Centralize discussions, PRs, and task triage directly where the code lives.
+                GitHub context flows in, integrations flow out — all centered around your real-time repo graph.
               </p>
             </div>
           </ScrollReveal>
