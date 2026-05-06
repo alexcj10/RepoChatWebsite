@@ -2586,7 +2586,8 @@ button.plan-btn {
 }
 
 .ecosystem-h2 {
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.02em;
 }
