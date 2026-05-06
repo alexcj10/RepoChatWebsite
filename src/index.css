@@ -2271,12 +2271,11 @@ button.plan-btn {
 }
 
 .why-diagram-label {
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   color: rgba(244, 63, 94, 0.85);
   margin-bottom: 16px;
-  text-transform: uppercase;
 }
 
 .why-diagram-label-green {

@@ -161,64 +161,88 @@ export default function Landing() {
                 <div className="why-diagram-label">Without RepoChat</div>
                 <div className="why-diagram-visual">
                   <svg viewBox="0 0 400 360" className="why-svg" aria-hidden="true">
-                    {/* Concentric rings */}
-                    <circle cx="200" cy="180" r="140" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
-                    <circle cx="200" cy="180" r="90" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+                    <defs>
+                      <filter id="glowRed" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="6" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                      </filter>
+                      <radialGradient id="bgGlowRed" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stopColor="rgba(244,63,94,0.12)" />
+                        <stop offset="100%" stopColor="transparent" />
+                      </radialGradient>
+                    </defs>
+
+                    {/* Background glow */}
+                    <circle cx="200" cy="180" r="180" fill="url(#bgGlowRed)" />
+
+                    {/* Complex rings */}
+                    <g className="why-rings-chaos">
+                      <circle cx="200" cy="180" r="140" fill="none" stroke="rgba(244,63,94,0.1)" strokeWidth="1" strokeDasharray="4 8" />
+                      <circle cx="200" cy="180" r="110" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+                      <circle cx="200" cy="180" r="80" fill="none" stroke="rgba(244,63,94,0.06)" strokeWidth="1" strokeDasharray="2 4" />
+                    </g>
 
                     {/* Center developer */}
-                    <circle cx="200" cy="180" r="32" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.4)" strokeWidth="1.5" />
-                    <text x="200" y="176" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="10" fontWeight="600">DEV</text>
-                    <text x="200" y="190" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="7">fragmented</text>
+                    <circle cx="200" cy="180" r="34" fill="rgba(244,63,94,0.15)" stroke="rgba(244,63,94,0.5)" strokeWidth="1.5" filter="url(#glowRed)" />
+                    <text x="200" y="178" textAnchor="middle" fill="#fff" fontSize="10" fontWeight="600">Dev</text>
+                    <text x="200" y="192" textAnchor="middle" fill="rgba(255,255,255,0.6)" fontSize="7">fragmented</text>
 
-                    {/* Chaotic connection lines — messy angles */}
-                    <line x1="200" y1="148" x2="200" y2="55" stroke="rgba(244,63,94,0.2)" strokeWidth="1" strokeDasharray="4 3" className="why-line-chaos" />
-                    <line x1="228" y1="160" x2="310" y2="95" stroke="rgba(244,63,94,0.2)" strokeWidth="1" strokeDasharray="4 3" className="why-line-chaos" style={{animationDelay:'0.5s'}} />
-                    <line x1="232" y1="180" x2="340" y2="180" stroke="rgba(244,63,94,0.2)" strokeWidth="1" strokeDasharray="4 3" className="why-line-chaos" style={{animationDelay:'1s'}} />
-                    <line x1="228" y1="200" x2="310" y2="270" stroke="rgba(244,63,94,0.2)" strokeWidth="1" strokeDasharray="4 3" className="why-line-chaos" style={{animationDelay:'0.3s'}} />
-                    <line x1="200" y1="212" x2="200" y2="310" stroke="rgba(244,63,94,0.2)" strokeWidth="1" strokeDasharray="4 3" className="why-line-chaos" style={{animationDelay:'0.7s'}} />
-                    <line x1="172" y1="200" x2="90" y2="270" stroke="rgba(244,63,94,0.2)" strokeWidth="1" strokeDasharray="4 3" className="why-line-chaos" style={{animationDelay:'1.2s'}} />
-                    <line x1="168" y1="180" x2="60" y2="180" stroke="rgba(244,63,94,0.2)" strokeWidth="1" strokeDasharray="4 3" className="why-line-chaos" style={{animationDelay:'0.9s'}} />
-                    <line x1="172" y1="160" x2="90" y2="95" stroke="rgba(244,63,94,0.2)" strokeWidth="1" strokeDasharray="4 3" className="why-line-chaos" style={{animationDelay:'0.4s'}} />
+                    {/* Chaotic connection lines */}
+                    <path d="M200,146 L200,69" stroke="rgba(244,63,94,0.3)" strokeWidth="1.5" strokeDasharray="4 4" className="why-line-chaos" />
+                    <path d="M228,160 L290,105" stroke="rgba(244,63,94,0.3)" strokeWidth="1.5" strokeDasharray="4 4" className="why-line-chaos" style={{animationDelay:'0.5s'}} />
+                    <path d="M234,180 L320,180" stroke="rgba(244,63,94,0.3)" strokeWidth="1.5" strokeDasharray="4 4" className="why-line-chaos" style={{animationDelay:'1s'}} />
+                    <path d="M228,200 L290,255" stroke="rgba(244,63,94,0.3)" strokeWidth="1.5" strokeDasharray="4 4" className="why-line-chaos" style={{animationDelay:'0.3s'}} />
+                    <path d="M200,214 L200,295" stroke="rgba(244,63,94,0.3)" strokeWidth="1.5" strokeDasharray="4 4" className="why-line-chaos" style={{animationDelay:'0.7s'}} />
+                    <path d="M172,200 L110,255" stroke="rgba(244,63,94,0.3)" strokeWidth="1.5" strokeDasharray="4 4" className="why-line-chaos" style={{animationDelay:'1.2s'}} />
+                    <path d="M166,180 L80,180" stroke="rgba(244,63,94,0.3)" strokeWidth="1.5" strokeDasharray="4 4" className="why-line-chaos" style={{animationDelay:'0.9s'}} />
+                    <path d="M172,160 L110,105" stroke="rgba(244,63,94,0.3)" strokeWidth="1.5" strokeDasharray="4 4" className="why-line-chaos" style={{animationDelay:'0.4s'}} />
 
-                    {/* Cross-connections (the mess) */}
-                    <path d="M90,95 Q150,140 310,95" fill="none" stroke="rgba(244,63,94,0.08)" strokeWidth="1" strokeDasharray="3 4" />
-                    <path d="M60,180 Q130,260 310,270" fill="none" stroke="rgba(244,63,94,0.08)" strokeWidth="1" strokeDasharray="3 4" />
-                    <path d="M90,270 Q200,230 340,180" fill="none" stroke="rgba(244,63,94,0.06)" strokeWidth="1" strokeDasharray="3 4" />
+                    {/* Cross-connections */}
+                    <path d="M110,105 Q200,120 290,105" fill="none" stroke="rgba(244,63,94,0.15)" strokeWidth="1" strokeDasharray="2 6" />
+                    <path d="M80,180 Q150,250 290,255" fill="none" stroke="rgba(244,63,94,0.1)" strokeWidth="1" strokeDasharray="2 6" />
+                    <path d="M110,255 Q200,240 320,180" fill="none" stroke="rgba(244,63,94,0.1)" strokeWidth="1" strokeDasharray="2 6" />
 
-                    {/* Tool nodes */}
+                    {/* Tool Nodes (44x44) with Logos */}
                     {/* GitHub - top */}
-                    <rect x="180" y="35" width="40" height="40" rx="10" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.3)" strokeWidth="1.2" />
-                    <text x="200" y="60" textAnchor="middle" fill="rgba(244,63,94,0.8)" fontSize="8" fontWeight="600">GH</text>
+                    <g transform="translate(178,25)">
+                      <rect width="44" height="44" rx="12" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.4)" strokeWidth="1.5" />
+                      <svg x="10" y="10" width="24" height="24" viewBox="0 0 24 24" fill="rgba(244,63,94,0.9)"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.699-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.293 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                    </g>
                     {/* Slack - top right */}
-                    <rect x="290" y="75" width="40" height="40" rx="10" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.3)" strokeWidth="1.2" />
-                    <text x="310" y="100" textAnchor="middle" fill="rgba(244,63,94,0.8)" fontSize="8" fontWeight="600">SLACK</text>
+                    <g transform="translate(290,61)">
+                      <rect width="44" height="44" rx="12" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.4)" strokeWidth="1.5" />
+                      <svg x="10" y="10" width="24" height="24" viewBox="0 0 24 24" fill="rgba(244,63,94,0.9)"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.523-2.522v-2.522h2.523zM15.165 17.688a2.527 2.527 0 0 1-2.523-2.523 2.526 2.526 0 0 1 2.523-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg>
+                    </g>
                     {/* Jira - right */}
-                    <rect x="320" y="160" width="40" height="40" rx="10" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.3)" strokeWidth="1.2" />
-                    <text x="340" y="185" textAnchor="middle" fill="rgba(244,63,94,0.8)" fontSize="8" fontWeight="600">JIRA</text>
+                    <g transform="translate(320,158)">
+                      <rect width="44" height="44" rx="12" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.4)" strokeWidth="1.5" />
+                      <svg x="10" y="10" width="24" height="24" viewBox="0 0 24 24" fill="rgba(244,63,94,0.9)"><path d="M11.53 12c0-2.61-2.12-4.73-4.73-4.73S2.07 9.39 2.07 12s2.12 4.73 4.73 4.73 4.73-2.12 4.73-4.73zm10.4 0c0-2.61-2.12-4.73-4.73-4.73s-4.73 2.12-4.73 4.73 2.12 4.73 4.73 4.73 4.73-2.12 4.73-4.73zm-5.2-10.4c0-2.61-2.12-4.73-4.73-4.73S7.27-1.01 7.27 1.6s2.12 4.73 4.73 4.73 4.73-2.12 4.73-4.73zM11.53 22.4c0-2.61-2.12-4.73-4.73-4.73S2.07 19.79 2.07 22.4s2.12 4.73 4.73 4.73 4.73-2.12 4.73-4.73z"/></svg>
+                    </g>
                     {/* Email - bottom right */}
-                    <rect x="290" y="250" width="40" height="40" rx="10" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.3)" strokeWidth="1.2" />
-                    <text x="310" y="275" textAnchor="middle" fill="rgba(244,63,94,0.8)" fontSize="7" fontWeight="600">EMAIL</text>
+                    <g transform="translate(290,255)">
+                      <rect width="44" height="44" rx="12" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.4)" strokeWidth="1.5" />
+                      <svg x="10" y="10" width="24" height="24" viewBox="0 0 24 24" fill="rgba(244,63,94,0.9)"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </g>
                     {/* Notion - bottom */}
-                    <rect x="180" y="290" width="40" height="40" rx="10" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.3)" strokeWidth="1.2" />
-                    <text x="200" y="315" textAnchor="middle" fill="rgba(244,63,94,0.8)" fontSize="7" fontWeight="600">NOTION</text>
+                    <g transform="translate(178,295)">
+                      <rect width="44" height="44" rx="12" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.4)" strokeWidth="1.5" />
+                      <svg x="10" y="10" width="24" height="24" viewBox="0 0 24 24" fill="rgba(244,63,94,0.9)"><path d="M4.459 4.208c.746.066 1.026.133 1.026.505v13.64c0 .359-.227.426-.973.506v.465h5.45v-.465c-.773-.08-1.026-.147-1.026-.506V8.04l6.196 10.31h.746V4.713c0-.372.24-.44.986-.506v-.465h-5.05v.465c.746.08 1.025.146 1.025.506v10.016L6.524 4.208h-.572v-.465h-5.5v.465z"/></svg>
+                    </g>
                     {/* Docs - bottom left */}
-                    <rect x="70" y="250" width="40" height="40" rx="10" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.3)" strokeWidth="1.2" />
-                    <text x="90" y="275" textAnchor="middle" fill="rgba(244,63,94,0.8)" fontSize="7" fontWeight="600">DOCS</text>
+                    <g transform="translate(66,255)">
+                      <rect width="44" height="44" rx="12" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.4)" strokeWidth="1.5" />
+                      <svg x="10" y="10" width="24" height="24" viewBox="0 0 24 24" fill="rgba(244,63,94,0.9)"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    </g>
                     {/* Teams - left */}
-                    <rect x="40" y="160" width="40" height="40" rx="10" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.3)" strokeWidth="1.2" />
-                    <text x="60" y="185" textAnchor="middle" fill="rgba(244,63,94,0.8)" fontSize="7" fontWeight="600">TEAMS</text>
+                    <g transform="translate(36,158)">
+                      <rect width="44" height="44" rx="12" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.4)" strokeWidth="1.5" />
+                      <svg x="10" y="10" width="24" height="24" viewBox="0 0 24 24" fill="rgba(244,63,94,0.9)"><path d="M16 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM12 11c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4zm7-3a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-1.8 4.36A6.9 6.9 0 0 1 20 15v3h4v-3c0-2.22-4.14-3.56-6.8-3.64z"/></svg>
+                    </g>
                     {/* Discord - top left */}
-                    <rect x="70" y="75" width="40" height="40" rx="10" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.3)" strokeWidth="1.2" />
-                    <text x="90" y="100" textAnchor="middle" fill="rgba(244,63,94,0.8)" fontSize="6" fontWeight="600">DISCORD</text>
-
-                    {/* Red pulse dots at connection points */}
-                    <circle cx="200" cy="55" r="3" fill="#f43f5e" className="why-pulse-dot" />
-                    <circle cx="310" cy="95" r="3" fill="#f43f5e" className="why-pulse-dot" style={{animationDelay:'0.4s'}} />
-                    <circle cx="340" cy="180" r="3" fill="#f43f5e" className="why-pulse-dot" style={{animationDelay:'0.8s'}} />
-                    <circle cx="310" cy="270" r="3" fill="#f43f5e" className="why-pulse-dot" style={{animationDelay:'1.2s'}} />
-                    <circle cx="90" cy="270" r="3" fill="#f43f5e" className="why-pulse-dot" style={{animationDelay:'0.6s'}} />
-                    <circle cx="60" cy="180" r="3" fill="#f43f5e" className="why-pulse-dot" style={{animationDelay:'1s'}} />
-                    <circle cx="90" cy="95" r="3" fill="#f43f5e" className="why-pulse-dot" style={{animationDelay:'0.2s'}} />
+                    <g transform="translate(66,61)">
+                      <rect width="44" height="44" rx="12" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.4)" strokeWidth="1.5" />
+                      <svg x="10" y="10" width="24" height="24" viewBox="0 0 24 24" fill="rgba(244,63,94,0.9)"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>
+                    </g>
                   </svg>
                 </div>
                 <div className="why-diagram-caption">
@@ -239,55 +263,76 @@ export default function Landing() {
                 <div className="why-diagram-label why-diagram-label-green">With RepoChat</div>
                 <div className="why-diagram-visual">
                   <svg viewBox="0 0 400 360" className="why-svg" aria-hidden="true">
-                    {/* Clean concentric rings */}
-                    <circle cx="200" cy="180" r="140" fill="none" stroke="rgba(163,230,53,0.06)" strokeWidth="1" />
-                    <circle cx="200" cy="180" r="90" fill="none" stroke="rgba(163,230,53,0.1)" strokeWidth="1" />
+                    <defs>
+                      <filter id="glowGreen" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="6" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                      </filter>
+                      <filter id="glowPurple" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="8" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                      </filter>
+                      <radialGradient id="bgGlowGreen" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stopColor="rgba(163,230,53,0.08)" />
+                        <stop offset="100%" stopColor="transparent" />
+                      </radialGradient>
+                    </defs>
 
-                    {/* Inner glow ring */}
-                    <circle cx="200" cy="180" r="55" fill="none" stroke="rgba(139,92,246,0.15)" strokeWidth="1.5" />
+                    {/* Background glow */}
+                    <circle cx="200" cy="180" r="180" fill="url(#bgGlowGreen)" />
+
+                    {/* Complex rings */}
+                    <g className="why-rings-clean">
+                      <circle cx="200" cy="180" r="140" fill="none" stroke="rgba(163,230,53,0.15)" strokeWidth="1" />
+                      <circle cx="200" cy="180" r="110" fill="none" stroke="rgba(163,230,53,0.08)" strokeWidth="1" />
+                      <circle cx="200" cy="180" r="75" fill="none" stroke="rgba(139,92,246,0.2)" strokeWidth="1.5" strokeDasharray="6 6" />
+                    </g>
 
                     {/* Center — RepoChat hub */}
-                    <circle cx="200" cy="180" r="36" fill="rgba(139,92,246,0.1)" stroke="rgba(139,92,246,0.5)" strokeWidth="2" />
-                    <circle cx="200" cy="180" r="36" fill="none" stroke="rgba(139,92,246,0.2)" strokeWidth="8" className="why-core-pulse" />
-                    <text x="200" y="175" textAnchor="middle" fill="#a78bfa" fontSize="8" fontWeight="700" letterSpacing="0.05em">REPO</text>
-                    <text x="200" y="188" textAnchor="middle" fill="#a78bfa" fontSize="8" fontWeight="700" letterSpacing="0.05em">CHAT</text>
+                    <circle cx="200" cy="180" r="40" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.6)" strokeWidth="2" filter="url(#glowPurple)" />
+                    <circle cx="200" cy="180" r="46" fill="none" stroke="rgba(139,92,246,0.3)" strokeWidth="1.5" className="why-core-pulse" />
+                    {/* RepoChat Logo */}
+                    <svg x="184" y="164" width="32" height="32" viewBox="0 0 24 24" fill="#a78bfa"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
 
-                    {/* Clean connection lines — all flow through center */}
-                    <line x1="200" y1="144" x2="200" y2="55" stroke="rgba(163,230,53,0.25)" strokeWidth="1.5" className="why-line-clean" />
-                    <line x1="228" y1="156" x2="300" y2="95" stroke="rgba(163,230,53,0.25)" strokeWidth="1.5" className="why-line-clean" style={{animationDelay:'0.3s'}} />
-                    <line x1="236" y1="180" x2="320" y2="180" stroke="rgba(163,230,53,0.25)" strokeWidth="1.5" className="why-line-clean" style={{animationDelay:'0.6s'}} />
-                    <line x1="200" y1="216" x2="200" y2="290" stroke="rgba(163,230,53,0.25)" strokeWidth="1.5" className="why-line-clean" style={{animationDelay:'0.9s'}} />
-                    <line x1="164" y1="180" x2="80" y2="180" stroke="rgba(163,230,53,0.25)" strokeWidth="1.5" className="why-line-clean" style={{animationDelay:'1.2s'}} />
-                    <line x1="172" y1="156" x2="100" y2="95" stroke="rgba(163,230,53,0.25)" strokeWidth="1.5" className="why-line-clean" style={{animationDelay:'0.2s'}} />
+                    {/* Clean connection lines */}
+                    <path d="M200,140 L200,69" stroke="rgba(163,230,53,0.4)" strokeWidth="1.5" strokeDasharray="6 4" className="why-line-clean" />
+                    <path d="M228,152 L280,105" stroke="rgba(163,230,53,0.4)" strokeWidth="1.5" strokeDasharray="6 4" className="why-line-clean" style={{animationDelay:'0.3s'}} />
+                    <path d="M240,180 L310,180" stroke="rgba(163,230,53,0.4)" strokeWidth="1.5" strokeDasharray="6 4" className="why-line-clean" style={{animationDelay:'0.6s'}} />
+                    <path d="M200,220 L200,295" stroke="rgba(163,230,53,0.4)" strokeWidth="1.5" strokeDasharray="6 4" className="why-line-clean" style={{animationDelay:'0.9s'}} />
+                    <path d="M160,180 L80,180" stroke="rgba(163,230,53,0.4)" strokeWidth="1.5" strokeDasharray="6 4" className="why-line-clean" style={{animationDelay:'1.2s'}} />
+                    <path d="M172,152 L120,105" stroke="rgba(163,230,53,0.4)" strokeWidth="1.5" strokeDasharray="6 4" className="why-line-clean" style={{animationDelay:'0.2s'}} />
 
-                    {/* Tool nodes — clean, organized */}
+                    {/* Tool nodes */}
                     {/* GitHub - top */}
-                    <rect x="180" y="35" width="40" height="40" rx="10" fill="rgba(163,230,53,0.06)" stroke="rgba(163,230,53,0.3)" strokeWidth="1.2" />
-                    <text x="200" y="60" textAnchor="middle" fill="rgba(163,230,53,0.9)" fontSize="8" fontWeight="600">GH</text>
-                    {/* PRs - top right */}
-                    <rect x="280" y="75" width="40" height="40" rx="10" fill="rgba(163,230,53,0.06)" stroke="rgba(163,230,53,0.3)" strokeWidth="1.2" />
-                    <text x="300" y="100" textAnchor="middle" fill="rgba(163,230,53,0.9)" fontSize="8" fontWeight="600">PRs</text>
-                    {/* Issues - right */}
-                    <rect x="300" y="160" width="40" height="40" rx="10" fill="rgba(163,230,53,0.06)" stroke="rgba(163,230,53,0.3)" strokeWidth="1.2" />
-                    <text x="320" y="185" textAnchor="middle" fill="rgba(163,230,53,0.9)" fontSize="7" fontWeight="600">ISSUES</text>
-                    {/* Deep Work - bottom */}
-                    <rect x="175" y="290" width="50" height="40" rx="10" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.3)" strokeWidth="1.2" />
-                    <text x="200" y="314" textAnchor="middle" fill="rgba(139,92,246,0.9)" fontSize="7" fontWeight="600">DEEP</text>
-                    <text x="200" y="324" textAnchor="middle" fill="rgba(139,92,246,0.9)" fontSize="7" fontWeight="600">WORK</text>
+                    <g transform="translate(178,25)">
+                      <rect width="44" height="44" rx="12" fill="rgba(163,230,53,0.08)" stroke="rgba(163,230,53,0.4)" strokeWidth="1.5" filter="url(#glowGreen)" />
+                      <svg x="10" y="10" width="24" height="24" viewBox="0 0 24 24" fill="#a3e635"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.699-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.293 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                    </g>
+                    {/* PRs (GitPullRequest) - top right */}
+                    <g transform="translate(280,61)">
+                      <rect width="44" height="44" rx="12" fill="rgba(163,230,53,0.08)" stroke="rgba(163,230,53,0.4)" strokeWidth="1.5" filter="url(#glowGreen)" />
+                      <svg x="10" y="10" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a3e635" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M13 6h3a2 2 0 0 1 2 2v7"></path><line x1="6" y1="9" x2="6" y2="21"></line></svg>
+                    </g>
+                    {/* Issues (AlertCircle) - right */}
+                    <g transform="translate(310,158)">
+                      <rect width="44" height="44" rx="12" fill="rgba(163,230,53,0.08)" stroke="rgba(163,230,53,0.4)" strokeWidth="1.5" filter="url(#glowGreen)" />
+                      <svg x="10" y="10" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a3e635" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    </g>
+                    {/* Deep Work (Zap) - bottom */}
+                    <g transform="translate(178,295)">
+                      <rect width="44" height="44" rx="12" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.6)" strokeWidth="1.5" filter="url(#glowPurple)" />
+                      <svg x="10" y="10" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    </g>
                     {/* Teams - left */}
-                    <rect x="60" y="160" width="40" height="40" rx="10" fill="rgba(163,230,53,0.06)" stroke="rgba(163,230,53,0.3)" strokeWidth="1.2" />
-                    <text x="80" y="185" textAnchor="middle" fill="rgba(163,230,53,0.9)" fontSize="7" fontWeight="600">TEAMS</text>
+                    <g transform="translate(36,158)">
+                      <rect width="44" height="44" rx="12" fill="rgba(163,230,53,0.08)" stroke="rgba(163,230,53,0.4)" strokeWidth="1.5" filter="url(#glowGreen)" />
+                      <svg x="10" y="10" width="24" height="24" viewBox="0 0 24 24" fill="#a3e635"><path d="M16 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM12 11c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4zm7-3a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-1.8 4.36A6.9 6.9 0 0 1 20 15v3h4v-3c0-2.22-4.14-3.56-6.8-3.64z"/></svg>
+                    </g>
                     {/* Chat - top left */}
-                    <rect x="80" y="75" width="40" height="40" rx="10" fill="rgba(163,230,53,0.06)" stroke="rgba(163,230,53,0.3)" strokeWidth="1.2" />
-                    <text x="100" y="100" textAnchor="middle" fill="rgba(163,230,53,0.9)" fontSize="8" fontWeight="600">CHAT</text>
-
-                    {/* Green glow dots at nodes */}
-                    <circle cx="200" cy="55" r="3" fill="#a3e635" className="why-glow-dot" />
-                    <circle cx="300" cy="95" r="3" fill="#a3e635" className="why-glow-dot" style={{animationDelay:'0.5s'}} />
-                    <circle cx="320" cy="180" r="3" fill="#a3e635" className="why-glow-dot" style={{animationDelay:'1s'}} />
-                    <circle cx="200" cy="290" r="3" fill="#8b5cf6" className="why-glow-dot" style={{animationDelay:'0.3s'}} />
-                    <circle cx="80" cy="180" r="3" fill="#a3e635" className="why-glow-dot" style={{animationDelay:'0.8s'}} />
-                    <circle cx="100" cy="95" r="3" fill="#a3e635" className="why-glow-dot" style={{animationDelay:'0.6s'}} />
+                    <g transform="translate(76,61)">
+                      <rect width="44" height="44" rx="12" fill="rgba(163,230,53,0.08)" stroke="rgba(163,230,53,0.4)" strokeWidth="1.5" filter="url(#glowGreen)" />
+                      <svg x="10" y="10" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a3e635" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    </g>
                   </svg>
                 </div>
                 <div className="why-diagram-caption">
