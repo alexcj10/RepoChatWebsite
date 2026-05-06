@@ -94,7 +94,41 @@ ul{list-style:none}
 /* ============================================
    NAVBAR — Floating Glass Pill
    ============================================ */
+@property --nav-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes nav-rotate {
+  from { --nav-angle: 0deg; }
+  to { --nav-angle: 360deg; }
+}
+
 .navbar{position:fixed;top:16px;left:50%;transform:translateX(-50%);width:calc(100% - 48px);max-width:780px;height:52px;z-index:100;transition:all .4s var(--ease);display:flex;align-items:center;border-radius:100px;background:rgba(17,17,19,0.6);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.06)}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--nav-angle), transparent 30%, var(--accent) 50%, transparent 70%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: nav-rotate 3s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.navbar:hover::before,
+.navbar:active::before {
+  opacity: 1;
+}
+
 .navbar.scrolled{background:rgba(17,17,19,0.85);border-color:rgba(255,255,255,0.08);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
 .nav-inner{width:100%;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1rem;letter-spacing:-.01em;flex-shrink:0}
