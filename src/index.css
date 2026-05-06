@@ -2508,31 +2508,28 @@ button.plan-btn {
     overflow-x: auto;
   }
   .ecosystem-wrapper {
-    zoom: 0.85;
-    /* Fallback for Firefox if needed */
-    -moz-transform: scale(0.85);
-    -moz-transform-origin: center center;
-    transform: scale(0.85);
-    transform-origin: center center;
+    zoom: 0.9;
   }
 }
 
 @media (max-width: 1000px) {
   .ecosystem-wrapper {
-    zoom: 0.7;
-    -moz-transform: scale(0.7);
-    transform: scale(0.7);
+    zoom: 0.8;
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
   .ecosystem-panel-container {
     padding: 30px 20px;
   }
   .ecosystem-wrapper {
-    zoom: 0.55;
-    -moz-transform: scale(0.55);
-    transform: scale(0.55);
+    zoom: 0.68;
+  }
+}
+
+@media (max-width: 700px) {
+  .ecosystem-wrapper {
+    zoom: 0.58;
   }
 }
 
@@ -2545,24 +2542,24 @@ button.plan-btn {
     border-radius: 20px;
   }
   .ecosystem-wrapper {
-    zoom: 0.42;
-    -moz-transform: scale(0.42);
-    transform: scale(0.42);
+    zoom: 0.48;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
   .ecosystem-wrapper {
-    zoom: 0.32;
-    -moz-transform: scale(0.32);
-    transform: scale(0.32);
+    zoom: 0.4;
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 420px) {
   .ecosystem-wrapper {
-    zoom: 0.28;
-    -moz-transform: scale(0.28);
-    transform: scale(0.28);
+    zoom: 0.34;
+  }
+}
+
+@media (max-width: 360px) {
+  .ecosystem-wrapper {
+    zoom: 0.29;
   }
 }
