@@ -108,15 +108,9 @@ ul{list-style:none}
   .navbar{top:8px;width:calc(100% - 24px);height:48px;border-radius:16px}
   
   .navbar.menu-open {
-    border-radius: 16px 16px 0 0;
-    background: var(--bg);
-    backdrop-filter: none;
-    border-bottom: none;
-    transition: none;
-    width: 100%;
-    top: 0;
-    left: 0;
-    transform: none;
+    background: rgba(17,17,19,0.95);
+    backdrop-filter: blur(24px);
+    border-color: rgba(255,255,255,0.1);
   }
 }
 
@@ -130,16 +124,14 @@ html.nav-open-lock body {
 /* Mobile Glassmorphic Overlay */
 .mobile-menu-overlay {
   position: fixed;
-  top: 48px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background: var(--bg);
-  backdrop-filter: none;
-  border-top: none;
   display: flex;
   flex-direction: column;
-  padding: 32px 24px;
+  padding: 76px 24px 32px;
   z-index: 99;
   overscroll-behavior: none;
 }

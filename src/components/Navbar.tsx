@@ -179,8 +179,10 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
+    </nav>
+
+    {/* Mobile Menu Overlay — outside nav to avoid transform stacking context */}
+    <AnimatePresence>
         {mobileOpen && (
           <motion.div 
             className="mobile-menu-overlay"
@@ -232,7 +234,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
 
     <AuthModal isOpen={authModalOpen} onClose={() => setAuthModalOpen(false)} />
     </>
