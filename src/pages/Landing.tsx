@@ -812,9 +812,9 @@ export default function Landing() {
       <section className="section" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <ScrollReveal>
-            <div className="section-head">
+            <div className="section-head ecosystem-head">
               <div className="badge mb-6"><Zap size={12} /> Pricing</div>
-              <h2 className="h2">Simple pricing.</h2>
+              <h2 className="h2 ecosystem-h2">Simple <span className="gradient-text">pricing.</span></h2>
               <p>Start free, upgrade when you need more.</p>
             </div>
           </ScrollReveal>
