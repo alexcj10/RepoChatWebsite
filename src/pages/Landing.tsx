@@ -243,6 +243,53 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* ═══ WHY REPOCHAT ═══ */}
+      <section className="section why-section">
+        <div className="container">
+          <ScrollReveal>
+            <div className="section-head">
+              <div className="badge mb-6">The Problem</div>
+              <h2 className="h2">Dev workflows are broken.</h2>
+            </div>
+          </ScrollReveal>
+
+          <div className="why-grid">
+            <ScrollReveal>
+              <div className="why-card">
+                <div className="why-icon">
+                  <GitPullRequest size={18} />
+                </div>
+                <p className="why-statement">Developers lose hours context-switching between GitHub and Slack.</p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={1}>
+              <div className="why-card">
+                <div className="why-icon">
+                  <AlertCircle size={18} />
+                </div>
+                <p className="why-statement">Code discussions die in DMs. Context never reaches the repo.</p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={2}>
+              <div className="why-card">
+                <div className="why-icon">
+                  <Code size={18} />
+                </div>
+                <p className="why-statement">PRs and issues need triage — not another browser tab.</p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={3}>
+              <div className="why-card">
+                <div className="why-icon">
+                  <Zap size={18} />
+                </div>
+                <p className="why-statement">Teams need real-time sync, not async notifications.</p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ FEATURE ROWS ═══ */}
       <section className="section">
         <div className="container">
