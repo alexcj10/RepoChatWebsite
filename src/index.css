@@ -2501,36 +2501,41 @@ button.plan-btn {
 .node-pos-5 { top: calc(50% + 230px); left: 50%; }
 .node-pos-6 { top: calc(50% - 115px); left: calc(50% - 200px); }
 
-/* ━━━ Tablet ━━━ */
-@media (max-width: 1100px) {
+/* ━━━ Responsive Scaling (Preserving Horizontal Layout) ━━━ */
+@media (max-width: 1200px) {
   .ecosystem-panel-container {
     padding: 40px 24px;
+    overflow-x: auto;
   }
   .ecosystem-wrapper {
-    flex-direction: column;
-    gap: 36px;
-  }
-  .box-connector-left,
-  .box-connector-right {
-    display: none;
-  }
-  .ecosystem-side-box {
-    width: 100%;
-    max-width: 380px;
-    margin: 0 auto;
-  }
-  /* Horizontal pill flow for items on tablet */
-  .box-items {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .box-item {
-    flex: 0 0 auto;
+    zoom: 0.85;
+    /* Fallback for Firefox if needed */
+    -moz-transform: scale(0.85);
+    -moz-transform-origin: center center;
+    transform: scale(0.85);
+    transform-origin: center center;
   }
 }
 
-/* ━━━ Mobile ━━━ */
+@media (max-width: 1000px) {
+  .ecosystem-wrapper {
+    zoom: 0.7;
+    -moz-transform: scale(0.7);
+    transform: scale(0.7);
+  }
+}
+
+@media (max-width: 800px) {
+  .ecosystem-panel-container {
+    padding: 30px 20px;
+  }
+  .ecosystem-wrapper {
+    zoom: 0.55;
+    -moz-transform: scale(0.55);
+    transform: scale(0.55);
+  }
+}
+
 @media (max-width: 600px) {
   .ecosystem-section {
     padding: 80px 0;
@@ -2540,51 +2545,24 @@ button.plan-btn {
     border-radius: 20px;
   }
   .ecosystem-wrapper {
-    gap: 24px;
+    zoom: 0.42;
+    -moz-transform: scale(0.42);
+    transform: scale(0.42);
   }
-  /* Side boxes sit side by side horizontally */
-  .ecosystem-side-box {
-    max-width: 100%;
-    padding: 16px 14px;
-    flex-shrink: 1;
+}
+
+@media (max-width: 480px) {
+  .ecosystem-wrapper {
+    zoom: 0.32;
+    -moz-transform: scale(0.32);
+    transform: scale(0.32);
   }
-  .box-title {
-    font-size: 0.7rem;
-    margin-bottom: 12px;
+}
+
+@media (max-width: 380px) {
+  .ecosystem-wrapper {
+    zoom: 0.28;
+    -moz-transform: scale(0.28);
+    transform: scale(0.28);
   }
-  .box-items {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .box-item {
-    padding: 6px 10px;
-    font-size: 0.68rem;
-    flex: 0 0 auto;
-  }
-  /* Smaller graph */
-  .ecosystem-graph {
-    width: 280px;
-    height: 280px;
-  }
-  .ring-3 { width: 280px; height: 280px; }
-  .ring-2 { width: 195px; height: 195px; }
-  .ring-1 { width: 110px; height: 110px; }
-  .eco-core { width: 58px; height: 58px; }
-  .eco-core-inner { font-size: 0.45rem; }
-  .eco-icon { width: 30px; height: 30px; }
-  .eco-icon svg { width: 13px; height: 13px; }
-  .eco-label { font-size: 0.45rem; }
-  .inner-node, .outer-node {
-    width: 56px;
-    margin-top: -20px;
-    margin-left: -28px;
-  }
-  /* Rescale positions for 280px graph */
-  .node-pos-1 { top: calc(50% - 97px); left: 50%; }
-  .node-pos-2 { top: calc(50% + 49px); left: calc(50% + 84px); }
-  .node-pos-3 { top: calc(50% + 49px); left: calc(50% - 84px); }
-  .node-pos-4 { top: calc(50% - 70px); left: calc(50% + 121px); }
-  .node-pos-5 { top: calc(50% + 140px); left: 50%; }
-  .node-pos-6 { top: calc(50% - 70px); left: calc(50% - 121px); }
 }
