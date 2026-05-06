@@ -114,12 +114,7 @@ ul{list-style:none}
   }
 }
 
-/* Aggressive Scroll Lock */
-html.nav-open-lock,
-html.nav-open-lock body {
-  overflow: hidden !important;
-  overscroll-behavior: none !important;
-}
+
 
 /* Mobile Floating Menu Panel */
 .mobile-menu-overlay {
