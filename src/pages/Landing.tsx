@@ -47,6 +47,33 @@ export default function Landing() {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const [activeMiniFeature, setActiveMiniFeature] = useState(0)
 
+  const coreFeatures = [
+    {
+      title: 'Repo-Linked Channels',
+      desc: 'Link group chats directly to repositories for automated context syncing.',
+      img: '/rlc.png',
+      badge: 'RLC'
+    },
+    {
+      title: 'Smart Task Assignments',
+      desc: 'Assign reviewers and owners to GitHub issues and PRs directly in chat.',
+      img: '/sta.png',
+      badge: 'STA'
+    },
+    {
+      title: 'Conversation Threads',
+      desc: 'Organize discussions into focused threads to keep your main workspace clean.',
+      img: '/ctg.png',
+      badge: 'CTG'
+    },
+    {
+      title: 'GitHub Triage',
+      desc: 'Manage labels, milestones, and issue status with one-click sidebar actions.',
+      img: '/triage.png',
+      badge: 'Triage'
+    }
+  ];
+
   // Fluid ecosystem graph scaling — continuously maps container width
   // to a zoom level so the horizontal layout never overflows or jumps.
   const updateEcoScale = useCallback(() => {
@@ -500,8 +527,8 @@ export default function Landing() {
           </div>
         </div>
       </section>
-      {/* ═══ FEATURE ROWS ═══ */}
-      <section className="section">
+      {/* ═══ CORE FEATURES GRID ═══ */}
+      <section className="section features-grid-section">
         <div className="container">
           <ScrollReveal>
             <div className="section-head">
@@ -511,161 +538,21 @@ export default function Landing() {
             </div>
           </ScrollReveal>
 
-          {/* ═══ STACKING CARDS ═══ */}
-          <div className="stack-cards">
-            {/* 1: Group Chats */}
-            <ScrollReveal>
-              <div className="stack-card">
-                <div className="feature-text">
-                  <div className="badge">Team Collaboration</div>
-                  <h3 className="h3 mt-4">Group Chats & Teams</h3>
-                  <p className="body-md">Create project-specific group chats. Add team members and collaborate in real-time right next to your codebase.</p>
+          <div className="features-bento-grid">
+            {coreFeatures.map((f, i) => (
+              <ScrollReveal key={i} delay={i as 0 | 1 | 2 | 3}>
+                <div className="feature-card-bento">
+                  <div className="feature-card-image">
+                    <img src={f.img} alt={f.title} loading="lazy" />
+                    <div className="feature-card-badge">{f.badge}</div>
+                  </div>
+                  <div className="feature-card-content">
+                    <h3 className="h3">{f.title}</h3>
+                    <p className="body-md">{f.desc}</p>
+                  </div>
                 </div>
-                <div className="feature-media">
-                  <img src="/RC_group.png" alt="Group Chats" loading="lazy" decoding="async" />
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* 2: Repo-Linked Channels */}
-            <ScrollReveal>
-              <div className="stack-card reverse">
-                <div className="feature-text">
-                  <div className="badge">Repo Integration</div>
-                  <h3 className="h3 mt-4">Repo-Linked Channels</h3>
-                  <p className="body-md">Link group chats to specific repositories. Automatically context-sync your channel with the repository's activity and updates.</p>
-                </div>
-                <div className="feature-media">
-                  <img src="/RC_RLC.png" alt="Repo-Linked Channels" loading="lazy" decoding="async" />
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* 3: Attach PR Context */}
-            <ScrollReveal>
-              <div className="stack-card">
-                <div className="feature-text">
-                  <div className="badge">Context Sharing</div>
-                  <h3 className="h3 mt-4">Attach PR Context</h3>
-                  <p className="body-md">Instantly share PR details. Just click the share icon to attach the current PR or search for any PR/Issue in the repo.</p>
-                </div>
-                <div className="feature-media">
-                  <img src="/RC_share_popup.png" alt="Pull Request Context" loading="lazy" decoding="async" />
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* 4: Conversation Threads */}
-            <ScrollReveal>
-              <div className="stack-card reverse">
-                <div className="feature-text">
-                  <div className="badge">Threaded Chats</div>
-                  <h3 className="h3 mt-4">Conversation Threads</h3>
-                  <p className="body-md">Keep discussions organized. Start threaded conversations directly on PR and Issue context cards to keep main chats clutter-free.</p>
-                </div>
-                <div className="feature-media">
-                  <img src="/RC_CTG.png" alt="Conversation Threads" loading="lazy" decoding="async" />
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* 5: Smart Triage */}
-            <ScrollReveal>
-              <div className="stack-card">
-                <div className="feature-text">
-                  <div className="badge">Smart Triage</div>
-                  <h3 className="h3 mt-4">Smart GitHub Triage</h3>
-                  <p className="body-md">Manage issues without leaving your chat. Add labels, assign developers, and close issues with a single click in the sidebar.</p>
-                </div>
-                <div className="feature-media">
-                  <img src="/RC_triage.png" alt="Smart Triage" loading="lazy" decoding="async" />
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* 6: Smart Task Assignments */}
-            <ScrollReveal>
-              <div className="stack-card reverse">
-                <div className="feature-text">
-                  <div className="badge">Task Management</div>
-                  <h3 className="h3 mt-4">Smart Task Assignments</h3>
-                  <p className="body-md">Assign reviewers to PRs or owners to Issues directly in chat. Track task status from pending to resolved without context switching.</p>
-                </div>
-                <div className="feature-media">
-                  <img src="/RC_STA.png" alt="Smart Task Assignments" loading="lazy" decoding="async" />
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* 7: Comment on GitHub */}
-            <ScrollReveal>
-              <div className="stack-card">
-                <div className="feature-text">
-                  <div className="badge">Comment on GitHub</div>
-                  <h3 className="h3 mt-4">Post comments from chat</h3>
-                  <p className="body-md">Write comments and post them directly to GitHub Issues. No tab switching needed.</p>
-                </div>
-                <div className="feature-media">
-                  <img src="/RC_comment.png" alt="Comment on GitHub" loading="lazy" decoding="async" />
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* 8: Shared via RepoChat */}
-            <ScrollReveal>
-              <div className="stack-card reverse">
-                <div className="feature-text">
-                  <div className="badge">Shared via RepoChat</div>
-                  <h3 className="h3 mt-4">Clear Comment Attribution</h3>
-                  <p className="body-md">Comments sync directly to GitHub PRs and Issues, featuring a "Shared via RepoChat" tag so your team knows their origin.</p>
-                </div>
-                <div className="feature-media">
-                  <img src="/RC_shared_via_RC.png" alt="Shared via RepoChat" loading="lazy" decoding="async" />
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* 9: Dev DNA */}
-            <ScrollReveal>
-              <div className="stack-card">
-                <div className="feature-text">
-                  <div className="badge">Developer Profile</div>
-                  <h3 className="h3 mt-4">Dev DNA & Power Stats</h3>
-                  <p className="body-md">View any developer's tech stack, commit pulse, power stats radar chart, and earned badges — all in one beautiful profile card.</p>
-                </div>
-                <div className="feature-media">
-                  <img src="/RC_Dev_DNA.png" alt="Dev DNA & Power Stats" loading="lazy" decoding="async" />
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* 10: GitHub Profiles */}
-            <ScrollReveal>
-              <div className="stack-card reverse">
-                <div className="feature-text">
-                  <div className="badge">GitHub Profiles</div>
-                  <h3 className="h3 mt-4">View GitHub Profiles</h3>
-                  <p className="body-md">Instantly view your own or any group member's GitHub profile details and profile picture directly within the chat interface.</p>
-                </div>
-                <div className="feature-media">
-                  <img src="/RC_github.png" alt="GitHub Profiles" loading="lazy" decoding="async" />
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* 11: Pad */}
-            <ScrollReveal>
-              <div className="stack-card">
-                <div className="feature-text">
-                  <div className="badge">Built-in Notepad</div>
-                  <h3 className="h3 mt-4">Pad — Notes & Tasks</h3>
-                  <p className="body-md">Quick notes, code snippets, and task tracking with completion progress. Pro users get cloud sync.</p>
-                </div>
-                <div className="feature-media">
-                  <img src="/RC_pad.png" alt="Notes & Tasks" loading="lazy" decoding="async" />
-                </div>
-              </div>
-            </ScrollReveal>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
