@@ -115,91 +115,93 @@ export default function Landing() {
             </div>
           </ScrollReveal>
 
-          <div className="ecosystem-wrapper">
-            
-            {/* Left Context Box */}
-            <ScrollReveal>
-              <div className="ecosystem-side-box left-box">
-                <div className="box-title">GITHUB CONTEXT</div>
-                <div className="box-items">
-                  <div className="box-item">PULL REQUESTS</div>
-                  <div className="box-item">CODE SNIPPETS</div>
-                  <div className="box-item">ISSUE TRACKING</div>
-                  <div className="box-item">COMMIT HISTORY</div>
-                  <div className="box-item">CI/CD STATUS</div>
-                  <div className="box-item">CODE REVIEWS</div>
-                </div>
-                <div className="box-connector-left">
-                  <div className="connector-dot-orange">!</div>
-                  <div className="connector-line-orange"></div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Central Graph */}
-            <ScrollReveal delay={0.2}>
-              <div className="ecosystem-graph">
-                {/* Concentric Rings */}
-                <div className="ring ring-3"></div>
-                <div className="ring ring-2"></div>
-                <div className="ring ring-1">
-                  <div className="ring-glow"></div>
-                </div>
-
-                {/* Nodes - Inner */}
-                <div className="eco-node inner-node node-pos-1">
-                  <div className="eco-icon"><GitPullRequest size={20} /></div>
-                  <div className="eco-label">PR REVIEWS</div>
-                </div>
-                <div className="eco-node inner-node node-pos-2">
-                  <div className="eco-icon"><AlertCircle size={20} /></div>
-                  <div className="eco-label">SMART TRIAGE</div>
-                </div>
-                <div className="eco-node inner-node node-pos-3">
-                  <div className="eco-icon"><Users size={20} /></div>
-                  <div className="eco-label">TEAM CHAT</div>
-                </div>
-
-                {/* Nodes - Outer */}
-                <div className="eco-node outer-node node-pos-4">
-                  <div className="eco-icon"><Cpu size={20} /></div>
-                  <div className="eco-label">AI INSIGHTS</div>
-                </div>
-                <div className="eco-node outer-node node-pos-5">
-                  <div className="eco-icon"><Code size={20} /></div>
-                  <div className="eco-label">CODE CONTEXT</div>
-                </div>
-                <div className="eco-node outer-node node-pos-6">
-                  <div className="eco-icon"><Network size={20} /></div>
-                  <div className="eco-label">TASK LINKING</div>
-                </div>
-
-                {/* Center Core */}
-                <div className="eco-core">
-                  <div className="eco-core-inner">
-                    REAL TIME<br/>REPO GRAPH
+          <div className="ecosystem-panel-container">
+            <div className="ecosystem-wrapper">
+              
+              {/* Left Context Box */}
+              <ScrollReveal>
+                <div className="ecosystem-side-box left-box">
+                  <div className="box-title">Github Context</div>
+                  <div className="box-items">
+                    <div className="box-item">Pull Requests</div>
+                    <div className="box-item">Code Snippets</div>
+                    <div className="box-item">Issue Tracking</div>
+                    <div className="box-item">Commit History</div>
+                    <div className="box-item">File Changes</div>
+                    <div className="box-item">Code Context</div>
+                  </div>
+                  <div className="box-connector-left">
+                    <div className="connector-dot-orange">!</div>
+                    <div className="connector-line-orange"></div>
                   </div>
                 </div>
-              </div>
-            </ScrollReveal>
+              </ScrollReveal>
 
-            {/* Right Context Box */}
-            <ScrollReveal delay={0.4}>
-              <div className="ecosystem-side-box right-box">
-                <div className="box-title blue">INTEGRATIONS</div>
-                <div className="box-items blue-items">
-                  <div className="box-item">GITHUB API</div>
-                  <div className="box-item">WEBHOOKS</div>
-                  <div className="box-item">VS CODE</div>
-                  <div className="box-item">SLACK SYNC</div>
-                </div>
-                <div className="box-connector-right">
-                  <div className="connector-line-blue"></div>
-                  <div className="connector-dot-blue"></div>
-                </div>
-              </div>
-            </ScrollReveal>
+              {/* Central Graph */}
+              <ScrollReveal delay={0.2}>
+                <div className="ecosystem-graph">
+                  {/* Concentric Rings */}
+                  <div className="ring ring-3"></div>
+                  <div className="ring ring-2"></div>
+                  <div className="ring ring-1">
+                    <div className="ring-glow"></div>
+                  </div>
 
+                  {/* Nodes - Inner */}
+                  <div className="eco-node inner-node node-pos-1">
+                    <div className="eco-icon"><GitPullRequest size={20} /></div>
+                    <div className="eco-label">Pr Context</div>
+                  </div>
+                  <div className="eco-node inner-node node-pos-2">
+                    <div className="eco-icon"><AlertCircle size={20} /></div>
+                    <div className="eco-label">Smart Triage</div>
+                  </div>
+                  <div className="eco-node inner-node node-pos-3">
+                    <div className="eco-icon"><Users size={20} /></div>
+                    <div className="eco-label">Team Groups</div>
+                  </div>
+
+                  {/* Nodes - Outer */}
+                  <div className="eco-node outer-node node-pos-4">
+                    <div className="eco-icon"><Cpu size={20} /></div>
+                    <div className="eco-label">Dev Dna</div>
+                  </div>
+                  <div className="eco-node outer-node node-pos-5">
+                    <div className="eco-icon"><Code size={20} /></div>
+                    <div className="eco-label">Repo Channels</div>
+                  </div>
+                  <div className="eco-node outer-node node-pos-6">
+                    <div className="eco-icon"><Network size={20} /></div>
+                    <div className="eco-label">Task Linking</div>
+                  </div>
+
+                  {/* Center Core */}
+                  <div className="eco-core">
+                    <div className="eco-core-inner">
+                      Real Time<br/>Repo Graph
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* Right Context Box */}
+              <ScrollReveal delay={0.4}>
+                <div className="ecosystem-side-box right-box">
+                  <div className="box-title blue">Integrations</div>
+                  <div className="box-items blue-items">
+                    <div className="box-item">Chrome Extension</div>
+                    <div className="box-item">Web App</div>
+                    <div className="box-item">Github Api</div>
+                    <div className="box-item">Real-Time Sync</div>
+                  </div>
+                  <div className="box-connector-right">
+                    <div className="connector-line-blue"></div>
+                    <div className="connector-dot-blue"></div>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+            </div>
           </div>
         </div>
       </section>
