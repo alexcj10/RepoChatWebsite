@@ -368,7 +368,7 @@ html.nav-open-lock body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
-  margin-top: 48px;
+  margin-top: 24px; /* Reduced from 48px */
 }
 
 .feature-card-bento {
@@ -401,7 +401,7 @@ html.nav-open-lock body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center; /* Focus on the header and top content of the mockups */
+  object-position: center 35%; /* Shifted up to 35% */
   transition: transform 0.6s var(--ease);
 }
 
