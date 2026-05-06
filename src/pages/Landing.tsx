@@ -531,9 +531,9 @@ export default function Landing() {
       <section className="section features-grid-section">
         <div className="container">
           <ScrollReveal>
-            <div className="section-head">
+            <div className="section-head ecosystem-head">
               <div className="badge mb-6"><Zap size={12} /> Core Features</div>
-              <h2 className="h2">Your entire workflow,<br />in one sidebar.</h2>
+              <h2 className="h2 ecosystem-h2">Your entire workflow,<br />in <span className="gradient-text">one sidebar.</span></h2>
               <p>Eliminate context switching. Chat with your team, manage GitHub issues, and share code context—all without leaving the repository.</p>
             </div>
           </ScrollReveal>
