@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
 import FAQ from '../components/FAQ'
-import Earth3D from '../components/Earth3D'
+
 
 const comparisonRows = [
   { feature: 'Friends', free: '15', pro: 'Unlimited' },
@@ -244,76 +244,8 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ═══ THE CONTEXT TAX — 3D EARTH WITH STATS ═══ */}
-      <section className="section tax-section">
-        <div className="container">
-          <ScrollReveal>
-            <div className="section-head">
-              <div className="badge mb-6">The Context Crisis</div>
-              <h2 className="h2">Context switching costs<br/><span className="gradient-text">more than you think.</span></h2>
-              <p>Developers lose hours daily to fragmented workflows. The data speaks for itself.</p>
-            </div>
-          </ScrollReveal>
 
-          {/* ── 3D Earth with floating stats ── */}
-          <ScrollReveal>
-            <Earth3D />
-          </ScrollReveal>
 
-          {/* ── Before / After — Responsive Redesign ── */}
-          <ScrollReveal>
-            <div className="workflow-comparison">
-              {/* WITHOUT panel */}
-              <div className="workflow-panel workflow-panel-without">
-                <div className="workflow-panel-header">
-                  <div className="workflow-indicator workflow-indicator-red" />
-                  <h4 className="workflow-panel-title">Without RepoChat</h4>
-                </div>
-                <div className="workflow-timeline">
-                  <div className="wf-block wf-github"><span>GitHub</span></div>
-                  <div className="wf-block wf-slack"><span>Slack</span></div>
-                  <div className="wf-block wf-jira"><span>Jira</span></div>
-                  <div className="wf-block wf-github"><span>GitHub</span></div>
-                  <div className="wf-block wf-email"><span>Email</span></div>
-                  <div className="wf-block wf-slack"><span>Slack</span></div>
-                  <div className="wf-block wf-github"><span>GitHub</span></div>
-                  <div className="wf-block wf-notion"><span>Notion</span></div>
-                </div>
-                <div className="workflow-meta">
-                  <span className="workflow-switches">8+ switches</span>
-                  <span className="workflow-desc">fragmented attention · context lost</span>
-                </div>
-              </div>
-
-              {/* Divider */}
-              <div className="workflow-divider">
-                <div className="workflow-divider-line" />
-                <span className="workflow-divider-label">vs</span>
-                <div className="workflow-divider-line" />
-              </div>
-
-              {/* WITH panel */}
-              <div className="workflow-panel workflow-panel-with">
-                <div className="workflow-panel-header">
-                  <div className="workflow-indicator workflow-indicator-green" />
-                  <h4 className="workflow-panel-title">With RepoChat</h4>
-                </div>
-                <div className="workflow-timeline">
-                  <div className="wf-block wf-rc"><span>RepoChat</span></div>
-                  <div className="wf-block wf-deep"><span>Deep Work</span></div>
-                  <div className="wf-block wf-rc"><span>RepoChat</span></div>
-                  <div className="wf-block wf-deep"><span>Deep Work</span></div>
-                </div>
-                <div className="workflow-meta">
-                  <span className="workflow-switches workflow-switches-green">2 switches</span>
-                  <span className="workflow-desc">focused flow · context preserved</span>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-
-        </div>
-      </section>
 
       {/* ═══ FEATURE ROWS ═══ */}
       <section className="section">
