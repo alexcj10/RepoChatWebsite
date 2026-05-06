@@ -53,8 +53,8 @@ export default function Landing() {
     const wrapper = wrapperRef.current;
     if (!panel || !wrapper) return;
 
-    // The natural (unscaled) width the wrapper needs at zoom 1
-    const BASE_WIDTH = 920; // side-box(240) + gap(48) + graph(460) + gap(48) + side-box(240) - some overlap from connectors
+    // The natural (unscaled) width the wrapper needs at zoom 1 (includes breathing room)
+    const BASE_WIDTH = 1100; // wrapper content (~1036px) + comfortable inner padding on both sides
     // Available width inside the panel (minus padding)
     const style = getComputedStyle(panel);
     const padL = parseFloat(style.paddingLeft) || 0;
