@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { ArrowRight, Shield, Zap, Check, X, Sparkles } from 'lucide-react'
+import { ArrowRight, Shield, Zap, Check, X, Sparkles, GitPullRequest, AlertCircle, Users, Code, Network, Cpu } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
@@ -98,6 +98,110 @@ export default function Landing() {
         <motion.div className="hero-mockup" style={{ scale: mockupScale, opacity: mockupOpacity, width: 'calc(100% - 48px)' }}>
           <img src="/RC_main_UI.png" alt="RepoChat — Main UI" fetchPriority="high" decoding="async" />
         </motion.div>
+      </section>
+
+      {/* ═══ ECOSYSTEM GRAPH ═══ */}
+      <section className="section ecosystem-section">
+        <div className="container">
+          <ScrollReveal>
+            <div className="section-head ecosystem-head">
+              <div className="ecosystem-badge">THE PLATFORM</div>
+              <h2 className="h2 ecosystem-h2">
+                The AI-Native Developer Workspace
+              </h2>
+              <p className="body-lg ecosystem-p">
+                RepoChat bridges the gap between your codebase and your team. Stop context-switching between GitHub and Slack. Centralize discussions, PRs, and task triage directly where the code lives.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="ecosystem-wrapper">
+            
+            {/* Left Context Box */}
+            <ScrollReveal>
+              <div className="ecosystem-side-box left-box">
+                <div className="box-title">GITHUB CONTEXT</div>
+                <div className="box-items">
+                  <div className="box-item">PULL REQUESTS</div>
+                  <div className="box-item">CODE SNIPPETS</div>
+                  <div className="box-item">ISSUE TRACKING</div>
+                  <div className="box-item">COMMIT HISTORY</div>
+                  <div className="box-item">CI/CD STATUS</div>
+                  <div className="box-item">CODE REVIEWS</div>
+                </div>
+                <div className="box-connector-left">
+                  <div className="connector-dot-orange">!</div>
+                  <div className="connector-line-orange"></div>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Central Graph */}
+            <ScrollReveal delay={0.2}>
+              <div className="ecosystem-graph">
+                {/* Concentric Rings */}
+                <div className="ring ring-3"></div>
+                <div className="ring ring-2"></div>
+                <div className="ring ring-1">
+                  <div className="ring-glow"></div>
+                </div>
+
+                {/* Nodes - Inner */}
+                <div className="eco-node inner-node node-pos-1">
+                  <div className="eco-icon"><GitPullRequest size={20} /></div>
+                  <div className="eco-label">PR REVIEWS</div>
+                </div>
+                <div className="eco-node inner-node node-pos-2">
+                  <div className="eco-icon"><AlertCircle size={20} /></div>
+                  <div className="eco-label">SMART TRIAGE</div>
+                </div>
+                <div className="eco-node inner-node node-pos-3">
+                  <div className="eco-icon"><Users size={20} /></div>
+                  <div className="eco-label">TEAM CHAT</div>
+                </div>
+
+                {/* Nodes - Outer */}
+                <div className="eco-node outer-node node-pos-4">
+                  <div className="eco-icon"><Cpu size={20} /></div>
+                  <div className="eco-label">AI INSIGHTS</div>
+                </div>
+                <div className="eco-node outer-node node-pos-5">
+                  <div className="eco-icon"><Code size={20} /></div>
+                  <div className="eco-label">CODE CONTEXT</div>
+                </div>
+                <div className="eco-node outer-node node-pos-6">
+                  <div className="eco-icon"><Network size={20} /></div>
+                  <div className="eco-label">TASK LINKING</div>
+                </div>
+
+                {/* Center Core */}
+                <div className="eco-core">
+                  <div className="eco-core-inner">
+                    REAL TIME<br/>REPO GRAPH
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Right Context Box */}
+            <ScrollReveal delay={0.4}>
+              <div className="ecosystem-side-box right-box">
+                <div className="box-title blue">INTEGRATIONS</div>
+                <div className="box-items blue-items">
+                  <div className="box-item">GITHUB API</div>
+                  <div className="box-item">WEBHOOKS</div>
+                  <div className="box-item">VS CODE</div>
+                  <div className="box-item">SLACK SYNC</div>
+                </div>
+                <div className="box-connector-right">
+                  <div className="connector-line-blue"></div>
+                  <div className="connector-dot-blue"></div>
+                </div>
+              </div>
+            </ScrollReveal>
+
+          </div>
+        </div>
       </section>
 
       {/* ═══ FEATURE ROWS ═══ */}
