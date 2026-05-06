@@ -2501,35 +2501,20 @@ button.plan-btn {
 .node-pos-5 { top: calc(50% + 230px); left: 50%; }
 .node-pos-6 { top: calc(50% - 115px); left: calc(50% - 200px); }
 
-/* ━━━ Responsive Scaling (Preserving Horizontal Layout) ━━━ */
+/* ━━━ Responsive Container (JS handles fluid zoom scaling) ━━━ */
+.ecosystem-panel-container {
+  overflow: hidden; /* Prevent any scrollbars during resize */
+}
+
 @media (max-width: 1200px) {
   .ecosystem-panel-container {
     padding: 40px 24px;
-    overflow-x: auto;
-  }
-  .ecosystem-wrapper {
-    zoom: 0.9;
   }
 }
 
-@media (max-width: 1000px) {
-  .ecosystem-wrapper {
-    zoom: 0.8;
-  }
-}
-
-@media (max-width: 850px) {
+@media (max-width: 800px) {
   .ecosystem-panel-container {
-    padding: 30px 20px;
-  }
-  .ecosystem-wrapper {
-    zoom: 0.68;
-  }
-}
-
-@media (max-width: 700px) {
-  .ecosystem-wrapper {
-    zoom: 0.58;
+    padding: 30px 16px;
   }
 }
 
@@ -2538,28 +2523,7 @@ button.plan-btn {
     padding: 80px 0;
   }
   .ecosystem-panel-container {
-    padding: 24px 16px;
+    padding: 24px 12px;
     border-radius: 20px;
-  }
-  .ecosystem-wrapper {
-    zoom: 0.48;
-  }
-}
-
-@media (max-width: 500px) {
-  .ecosystem-wrapper {
-    zoom: 0.4;
-  }
-}
-
-@media (max-width: 420px) {
-  .ecosystem-wrapper {
-    zoom: 0.34;
-  }
-}
-
-@media (max-width: 360px) {
-  .ecosystem-wrapper {
-    zoom: 0.29;
   }
 }

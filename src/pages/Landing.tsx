@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect, useCallback } from 'react'
 import { ArrowRight, Shield, Zap, Check, X, Sparkles, GitPullRequest, AlertCircle, Users, Code, Network, Cpu } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
@@ -42,7 +42,44 @@ function CellValue({ value }: { value: string | boolean }) {
 
 export default function Landing() {
   const heroRef = useRef<HTMLDivElement>(null)
+  const panelRef = useRef<HTMLDivElement>(null)
+  const wrapperRef = useRef<HTMLDivElement>(null)
   const [activeMiniFeature, setActiveMiniFeature] = useState(0)
+
+  // Fluid ecosystem graph scaling — continuously maps container width
+  // to a zoom level so the horizontal layout never overflows or jumps.
+  const updateEcoScale = useCallback(() => {
+    const panel = panelRef.current;
+    const wrapper = wrapperRef.current;
+    if (!panel || !wrapper) return;
+
+    // The natural (unscaled) width the wrapper needs at zoom 1
+    const BASE_WIDTH = 920; // side-box(240) + gap(48) + graph(460) + gap(48) + side-box(240) - some overlap from connectors
+    // Available width inside the panel (minus padding)
+    const style = getComputedStyle(panel);
+    const padL = parseFloat(style.paddingLeft) || 0;
+    const padR = parseFloat(style.paddingRight) || 0;
+    const available = panel.clientWidth - padL - padR;
+
+    if (available >= BASE_WIDTH) {
+      wrapper.style.zoom = '1';
+    } else {
+      const scale = Math.max(available / BASE_WIDTH, 0.25);
+      wrapper.style.zoom = scale.toString();
+    }
+  }, []);
+
+  useEffect(() => {
+    updateEcoScale();
+    window.addEventListener('resize', updateEcoScale);
+    // Also observe the panel in case its own width changes (e.g. container queries)
+    const ro = new ResizeObserver(updateEcoScale);
+    if (panelRef.current) ro.observe(panelRef.current);
+    return () => {
+      window.removeEventListener('resize', updateEcoScale);
+      ro.disconnect();
+    };
+  }, [updateEcoScale]);
   
   const { scrollYProgress: heroProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
   const mockupScale = useTransform(heroProgress, [0, 1], [1, .9])
@@ -115,8 +152,8 @@ export default function Landing() {
             </div>
           </ScrollReveal>
 
-          <div className="ecosystem-panel-container">
-            <div className="ecosystem-wrapper">
+          <div className="ecosystem-panel-container" ref={panelRef}>
+            <div className="ecosystem-wrapper" ref={wrapperRef}>
               
               {/* Left Context Box */}
               <ScrollReveal>
