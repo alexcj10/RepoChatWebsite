@@ -41,7 +41,152 @@ function CellValue({ value }: { value: string | boolean }) {
   return <span className="pricing-cell-text">{value}</span>
 }
 
+const FeatureVisualRepoBot = () => (
+  <div className="feature-visual-container">
+    <svg viewBox="0 0 600 400" className="w-full h-full" style={{ width: '100%', height: '100%', minHeight: '400px' }}>
+      <defs>
+        <radialGradient id="botGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="rgba(16, 185, 129, 0.15)" />
+          <stop offset="100%" stopColor="rgba(16, 185, 129, 0)" />
+        </radialGradient>
+      </defs>
+      <rect width="600" height="400" fill="url(#botGlow)" />
+      
+      <rect x="50" y="80" width="500" height="48" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+      <circle cx="80" cy="104" r="8" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" />
+      <text x="105" y="109" fill="rgba(255,255,255,0.4)" fontSize="14" fontFamily="Inter, sans-serif">owner/repo or paste GitHub URL...</text>
+
+      <g transform="translate(50, 150)">
+        <rect width="240" height="40" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+        <path d="M15,10 L10,20 L15,20 L13,30 L25,15 L17,15 Z" fill="none" stroke="#10b981" strokeWidth="1.5" transform="scale(0.6) translate(10, 5)" />
+        <text x="45" y="25" fill="#fff" fontSize="14" fontFamily="Inter, sans-serif" fontWeight="500">Quick</text>
+      </g>
+      <g transform="translate(310, 150)">
+        <rect width="240" height="40" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+        <rect x="15" y="12" width="14" height="16" rx="2" fill="none" stroke="#60a5fa" strokeWidth="1.5" />
+        <line x1="22" y1="12" x2="22" y2="28" stroke="#60a5fa" strokeWidth="1.5" />
+        <text x="45" y="25" fill="#fff" fontSize="14" fontFamily="Inter, sans-serif" fontWeight="500">Detailed</text>
+      </g>
+      <g transform="translate(50, 205)">
+        <rect width="240" height="40" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+        <circle cx="22" cy="20" r="7" fill="none" stroke="#f43f5e" strokeWidth="1.5" />
+        <path d="M19,18 Q22,23 25,18" fill="none" stroke="#f43f5e" strokeWidth="1.5" />
+        <text x="45" y="25" fill="#fff" fontSize="14" fontFamily="Inter, sans-serif" fontWeight="500">ELI5</text>
+      </g>
+      <g transform="translate(310, 205)">
+        <rect width="240" height="40" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+        <rect x="18" y="12" width="8" height="16" rx="1" fill="none" stroke="#a78bfa" strokeWidth="1.5" />
+        <rect x="14" y="20" width="16" height="8" rx="1" fill="none" stroke="#a78bfa" strokeWidth="1.5" />
+        <text x="45" y="25" fill="#fff" fontSize="14" fontFamily="Inter, sans-serif" fontWeight="500">Architecture</text>
+      </g>
+
+      <g transform="translate(300, 310)">
+        <rect x="-20" y="-15" width="40" height="30" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" />
+        <circle cx="-8" cy="-5" r="3" fill="#fff" />
+        <circle cx="8" cy="-5" r="3" fill="#fff" />
+        <path d="M-6,5 Q0,10 6,5" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
+        <line x1="-10" y1="-22" x2="-10" y2="-15" stroke="rgba(255,255,255,0.6)" strokeWidth="2" />
+        <circle cx="-10" cy="-24" r="2" fill="rgba(255,255,255,0.6)" />
+        <circle cx="0" cy="0" r="60" fill="none" stroke="#10b981" strokeWidth="1" opacity="0.3" className="radar-ping" />
+      </g>
+    </svg>
+  </div>
+);
+
+const FeatureVisualDevDNA = () => (
+  <div className="feature-visual-container">
+    <svg viewBox="0 0 600 400" className="w-full h-full" style={{ width: '100%', height: '100%', minHeight: '400px' }}>
+      <defs>
+        <radialGradient id="dnaGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="rgba(167, 139, 250, 0.15)" />
+          <stop offset="100%" stopColor="rgba(167, 139, 250, 0)" />
+        </radialGradient>
+      </defs>
+      <rect width="600" height="400" fill="url(#dnaGlow)" />
+
+      <g transform="translate(300, 200)">
+        {[1, 0.75, 0.5, 0.25].map((scale, i) => (
+          <polygon 
+            key={i}
+            points="0,-120 114,-37 70,100 -70,100 -114,-37" 
+            fill="none" 
+            stroke="rgba(255,255,255,0.05)" 
+            strokeWidth="1"
+            transform={`scale(${scale})`}
+          />
+        ))}
+        <line x1="0" y1="0" x2="0" y2="-120" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+        <line x1="0" y1="0" x2="114" y2="-37" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+        <line x1="0" y1="0" x2="70" y2="100" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+        <line x1="0" y1="0" x2="-70" y2="100" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+        <line x1="0" y1="0" x2="-114" y2="-37" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+
+        <text x="0" y="-135" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" textAnchor="middle">speed</text>
+        <text x="130" y="-45" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" textAnchor="start">impact</text>
+        <text x="80" y="120" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" textAnchor="middle">oss</text>
+        <text x="-80" y="120" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" textAnchor="middle">diverse</text>
+        <text x="-130" y="-45" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" textAnchor="end">active</text>
+
+        <polygon 
+          points="0,-80 70,-10 30,70 -40,50 -60,-20" 
+          fill="rgba(167, 139, 250, 0.2)" 
+          stroke="#a78bfa" 
+          strokeWidth="2"
+          className="dna-polygon"
+        />
+        <circle cx="0" cy="-80" r="4" fill="#a78bfa" className="dna-point" />
+        <circle cx="70" cy="-10" r="4" fill="#a78bfa" className="dna-point" style={{animationDelay: '0.2s'}} />
+        <circle cx="30" cy="70" r="4" fill="#a78bfa" className="dna-point" style={{animationDelay: '0.4s'}} />
+        <circle cx="-40" cy="50" r="4" fill="#a78bfa" className="dna-point" style={{animationDelay: '0.6s'}} />
+        <circle cx="-60" cy="-20" r="4" fill="#a78bfa" className="dna-point" style={{animationDelay: '0.8s'}} />
+      </g>
+    </svg>
+  </div>
+);
+
+const FeatureVisualRLC = () => (
+  <div className="feature-visual-container">
+    <svg viewBox="0 0 600 400" className="w-full h-full" style={{ width: '100%', height: '100%', minHeight: '400px' }}>
+      <defs>
+        <radialGradient id="rlcGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="rgba(56, 189, 248, 0.15)" />
+          <stop offset="100%" stopColor="rgba(56, 189, 248, 0)" />
+        </radialGradient>
+      </defs>
+      <rect width="600" height="400" fill="url(#rlcGlow)" />
+
+      <path d="M 150 200 C 250 200, 350 120, 450 120" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="2" />
+      <path d="M 150 200 C 250 200, 350 280, 450 280" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="2" />
+      
+      <path d="M 150 200 C 250 200, 350 120, 450 120" fill="none" stroke="#38bdf8" strokeWidth="2" strokeDasharray="8 8" className="flow-line-rlc-1" />
+      <path d="M 150 200 C 250 200, 350 280, 450 280" fill="none" stroke="#a78bfa" strokeWidth="2" strokeDasharray="8 8" className="flow-line-rlc-2" />
+
+      <g transform="translate(150, 200)">
+        <circle cx="0" cy="0" r="36" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+        <svg x="-16" y="-16" width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.699-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.293 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        <text x="0" y="55" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" textAnchor="middle">Linked Repo</text>
+      </g>
+
+      <g transform="translate(450, 120)">
+        <circle cx="0" cy="0" r="32" fill="rgba(56, 189, 248, 0.1)" stroke="#38bdf8" strokeWidth="1.5" />
+        <svg x="-12" y="-12" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M13 6h3a2 2 0 0 1 2 2v7"></path><line x1="6" y1="9" x2="6" y2="21"></line></svg>
+        <text x="0" y="50" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" textAnchor="middle">Pull Requests</text>
+      </g>
+
+      <g transform="translate(450, 280)">
+        <circle cx="0" cy="0" r="32" fill="rgba(167, 139, 250, 0.1)" stroke="#a78bfa" strokeWidth="1.5" />
+        <svg x="-12" y="-12" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        <text x="0" y="50" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" textAnchor="middle">New Issues</text>
+      </g>
+
+      <circle cx="150" cy="200" r="4" fill="#38bdf8" className="packet-rlc-1" />
+      <circle cx="150" cy="200" r="4" fill="#a78bfa" className="packet-rlc-2" />
+    </svg>
+  </div>
+);
+
 export default function Landing() {
+  const [activeFeature, setActiveFeature] = useState(0)
   const heroRef = useRef<HTMLDivElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
@@ -501,8 +646,70 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* ═══ FEATURES DEEP DIVE ═══ */}
+      <section className="section features-section">
+        <div className="container">
+          <div className="features-layout">
+            {/* Left side: Accordion */}
+            <div className="features-accordion">
+              {/* Item 0: RepoBot */}
+              <div 
+                className={`feature-accordion-item ${activeFeature === 0 ? 'active' : ''}`}
+                onClick={() => setActiveFeature(0)}
+              >
+                <div className="feature-accordion-header">
+                  <h3 className="feature-accordion-title">RepoBot AI Assistant</h3>
+                  <div className="feature-accordion-icon">
+                    {activeFeature === 0 ? <span className="minus-icon">-</span> : <span className="plus-icon">+</span>}
+                  </div>
+                </div>
+                <div className="feature-accordion-content" style={{ display: activeFeature === 0 ? 'block' : 'none' }}>
+                  Use your own API key and choose your preferred AI model. Group your GitHub ID to activate RepoBot and pick from Quick, Detailed, ELI5, or Architecture modes to ask questions and understand any repository.
+                </div>
+              </div>
 
+              {/* Item 1: Developer DNA */}
+              <div 
+                className={`feature-accordion-item ${activeFeature === 1 ? 'active' : ''}`}
+                onClick={() => setActiveFeature(1)}
+              >
+                <div className="feature-accordion-header">
+                  <h3 className="feature-accordion-title">Developer DNA Profiles</h3>
+                  <div className="feature-accordion-icon">
+                    {activeFeature === 1 ? <span className="minus-icon">-</span> : <span className="plus-icon">+</span>}
+                  </div>
+                </div>
+                <div className="feature-accordion-content" style={{ display: activeFeature === 1 ? 'block' : 'none' }}>
+                  Automatically generate a unique DNA profile highlighting your Power Stats (Speed, Impact, OSS, Diverse, Active) and Tech DNA languages. Display your Commit Pulse, Badges, and GitHub metrics.
+                </div>
+              </div>
 
+              {/* Item 2: RLC (Repo-Linked Channels) */}
+              <div 
+                className={`feature-accordion-item ${activeFeature === 2 ? 'active' : ''}`}
+                onClick={() => setActiveFeature(2)}
+              >
+                <div className="feature-accordion-header">
+                  <h3 className="feature-accordion-title">RLC (Repo-Linked Channels)</h3>
+                  <div className="feature-accordion-icon">
+                    {activeFeature === 2 ? <span className="minus-icon">-</span> : <span className="plus-icon">+</span>}
+                  </div>
+                </div>
+                <div className="feature-accordion-content" style={{ display: activeFeature === 2 ? 'block' : 'none' }}>
+                  Link your group chat directly to a repository using RLC. Once connected, every single new issue and pull request automatically flows into your group so your team never misses an update.
+                </div>
+              </div>
+            </div>
+
+            {/* Right side: Visuals */}
+            <div className="features-visuals">
+              {activeFeature === 0 && <FeatureVisualRepoBot />}
+              {activeFeature === 1 && <FeatureVisualDevDNA />}
+              {activeFeature === 2 && <FeatureVisualRLC />}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ═══ FEATURE ROWS ═══ */}
       <section className="section">
