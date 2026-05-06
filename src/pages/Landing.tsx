@@ -42,145 +42,325 @@ function CellValue({ value }: { value: string | boolean }) {
 }
 
 const FeatureVisualRepoBot = () => (
-  <div className="feature-visual-container">
-    <svg viewBox="0 0 600 400" className="w-full h-full" style={{ width: '100%', height: '100%', minHeight: '400px' }}>
+  <div className="feature-visual-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <svg viewBox="0 0 800 600" className="w-full h-full" style={{ width: '100%', height: '100%', minHeight: '400px' }}>
       <defs>
-        <radialGradient id="botGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="rgba(16, 185, 129, 0.15)" />
+        <radialGradient id="botGlowStatic" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="rgba(16, 185, 129, 0.1)" />
           <stop offset="100%" stopColor="rgba(16, 185, 129, 0)" />
         </radialGradient>
+        <linearGradient id="panelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="rgba(30, 30, 35, 0.9)" />
+          <stop offset="100%" stopColor="rgba(20, 20, 25, 0.9)" />
+        </linearGradient>
       </defs>
-      <rect width="600" height="400" fill="url(#botGlow)" />
-      
-      <rect x="50" y="80" width="500" height="48" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-      <circle cx="80" cy="104" r="8" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" />
-      <text x="105" y="109" fill="rgba(255,255,255,0.4)" fontSize="14" fontFamily="Inter, sans-serif">owner/repo or paste GitHub URL...</text>
+      <rect width="800" height="600" fill="url(#botGlowStatic)" />
 
-      <g transform="translate(50, 150)">
-        <rect width="240" height="40" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-        <path d="M15,10 L10,20 L15,20 L13,30 L25,15 L17,15 Z" fill="none" stroke="#10b981" strokeWidth="1.5" transform="scale(0.6) translate(10, 5)" />
-        <text x="45" y="25" fill="#fff" fontSize="14" fontFamily="Inter, sans-serif" fontWeight="500">Quick</text>
-      </g>
-      <g transform="translate(310, 150)">
-        <rect width="240" height="40" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-        <rect x="15" y="12" width="14" height="16" rx="2" fill="none" stroke="#60a5fa" strokeWidth="1.5" />
-        <line x1="22" y1="12" x2="22" y2="28" stroke="#60a5fa" strokeWidth="1.5" />
-        <text x="45" y="25" fill="#fff" fontSize="14" fontFamily="Inter, sans-serif" fontWeight="500">Detailed</text>
-      </g>
-      <g transform="translate(50, 205)">
-        <rect width="240" height="40" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-        <circle cx="22" cy="20" r="7" fill="none" stroke="#f43f5e" strokeWidth="1.5" />
-        <path d="M19,18 Q22,23 25,18" fill="none" stroke="#f43f5e" strokeWidth="1.5" />
-        <text x="45" y="25" fill="#fff" fontSize="14" fontFamily="Inter, sans-serif" fontWeight="500">ELI5</text>
-      </g>
-      <g transform="translate(310, 205)">
-        <rect width="240" height="40" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-        <rect x="18" y="12" width="8" height="16" rx="1" fill="none" stroke="#a78bfa" strokeWidth="1.5" />
-        <rect x="14" y="20" width="16" height="8" rx="1" fill="none" stroke="#a78bfa" strokeWidth="1.5" />
-        <text x="45" y="25" fill="#fff" fontSize="14" fontFamily="Inter, sans-serif" fontWeight="500">Architecture</text>
-      </g>
+      {/* Main Panel Window */}
+      <g transform="translate(100, 100)">
+        <rect width="600" height="400" rx="16" fill="url(#panelGrad)" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" />
+        {/* Top Bar */}
+        <rect width="600" height="48" rx="16" fill="rgba(0,0,0,0.2)" />
+        <rect y="32" width="600" height="16" fill="rgba(0,0,0,0.2)" /> {/* Flatten bottom of top bar */}
+        <line x1="0" y1="48" x2="600" y2="48" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+        
+        {/* Window Controls */}
+        <circle cx="560" cy="24" r="6" fill="#ef4444" opacity="0.8" />
+        <circle cx="536" cy="24" r="6" fill="#eab308" opacity="0.8" />
+        <circle cx="512" cy="24" r="6" fill="#22c55e" opacity="0.8" />
 
-      <g transform="translate(300, 310)">
-        <rect x="-20" y="-15" width="40" height="30" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" />
-        <circle cx="-8" cy="-5" r="3" fill="#fff" />
-        <circle cx="8" cy="-5" r="3" fill="#fff" />
-        <path d="M-6,5 Q0,10 6,5" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
-        <line x1="-10" y1="-22" x2="-10" y2="-15" stroke="rgba(255,255,255,0.6)" strokeWidth="2" />
-        <circle cx="-10" cy="-24" r="2" fill="rgba(255,255,255,0.6)" />
-        <circle cx="0" cy="0" r="60" fill="none" stroke="#10b981" strokeWidth="1" opacity="0.3" className="radar-ping" />
+        {/* Header Text */}
+        <text x="24" y="29" fill="#fff" fontSize="16" fontFamily="Inter, sans-serif" fontWeight="600">🤖 RepoBot AI</text>
+        <svg x="460" y="16" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
+
+        {/* Input Bar */}
+        <rect x="32" y="80" width="536" height="56" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+        <circle cx="64" cy="108" r="10" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" />
+        <line x1="72" y1="116" x2="78" y2="122" stroke="rgba(255,255,255,0.4)" strokeWidth="2" strokeLinecap="round" />
+        <text x="96" y="113" fill="rgba(255,255,255,0.5)" fontSize="16" fontFamily="Inter, sans-serif">owner/repo or paste GitHub URL...</text>
+
+        {/* Pick a mode text */}
+        <text x="300" y="180" fill="rgba(255,255,255,0.4)" fontSize="14" fontFamily="Inter, sans-serif" textAnchor="middle">Pick a mode to explain this repo</text>
+
+        {/* Mode Cards */}
+        {/* Quick */}
+        <g transform="translate(32, 210)">
+          <rect width="260" height="72" rx="12" fill="rgba(16, 185, 129, 0.05)" stroke="rgba(16, 185, 129, 0.2)" strokeWidth="1.5" />
+          <path d="M20,15 L12,30 L20,30 L16,45 L36,22 L24,22 Z" fill="none" stroke="#10b981" strokeWidth="2" transform="scale(0.8) translate(10, 10)" />
+          <text x="64" y="32" fill="#fff" fontSize="16" fontFamily="Inter, sans-serif" fontWeight="600">Quick</text>
+          <text x="64" y="52" fill="rgba(255,255,255,0.5)" fontSize="12" fontFamily="Inter, sans-serif">Instant, concise answers.</text>
+        </g>
+        {/* Detailed */}
+        <g transform="translate(308, 210)">
+          <rect width="260" height="72" rx="12" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+          <rect x="20" y="20" width="16" height="20" rx="3" fill="none" stroke="#60a5fa" strokeWidth="2" />
+          <line x1="30" y1="20" x2="30" y2="40" stroke="#60a5fa" strokeWidth="2" />
+          <text x="64" y="32" fill="#fff" fontSize="16" fontFamily="Inter, sans-serif" fontWeight="600">Detailed</text>
+          <text x="64" y="52" fill="rgba(255,255,255,0.5)" fontSize="12" fontFamily="Inter, sans-serif">In-depth logic explanations.</text>
+        </g>
+        {/* ELI5 */}
+        <g transform="translate(32, 296)">
+          <rect width="260" height="72" rx="12" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+          <circle cx="28" cy="36" r="10" fill="none" stroke="#f43f5e" strokeWidth="2" />
+          <path d="M24,34 Q28,40 32,34" fill="none" stroke="#f43f5e" strokeWidth="2" />
+          <text x="64" y="32" fill="#fff" fontSize="16" fontFamily="Inter, sans-serif" fontWeight="600">ELI5</text>
+          <text x="64" y="52" fill="rgba(255,255,255,0.5)" fontSize="12" fontFamily="Inter, sans-serif">Explain it like I'm five.</text>
+        </g>
+        {/* Architecture */}
+        <g transform="translate(308, 296)">
+          <rect width="260" height="72" rx="12" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+          <rect x="24" y="20" width="12" height="24" rx="2" fill="none" stroke="#a78bfa" strokeWidth="2" />
+          <rect x="18" y="32" width="24" height="12" rx="2" fill="none" stroke="#a78bfa" strokeWidth="2" />
+          <text x="64" y="32" fill="#fff" fontSize="16" fontFamily="Inter, sans-serif" fontWeight="600">Architecture</text>
+          <text x="64" y="52" fill="rgba(255,255,255,0.5)" fontSize="12" fontFamily="Inter, sans-serif">High-level system design.</text>
+        </g>
       </g>
     </svg>
   </div>
 );
 
 const FeatureVisualDevDNA = () => (
-  <div className="feature-visual-container">
-    <svg viewBox="0 0 600 400" className="w-full h-full" style={{ width: '100%', height: '100%', minHeight: '400px' }}>
+  <div className="feature-visual-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <svg viewBox="0 0 800 600" className="w-full h-full" style={{ width: '100%', height: '100%', minHeight: '400px' }}>
       <defs>
-        <radialGradient id="dnaGlow" cx="50%" cy="50%" r="50%">
+        <radialGradient id="dnaGlowStatic" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="rgba(167, 139, 250, 0.15)" />
           <stop offset="100%" stopColor="rgba(167, 139, 250, 0)" />
         </radialGradient>
+        <linearGradient id="cardHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#10b981" />
+          <stop offset="100%" stopColor="#047857" />
+        </linearGradient>
       </defs>
-      <rect width="600" height="400" fill="url(#dnaGlow)" />
+      <rect width="800" height="600" fill="url(#dnaGlowStatic)" />
 
-      <g transform="translate(300, 200)">
-        {[1, 0.75, 0.5, 0.25].map((scale, i) => (
+      <g transform="translate(200, 50)">
+        {/* Card Background */}
+        <rect width="400" height="500" rx="16" fill="rgba(25, 25, 30, 0.95)" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" />
+        
+        {/* Card Header Banner */}
+        <rect width="400" height="80" rx="16" fill="url(#cardHeader)" />
+        <rect y="64" width="400" height="16" fill="url(#cardHeader)" />
+        
+        {/* Avatar & Info */}
+        <circle cx="64" cy="40" r="28" fill="#1e1e24" stroke="#fff" strokeWidth="3" />
+        <text x="110" y="35" fill="#fff" fontSize="20" fontFamily="Inter, sans-serif" fontWeight="700">alexcj10</text>
+        <rect x="200" y="20" width="36" height="18" rx="4" fill="#a78bfa" />
+        <text x="218" y="33" fill="#fff" fontSize="10" fontFamily="Inter, sans-serif" fontWeight="700" textAnchor="middle">PRO</text>
+        <text x="110" y="55" fill="rgba(255,255,255,0.9)" fontSize="13" fontFamily="Inter, sans-serif">🧬 polyglot engineer</text>
+        <circle cx="370" cy="40" r="12" fill="rgba(255,255,255,0.2)" />
+        <path d="M366,36 L374,44 M374,36 L366,44" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
+
+        {/* Tech DNA Bar */}
+        <text x="24" y="110" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="600">Tech DNA</text>
+        <rect x="24" y="125" width="352" height="8" rx="4" fill="rgba(255,255,255,0.1)" />
+        <rect x="24" y="125" width="220" height="8" rx="4" fill="#3b82f6" />
+        <rect x="246" y="125" width="50" height="8" rx="4" fill="#eab308" />
+        <rect x="298" y="125" width="40" height="8" rx="4" fill="#f43f5e" />
+        
+        <circle cx="30" cy="150" r="4" fill="#3b82f6" />
+        <text x="40" y="154" fill="rgba(255,255,255,0.7)" fontSize="11" fontFamily="Inter, sans-serif">TypeScript 87%</text>
+        <circle cx="150" cy="150" r="4" fill="#eab308" />
+        <text x="160" y="154" fill="rgba(255,255,255,0.7)" fontSize="11" fontFamily="Inter, sans-serif">Python 8%</text>
+        <circle cx="250" cy="150" r="4" fill="#f43f5e" />
+        <text x="260" y="154" fill="rgba(255,255,255,0.7)" fontSize="11" fontFamily="Inter, sans-serif">CSS 5%</text>
+
+        <line x1="24" y1="175" x2="376" y2="175" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+
+        {/* Radar Chart */}
+        <text x="24" y="195" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="600">Power Stats</text>
+        <g transform="translate(200, 275)">
+          {[1, 0.75, 0.5, 0.25].map((scale, i) => (
+            <polygon 
+              key={i}
+              points="0,-60 57,-18 35,50 -35,50 -57,-18" 
+              fill="none" 
+              stroke="rgba(255,255,255,0.1)" 
+              strokeWidth="1"
+              transform={`scale(${scale})`}
+            />
+          ))}
+          <line x1="0" y1="0" x2="0" y2="-60" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+          <line x1="0" y1="0" x2="57" y2="-18" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+          <line x1="0" y1="0" x2="35" y2="50" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+          <line x1="0" y1="0" x2="-35" y2="50" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+          <line x1="0" y1="0" x2="-57" y2="-18" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+
+          <text x="0" y="-70" fill="rgba(255,255,255,0.8)" fontSize="10" fontFamily="Inter, sans-serif" textAnchor="middle">speed</text>
+          <text x="65" y="-20" fill="rgba(255,255,255,0.8)" fontSize="10" fontFamily="Inter, sans-serif" textAnchor="start">impact</text>
+          <text x="45" y="60" fill="rgba(255,255,255,0.8)" fontSize="10" fontFamily="Inter, sans-serif" textAnchor="middle">oss</text>
+          <text x="-45" y="60" fill="rgba(255,255,255,0.8)" fontSize="10" fontFamily="Inter, sans-serif" textAnchor="middle">diverse</text>
+          <text x="-65" y="-20" fill="rgba(255,255,255,0.8)" fontSize="10" fontFamily="Inter, sans-serif" textAnchor="end">active</text>
+
           <polygon 
-            key={i}
-            points="0,-120 114,-37 70,100 -70,100 -114,-37" 
-            fill="none" 
-            stroke="rgba(255,255,255,0.05)" 
-            strokeWidth="1"
-            transform={`scale(${scale})`}
+            points="0,-40 35,-5 15,35 -20,25 -30,-10" 
+            fill="rgba(16, 185, 129, 0.25)" 
+            stroke="#10b981" 
+            strokeWidth="2"
           />
-        ))}
-        <line x1="0" y1="0" x2="0" y2="-120" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
-        <line x1="0" y1="0" x2="114" y2="-37" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
-        <line x1="0" y1="0" x2="70" y2="100" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
-        <line x1="0" y1="0" x2="-70" y2="100" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
-        <line x1="0" y1="0" x2="-114" y2="-37" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+          <circle cx="0" cy="-40" r="3" fill="#10b981" />
+          <circle cx="35" cy="-5" r="3" fill="#10b981" />
+          <circle cx="15" cy="35" r="3" fill="#10b981" />
+          <circle cx="-20" cy="25" r="3" fill="#10b981" />
+          <circle cx="-30" cy="-10" r="3" fill="#10b981" />
+        </g>
 
-        <text x="0" y="-135" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" textAnchor="middle">speed</text>
-        <text x="130" y="-45" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" textAnchor="start">impact</text>
-        <text x="80" y="120" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" textAnchor="middle">oss</text>
-        <text x="-80" y="120" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" textAnchor="middle">diverse</text>
-        <text x="-130" y="-45" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" textAnchor="end">active</text>
+        <line x1="24" y1="360" x2="376" y2="360" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
 
-        <polygon 
-          points="0,-80 70,-10 30,70 -40,50 -60,-20" 
-          fill="rgba(167, 139, 250, 0.2)" 
-          stroke="#a78bfa" 
-          strokeWidth="2"
-          className="dna-polygon"
-        />
-        <circle cx="0" cy="-80" r="4" fill="#a78bfa" className="dna-point" />
-        <circle cx="70" cy="-10" r="4" fill="#a78bfa" className="dna-point" style={{animationDelay: '0.2s'}} />
-        <circle cx="30" cy="70" r="4" fill="#a78bfa" className="dna-point" style={{animationDelay: '0.4s'}} />
-        <circle cx="-40" cy="50" r="4" fill="#a78bfa" className="dna-point" style={{animationDelay: '0.6s'}} />
-        <circle cx="-60" cy="-20" r="4" fill="#a78bfa" className="dna-point" style={{animationDelay: '0.8s'}} />
+        {/* Commit Pulse */}
+        <text x="24" y="380" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="600">Commit Pulse</text>
+        <g transform="translate(140, 410)">
+          <rect x="0" y="-4" width="12" height="4" rx="2" fill="rgba(16, 185, 129, 0.2)" />
+          <rect x="20" y="-8" width="12" height="8" rx="2" fill="rgba(16, 185, 129, 0.5)" />
+          <rect x="40" y="-16" width="12" height="16" rx="2" fill="#10b981" />
+          <rect x="60" y="-24" width="12" height="24" rx="2" fill="#10b981" />
+          <rect x="80" y="-4" width="12" height="4" rx="2" fill="rgba(16, 185, 129, 0.2)" />
+          <rect x="100" y="-32" width="12" height="32" rx="2" fill="#10b981" />
+          <text x="6" y="10" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="Inter, sans-serif" textAnchor="middle">T</text>
+          <text x="26" y="10" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="Inter, sans-serif" textAnchor="middle">F</text>
+          <text x="46" y="10" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="Inter, sans-serif" textAnchor="middle">S</text>
+          <text x="66" y="10" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="Inter, sans-serif" textAnchor="middle">S</text>
+          <text x="86" y="10" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="Inter, sans-serif" textAnchor="middle">M</text>
+          <text x="106" y="10" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="Inter, sans-serif" textAnchor="middle">T</text>
+        </g>
+        <rect x="280" y="380" width="96" height="24" rx="12" fill="rgba(255,255,255,0.05)" />
+        <text x="328" y="396" fill="rgba(255,255,255,0.7)" fontSize="11" fontFamily="Inter, sans-serif" textAnchor="middle">steady builder</text>
+
+        <line x1="24" y1="435" x2="376" y2="435" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+
+        {/* Bottom GitHub Stats */}
+        <g transform="translate(80, 470)">
+          <path d="M0,-5 L5,-5 L7,-10 L9,-5 L14,-5 L10,-1 L11,4 L7,1 L3,4 L4,-1 Z" fill="#eab308" />
+          <text x="7" y="15" fill="#fff" fontSize="14" fontFamily="Inter, sans-serif" fontWeight="700" textAnchor="middle">47</text>
+          <text x="7" y="28" fill="rgba(255,255,255,0.5)" fontSize="10" fontFamily="Inter, sans-serif" textAnchor="middle">Stars</text>
+        </g>
+        <g transform="translate(160, 470)">
+          <circle cx="7" cy="-8" r="2" fill="none" stroke="#60a5fa" strokeWidth="1.5" />
+          <circle cx="2" cy="0" r="2" fill="none" stroke="#60a5fa" strokeWidth="1.5" />
+          <circle cx="12" cy="0" r="2" fill="none" stroke="#60a5fa" strokeWidth="1.5" />
+          <path d="M7,-6 L7,-2 M7,-2 L2,-2 M7,-2 L12,-2" stroke="#60a5fa" strokeWidth="1.5" />
+          <text x="7" y="15" fill="#fff" fontSize="14" fontFamily="Inter, sans-serif" fontWeight="700" textAnchor="middle">15</text>
+          <text x="7" y="28" fill="rgba(255,255,255,0.5)" fontSize="10" fontFamily="Inter, sans-serif" textAnchor="middle">Forks</text>
+        </g>
+        <g transform="translate(240, 470)">
+          <circle cx="7" cy="-6" r="3" fill="none" stroke="#22c55e" strokeWidth="1.5" />
+          <path d="M2,2 Q7,-2 12,2" fill="none" stroke="#22c55e" strokeWidth="1.5" />
+          <text x="7" y="15" fill="#fff" fontSize="14" fontFamily="Inter, sans-serif" fontWeight="700" textAnchor="middle">426</text>
+          <text x="7" y="28" fill="rgba(255,255,255,0.5)" fontSize="10" fontFamily="Inter, sans-serif" textAnchor="middle">Followers</text>
+        </g>
+        <g transform="translate(320, 470)">
+          <rect x="0" y="-8" width="14" height="12" rx="2" fill="none" stroke="#a78bfa" strokeWidth="1.5" />
+          <line x1="4" y1="-10" x2="4" y2="-6" stroke="#a78bfa" strokeWidth="1.5" />
+          <line x1="10" y1="-10" x2="10" y2="-6" stroke="#a78bfa" strokeWidth="1.5" />
+          <text x="7" y="15" fill="#fff" fontSize="14" fontFamily="Inter, sans-serif" fontWeight="700" textAnchor="middle">2y</text>
+          <text x="7" y="28" fill="rgba(255,255,255,0.5)" fontSize="10" fontFamily="Inter, sans-serif" textAnchor="middle">Age</text>
+        </g>
       </g>
     </svg>
   </div>
 );
 
 const FeatureVisualRLC = () => (
-  <div className="feature-visual-container">
-    <svg viewBox="0 0 600 400" className="w-full h-full" style={{ width: '100%', height: '100%', minHeight: '400px' }}>
+  <div className="feature-visual-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <svg viewBox="0 0 800 600" className="w-full h-full" style={{ width: '100%', height: '100%', minHeight: '400px' }}>
       <defs>
-        <radialGradient id="rlcGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="rgba(56, 189, 248, 0.15)" />
+        <radialGradient id="rlcGlowStatic" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="rgba(56, 189, 248, 0.1)" />
           <stop offset="100%" stopColor="rgba(56, 189, 248, 0)" />
         </radialGradient>
       </defs>
-      <rect width="600" height="400" fill="url(#rlcGlow)" />
+      <rect width="800" height="600" fill="url(#rlcGlowStatic)" />
 
-      <path d="M 150 200 C 250 200, 350 120, 450 120" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="2" />
-      <path d="M 150 200 C 250 200, 350 280, 450 280" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="2" />
-      
-      <path d="M 150 200 C 250 200, 350 120, 450 120" fill="none" stroke="#38bdf8" strokeWidth="2" strokeDasharray="8 8" className="flow-line-rlc-1" />
-      <path d="M 150 200 C 250 200, 350 280, 450 280" fill="none" stroke="#a78bfa" strokeWidth="2" strokeDasharray="8 8" className="flow-line-rlc-2" />
+      {/* Connection Bridge (Static) */}
+      <path d="M 300 300 C 400 300, 400 300, 500 300" fill="none" stroke="rgba(56, 189, 248, 0.3)" strokeWidth="8" strokeLinecap="round" />
+      <path d="M 300 300 C 400 300, 400 300, 500 300" fill="none" stroke="#38bdf8" strokeWidth="2" strokeDasharray="6 6" />
 
-      <g transform="translate(150, 200)">
-        <circle cx="0" cy="0" r="36" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-        <svg x="-16" y="-16" width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.699-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.293 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
-        <text x="0" y="55" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" textAnchor="middle">Linked Repo</text>
+      {/* RLC Badge on bridge */}
+      <g transform="translate(400, 300)">
+        <rect x="-24" y="-12" width="48" height="24" rx="12" fill="#0f172a" stroke="#38bdf8" strokeWidth="1.5" />
+        <text x="0" y="4" fill="#38bdf8" fontSize="10" fontFamily="Inter, sans-serif" fontWeight="700" textAnchor="middle">RLC</text>
       </g>
 
-      <g transform="translate(450, 120)">
-        <circle cx="0" cy="0" r="32" fill="rgba(56, 189, 248, 0.1)" stroke="#38bdf8" strokeWidth="1.5" />
-        <svg x="-12" y="-12" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M13 6h3a2 2 0 0 1 2 2v7"></path><line x1="6" y1="9" x2="6" y2="21"></line></svg>
-        <text x="0" y="50" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" textAnchor="middle">Pull Requests</text>
+      {/* Left Side: GitHub Repo View */}
+      <g transform="translate(50, 150)">
+        <rect width="250" height="300" rx="12" fill="rgba(30, 30, 35, 0.9)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+        <rect width="250" height="40" rx="12" fill="rgba(0,0,0,0.2)" />
+        <rect y="24" width="250" height="16" fill="rgba(0,0,0,0.2)" />
+        <circle cx="20" cy="20" r="8" fill="#fff" />
+        <text x="36" y="24" fill="#fff" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="600">owner / repo</text>
+        
+        {/* Repo Tabs */}
+        <line x1="0" y1="40" x2="250" y2="40" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+        <text x="20" y="60" fill="rgba(255,255,255,0.4)" fontSize="10" fontFamily="Inter, sans-serif">Code</text>
+        <text x="65" y="60" fill="#fff" fontSize="10" fontFamily="Inter, sans-serif" fontWeight="600">Issues 2</text>
+        <line x1="60" y1="68" x2="105" y2="68" stroke="#f97316" strokeWidth="2" />
+        <text x="120" y="60" fill="rgba(255,255,255,0.4)" fontSize="10" fontFamily="Inter, sans-serif">PRs 1</text>
+        <line x1="0" y1="68" x2="250" y2="68" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+
+        {/* Issue Items */}
+        <rect x="12" y="80" width="226" height="48" rx="6" fill="rgba(255,255,255,0.03)" />
+        <circle cx="28" cy="104" r="6" fill="none" stroke="#22c55e" strokeWidth="1.5" />
+        <text x="44" y="98" fill="#fff" fontSize="11" fontFamily="Inter, sans-serif">Fix navigation bug</text>
+        <text x="44" y="114" fill="rgba(255,255,255,0.4)" fontSize="9" fontFamily="Inter, sans-serif">#45 opened 2 hours ago</text>
+
+        <rect x="12" y="136" width="226" height="48" rx="6" fill="rgba(255,255,255,0.03)" />
+        <circle cx="28" cy="160" r="6" fill="none" stroke="#22c55e" strokeWidth="1.5" />
+        <text x="44" y="154" fill="#fff" fontSize="11" fontFamily="Inter, sans-serif">Add dark mode</text>
+        <text x="44" y="170" fill="rgba(255,255,255,0.4)" fontSize="9" fontFamily="Inter, sans-serif">#46 opened 1 hour ago</text>
+
+        <rect x="12" y="192" width="226" height="48" rx="6" fill="rgba(255,255,255,0.03)" />
+        <circle cx="28" cy="216" r="6" fill="none" stroke="#a78bfa" strokeWidth="1.5" />
+        <path d="M28,210 L28,222" stroke="#a78bfa" strokeWidth="1.5" />
+        <text x="44" y="210" fill="#fff" fontSize="11" fontFamily="Inter, sans-serif">Update API routes</text>
+        <text x="44" y="226" fill="rgba(255,255,255,0.4)" fontSize="9" fontFamily="Inter, sans-serif">PR #12 by alexcj10</text>
       </g>
 
-      <g transform="translate(450, 280)">
-        <circle cx="0" cy="0" r="32" fill="rgba(167, 139, 250, 0.1)" stroke="#a78bfa" strokeWidth="1.5" />
-        <svg x="-12" y="-12" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-        <text x="0" y="50" fill="rgba(255,255,255,0.6)" fontSize="12" fontFamily="Inter, sans-serif" textAnchor="middle">New Issues</text>
-      </g>
+      {/* Right Side: Group Chat View */}
+      <g transform="translate(500, 150)">
+        <rect width="250" height="300" rx="12" fill="rgba(20, 20, 25, 0.95)" stroke="rgba(56, 189, 248, 0.3)" strokeWidth="1.5" />
+        <rect width="250" height="48" rx="12" fill="rgba(56, 189, 248, 0.1)" />
+        <rect y="32" width="250" height="16" fill="rgba(56, 189, 248, 0.1)" />
+        
+        {/* Chat Header */}
+        <circle cx="24" cy="24" r="10" fill="#38bdf8" opacity="0.2" />
+        <text x="24" y="28" fill="#38bdf8" fontSize="10" fontFamily="Inter, sans-serif" fontWeight="700" textAnchor="middle">#</text>
+        <text x="44" y="28" fill="#fff" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="600">Frontend Team</text>
+        <rect x="180" y="16" width="54" height="16" rx="8" fill="rgba(56, 189, 248, 0.2)" />
+        <circle cx="188" cy="24" r="3" fill="#38bdf8" />
+        <text x="196" y="27" fill="#38bdf8" fontSize="9" fontFamily="Inter, sans-serif" fontWeight="600">RLC ON</text>
+        <line x1="0" y1="48" x2="250" y2="48" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
 
-      <circle cx="150" cy="200" r="4" fill="#38bdf8" className="packet-rlc-1" />
-      <circle cx="150" cy="200" r="4" fill="#a78bfa" className="packet-rlc-2" />
+        {/* Chat Messages */}
+        <g transform="translate(16, 70)">
+          <circle cx="12" cy="12" r="12" fill="#f97316" />
+          <text x="36" y="10" fill="#fff" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="600">GitHub Bot</text>
+          <text x="96" y="10" fill="rgba(255,255,255,0.4)" fontSize="9" fontFamily="Inter, sans-serif">10:42 AM</text>
+          <rect x="36" y="20" width="180" height="40" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+          <text x="44" y="36" fill="#fff" fontSize="10" fontFamily="Inter, sans-serif">New Issue: Fix navigation bug</text>
+          <text x="44" y="50" fill="#38bdf8" fontSize="9" fontFamily="Inter, sans-serif">#45 opened by @user</text>
+        </g>
+
+        <g transform="translate(16, 145)">
+          <circle cx="12" cy="12" r="12" fill="#1e1e24" stroke="#fff" strokeWidth="1" />
+          <text x="36" y="10" fill="#fff" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="600">alexcj10</text>
+          <text x="86" y="10" fill="rgba(255,255,255,0.4)" fontSize="9" fontFamily="Inter, sans-serif">10:45 AM</text>
+          <text x="36" y="26" fill="rgba(255,255,255,0.8)" fontSize="10" fontFamily="Inter, sans-serif">I'll take a look at this one.</text>
+        </g>
+
+        <g transform="translate(16, 200)">
+          <circle cx="12" cy="12" r="12" fill="#f97316" />
+          <text x="36" y="10" fill="#fff" fontSize="11" fontFamily="Inter, sans-serif" fontWeight="600">GitHub Bot</text>
+          <text x="96" y="10" fill="rgba(255,255,255,0.4)" fontSize="9" fontFamily="Inter, sans-serif">11:00 AM</text>
+          <rect x="36" y="20" width="180" height="40" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+          <text x="44" y="36" fill="#fff" fontSize="10" fontFamily="Inter, sans-serif">New PR: Update API routes</text>
+          <text x="44" y="50" fill="#a78bfa" fontSize="9" fontFamily="Inter, sans-serif">PR #12 needs review</text>
+        </g>
+
+        {/* Input area */}
+        <line x1="0" y1="260" x2="250" y2="260" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+        <rect x="12" y="268" width="226" height="24" rx="12" fill="rgba(255,255,255,0.05)" />
+        <text x="24" y="284" fill="rgba(255,255,255,0.3)" fontSize="10" fontFamily="Inter, sans-serif">Type a message...</text>
+      </g>
     </svg>
   </div>
 );
