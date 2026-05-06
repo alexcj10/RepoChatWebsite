@@ -402,7 +402,7 @@ export default function Landing() {
             <div className="section-head ecosystem-head">
               <div className="ecosystem-badge">The Ecosystem</div>
               <h2 className="h2 ecosystem-h2">
-                The Repo is the <span style={{ color: '#a78bfa' }}>Workspace</span>
+                The Repo is the <span className="gradient-text">Workspace</span>
               </h2>
               <p className="body-lg ecosystem-p">
                 Code, context, and conversation — unified in one living graph.
