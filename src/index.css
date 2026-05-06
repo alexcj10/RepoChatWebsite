@@ -125,8 +125,15 @@ ul{list-style:none}
   z-index: 10;
 }
 
-.navbar:hover::before,
-.navbar:active::before {
+/* Desktop: show on hover */
+@media (hover: hover) {
+  .navbar:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Mobile: show when menu is open, hide cleanly when closed */
+.navbar.menu-open::before {
   opacity: 1;
 }
 
