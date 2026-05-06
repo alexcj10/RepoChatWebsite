@@ -89,14 +89,14 @@ ul{list-style:none}
 .section-xl{padding:var(--space-xl) 0}
 
 /* ============================================
-   NAVBAR
+   NAVBAR — Floating Glass Pill
    ============================================ */
-.navbar{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;transition:all .4s var(--ease);display:flex;align-items:center}
-.navbar.scrolled{background:rgba(17,17,19,.85);backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid var(--border)}
-.nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 var(--space-m);width:100%;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem;letter-spacing:-.01em;flex-shrink:0}
-.nav-links{display:flex;align-items:center;justify-content:center;gap:28px;flex:1}
-.nav-links li a{font-size:.875rem;font-weight:500;color:var(--text-secondary);transition:color .2s}
+.navbar{position:fixed;top:16px;left:50%;transform:translateX(-50%);width:calc(100% - 48px);max-width:780px;height:52px;z-index:100;transition:all .4s var(--ease);display:flex;align-items:center;border-radius:100px;background:rgba(17,17,19,0.6);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.06)}
+.navbar.scrolled{background:rgba(17,17,19,0.85);border-color:rgba(255,255,255,0.08);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
+.nav-inner{width:100%;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1rem;letter-spacing:-.01em;flex-shrink:0}
+.nav-links{display:flex;align-items:center;justify-content:center;gap:24px;flex:1}
+.nav-links li a{font-size:.82rem;font-weight:500;color:var(--text-secondary);transition:color .2s}
 .nav-links li a:hover{color:var(--text-primary)}
 .nav-cta{display:flex;align-items:center;gap:8px}
 .nav-toggle{display:none;color:var(--text-primary)}
@@ -105,12 +105,18 @@ ul{list-style:none}
   .desktop-only { display: none; }
   .nav-toggle{display:block}
   .nav-cta:not(.open){display:none}
+  .navbar{top:8px;width:calc(100% - 24px);height:48px;border-radius:16px}
   
   .navbar.menu-open {
+    border-radius: 16px 16px 0 0;
     background: var(--bg);
     backdrop-filter: none;
     border-bottom: none;
     transition: none;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transform: none;
   }
 }
 
@@ -124,7 +130,7 @@ html.nav-open-lock body {
 /* Mobile Glassmorphic Overlay */
 .mobile-menu-overlay {
   position: fixed;
-  top: var(--nav-h);
+  top: 48px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -392,6 +398,171 @@ html.nav-open-lock body {
   .feature-text .body-md {
     font-size: 0.82rem;
   }
+}
+
+/* ============================================
+   MINI FEATURES — Horizontal Scroll Cards
+   ============================================ */
+.mini-features-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 24px;
+  padding: 12px var(--space-m) 48px;
+  margin: 0 calc(var(--space-m) * -1);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: var(--space-m);
+  cursor: grab;
+}
+.mini-features-grid:active { cursor: grabbing; }
+.mini-features-grid::-webkit-scrollbar { display: none; }
+.mini-features-grid > .reveal {
+  flex: 0 0 380px;
+  scroll-snap-align: start;
+  display: flex;
+}
+
+.mini-features-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.pagination-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s var(--ease);
+}
+
+.pagination-dot.active {
+  background: var(--accent);
+  transform: scale(1.5);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+@media(max-width: 1100px) {
+  .mini-features-grid {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 24px;
+    padding-right: 24px;
+    scroll-padding-left: 24px;
+  }
+}
+
+.mini-feature-card {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-color: #0d1117;
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  cursor: grab;
+  height: 100%;
+  min-height: 280px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: white;
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+@media(max-width: 900px) {
+  .mini-features-grid > .reveal {
+    flex: 0 0 340px;
+  }
+  .mini-feature-card {
+    padding: 24px 20px;
+    min-height: 240px;
+  }
+}
+
+@media(max-width: 480px) {
+  .mini-features-grid > .reveal {
+    flex: 0 0 300px;
+  }
+  .mini-feature-card {
+    padding: 20px 16px;
+    min-height: 200px;
+  }
+  .mini-feature-visual {
+    height: 120px;
+    margin-top: 16px;
+  }
+}
+
+.mini-feature-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("/abstract-gradient-background-with-grain-texture-captivating-noise-airbrush-minimalist-wallpaper.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: hue-rotate(var(--card-hue)) contrast(1.1);
+  opacity: 0.9;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.mini-feature-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.mini-feature-card > * {
+  position: relative;
+  z-index: 3;
+}
+
+.mini-feature-visual {
+  height: 150px;
+  width: 92%;
+  margin: var(--space-m) auto 0 auto;
+  background: 
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.7) 100%),
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 12px 12px, 12px 12px;
+  backdrop-filter: blur(20px);
+  border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 
+    inset 0 0 30px rgba(0, 0, 0, 0.5),
+    0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: rotate(-1deg);
+}
+
+.mini-feature-card:hover .mini-feature-visual {
+  border-radius: 50%;
+  transform: scale(1.04) rotate(1deg);
+}
+
+.visual-svg {
+  width: 90%;
+  height: 90%;
+  opacity: 0.85;
 }
 
 /* ============================================
