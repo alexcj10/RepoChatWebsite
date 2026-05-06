@@ -144,10 +144,10 @@ export default function Landing() {
             <div className="section-head ecosystem-head">
               <div className="ecosystem-badge">The Ecosystem</div>
               <h2 className="h2 ecosystem-h2">
-                One Graph. Every Signal.
+                Dev Workflow, Rewired
               </h2>
               <p className="body-lg ecosystem-p">
-                PRs, issues, and context converge in one living workspace — right where your code lives.
+                From GitHub context to live integrations — your entire workflow flows through one graph.
               </p>
             </div>
           </ScrollReveal>
