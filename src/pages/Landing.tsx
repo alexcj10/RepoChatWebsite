@@ -142,12 +142,12 @@ export default function Landing() {
         <div className="container">
           <ScrollReveal>
             <div className="section-head ecosystem-head">
-              <div className="ecosystem-badge">How It Works</div>
+              <div className="ecosystem-badge">The Ecosystem</div>
               <h2 className="h2 ecosystem-h2">
-                Everything Connects to Your Repo
+                One Graph. Every Signal.
               </h2>
               <p className="body-lg ecosystem-p">
-                GitHub context flows in, integrations flow out — all centered around your real-time repo graph.
+                PRs, issues, and context converge in one living workspace — right where your code lives.
               </p>
             </div>
           </ScrollReveal>
