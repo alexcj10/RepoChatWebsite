@@ -391,7 +391,7 @@ html.nav-open-lock body {
 .feature-card-image {
   position: relative;
   width: 100%;
-  aspect-ratio: 4/3; /* Taller ratio to fit more of the UI mockup */
+  aspect-ratio: 16/11; /* Set to 16/11 as requested */
   overflow: hidden;
   background: rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
