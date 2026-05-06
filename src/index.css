@@ -5,29 +5,29 @@
    ============================================ */
 /* ═══ CUSTOM SCROLLBAR ═══ */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: rgba(255, 255, 255, 0.03);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #222;
+  background: #e4e4e7;
   border-radius: 10px;
-  border: 2px solid #0a0a0a;
+  border: 2px solid #111113;
   transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
+  background: #ffffff;
 }
 
 /* Firefox Support */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #222 #0a0a0a;
+  scrollbar-color: #e4e4e7 rgba(255, 255, 255, 0.03);
 }
 
 :root {
