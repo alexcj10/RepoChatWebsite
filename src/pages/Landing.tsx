@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
-import { ArrowRight, Shield, Zap, Check, X, Sparkles, GitPullRequest, AlertCircle, Users, Code, Network, Cpu } from 'lucide-react'
+import { ArrowRight, Shield, Zap, Check, X, Sparkles, GitPullRequest, AlertCircle, Users, Code, Network, Cpu, Clock, DollarSign, BarChart3 } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
@@ -136,6 +136,222 @@ export default function Landing() {
         <motion.div className="hero-mockup" style={{ scale: mockupScale, opacity: mockupOpacity, width: 'calc(100% - 48px)' }}>
           <img src="/RC_main_UI.png" alt="RepoChat — Main UI" fetchPriority="high" decoding="async" />
         </motion.div>
+      </section>
+
+      {/* ═══ WHY REPOCHAT ═══ */}
+      <section className="section why-section">
+        <div className="container">
+
+          {/* ── Split Header ── */}
+          <div className="why-header">
+            <ScrollReveal>
+              <div className="why-header-left">
+                <div className="badge mb-6">Why RepoChat</div>
+                <h2 className="h2">Your tools don't talk<br/>to each other.<br/><span className="gradient-text">You pay the price.</span></h2>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={1}>
+              <div className="why-header-right">
+                <p className="body-lg">Developers bounce between 9+ tools daily — GitHub, Slack, Jira, Email, Notion — losing focus with every switch. RepoChat unifies communication and code context in one sidebar, right where you work.</p>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* ── Visual Comparison: Node Graph Diagrams ── */}
+          <div className="why-diagrams">
+            {/* WITHOUT RepoChat — Chaotic Graph */}
+            <ScrollReveal>
+              <div className="why-diagram-card why-diagram-without">
+                <div className="why-diagram-label">Without RepoChat</div>
+                <div className="why-diagram-visual">
+                  <svg viewBox="0 0 400 360" className="why-svg" aria-hidden="true">
+                    {/* Concentric rings */}
+                    <circle cx="200" cy="180" r="140" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
+                    <circle cx="200" cy="180" r="90" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+
+                    {/* Center developer */}
+                    <circle cx="200" cy="180" r="32" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.4)" strokeWidth="1.5" />
+                    <text x="200" y="176" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="10" fontWeight="600">DEV</text>
+                    <text x="200" y="190" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="7">fragmented</text>
+
+                    {/* Chaotic connection lines — messy angles */}
+                    <line x1="200" y1="148" x2="200" y2="55" stroke="rgba(244,63,94,0.2)" strokeWidth="1" strokeDasharray="4 3" className="why-line-chaos" />
+                    <line x1="228" y1="160" x2="310" y2="95" stroke="rgba(244,63,94,0.2)" strokeWidth="1" strokeDasharray="4 3" className="why-line-chaos" style={{animationDelay:'0.5s'}} />
+                    <line x1="232" y1="180" x2="340" y2="180" stroke="rgba(244,63,94,0.2)" strokeWidth="1" strokeDasharray="4 3" className="why-line-chaos" style={{animationDelay:'1s'}} />
+                    <line x1="228" y1="200" x2="310" y2="270" stroke="rgba(244,63,94,0.2)" strokeWidth="1" strokeDasharray="4 3" className="why-line-chaos" style={{animationDelay:'0.3s'}} />
+                    <line x1="200" y1="212" x2="200" y2="310" stroke="rgba(244,63,94,0.2)" strokeWidth="1" strokeDasharray="4 3" className="why-line-chaos" style={{animationDelay:'0.7s'}} />
+                    <line x1="172" y1="200" x2="90" y2="270" stroke="rgba(244,63,94,0.2)" strokeWidth="1" strokeDasharray="4 3" className="why-line-chaos" style={{animationDelay:'1.2s'}} />
+                    <line x1="168" y1="180" x2="60" y2="180" stroke="rgba(244,63,94,0.2)" strokeWidth="1" strokeDasharray="4 3" className="why-line-chaos" style={{animationDelay:'0.9s'}} />
+                    <line x1="172" y1="160" x2="90" y2="95" stroke="rgba(244,63,94,0.2)" strokeWidth="1" strokeDasharray="4 3" className="why-line-chaos" style={{animationDelay:'0.4s'}} />
+
+                    {/* Cross-connections (the mess) */}
+                    <path d="M90,95 Q150,140 310,95" fill="none" stroke="rgba(244,63,94,0.08)" strokeWidth="1" strokeDasharray="3 4" />
+                    <path d="M60,180 Q130,260 310,270" fill="none" stroke="rgba(244,63,94,0.08)" strokeWidth="1" strokeDasharray="3 4" />
+                    <path d="M90,270 Q200,230 340,180" fill="none" stroke="rgba(244,63,94,0.06)" strokeWidth="1" strokeDasharray="3 4" />
+
+                    {/* Tool nodes */}
+                    {/* GitHub - top */}
+                    <rect x="180" y="35" width="40" height="40" rx="10" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.3)" strokeWidth="1.2" />
+                    <text x="200" y="60" textAnchor="middle" fill="rgba(244,63,94,0.8)" fontSize="8" fontWeight="600">GH</text>
+                    {/* Slack - top right */}
+                    <rect x="290" y="75" width="40" height="40" rx="10" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.3)" strokeWidth="1.2" />
+                    <text x="310" y="100" textAnchor="middle" fill="rgba(244,63,94,0.8)" fontSize="8" fontWeight="600">SLACK</text>
+                    {/* Jira - right */}
+                    <rect x="320" y="160" width="40" height="40" rx="10" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.3)" strokeWidth="1.2" />
+                    <text x="340" y="185" textAnchor="middle" fill="rgba(244,63,94,0.8)" fontSize="8" fontWeight="600">JIRA</text>
+                    {/* Email - bottom right */}
+                    <rect x="290" y="250" width="40" height="40" rx="10" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.3)" strokeWidth="1.2" />
+                    <text x="310" y="275" textAnchor="middle" fill="rgba(244,63,94,0.8)" fontSize="7" fontWeight="600">EMAIL</text>
+                    {/* Notion - bottom */}
+                    <rect x="180" y="290" width="40" height="40" rx="10" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.3)" strokeWidth="1.2" />
+                    <text x="200" y="315" textAnchor="middle" fill="rgba(244,63,94,0.8)" fontSize="7" fontWeight="600">NOTION</text>
+                    {/* Docs - bottom left */}
+                    <rect x="70" y="250" width="40" height="40" rx="10" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.3)" strokeWidth="1.2" />
+                    <text x="90" y="275" textAnchor="middle" fill="rgba(244,63,94,0.8)" fontSize="7" fontWeight="600">DOCS</text>
+                    {/* Teams - left */}
+                    <rect x="40" y="160" width="40" height="40" rx="10" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.3)" strokeWidth="1.2" />
+                    <text x="60" y="185" textAnchor="middle" fill="rgba(244,63,94,0.8)" fontSize="7" fontWeight="600">TEAMS</text>
+                    {/* Discord - top left */}
+                    <rect x="70" y="75" width="40" height="40" rx="10" fill="rgba(244,63,94,0.08)" stroke="rgba(244,63,94,0.3)" strokeWidth="1.2" />
+                    <text x="90" y="100" textAnchor="middle" fill="rgba(244,63,94,0.8)" fontSize="6" fontWeight="600">DISCORD</text>
+
+                    {/* Red pulse dots at connection points */}
+                    <circle cx="200" cy="55" r="3" fill="#f43f5e" className="why-pulse-dot" />
+                    <circle cx="310" cy="95" r="3" fill="#f43f5e" className="why-pulse-dot" style={{animationDelay:'0.4s'}} />
+                    <circle cx="340" cy="180" r="3" fill="#f43f5e" className="why-pulse-dot" style={{animationDelay:'0.8s'}} />
+                    <circle cx="310" cy="270" r="3" fill="#f43f5e" className="why-pulse-dot" style={{animationDelay:'1.2s'}} />
+                    <circle cx="90" cy="270" r="3" fill="#f43f5e" className="why-pulse-dot" style={{animationDelay:'0.6s'}} />
+                    <circle cx="60" cy="180" r="3" fill="#f43f5e" className="why-pulse-dot" style={{animationDelay:'1s'}} />
+                    <circle cx="90" cy="95" r="3" fill="#f43f5e" className="why-pulse-dot" style={{animationDelay:'0.2s'}} />
+                  </svg>
+                </div>
+                <div className="why-diagram-caption">
+                  <span className="why-caption-stat">8+ switches</span>
+                  <span className="why-caption-text">fragmented attention · context lost</span>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Gradient Divider */}
+            <div className="why-diagram-divider">
+              <div className="why-divider-gradient" />
+            </div>
+
+            {/* WITH RepoChat — Clean Graph */}
+            <ScrollReveal delay={1}>
+              <div className="why-diagram-card why-diagram-with">
+                <div className="why-diagram-label why-diagram-label-green">With RepoChat</div>
+                <div className="why-diagram-visual">
+                  <svg viewBox="0 0 400 360" className="why-svg" aria-hidden="true">
+                    {/* Clean concentric rings */}
+                    <circle cx="200" cy="180" r="140" fill="none" stroke="rgba(163,230,53,0.06)" strokeWidth="1" />
+                    <circle cx="200" cy="180" r="90" fill="none" stroke="rgba(163,230,53,0.1)" strokeWidth="1" />
+
+                    {/* Inner glow ring */}
+                    <circle cx="200" cy="180" r="55" fill="none" stroke="rgba(139,92,246,0.15)" strokeWidth="1.5" />
+
+                    {/* Center — RepoChat hub */}
+                    <circle cx="200" cy="180" r="36" fill="rgba(139,92,246,0.1)" stroke="rgba(139,92,246,0.5)" strokeWidth="2" />
+                    <circle cx="200" cy="180" r="36" fill="none" stroke="rgba(139,92,246,0.2)" strokeWidth="8" className="why-core-pulse" />
+                    <text x="200" y="175" textAnchor="middle" fill="#a78bfa" fontSize="8" fontWeight="700" letterSpacing="0.05em">REPO</text>
+                    <text x="200" y="188" textAnchor="middle" fill="#a78bfa" fontSize="8" fontWeight="700" letterSpacing="0.05em">CHAT</text>
+
+                    {/* Clean connection lines — all flow through center */}
+                    <line x1="200" y1="144" x2="200" y2="55" stroke="rgba(163,230,53,0.25)" strokeWidth="1.5" className="why-line-clean" />
+                    <line x1="228" y1="156" x2="300" y2="95" stroke="rgba(163,230,53,0.25)" strokeWidth="1.5" className="why-line-clean" style={{animationDelay:'0.3s'}} />
+                    <line x1="236" y1="180" x2="320" y2="180" stroke="rgba(163,230,53,0.25)" strokeWidth="1.5" className="why-line-clean" style={{animationDelay:'0.6s'}} />
+                    <line x1="200" y1="216" x2="200" y2="290" stroke="rgba(163,230,53,0.25)" strokeWidth="1.5" className="why-line-clean" style={{animationDelay:'0.9s'}} />
+                    <line x1="164" y1="180" x2="80" y2="180" stroke="rgba(163,230,53,0.25)" strokeWidth="1.5" className="why-line-clean" style={{animationDelay:'1.2s'}} />
+                    <line x1="172" y1="156" x2="100" y2="95" stroke="rgba(163,230,53,0.25)" strokeWidth="1.5" className="why-line-clean" style={{animationDelay:'0.2s'}} />
+
+                    {/* Tool nodes — clean, organized */}
+                    {/* GitHub - top */}
+                    <rect x="180" y="35" width="40" height="40" rx="10" fill="rgba(163,230,53,0.06)" stroke="rgba(163,230,53,0.3)" strokeWidth="1.2" />
+                    <text x="200" y="60" textAnchor="middle" fill="rgba(163,230,53,0.9)" fontSize="8" fontWeight="600">GH</text>
+                    {/* PRs - top right */}
+                    <rect x="280" y="75" width="40" height="40" rx="10" fill="rgba(163,230,53,0.06)" stroke="rgba(163,230,53,0.3)" strokeWidth="1.2" />
+                    <text x="300" y="100" textAnchor="middle" fill="rgba(163,230,53,0.9)" fontSize="8" fontWeight="600">PRs</text>
+                    {/* Issues - right */}
+                    <rect x="300" y="160" width="40" height="40" rx="10" fill="rgba(163,230,53,0.06)" stroke="rgba(163,230,53,0.3)" strokeWidth="1.2" />
+                    <text x="320" y="185" textAnchor="middle" fill="rgba(163,230,53,0.9)" fontSize="7" fontWeight="600">ISSUES</text>
+                    {/* Deep Work - bottom */}
+                    <rect x="175" y="290" width="50" height="40" rx="10" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.3)" strokeWidth="1.2" />
+                    <text x="200" y="314" textAnchor="middle" fill="rgba(139,92,246,0.9)" fontSize="7" fontWeight="600">DEEP</text>
+                    <text x="200" y="324" textAnchor="middle" fill="rgba(139,92,246,0.9)" fontSize="7" fontWeight="600">WORK</text>
+                    {/* Teams - left */}
+                    <rect x="60" y="160" width="40" height="40" rx="10" fill="rgba(163,230,53,0.06)" stroke="rgba(163,230,53,0.3)" strokeWidth="1.2" />
+                    <text x="80" y="185" textAnchor="middle" fill="rgba(163,230,53,0.9)" fontSize="7" fontWeight="600">TEAMS</text>
+                    {/* Chat - top left */}
+                    <rect x="80" y="75" width="40" height="40" rx="10" fill="rgba(163,230,53,0.06)" stroke="rgba(163,230,53,0.3)" strokeWidth="1.2" />
+                    <text x="100" y="100" textAnchor="middle" fill="rgba(163,230,53,0.9)" fontSize="8" fontWeight="600">CHAT</text>
+
+                    {/* Green glow dots at nodes */}
+                    <circle cx="200" cy="55" r="3" fill="#a3e635" className="why-glow-dot" />
+                    <circle cx="300" cy="95" r="3" fill="#a3e635" className="why-glow-dot" style={{animationDelay:'0.5s'}} />
+                    <circle cx="320" cy="180" r="3" fill="#a3e635" className="why-glow-dot" style={{animationDelay:'1s'}} />
+                    <circle cx="200" cy="290" r="3" fill="#8b5cf6" className="why-glow-dot" style={{animationDelay:'0.3s'}} />
+                    <circle cx="80" cy="180" r="3" fill="#a3e635" className="why-glow-dot" style={{animationDelay:'0.8s'}} />
+                    <circle cx="100" cy="95" r="3" fill="#a3e635" className="why-glow-dot" style={{animationDelay:'0.6s'}} />
+                  </svg>
+                </div>
+                <div className="why-diagram-caption">
+                  <span className="why-caption-stat why-caption-stat-green">2 switches</span>
+                  <span className="why-caption-text">focused flow · context preserved</span>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* ── Problem Cards Grid ── */}
+          <div className="why-cards">
+            <ScrollReveal>
+              <div className="why-card">
+                <div className="why-card-icon"><Clock size={18} /></div>
+                <p className="why-card-text">Developers take <strong>23 minutes</strong> to refocus after a single context switch.</p>
+                <span className="why-card-source">UC Irvine — Gloria Mark, PhD</span>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={1}>
+              <div className="why-card">
+                <div className="why-card-icon"><BarChart3 size={18} /></div>
+                <p className="why-card-text"><strong>40%</strong> of developer productivity is lost daily to context switching.</p>
+                <span className="why-card-source">APA Research</span>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={2}>
+              <div className="why-card">
+                <div className="why-card-icon"><DollarSign size={18} /></div>
+                <p className="why-card-text"><strong>$10,400</strong> lost per developer per year to fragmented task switching.</p>
+                <span className="why-card-source">Asana</span>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={3}>
+              <div className="why-card">
+                <div className="why-card-icon"><AlertCircle size={18} /></div>
+                <p className="why-card-text"><strong>62%</strong> of developers say context switching is their biggest bottleneck.</p>
+                <span className="why-card-source">Stack Overflow Survey</span>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* ── Big Stats ── */}
+          <ScrollReveal>
+            <div className="why-big-stats">
+              <div className="why-big-stat">
+                <span className="why-big-num">9.4</span>
+                <span className="why-big-desc">tools used daily on average by developers</span>
+                <span className="why-big-src">Atlassian</span>
+              </div>
+              <div className="why-big-divider" />
+              <div className="why-big-stat">
+                <span className="why-big-num">23<span className="why-big-unit">min</span></span>
+                <span className="why-big-desc">average time to refocus after every context switch</span>
+                <span className="why-big-src">UC Irvine</span>
+              </div>
+            </div>
+          </ScrollReveal>
+
+        </div>
       </section>
 
       {/* ═══ ECOSYSTEM GRAPH ═══ */}
