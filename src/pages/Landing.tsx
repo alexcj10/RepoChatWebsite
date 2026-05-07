@@ -382,7 +382,7 @@ export default function Landing() {
             <ScrollReveal delay={1}>
               <div className="why-card">
                 <div className="why-card-icon"><BarChart3 size={18} /></div>
-                <p className="why-card-text"><strong>40%</strong> of developer productivity is lost daily to context switching between apps.</p>
+                <p className="why-card-text"><strong>40%</strong> of developer productivity is lost daily to app switching.</p>
                 <span className="why-card-source">APA Research</span>
               </div>
             </ScrollReveal>
