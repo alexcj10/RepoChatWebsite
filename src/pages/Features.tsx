@@ -1,4 +1,4 @@
-import { MessageSquare, Zap } from 'lucide-react'
+import { MessageSquare, Zap, GitPullRequest, ClipboardList, Dna } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 
 export default function Features() {
@@ -13,6 +13,60 @@ export default function Features() {
               <div className="badge mb-6"><Zap size={12} /> Features</div>
               <h1 className="h2">Every feature built<br /><span className="gradient-text">for developer flow.</span></h1>
               <p>Explore the tools that keep your team in sync — right where the code lives.</p>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* ═══ FEATURE ECOSYSTEM GRAPH ═══ */}
+        <ScrollReveal>
+          <div className="feat-constellation" style={{ marginBottom: '80px', display: 'flex', justifyContent: 'center' }}>
+            <div className="ecosystem-graph" style={{ transform: 'scale(0.9)', margin: '0 auto' }}>
+              {/* Concentric Rings */}
+              <div className="ring ring-3"></div>
+              <div className="ring ring-2"></div>
+              <div className="ring ring-1">
+                <div className="ring-glow"></div>
+              </div>
+
+              {/* Node 1: Communication (Top) */}
+              <div className="eco-node inner-node" style={{ top: 'calc(50% - 160px)', left: '50%' }}>
+                <div className="eco-icon" style={{ borderColor: 'rgba(139, 92, 246, 0.4)', color: '#8b5cf6', boxShadow: '0 4px 16px rgba(139, 92, 246, 0.15)' }}>
+                  <MessageSquare size={20} />
+                </div>
+                <div className="eco-label" style={{ color: 'rgba(139, 92, 246, 0.9)' }}>Communication</div>
+              </div>
+
+              {/* Node 2: GitHub (Right) */}
+              <div className="eco-node inner-node" style={{ top: '50%', left: 'calc(50% + 160px)' }}>
+                <div className="eco-icon" style={{ borderColor: 'rgba(16, 185, 129, 0.4)', color: '#10b981', boxShadow: '0 4px 16px rgba(16, 185, 129, 0.15)' }}>
+                  <GitPullRequest size={20} />
+                </div>
+                <div className="eco-label" style={{ color: 'rgba(16, 185, 129, 0.9)' }}>GitHub Integration</div>
+              </div>
+
+              {/* Node 3: Productivity (Bottom) */}
+              <div className="eco-node inner-node" style={{ top: 'calc(50% + 160px)', left: '50%' }}>
+                <div className="eco-icon" style={{ borderColor: 'rgba(6, 182, 212, 0.4)', color: '#06b6d4', boxShadow: '0 4px 16px rgba(6, 182, 212, 0.15)' }}>
+                  <ClipboardList size={20} />
+                </div>
+                <div className="eco-label" style={{ color: 'rgba(6, 182, 212, 0.9)' }}>Productivity</div>
+              </div>
+
+              {/* Node 4: Identity (Left) */}
+              <div className="eco-node inner-node" style={{ top: '50%', left: 'calc(50% - 160px)' }}>
+                <div className="eco-icon" style={{ borderColor: 'rgba(249, 115, 22, 0.4)', color: '#f97316', boxShadow: '0 4px 16px rgba(249, 115, 22, 0.15)' }}>
+                  <Dna size={20} />
+                </div>
+                <div className="eco-label" style={{ color: 'rgba(249, 115, 22, 0.9)' }}>Identity & Sharing</div>
+              </div>
+
+              {/* Center Core */}
+              <div className="eco-core" style={{ borderColor: 'rgba(139, 92, 246, 0.5)', boxShadow: '0 0 25px rgba(139, 92, 246, 0.15), 0 0 50px rgba(139, 92, 246, 0.05)' }}>
+                <div className="eco-core-inner">
+                  <span style={{ color: '#8b5cf6', fontSize: '1.2rem', fontWeight: 800 }}>RC</span><br />
+                  <span style={{ opacity: 0.6 }}>Features</span>
+                </div>
+              </div>
             </div>
           </div>
         </ScrollReveal>
