@@ -1463,15 +1463,189 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 .feat-section-label { text-align: center; margin-bottom: 48px; }
 
-/* ── Feature Constellation ── */
-.feat-constellation {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 8px 0 0;
+/* ── Feature Pipeline Architecture ── */
+.feat-arch-panel {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto 80px;
+  padding: 60px;
+  background: linear-gradient(135deg, rgba(30, 30, 36, 0.6), rgba(18, 18, 22, 0.8));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 32px;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  overflow: hidden;
 }
-.feat-constellation-svg {
-  width: 100%;
-  height: auto;
+
+.feat-arch-glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+.feat-arch-glow-left { top: -100px; left: -100px; background: rgba(139, 92, 246, 0.15); }
+.feat-arch-glow-right { bottom: -100px; right: -100px; background: rgba(16, 185, 129, 0.1); }
+
+.feat-arch-pipeline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.feat-arch-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Source Node */
+.feat-arch-node.node-source {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 20px;
+  padding: 24px;
+  width: 220px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+.node-source .node-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8b5cf6;
+}
+.node-source .node-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 12px;
+}
+.node-source .node-tags {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+.node-source .node-tags span {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* The Core Engine */
+.feat-arch-core {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.core-rings {
+  position: absolute;
+  inset: -40px;
+}
+.core-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(139, 92, 246, 0.3);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin 20s linear infinite;
+}
+.core-ring.cr-1 { width: 100%; height: 100%; }
+.core-ring.cr-2 { width: 70%; height: 70%; animation-direction: reverse; animation-duration: 15s; }
+
+.core-center {
+  position: relative;
+  z-index: 2;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, rgba(10, 10, 12, 0.9) 70%);
+  border: 2px solid #8b5cf6;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.3), inset 0 0 20px rgba(139, 92, 246, 0.2);
+}
+.core-logo { font-size: 1.4rem; font-weight: 800; color: #8b5cf6; }
+.core-text { font-size: 0.6rem; font-weight: 600; color: rgba(255, 255, 255, 0.7); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px; }
+
+/* The Pillars */
+.feat-arch-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 280px;
+}
+.arch-pillar-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.arch-pillar-card:hover { transform: translateX(-5px); border-color: rgba(255, 255, 255, 0.15); }
+
+.p-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.p-comm .p-icon { background: rgba(139, 92, 246, 0.15); color: #8b5cf6; }
+.p-git .p-icon { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+.p-prod .p-icon { background: rgba(6, 182, 212, 0.15); color: #06b6d4; }
+.p-id .p-icon { background: rgba(249, 115, 22, 0.15); color: #f97316; }
+
+.p-content h4 { font-size: 0.85rem; font-weight: 700; margin: 0 0 4px; color: white; }
+.p-content p { font-size: 0.7rem; margin: 0; color: rgba(255, 255, 255, 0.5); }
+
+/* SVG Connections */
+.feat-arch-connections {
+  height: 200px;
+  flex: 1;
+  min-width: 80px;
+  margin: 0 20px;
+}
+.connections-1 { min-width: 100px; height: 100px; }
+.feat-arch-connections svg { width: 100%; height: 100%; overflow: visible; }
+.arch-line { fill: none; stroke: rgba(255, 255, 255, 0.08); stroke-width: 2; }
+.arch-line-animated {
+  fill: none;
+  stroke: rgba(139, 92, 246, 0.8);
+  stroke-width: 2;
+  stroke-dasharray: 6 12;
+  animation: archFlow 1.5s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.6));
+}
+
+@keyframes archFlow {
+  from { stroke-dashoffset: 18; }
+  to { stroke-dashoffset: 0; }
+}
+
+@media (max-width: 900px) {
+  .feat-arch-pipeline { flex-direction: column; gap: 40px; }
+  .feat-arch-connections { display: none; }
 }
 
 /* ── 3D Card Deck ── */

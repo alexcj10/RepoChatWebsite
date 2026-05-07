@@ -17,56 +17,105 @@ export default function Features() {
           </div>
         </ScrollReveal>
 
-        {/* ═══ FEATURE ECOSYSTEM GRAPH ═══ */}
+        {/* ═══ FEATURE ARCHITECTURE GRAPH ═══ */}
         <ScrollReveal>
-          <div className="feat-constellation" style={{ marginBottom: '80px', display: 'flex', justifyContent: 'center' }}>
-            <div className="ecosystem-graph" style={{ transform: 'scale(0.9)', margin: '0 auto' }}>
-              {/* Concentric Rings */}
-              <div className="ring ring-3"></div>
-              <div className="ring ring-2"></div>
-              <div className="ring ring-1">
-                <div className="ring-glow"></div>
-              </div>
+          <div className="feat-arch-panel">
+            {/* Background glowing effects */}
+            <div className="feat-arch-glow feat-arch-glow-left"></div>
+            <div className="feat-arch-glow feat-arch-glow-right"></div>
 
-              {/* Node 1: Communication (Top) */}
-              <div className="eco-node inner-node" style={{ top: 'calc(50% - 160px)', left: '50%' }}>
-                <div className="eco-icon" style={{ borderColor: 'rgba(139, 92, 246, 0.4)', color: '#8b5cf6', boxShadow: '0 4px 16px rgba(139, 92, 246, 0.15)' }}>
-                  <MessageSquare size={20} />
-                </div>
-                <div className="eco-label" style={{ color: 'rgba(139, 92, 246, 0.9)' }}>Communication</div>
-              </div>
-
-              {/* Node 2: GitHub (Right) */}
-              <div className="eco-node inner-node" style={{ top: '50%', left: 'calc(50% + 160px)' }}>
-                <div className="eco-icon" style={{ borderColor: 'rgba(16, 185, 129, 0.4)', color: '#10b981', boxShadow: '0 4px 16px rgba(16, 185, 129, 0.15)' }}>
-                  <GitPullRequest size={20} />
-                </div>
-                <div className="eco-label" style={{ color: 'rgba(16, 185, 129, 0.9)' }}>GitHub Integration</div>
-              </div>
-
-              {/* Node 3: Productivity (Bottom) */}
-              <div className="eco-node inner-node" style={{ top: 'calc(50% + 160px)', left: '50%' }}>
-                <div className="eco-icon" style={{ borderColor: 'rgba(6, 182, 212, 0.4)', color: '#06b6d4', boxShadow: '0 4px 16px rgba(6, 182, 212, 0.15)' }}>
-                  <ClipboardList size={20} />
-                </div>
-                <div className="eco-label" style={{ color: 'rgba(6, 182, 212, 0.9)' }}>Productivity</div>
-              </div>
-
-              {/* Node 4: Identity (Left) */}
-              <div className="eco-node inner-node" style={{ top: '50%', left: 'calc(50% - 160px)' }}>
-                <div className="eco-icon" style={{ borderColor: 'rgba(249, 115, 22, 0.4)', color: '#f97316', boxShadow: '0 4px 16px rgba(249, 115, 22, 0.15)' }}>
-                  <Dna size={20} />
-                </div>
-                <div className="eco-label" style={{ color: 'rgba(249, 115, 22, 0.9)' }}>Identity & Sharing</div>
-              </div>
-
-              {/* Center Core */}
-              <div className="eco-core" style={{ borderColor: 'rgba(139, 92, 246, 0.5)', boxShadow: '0 0 25px rgba(139, 92, 246, 0.15), 0 0 50px rgba(139, 92, 246, 0.05)' }}>
-                <div className="eco-core-inner">
-                  <span style={{ color: '#8b5cf6', fontSize: '1.2rem', fontWeight: 800 }}>RC</span><br />
-                  <span style={{ opacity: 0.6 }}>Features</span>
+            <div className="feat-arch-pipeline">
+              
+              {/* Left: The Source */}
+              <div className="feat-arch-column feat-arch-source">
+                <div className="feat-arch-node node-source">
+                  <div className="node-icon"><GitPullRequest size={24} /></div>
+                  <div className="node-title">GitHub Repository</div>
+                  <div className="node-tags">
+                    <span>Commits</span>
+                    <span>PRs</span>
+                    <span>Issues</span>
+                  </div>
                 </div>
               </div>
+
+              {/* SVG Connections: Source to Engine */}
+              <div className="feat-arch-connections connections-1">
+                <svg preserveAspectRatio="none" viewBox="0 0 100 100">
+                  <path d="M0,50 C50,50 50,50 100,50" className="arch-line" />
+                  <path d="M0,50 C50,50 50,50 100,50" className="arch-line-animated" />
+                </svg>
+              </div>
+
+              {/* Middle: The Engine */}
+              <div className="feat-arch-column feat-arch-engine">
+                <div className="feat-arch-core">
+                  <div className="core-rings">
+                    <div className="core-ring cr-1"></div>
+                    <div className="core-ring cr-2"></div>
+                  </div>
+                  <div className="core-center">
+                    <span className="core-logo">RC</span>
+                    <span className="core-text">Sync Engine</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* SVG Connections: Engine to Pillars */}
+              <div className="feat-arch-connections connections-2">
+                <svg preserveAspectRatio="none" viewBox="0 0 150 200">
+                  {/* To Comm (Top) */}
+                  <path d="M0,100 C50,100 50,25 150,25" className="arch-line" />
+                  <path d="M0,100 C50,100 50,25 150,25" className="arch-line-animated" style={{ animationDelay: '0s' }} />
+                  {/* To GitHub (Mid-Top) */}
+                  <path d="M0,100 C75,100 75,75 150,75" className="arch-line" />
+                  <path d="M0,100 C75,100 75,75 150,75" className="arch-line-animated" style={{ animationDelay: '0.5s' }} />
+                  {/* To Prod (Mid-Bottom) */}
+                  <path d="M0,100 C75,100 75,125 150,125" className="arch-line" />
+                  <path d="M0,100 C75,100 75,125 150,125" className="arch-line-animated" style={{ animationDelay: '1s' }} />
+                  {/* To Identity (Bottom) */}
+                  <path d="M0,100 C50,100 50,175 150,175" className="arch-line" />
+                  <path d="M0,100 C50,100 50,175 150,175" className="arch-line-animated" style={{ animationDelay: '1.5s' }} />
+                </svg>
+              </div>
+
+              {/* Right: The 4 Pillars */}
+              <div className="feat-arch-column feat-arch-pillars">
+                
+                <div className="arch-pillar-card p-comm">
+                  <div className="p-icon"><MessageSquare size={16} /></div>
+                  <div className="p-content">
+                    <h4>Communication</h4>
+                    <p>Real-time chat, threads, & DMs</p>
+                  </div>
+                </div>
+
+                <div className="arch-pillar-card p-git">
+                  <div className="p-icon"><GitPullRequest size={16} /></div>
+                  <div className="p-content">
+                    <h4>GitHub Integration</h4>
+                    <p>Smart PR & Issue triage</p>
+                  </div>
+                </div>
+
+                <div className="arch-pillar-card p-prod">
+                  <div className="p-icon"><ClipboardList size={16} /></div>
+                  <div className="p-content">
+                    <h4>Productivity</h4>
+                    <p>Shared scratchpads & notes</p>
+                  </div>
+                </div>
+
+                <div className="arch-pillar-card p-id">
+                  <div className="p-icon"><Dna size={16} /></div>
+                  <div className="p-content">
+                    <h4>Identity & Sharing</h4>
+                    <p>Custom Dev DNA & presence</p>
+                  </div>
+                </div>
+
+              </div>
+
             </div>
           </div>
         </ScrollReveal>
