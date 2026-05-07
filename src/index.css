@@ -1480,25 +1480,21 @@ textarea.form-input{min-height:110px;resize:vertical}
   border-color: rgba(16, 185, 129, 0.2);
   background: linear-gradient(145deg, rgba(16, 185, 129, 0.04), rgba(15, 15, 20, 0.95));
 }
-.feat-device-frame--green .feat-device-dots span:nth-child(1) { background: #10B981; }
-.feat-device-frame--green .feat-device-dots span:nth-child(2) { background: #34D399; }
-.feat-device-frame--green .feat-device-dots span:nth-child(3) { background: #6EE7B7; }
 
 .feat-device-frame--cyan {
   border-color: rgba(6, 182, 212, 0.2);
   background: linear-gradient(145deg, rgba(6, 182, 212, 0.04), rgba(15, 15, 20, 0.95));
 }
-.feat-device-frame--cyan .feat-device-dots span:nth-child(1) { background: #06B6D4; }
-.feat-device-frame--cyan .feat-device-dots span:nth-child(2) { background: #22D3EE; }
-.feat-device-frame--cyan .feat-device-dots span:nth-child(3) { background: #67E8F9; }
 
 .feat-device-frame--orange {
   border-color: rgba(234, 179, 8, 0.2);
   background: linear-gradient(145deg, rgba(234, 179, 8, 0.04), rgba(15, 15, 20, 0.95));
 }
-.feat-device-frame--orange .feat-device-dots span:nth-child(1) { background: #EAB308; }
-.feat-device-frame--orange .feat-device-dots span:nth-child(2) { background: #FACC15; }
-.feat-device-frame--orange .feat-device-dots span:nth-child(3) { background: #FDE68A; }
+
+.feat-device-frame--pink {
+  border-color: rgba(236, 72, 153, 0.2);
+  background: linear-gradient(145deg, rgba(236, 72, 153, 0.04), rgba(15, 15, 20, 0.95));
+}
 
 /* ── Feature Pipeline Architecture ── */
 .feat-arch-panel {
@@ -1957,57 +1953,77 @@ textarea.form-input{min-height:110px;resize:vertical}
   }
 }
 
-/* ── Features CTA Strip ── */
-.feat-cta-strip {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+/* ── Features CTA Card ── */
+.feat-cta-card {
+  position: relative;
+  text-align: center;
   margin-top: var(--space-xl);
-  padding: 20px 32px;
-  background: rgba(255, 255, 255, 0.03);
+  padding: 64px 40px;
+  background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  transition: all 0.35s var(--ease);
+  border-radius: 24px;
+  overflow: hidden;
 }
-.feat-cta-strip:hover {
-  border-color: rgba(139, 92, 246, 0.2);
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2), 0 0 20px rgba(139, 92, 246, 0.04);
+.feat-cta-glow {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
+  pointer-events: none;
 }
-.feat-cta-text {
-  font-size: 0.95rem;
-  color: #a1a1aa;
-  margin: 0;
-  line-height: 1.5;
-}
-.feat-cta-highlight {
-  color: #f4f4f5;
-  font-weight: 700;
-}
-.feat-cta-btn {
-  flex-shrink: 0;
-  font-size: 0.85rem;
-  padding: 10px 24px;
-  border-radius: 10px;
-  background: rgba(139, 92, 246, 0.12);
-  border: 1px solid rgba(139, 92, 246, 0.25);
-  color: #a78bfa;
+.feat-cta-badge {
+  display: inline-block;
+  font-size: 0.8rem;
   font-weight: 600;
-  transition: all 0.3s ease;
-  text-decoration: none;
+  color: #a78bfa;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 24px;
 }
-.feat-cta-btn:hover {
-  background: rgba(139, 92, 246, 0.2);
-  border-color: rgba(139, 92, 246, 0.4);
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
-  color: #c4b5fd;
+.feat-cta-heading {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #f4f4f5;
+  line-height: 1.3;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+}
+.feat-cta-sub {
+  font-size: 0.95rem;
+  color: #71717a;
+  margin: 0 0 32px;
+}
+.feat-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+  color: #fff;
+  border: none;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+}
+.feat-cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.45);
+  background: linear-gradient(135deg, #9B6FF6, #8B5CF6);
 }
 @media (max-width: 600px) {
-  .feat-cta-strip {
-    flex-direction: column;
-    text-align: center;
-    gap: 16px;
-    padding: 20px;
+  .feat-cta-card {
+    padding: 48px 24px;
+  }
+  .feat-cta-heading {
+    font-size: 1.35rem;
   }
 }
 

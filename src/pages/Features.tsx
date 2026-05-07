@@ -1,11 +1,11 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
-import { MessageSquare, Zap, GitPullRequest, ClipboardList, Dna, Database, AppWindow, Activity } from 'lucide-react'
+import { MessageSquare, Zap, GitPullRequest, ClipboardList, Dna, Database, AppWindow, Activity, Share2 } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 
 export default function Features() {
   const archPanelRef = useRef<HTMLDivElement>(null)
   const archPipelineRef = useRef<HTMLDivElement>(null)
-  const [openItems, setOpenItems] = useState<Record<string, number>>({ comm: 0, git: 0, prod: 0, id: 0 })
+  const [openItems, setOpenItems] = useState<Record<string, number>>({ comm: 0, git: 0, prod: 0, id: 0, share: 0 })
   const toggle = (section: string, i: number) => setOpenItems(prev => ({ ...prev, [section]: prev[section] === i ? -1 : i }))
 
   // Fluid architecture graph scaling — same principle as ecosystem diagram.
@@ -241,7 +241,8 @@ export default function Features() {
                   { title: 'Issue Triage', desc: 'Add labels, assign milestones, and update issue status with one-click sidebar actions — no page navigation needed.', tier: 'All Plans' },
                   { title: 'PR Context Cards', desc: 'Automatically surface pull request metadata, reviewers, and CI status directly inside your chat conversations.', tier: 'All Plans' },
                   { title: 'Smart Assignments', desc: 'Assign reviewers and owners to GitHub issues and PRs directly from the chat interface with intelligent suggestions.', tier: 'Pro Only' },
-                  { title: 'Repo-Linked Channels', desc: 'Link group chats directly to repositories. Every message inherits the repo context automatically.', tier: 'Pro Only' }
+                  { title: 'Repo-Linked Channels', desc: 'Link group chats directly to repositories. Every message inherits the repo context automatically.', tier: 'Pro Only' },
+                  { title: 'Webhook Events', desc: 'Get real-time notifications for pushes, merges, and CI results streamed directly into your group chats.', tier: 'Pro Only' }
                 ].map((item, i) => (
                   <div key={i} className={`feat-accordion-item${openItems.git === i ? ' is-open' : ''}`}>
                     <button className="feat-accordion-header" onClick={() => toggle('git', i)}>
@@ -280,7 +281,9 @@ export default function Features() {
                 {[
                   { title: 'Shared Scratchpads', desc: 'Collaborative scratchpads that live alongside your repositories. Jot down ideas, meeting notes, or architecture decisions.', tier: 'All Plans' },
                   { title: 'Code Snippets', desc: 'Share and pin code snippets with syntax highlighting directly in your conversations. Never lose a useful snippet again.', tier: 'All Plans' },
-                  { title: 'Context Linking', desc: 'Every note and pad is automatically linked to the repo, PR, or issue it was created from — full traceability.', tier: 'Pro Only' }
+                  { title: 'Context Linking', desc: 'Every note and pad is automatically linked to the repo, PR, or issue it was created from — full traceability.', tier: 'Pro Only' },
+                  { title: 'Pinned Resources', desc: 'Pin important messages, links, and documents to the top of any chat. Your team\'s knowledge base, always accessible.', tier: 'All Plans' },
+                  { title: 'Markdown Support', desc: 'Write with full Markdown — headers, code blocks, lists, and tables render beautifully inline.', tier: 'All Plans' }
                 ].map((item, i) => (
                   <div key={i} className={`feat-accordion-item${openItems.prod === i ? ' is-open' : ''}`}>
                     <button className="feat-accordion-header" onClick={() => toggle('prod', i)}>
@@ -318,9 +321,10 @@ export default function Features() {
               <div className="feat-showcase-info">
                 {[
                   { title: 'Dev DNA Profile', desc: 'Customizable developer profile with bio, tech stack, and contribution highlights. Your identity across every repo.', tier: 'All Plans' },
-                  { title: 'Shareable Links', desc: 'Generate share-ready links for conversations, scratchpads, and context cards. Collaborate beyond the extension.', tier: 'All Plans' },
-                  { title: 'Custom Presence', desc: 'Set custom status messages, accent colors, and availability indicators that show across all your repositories.', tier: 'All Plans' },
-                  { title: 'Activity Feed', desc: 'Track contributions, messages, and interactions across repositories with a unified activity timeline.', tier: 'Pro Only' }
+                  { title: 'Accent Colors', desc: 'Choose from a curated palette of accent colors to personalize your chat bubbles and profile ring across the extension.', tier: 'All Plans' },
+                  { title: 'Custom Presence', desc: 'Set custom status messages and availability indicators that show across all your repositories.', tier: 'All Plans' },
+                  { title: 'Activity Feed', desc: 'Track contributions, messages, and interactions across repositories with a unified activity timeline.', tier: 'Pro Only' },
+                  { title: 'Profile Badges', desc: 'Earn and display contribution badges on your Dev DNA profile — visible to everyone in your repos.', tier: 'Pro Only' }
                 ].map((item, i) => (
                   <div key={i} className={`feat-accordion-item${openItems.id === i ? ' is-open' : ''}`}>
                     <button className="feat-accordion-header" onClick={() => toggle('id', i)}>
@@ -338,13 +342,55 @@ export default function Features() {
           </ScrollReveal>
         </section>
 
+        {/* ═══ CATEGORY 5: SHARING (dark, image-left) ═══ */}
+        <section className="feat-section">
+          <ScrollReveal>
+            <div className="feat-section-label">
+              <span className="badge"><Share2 size={12} /> Sharing</span>
+              <h2 className="h3" style={{ marginTop: 20 }}>Share beyond the repo.</h2>
+              <p className="body-md" style={{ opacity: 0.6, marginTop: 8, maxWidth: 500, marginLeft: 'auto', marginRight: 'auto' }}>Shareable links, popups, and cross-repo collaboration — no extension required for viewers.</p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div className="feat-showcase">
+              <div className="feat-showcase-visual">
+                <div className="feat-device-frame feat-device-frame--pink">
+                  <div className="feat-device-dots"><span /><span /><span /></div>
+                  <img src="/share.png" alt="RepoChat — Sharing" loading="lazy" />
+                </div>
+              </div>
+              <div className="feat-showcase-info">
+                {[
+                  { title: 'Share via Link', desc: 'Generate one-click shareable links for any conversation, pad, or context card. Recipients view it in a clean web popup.', tier: 'All Plans' },
+                  { title: 'Share Popups', desc: 'Beautiful, branded popup previews when someone opens a shared link — no login or extension required to view.', tier: 'All Plans' },
+                  { title: 'Cross-Repo Sharing', desc: 'Share context cards and conversations across different repositories without duplicating content.', tier: 'Pro Only' },
+                  { title: 'Embed Previews', desc: 'Paste a share link into GitHub issues or PRs and get rich previews with message content and metadata.', tier: 'Pro Only' },
+                  { title: 'Expiring Links', desc: 'Set expiration dates on shared links for sensitive discussions. Auto-revoke access after the time window.', tier: 'Pro Only' }
+                ].map((item, i) => (
+                  <div key={i} className={`feat-accordion-item${openItems.share === i ? ' is-open' : ''}`}>
+                    <button className="feat-accordion-header" onClick={() => toggle('share', i)}>
+                      <span className="feat-accordion-title">{item.title}</span>
+                      <span className="feat-accordion-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
+                    </button>
+                    <div className="feat-accordion-body"><div className="feat-accordion-inner">
+                      <p>{item.desc}</p>
+                      <span className={`feature-tier-badge ${item.tier === 'All Plans' ? 'all' : 'limit'}`}>{item.tier}</span>
+                    </div></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+        </section>
+
         {/* ═══ FINAL CTA ═══ */}
         <ScrollReveal>
-          <div className="feat-cta-strip">
-            <p className="feat-cta-text">
-              <span className="feat-cta-highlight">All features.</span> One extension. Zero context switching.
-            </p>
-            <a href="#install" className="btn feat-cta-btn">Add to Chrome — Free</a>
+          <div className="feat-cta-card">
+            <div className="feat-cta-glow"></div>
+            <span className="feat-cta-badge">🚀 Ready to ship?</span>
+            <h3 className="feat-cta-heading">Every feature. One extension.<br />Zero context switching.</h3>
+            <p className="feat-cta-sub">Join thousands of developers collaborating where their code lives.</p>
+            <a href="#install" className="btn feat-cta-primary">Add to Chrome — Free</a>
           </div>
         </ScrollReveal>
 
