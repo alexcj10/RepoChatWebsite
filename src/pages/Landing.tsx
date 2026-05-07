@@ -556,8 +556,8 @@ export default function Landing() {
                   <Code size={22} />
                 </div>
                 <div className="eco-pillar-text">
-                  <h4 className="h4">In-Context Code Sharing</h4>
-                  <p className="body-sm">Highlight any code snippet on GitHub to instantly share it in chat or analyze it with RepoBot.</p>
+                  <h4 className="h4">In-Context Sharing</h4>
+                  <p className="body-sm">Highlight code snippets, PRs, or issues on GitHub to instantly share them in chat or analyze with RepoBot.</p>
                 </div>
               </div>
             </ScrollReveal>
