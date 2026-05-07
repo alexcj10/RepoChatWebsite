@@ -1,173 +1,211 @@
-import { MessageSquare, GitPullRequest, Tag, ClipboardList, Pin, Star, Palette, Users, Smile, Eye, FolderOpen, Archive, Zap, Share2, Download, Dna, ListTodo, Link, MessagesSquare } from 'lucide-react'
+import { MessageSquare, Zap } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
-
-const features = [
-  {
-    icon: <MessageSquare size={22} />,
-    title: 'Real-Time DM & Group Chat',
-    desc: 'Send messages to friends or create group chats. All conversations happen in real-time with instant delivery and read status indicators.',
-    details: ['1-on-1 direct messaging', 'Group chats with admin controls', 'Real-time message delivery', 'Read status & typing indicators'],
-    tier: '15 Friends · 5 Groups on Free'
-  },
-  {
-    icon: <GitPullRequest size={22} />,
-    title: 'GitHub Context Sharing',
-    desc: 'Attach Pull Requests, Issues, Branches, and Code snippets to any message. Share context from the exact page you\'re on with a single click.',
-    details: ['PR and Issue context cards', 'Branch and code file references', 'Auto-detected context from current page', 'Personalized messages per recipient'],
-    tier: 'All Plans'
-  },
-  {
-    icon: <Link size={22} />,
-    title: 'Repo-Linked Channels',
-    desc: 'Bind group chats to specific repositories. The channel automatically syncs with repository activity and scopes context searches strictly to that repo.',
-    details: ['1-click repository binding', 'Scoped PR & Issue search', 'Syncs with repository events', 'Keeps discussions highly focused'],
-    tier: 'Pro Only'
-  },
-  {
-    icon: <ListTodo size={22} />,
-    title: 'Smart Task Assignments',
-    desc: 'Assign PR reviewers and Issue owners directly from the chat. Track task progression from pending to review to done in real-time.',
-    details: ['Assign tasks without leaving chat', 'Track pending, review, and done states', 'Visual task status indicators', 'Clear task ownership visibility'],
-    tier: 'Pro Only'
-  },
-  {
-    icon: <MessagesSquare size={22} />,
-    title: 'Conversation Threads',
-    desc: 'Keep main channels clutter-free by starting threaded discussions directly on PR and Issue context cards.',
-    details: ['Spawn threads from context cards', 'Dedicated thread viewing panel', 'Thread reply counters & timestamps', 'Keeps main chats organized'],
-    tier: 'Pro Only'
-  },
-  {
-    icon: <Tag size={22} />,
-    title: 'Smart Triage',
-    desc: 'Label and comment on GitHub Issues without ever leaving the chat. Apply labels, add comments, and manage your issue workflow inline.',
-    details: ['Apply GitHub labels directly', 'Comment on issues from chat', 'Visual label color matching', 'Action sheet UI for quick actions'],
-    tier: 'All Plans'
-  },
-  {
-    icon: <ClipboardList size={22} />,
-    title: 'Pad — Notes & Tasks',
-    desc: 'A built-in notepad for quick thoughts, code snippets, and task lists. Pin important notes, mark tasks complete, and keep everything organized.',
-    details: ['Quick note creation with titles', 'Task completion tracking with progress', 'Pin important notes', 'Cloud sync for Pro users'],
-    tier: '10 entries on Free'
-  },
-  {
-    icon: <Pin size={22} />,
-    title: 'Pin Messages',
-    desc: 'Pin important messages to the top of any chat. Choose from 24-hour, 7-day, or 30-day expiry times to keep the context relevant.',
-    details: ['Pin for 24h, 7d, or 30d', 'Visual pin indicator on messages', 'Quick unpin from context menu', '5 pins on Free, unlimited on Pro'],
-    tier: '5 on Free'
-  },
-  {
-    icon: <Star size={22} />,
-    title: 'Star Messages',
-    desc: 'Star messages you want to revisit later. View all starred messages in a dedicated panel for quick reference.',
-    details: ['Star any message instantly', 'Dedicated starred messages panel', 'Bulk unstar all actions', '50 stars on Free, unlimited on Pro'],
-    tier: '50 on Free'
-  },
-  {
-    icon: <Smile size={22} />,
-    title: 'Message Reactions',
-    desc: 'React to messages with emoji. Full emoji picker with categorized browsing — express yourself without typing a full reply.',
-    details: ['Full emoji picker with categories', 'Real-time reaction sync', 'Visual reaction counts with tooltips', 'One-tap to toggle reactions'],
-    tier: 'All Plans'
-  },
-  {
-    icon: <FolderOpen size={22} />,
-    title: 'Custom Chat Lists',
-    desc: 'Organize your chats into custom groups. Create lists for different projects, teams, or contexts and filter by them.',
-    details: ['Create named chat lists', 'Add any chat to a list', 'Quick filter by list', '3 lists on Free, unlimited on Pro'],
-    tier: '3 on Free'
-  },
-  {
-    icon: <Eye size={22} />,
-    title: 'Online Presence',
-    desc: 'See who\'s online in real-time. Know when your teammates are available before messaging them.',
-    details: ['Real-time online/offline status', 'Last seen timestamps', 'Visual presence indicators', 'Privacy-respecting design'],
-    tier: 'All Plans'
-  },
-  {
-    icon: <Archive size={22} />,
-    title: 'Archive & Clear',
-    desc: 'Archive conversations you\'re done with. Clear chat history for a fresh start without deleting the contact.',
-    details: ['Archive completed chats', 'Clear chat history per contact', 'Restore archived chats anytime', '5 archives on Free, unlimited on Pro'],
-    tier: '5 on Free'
-  },
-  {
-    icon: <Palette size={22} />,
-    title: 'Theming & Personalization',
-    desc: 'Make RepoChat yours. Choose from 6 curated accent colors, pick your theme, adjust background effects, and set your preferred density.',
-    details: ['6 curated accent colors', 'Light, Dark, and System themes', 'Background blur & dimming controls', 'Default and Compact density modes'],
-    tier: 'All Plans'
-  },
-  {
-    icon: <Users size={22} />,
-    title: 'Group Management',
-    desc: 'Full admin controls for group chats. Promote members, manage roles, update group info, and control who can join.',
-    details: ['Admin and member roles', 'Promote/demote members', 'Custom group avatars', 'Group description editing'],
-    tier: 'All Plans'
-  },
-  {
-    icon: <Dna size={22} />,
-    title: 'Dev DNA & Power Stats',
-    desc: 'View any developer\'s tech stack, commit pulse, power stats radar chart, and earned badges — all generated from their GitHub activity.',
-    details: ['Radar chart of developer stats', 'Weekly commit pulse visualization', 'Automatic tech stack detection', 'Earned badges and archetype titles'],
-    tier: 'All Plans'
-  },
-  {
-    icon: <Share2 size={22} />,
-    title: 'Quick Share & Templates',
-    desc: 'Share code context in one click. Pin your top 3 contacts for instant access and create up to 6 message templates for rapid sharing.',
-    details: ['Solid or Glass share panel style', 'Pin up to 3 users for quick access', 'Up to 6 custom message templates', 'Share via button or keyboard shortcut'],
-    tier: 'All Plans'
-  },
-  {
-    icon: <Download size={22} />,
-    title: 'Chat Export',
-    desc: 'Export any conversation as a clean .txt file. Perfect for archiving decisions, sharing meeting notes, or keeping records offline.',
-    details: ['Export as formatted .txt file', 'Includes timestamps and senders', 'Works for DMs and group chats', 'One-click download'],
-    tier: 'All Plans'
-  },
-]
 
 export default function Features() {
   return (
-    <div className="legal-page">
+    <div className="feat-page">
       <div className="container">
+
+        {/* ═══ HERO ═══ */}
         <ScrollReveal>
-          <div className="section-head" style={{ marginBottom: 'var(--space-m)' }}>
-            <div className="badge mb-6"><Zap size={12} /> Features</div>
-            <h1 className="h2">Built for the Way<br /><span className="gradient-text">Developers Actually Work</span></h1>
-            <p>Every feature designed to keep you in flow on GitHub.</p>
+          <div className="feat-hero-area">
+            <div className="section-head" style={{ marginBottom: 0 }}>
+              <div className="badge mb-6"><Zap size={12} /> Features</div>
+              <h1 className="h2">Every feature built<br /><span className="gradient-text">for developer flow.</span></h1>
+              <p>Explore the tools that keep your team in sync — right where the code lives.</p>
+            </div>
           </div>
         </ScrollReveal>
 
-        <div className="features-grid">
-          {features.map((f, i) => (
-            <ScrollReveal key={i} delay={(i % 3) as 0 | 1 | 2 | 3}>
-              <div className="feature-card-full" style={{
-                '--card-glow': 'rgba(139, 92, 246, 0.4)',
-                '--card-glow-bg': 'rgba(139, 92, 246, 0.3)',
-              } as React.CSSProperties}>
-                <div className="feature-card-header">
-                  <div className="feature-card-icon">{f.icon}</div>
-                  <div>
-                    <h3 className="feature-card-title">{f.title}</h3>
-                    <span className={f.tier === 'All Plans' ? 'feature-tier-badge all' : 'feature-tier-badge limit'}>{f.tier}</span>
+        {/* ═══ CATEGORY 1: COMMUNICATION ═══ */}
+        <section className="feat-section">
+          <ScrollReveal>
+            <div className="feat-section-label">
+              <span className="badge"><MessageSquare size={12} /> Communication</span>
+              <h2 className="h3" style={{ marginTop: 20 }}>Talk where you ship.</h2>
+              <p className="body-md" style={{ opacity: 0.6, marginTop: 8, maxWidth: 500, marginLeft: 'auto', marginRight: 'auto' }}>DMs, groups, threads, reactions — everything your team needs, inside GitHub.</p>
+            </div>
+          </ScrollReveal>
+
+          {/* ── 3D Card Deck ── */}
+          <ScrollReveal>
+            <div className="feat-deck-wrapper">
+              <div className="feat-deck">
+
+                {/* Card 1: Real-Time DM */}
+                <div className="feat-deck-card" style={{ '--deck-i': 0 } as React.CSSProperties}>
+                  <div className="feat-deck-visual">
+                    <svg viewBox="0 0 160 100" className="feat-deck-svg">
+                      {/* Two chat bubbles appearing */}
+                      <rect x="10" y="15" rx="10" ry="10" width="90" height="28" fill="rgba(139,92,246,0.12)" stroke="#8B5CF6" strokeWidth="1">
+                        <animate attributeName="opacity" values="0;1;1" dur="3s" repeatCount="indefinite" />
+                      </rect>
+                      <line x1="22" y1="27" x2="75" y2="27" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round">
+                        <animate attributeName="opacity" values="0;1;1" dur="3s" repeatCount="indefinite" />
+                      </line>
+                      <line x1="22" y1="36" x2="55" y2="36" stroke="rgba(255,255,255,0.1)" strokeWidth="2" strokeLinecap="round">
+                        <animate attributeName="opacity" values="0;1;1" dur="3s" repeatCount="indefinite" />
+                      </line>
+                      <rect x="60" y="55" rx="10" ry="10" width="90" height="28" fill="rgba(6,182,212,0.12)" stroke="#06B6D4" strokeWidth="1">
+                        <animate attributeName="opacity" values="0;0;1" dur="3s" repeatCount="indefinite" />
+                      </rect>
+                      <line x1="72" y1="67" x2="130" y2="67" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round">
+                        <animate attributeName="opacity" values="0;0;1" dur="3s" repeatCount="indefinite" />
+                      </line>
+                      <line x1="72" y1="76" x2="110" y2="76" stroke="rgba(255,255,255,0.1)" strokeWidth="2" strokeLinecap="round">
+                        <animate attributeName="opacity" values="0;0;1" dur="3s" repeatCount="indefinite" />
+                      </line>
+                      {/* Read tick */}
+                      <path d="M138 80 L142 84 L148 76" fill="none" stroke="#8B5CF6" strokeWidth="1.5" strokeLinecap="round" opacity="0.6">
+                        <animate attributeName="opacity" values="0;0;0.6" dur="3s" repeatCount="indefinite" />
+                      </path>
+                    </svg>
                   </div>
+                  <h4 className="feat-deck-title">Real-Time DMs</h4>
+                  <p className="feat-deck-desc">Instant 1-on-1 messaging with read receipts and typing indicators.</p>
+                  <span className="feature-tier-badge limit">15 Friends on Free</span>
                 </div>
-                <p className="feature-card-desc">{f.desc}</p>
-                <ul className="feature-card-details">
-                  {f.details.map((d, j) => (
-                    <li key={j}>
-                      <span className="feature-check">✓</span> {d}
-                    </li>
-                  ))}
-                </ul>
+
+                {/* Card 2: Group Chat */}
+                <div className="feat-deck-card" style={{ '--deck-i': 1 } as React.CSSProperties}>
+                  <div className="feat-deck-visual">
+                    <svg viewBox="0 0 160 100" className="feat-deck-svg">
+                      {/* Multiple avatars */}
+                      <circle cx="40" cy="30" r="12" fill="rgba(139,92,246,0.15)" stroke="#8B5CF6" strokeWidth="1" />
+                      <circle cx="80" cy="30" r="12" fill="rgba(6,182,212,0.15)" stroke="#06B6D4" strokeWidth="1" />
+                      <circle cx="120" cy="30" r="12" fill="rgba(16,185,129,0.15)" stroke="#10B981" strokeWidth="1" />
+                      {/* Pulse rings on middle avatar */}
+                      <circle cx="80" cy="30" r="12" fill="none" stroke="#06B6D4" strokeWidth="0.5" opacity="0.4">
+                        <animate attributeName="r" values="12;22" dur="2s" repeatCount="indefinite" />
+                        <animate attributeName="opacity" values="0.4;0" dur="2s" repeatCount="indefinite" />
+                      </circle>
+                      {/* Group chat bubble */}
+                      <rect x="20" y="55" rx="10" ry="10" width="120" height="30" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.2)" strokeWidth="1" />
+                      <line x1="32" y1="68" x2="90" y2="68" stroke="rgba(255,255,255,0.15)" strokeWidth="2" strokeLinecap="round" />
+                      <line x1="32" y1="77" x2="70" y2="77" stroke="rgba(255,255,255,0.08)" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                  </div>
+                  <h4 className="feat-deck-title">Group Chats</h4>
+                  <p className="feat-deck-desc">Create groups with admin roles, custom avatars, and member management.</p>
+                  <span className="feature-tier-badge limit">5 Groups on Free</span>
+                </div>
+
+                {/* Card 3: Reactions */}
+                <div className="feat-deck-card" style={{ '--deck-i': 2 } as React.CSSProperties}>
+                  <div className="feat-deck-visual">
+                    <svg viewBox="0 0 160 100" className="feat-deck-svg">
+                      {/* Message bubble */}
+                      <rect x="15" y="10" rx="10" ry="10" width="130" height="40" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.2)" strokeWidth="1" />
+                      <line x1="30" y1="28" x2="120" y2="28" stroke="rgba(255,255,255,0.12)" strokeWidth="2" strokeLinecap="round" />
+                      <line x1="30" y1="38" x2="90" y2="38" stroke="rgba(255,255,255,0.07)" strokeWidth="2" strokeLinecap="round" />
+                      {/* Emoji reactions bouncing in */}
+                      <text x="30" y="75" fontSize="18" opacity="0.9">👍</text>
+                      <text x="58" y="75" fontSize="18">
+                        <animate attributeName="y" values="85;75" dur="0.5s" begin="0.5s" fill="freeze" />
+                        <animate attributeName="opacity" values="0;0.9" dur="0.5s" begin="0.5s" fill="freeze" />
+                        🔥
+                      </text>
+                      <text x="86" y="75" fontSize="18">
+                        <animate attributeName="y" values="85;75" dur="0.5s" begin="1s" fill="freeze" />
+                        <animate attributeName="opacity" values="0;0.9" dur="0.5s" begin="1s" fill="freeze" />
+                        😄
+                      </text>
+                      <text x="114" y="75" fontSize="18">
+                        <animate attributeName="y" values="85;75" dur="0.5s" begin="1.5s" fill="freeze" />
+                        <animate attributeName="opacity" values="0;0.9" dur="0.5s" begin="1.5s" fill="freeze" />
+                        🚀
+                      </text>
+                    </svg>
+                  </div>
+                  <h4 className="feat-deck-title">Reactions</h4>
+                  <p className="feat-deck-desc">Full emoji picker with categorized browsing and real-time sync.</p>
+                  <span className="feature-tier-badge all">All Plans</span>
+                </div>
+
+                {/* Card 4: Threads */}
+                <div className="feat-deck-card" style={{ '--deck-i': 3 } as React.CSSProperties}>
+                  <div className="feat-deck-visual">
+                    <svg viewBox="0 0 160 100" className="feat-deck-svg">
+                      {/* Main message */}
+                      <rect x="10" y="8" rx="8" ry="8" width="100" height="25" fill="rgba(139,92,246,0.1)" stroke="#8B5CF6" strokeWidth="1" />
+                      <line x1="20" y1="19" x2="90" y2="19" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" strokeLinecap="round" />
+                      {/* Branch line */}
+                      <path d="M60 33 L60 48 Q60 55 67 55 L80 55" fill="none" stroke="rgba(139,92,246,0.3)" strokeWidth="1.5" strokeDasharray="4 3">
+                        <animate attributeName="strokeDashoffset" values="14;0" dur="1.5s" fill="freeze" />
+                      </path>
+                      {/* Thread reply 1 */}
+                      <rect x="80" y="44" rx="8" ry="8" width="70" height="22" fill="rgba(6,182,212,0.08)" stroke="#06B6D4" strokeWidth="1" opacity="0">
+                        <animate attributeName="opacity" values="0;1" dur="0.4s" begin="0.8s" fill="freeze" />
+                      </rect>
+                      {/* Thread reply 2 */}
+                      <path d="M60 55 L60 78 Q60 85 67 85 L80 85" fill="none" stroke="rgba(139,92,246,0.2)" strokeWidth="1.5" strokeDasharray="4 3">
+                        <animate attributeName="strokeDashoffset" values="14;0" dur="1s" begin="1.2s" fill="freeze" />
+                      </path>
+                      <rect x="80" y="74" rx="8" ry="8" width="70" height="22" fill="rgba(16,185,129,0.08)" stroke="#10B981" strokeWidth="1" opacity="0">
+                        <animate attributeName="opacity" values="0;1" dur="0.4s" begin="1.8s" fill="freeze" />
+                      </rect>
+                    </svg>
+                  </div>
+                  <h4 className="feat-deck-title">Threads</h4>
+                  <p className="feat-deck-desc">Branch focused discussions from any context card or message.</p>
+                  <span className="feature-tier-badge limit">Pro Only</span>
+                </div>
+
+                {/* Card 5: Presence */}
+                <div className="feat-deck-card" style={{ '--deck-i': 4 } as React.CSSProperties}>
+                  <div className="feat-deck-visual">
+                    <svg viewBox="0 0 160 100" className="feat-deck-svg">
+                      {/* User avatars with presence dots */}
+                      <circle cx="35" cy="40" r="16" fill="rgba(139,92,246,0.1)" stroke="rgba(139,92,246,0.25)" strokeWidth="1.5" />
+                      <circle cx="47" cy="52" r="5" fill="#10B981" stroke="rgba(15,15,20,1)" strokeWidth="2">
+                        <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
+                      </circle>
+                      <circle cx="80" cy="40" r="16" fill="rgba(6,182,212,0.1)" stroke="rgba(6,182,212,0.25)" strokeWidth="1.5" />
+                      <circle cx="92" cy="52" r="5" fill="#10B981" stroke="rgba(15,15,20,1)" strokeWidth="2">
+                        <animate attributeName="opacity" values="1;0.5;1" dur="2.5s" repeatCount="indefinite" />
+                      </circle>
+                      <circle cx="125" cy="40" r="16" fill="rgba(234,179,8,0.1)" stroke="rgba(234,179,8,0.25)" strokeWidth="1.5" />
+                      <circle cx="137" cy="52" r="5" fill="rgba(255,255,255,0.2)" stroke="rgba(15,15,20,1)" strokeWidth="2" />
+                      {/* Labels */}
+                      <text x="35" y="72" textAnchor="middle" fill="rgba(16,185,129,0.5)" fontSize="7" fontWeight="600">Online</text>
+                      <text x="80" y="72" textAnchor="middle" fill="rgba(16,185,129,0.5)" fontSize="7" fontWeight="600">Online</text>
+                      <text x="125" y="72" textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="7" fontWeight="600">Away</text>
+                    </svg>
+                  </div>
+                  <h4 className="feat-deck-title">Presence</h4>
+                  <p className="feat-deck-desc">See who's online with real-time status and last-seen timestamps.</p>
+                  <span className="feature-tier-badge all">All Plans</span>
+                </div>
+
               </div>
-            </ScrollReveal>
-          ))}
-        </div>
+            </div>
+          </ScrollReveal>
+
+          {/* ── Screenshot in Device Frame ── */}
+          <ScrollReveal>
+            <div className="feat-device-showcase">
+              <div className="feat-device-frame feat-device-frame--purple">
+                <div className="feat-device-dots"><span /><span /><span /></div>
+                <img src="/group.png" alt="Real-Time Group Chat" loading="lazy" />
+              </div>
+            </div>
+          </ScrollReveal>
+
+        </section>
+
+        {/* ═══ FINAL CTA ═══ */}
+        <ScrollReveal>
+          <div className="eco-cta-banner" style={{ marginTop: 'var(--space-xl)' }}>
+            <div className="eco-cta-left">
+              <h3 className="h3">Start collaborating where your code lives.</h3>
+            </div>
+            <div className="eco-cta-right">
+              <p className="body-sm">No credit card required. Just your GitHub account.</p>
+              <a href="#install" className="btn eco-cta-btn">Add to Chrome — Free</a>
+            </div>
+          </div>
+        </ScrollReveal>
+
       </div>
     </div>
   )
