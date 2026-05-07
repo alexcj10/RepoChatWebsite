@@ -186,166 +186,59 @@ export default function Features() {
             </div>
           </ScrollReveal>
 
-          {/* ── 3D Card Deck ── */}
+          {/* ── Split Showcase: Screenshot + Accordion ── */}
           <ScrollReveal>
-            <div className="feat-deck-wrapper">
-              <div className="feat-deck">
-
-                {/* Card 1: Real-Time DM */}
-                <div className="feat-deck-card" style={{ '--deck-i': 0 } as React.CSSProperties}>
-                  <div className="feat-deck-visual">
-                    <svg viewBox="0 0 160 100" className="feat-deck-svg">
-                      {/* Two chat bubbles appearing */}
-                      <rect x="10" y="15" rx="10" ry="10" width="90" height="28" fill="rgba(139,92,246,0.12)" stroke="#8B5CF6" strokeWidth="1">
-                        <animate attributeName="opacity" values="0;1;1" dur="3s" repeatCount="indefinite" />
-                      </rect>
-                      <line x1="22" y1="27" x2="75" y2="27" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round">
-                        <animate attributeName="opacity" values="0;1;1" dur="3s" repeatCount="indefinite" />
-                      </line>
-                      <line x1="22" y1="36" x2="55" y2="36" stroke="rgba(255,255,255,0.1)" strokeWidth="2" strokeLinecap="round">
-                        <animate attributeName="opacity" values="0;1;1" dur="3s" repeatCount="indefinite" />
-                      </line>
-                      <rect x="60" y="55" rx="10" ry="10" width="90" height="28" fill="rgba(6,182,212,0.12)" stroke="#06B6D4" strokeWidth="1">
-                        <animate attributeName="opacity" values="0;0;1" dur="3s" repeatCount="indefinite" />
-                      </rect>
-                      <line x1="72" y1="67" x2="130" y2="67" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round">
-                        <animate attributeName="opacity" values="0;0;1" dur="3s" repeatCount="indefinite" />
-                      </line>
-                      <line x1="72" y1="76" x2="110" y2="76" stroke="rgba(255,255,255,0.1)" strokeWidth="2" strokeLinecap="round">
-                        <animate attributeName="opacity" values="0;0;1" dur="3s" repeatCount="indefinite" />
-                      </line>
-                      {/* Read tick */}
-                      <path d="M138 80 L142 84 L148 76" fill="none" stroke="#8B5CF6" strokeWidth="1.5" strokeLinecap="round" opacity="0.6">
-                        <animate attributeName="opacity" values="0;0;0.6" dur="3s" repeatCount="indefinite" />
-                      </path>
-                    </svg>
-                  </div>
-                  <h4 className="feat-deck-title">Real-Time DMs</h4>
-                  <p className="feat-deck-desc">Instant 1-on-1 messaging with read receipts and typing indicators.</p>
-                  <span className="feature-tier-badge limit">15 Friends on Free</span>
+            <div className="feat-showcase">
+              {/* Left: Product Screenshot */}
+              <div className="feat-showcase-visual">
+                <div className="feat-device-frame feat-device-frame--purple">
+                  <div className="feat-device-dots"><span /><span /><span /></div>
+                  <img src="/group.png" alt="RepoChat — Communication Features" loading="lazy" />
                 </div>
-
-                {/* Card 2: Group Chat */}
-                <div className="feat-deck-card" style={{ '--deck-i': 1 } as React.CSSProperties}>
-                  <div className="feat-deck-visual">
-                    <svg viewBox="0 0 160 100" className="feat-deck-svg">
-                      {/* Multiple avatars */}
-                      <circle cx="40" cy="30" r="12" fill="rgba(139,92,246,0.15)" stroke="#8B5CF6" strokeWidth="1" />
-                      <circle cx="80" cy="30" r="12" fill="rgba(6,182,212,0.15)" stroke="#06B6D4" strokeWidth="1" />
-                      <circle cx="120" cy="30" r="12" fill="rgba(16,185,129,0.15)" stroke="#10B981" strokeWidth="1" />
-                      {/* Pulse rings on middle avatar */}
-                      <circle cx="80" cy="30" r="12" fill="none" stroke="#06B6D4" strokeWidth="0.5" opacity="0.4">
-                        <animate attributeName="r" values="12;22" dur="2s" repeatCount="indefinite" />
-                        <animate attributeName="opacity" values="0.4;0" dur="2s" repeatCount="indefinite" />
-                      </circle>
-                      {/* Group chat bubble */}
-                      <rect x="20" y="55" rx="10" ry="10" width="120" height="30" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.2)" strokeWidth="1" />
-                      <line x1="32" y1="68" x2="90" y2="68" stroke="rgba(255,255,255,0.15)" strokeWidth="2" strokeLinecap="round" />
-                      <line x1="32" y1="77" x2="70" y2="77" stroke="rgba(255,255,255,0.08)" strokeWidth="2" strokeLinecap="round" />
-                    </svg>
-                  </div>
-                  <h4 className="feat-deck-title">Group Chats</h4>
-                  <p className="feat-deck-desc">Create groups with admin roles, custom avatars, and member management.</p>
-                  <span className="feature-tier-badge limit">5 Groups on Free</span>
-                </div>
-
-                {/* Card 3: Reactions */}
-                <div className="feat-deck-card" style={{ '--deck-i': 2 } as React.CSSProperties}>
-                  <div className="feat-deck-visual">
-                    <svg viewBox="0 0 160 100" className="feat-deck-svg">
-                      {/* Message bubble */}
-                      <rect x="15" y="10" rx="10" ry="10" width="130" height="40" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.2)" strokeWidth="1" />
-                      <line x1="30" y1="28" x2="120" y2="28" stroke="rgba(255,255,255,0.12)" strokeWidth="2" strokeLinecap="round" />
-                      <line x1="30" y1="38" x2="90" y2="38" stroke="rgba(255,255,255,0.07)" strokeWidth="2" strokeLinecap="round" />
-                      {/* Emoji reactions bouncing in */}
-                      <text x="30" y="75" fontSize="18" opacity="0.9">👍</text>
-                      <text x="58" y="75" fontSize="18">
-                        <animate attributeName="y" values="85;75" dur="0.5s" begin="0.5s" fill="freeze" />
-                        <animate attributeName="opacity" values="0;0.9" dur="0.5s" begin="0.5s" fill="freeze" />
-                        🔥
-                      </text>
-                      <text x="86" y="75" fontSize="18">
-                        <animate attributeName="y" values="85;75" dur="0.5s" begin="1s" fill="freeze" />
-                        <animate attributeName="opacity" values="0;0.9" dur="0.5s" begin="1s" fill="freeze" />
-                        😄
-                      </text>
-                      <text x="114" y="75" fontSize="18">
-                        <animate attributeName="y" values="85;75" dur="0.5s" begin="1.5s" fill="freeze" />
-                        <animate attributeName="opacity" values="0;0.9" dur="0.5s" begin="1.5s" fill="freeze" />
-                        🚀
-                      </text>
-                    </svg>
-                  </div>
-                  <h4 className="feat-deck-title">Reactions</h4>
-                  <p className="feat-deck-desc">Full emoji picker with categorized browsing and real-time sync.</p>
-                  <span className="feature-tier-badge all">All Plans</span>
-                </div>
-
-                {/* Card 4: Threads */}
-                <div className="feat-deck-card" style={{ '--deck-i': 3 } as React.CSSProperties}>
-                  <div className="feat-deck-visual">
-                    <svg viewBox="0 0 160 100" className="feat-deck-svg">
-                      {/* Main message */}
-                      <rect x="10" y="8" rx="8" ry="8" width="100" height="25" fill="rgba(139,92,246,0.1)" stroke="#8B5CF6" strokeWidth="1" />
-                      <line x1="20" y1="19" x2="90" y2="19" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" strokeLinecap="round" />
-                      {/* Branch line */}
-                      <path d="M60 33 L60 48 Q60 55 67 55 L80 55" fill="none" stroke="rgba(139,92,246,0.3)" strokeWidth="1.5" strokeDasharray="4 3">
-                        <animate attributeName="strokeDashoffset" values="14;0" dur="1.5s" fill="freeze" />
-                      </path>
-                      {/* Thread reply 1 */}
-                      <rect x="80" y="44" rx="8" ry="8" width="70" height="22" fill="rgba(6,182,212,0.08)" stroke="#06B6D4" strokeWidth="1" opacity="0">
-                        <animate attributeName="opacity" values="0;1" dur="0.4s" begin="0.8s" fill="freeze" />
-                      </rect>
-                      {/* Thread reply 2 */}
-                      <path d="M60 55 L60 78 Q60 85 67 85 L80 85" fill="none" stroke="rgba(139,92,246,0.2)" strokeWidth="1.5" strokeDasharray="4 3">
-                        <animate attributeName="strokeDashoffset" values="14;0" dur="1s" begin="1.2s" fill="freeze" />
-                      </path>
-                      <rect x="80" y="74" rx="8" ry="8" width="70" height="22" fill="rgba(16,185,129,0.08)" stroke="#10B981" strokeWidth="1" opacity="0">
-                        <animate attributeName="opacity" values="0;1" dur="0.4s" begin="1.8s" fill="freeze" />
-                      </rect>
-                    </svg>
-                  </div>
-                  <h4 className="feat-deck-title">Threads</h4>
-                  <p className="feat-deck-desc">Branch focused discussions from any context card or message.</p>
-                  <span className="feature-tier-badge limit">Pro Only</span>
-                </div>
-
-                {/* Card 5: Presence */}
-                <div className="feat-deck-card" style={{ '--deck-i': 4 } as React.CSSProperties}>
-                  <div className="feat-deck-visual">
-                    <svg viewBox="0 0 160 100" className="feat-deck-svg">
-                      {/* User avatars with presence dots */}
-                      <circle cx="35" cy="40" r="16" fill="rgba(139,92,246,0.1)" stroke="rgba(139,92,246,0.25)" strokeWidth="1.5" />
-                      <circle cx="47" cy="52" r="5" fill="#10B981" stroke="rgba(15,15,20,1)" strokeWidth="2">
-                        <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
-                      </circle>
-                      <circle cx="80" cy="40" r="16" fill="rgba(6,182,212,0.1)" stroke="rgba(6,182,212,0.25)" strokeWidth="1.5" />
-                      <circle cx="92" cy="52" r="5" fill="#10B981" stroke="rgba(15,15,20,1)" strokeWidth="2">
-                        <animate attributeName="opacity" values="1;0.5;1" dur="2.5s" repeatCount="indefinite" />
-                      </circle>
-                      <circle cx="125" cy="40" r="16" fill="rgba(234,179,8,0.1)" stroke="rgba(234,179,8,0.25)" strokeWidth="1.5" />
-                      <circle cx="137" cy="52" r="5" fill="rgba(255,255,255,0.2)" stroke="rgba(15,15,20,1)" strokeWidth="2" />
-                      {/* Labels */}
-                      <text x="35" y="72" textAnchor="middle" fill="rgba(16,185,129,0.5)" fontSize="7" fontWeight="600">Online</text>
-                      <text x="80" y="72" textAnchor="middle" fill="rgba(16,185,129,0.5)" fontSize="7" fontWeight="600">Online</text>
-                      <text x="125" y="72" textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="7" fontWeight="600">Away</text>
-                    </svg>
-                  </div>
-                  <h4 className="feat-deck-title">Presence</h4>
-                  <p className="feat-deck-desc">See who's online with real-time status and last-seen timestamps.</p>
-                  <span className="feature-tier-badge all">All Plans</span>
-                </div>
-
               </div>
-            </div>
-          </ScrollReveal>
 
-          {/* ── Screenshot in Device Frame ── */}
-          <ScrollReveal>
-            <div className="feat-device-showcase">
-              <div className="feat-device-frame feat-device-frame--purple">
-                <div className="feat-device-dots"><span /><span /><span /></div>
-                <img src="/group.png" alt="Real-Time Group Chat" loading="lazy" />
+              {/* Right: Accordion */}
+              <div className="feat-showcase-info">
+                {[
+                  {
+                    title: 'Real-Time DMs',
+                    desc: 'Instant 1-on-1 messaging with read receipts, typing indicators, and delivery status — all synced via Supabase Realtime.',
+                    tier: '15 Friends on Free'
+                  },
+                  {
+                    title: 'Group Chats',
+                    desc: 'Create groups with admin roles, custom avatars, and member management. Link groups directly to repositories for auto-context.',
+                    tier: '5 Groups on Free'
+                  },
+                  {
+                    title: 'Reactions',
+                    desc: 'Full emoji picker with categorized browsing, skin tone support, and real-time sync across all connected users.',
+                    tier: 'All Plans'
+                  },
+                  {
+                    title: 'Threads',
+                    desc: 'Branch focused discussions from any message or context card. Keep your main chat clean while diving deep into topics.',
+                    tier: 'Pro Only'
+                  },
+                  {
+                    title: 'Presence',
+                    desc: 'See who\'s online with real-time status indicators and last-seen timestamps. Know when your team is available.',
+                    tier: 'All Plans'
+                  }
+                ].map((item, i) => (
+                  <details key={i} className="feat-accordion-item" {...(i === 0 ? { open: true } : {})}>
+                    <summary className="feat-accordion-header">
+                      <span className="feat-accordion-title">{item.title}</span>
+                      <span className="feat-accordion-icon">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                      </span>
+                    </summary>
+                    <div className="feat-accordion-body">
+                      <p>{item.desc}</p>
+                      <span className={`feature-tier-badge ${item.tier === 'All Plans' ? 'all' : 'limit'}`}>{item.tier}</span>
+                    </div>
+                  </details>
+                ))}
               </div>
             </div>
           </ScrollReveal>

@@ -1780,6 +1780,119 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 
 
+/* ═══════════════════════════════════════════════
+   SPLIT SHOWCASE + ACCORDION
+   ═══════════════════════════════════════════════ */
+.feat-showcase {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding: 40px 0 60px;
+}
+
+/* Left: Visual (screenshot in device frame) */
+.feat-showcase-visual {
+  flex: 1.1;
+  min-width: 0;
+}
+.feat-showcase-visual .feat-device-frame {
+  width: 100%;
+}
+.feat-showcase-visual .feat-device-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Right: Accordion info panel */
+.feat-showcase-info {
+  flex: 0.9;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Accordion Item */
+.feat-accordion-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.35s var(--ease);
+}
+.feat-accordion-item:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+.feat-accordion-item[open] {
+  background: rgba(139, 92, 246, 0.04);
+  border-color: rgba(139, 92, 246, 0.2);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2), 0 0 20px rgba(139, 92, 246, 0.04);
+}
+
+/* Accordion Header (the <summary>) */
+.feat-accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+.feat-accordion-header::-webkit-details-marker { display: none; }
+.feat-accordion-header::marker { display: none; content: ''; }
+
+.feat-accordion-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f4f4f5;
+  letter-spacing: -0.01em;
+}
+
+.feat-accordion-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 0.35s var(--ease);
+  flex-shrink: 0;
+}
+.feat-accordion-item[open] .feat-accordion-icon {
+  transform: rotate(180deg);
+  background: rgba(139, 92, 246, 0.12);
+  color: #a78bfa;
+}
+
+/* Accordion Body */
+.feat-accordion-body {
+  padding: 0 24px 20px;
+}
+.feat-accordion-body p {
+  font-size: 0.88rem;
+  color: #a1a1aa;
+  line-height: 1.65;
+  margin: 0 0 12px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .feat-showcase {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .feat-showcase-visual,
+  .feat-showcase-info {
+    flex: 1;
+    width: 100%;
+  }
+}
 
 /* ── 3D Card Deck ── */
 .feat-deck-wrapper {
