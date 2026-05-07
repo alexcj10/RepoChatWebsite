@@ -88,7 +88,7 @@ export default function Features() {
               <div className="feat-arch-connections connections-2">
                 <div className="protocol-label pl-1">WSS://</div>
                 <div className="protocol-label pl-2">REST API</div>
-                <div className="protocol-label pl-3">DOM SYNC</div>
+                <div className="protocol-label pl-3">DOM Sync</div>
                 <svg preserveAspectRatio="none" viewBox="0 0 150 200">
                   {/* To Comm (Top) */}
                   <path d="M0,100 C50,100 50,25 150,25" className="arch-line" />

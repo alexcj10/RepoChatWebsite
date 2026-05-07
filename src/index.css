@@ -1531,11 +1531,10 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 .node-source .node-title {
   font-size: 0.85rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   font-weight: 700;
   color: #f97316;
   margin-bottom: 16px;
-  text-transform: uppercase;
 }
 .node-source .node-tags {
   display: flex;
@@ -1647,7 +1646,6 @@ textarea.form-input{min-height:110px;resize:vertical}
 .cn-label {
   font-size: 0.55rem;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.05em;
   color: rgba(255,255,255,0.6);
   background: rgba(0,0,0,0.6);
