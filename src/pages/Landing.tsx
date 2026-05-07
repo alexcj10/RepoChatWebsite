@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
-import { ArrowRight, Shield, Zap, Check, X, Sparkles, GitPullRequest, AlertCircle, Users, Code, Network, Cpu, Clock, DollarSign, BarChart3, Layers, RefreshCw, MessageSquare } from 'lucide-react'
+import { ArrowRight, Shield, Zap, Check, X, Sparkles, GitPullRequest, AlertCircle, Users, Code, Network, Cpu, Clock, DollarSign, BarChart3, Bot } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
@@ -531,33 +531,33 @@ export default function Landing() {
             <ScrollReveal>
               <div className="eco-pillar-card">
                 <div className="eco-pillar-icon">
-                  <Layers size={22} />
+                  <Bot size={22} />
                 </div>
                 <div className="eco-pillar-text">
-                  <h4 className="h4">Zero Context Switching</h4>
-                  <p className="body-sm">Stay in GitHub — chat, triage, and review all come to you in one sidebar.</p>
+                  <h4 className="h4">RepoBot AI Assistant</h4>
+                  <p className="body-sm">Get instant repository summaries, architecture deep dives, or explain complex code using your own API keys.</p>
                 </div>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={1}>
               <div className="eco-pillar-card">
                 <div className="eco-pillar-icon eco-pillar-icon-green">
-                  <RefreshCw size={22} />
+                  <Users size={22} />
                 </div>
                 <div className="eco-pillar-text">
-                  <h4 className="h4">Live GitHub Sync</h4>
-                  <p className="body-sm">PRs, issues, and task assignments sync in real-time across every conversation.</p>
+                  <h4 className="h4">Real-Time Team Chat</h4>
+                  <p className="body-sm">Direct messages, team groups, and online presence synced instantly via Supabase, right inside GitHub.</p>
                 </div>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={2}>
               <div className="eco-pillar-card">
                 <div className="eco-pillar-icon eco-pillar-icon-cyan">
-                  <MessageSquare size={22} />
+                  <Code size={22} />
                 </div>
                 <div className="eco-pillar-text">
-                  <h4 className="h4">Unified Workspace</h4>
-                  <p className="body-sm">Chat, code context, task management, and team coordination — all in one place.</p>
+                  <h4 className="h4">In-Context Code Sharing</h4>
+                  <p className="body-sm">Highlight any code snippet on GitHub to instantly share it in chat or analyze it with RepoBot.</p>
                 </div>
               </div>
             </ScrollReveal>
