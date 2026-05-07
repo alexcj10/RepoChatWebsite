@@ -609,7 +609,7 @@ export default function Landing() {
       </section>
 
       {/* ═══ MINI FEATURE GRID ═══ */}
-      <section className="section">
+      <section className="section mini-features-section">
         <div className="container">
           <ScrollReveal>
             <div className="section-head ecosystem-head">

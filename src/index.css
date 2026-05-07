@@ -364,6 +364,10 @@ html.nav-open-lock body {
 /* ============================================
    CORE FEATURES GRID (New 2x2 Bento)
    ============================================ */
+.features-grid-section {
+  padding-top: var(--space-l) !important;
+}
+
 .features-bento-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -461,6 +465,10 @@ html.nav-open-lock body {
   .feature-card-content .h3 {
     font-size: 1.2rem;
   }
+}
+
+.mini-features-section {
+  padding-top: var(--space-l) !important;
 }
 
 /* ============================================
