@@ -13,7 +13,7 @@ export default function Features() {
     const pipeline = archPipelineRef.current;
     if (!panel || !pipeline) return;
 
-    const BASE_WIDTH = 1050; // natural unscaled pipeline width + breathing room
+    const BASE_WIDTH = 1150; // natural unscaled pipeline width + breathing room (matches ecosystem)
     const style = getComputedStyle(panel);
     const padL = parseFloat(style.paddingLeft) || 0;
     const padR = parseFloat(style.paddingRight) || 0;
