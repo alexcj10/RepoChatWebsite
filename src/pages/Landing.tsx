@@ -546,7 +546,7 @@ export default function Landing() {
                 </div>
                 <div className="eco-pillar-text">
                   <h4 className="h4">Live GitHub Sync</h4>
-                  <p className="body-sm">PRs, issues, and commits update in real-time across every conversation.</p>
+                  <p className="body-sm">PRs, issues, and task assignments sync in real-time across every conversation.</p>
                 </div>
               </div>
             </ScrollReveal>
