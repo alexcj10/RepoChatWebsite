@@ -20,12 +20,6 @@ export default function Features() {
         {/* ═══ FEATURE ARCHITECTURE GRAPH ═══ */}
         <ScrollReveal>
           <div className="feat-arch-panel">
-            {/* Architectural Crosshairs */}
-            <div className="arch-crosshair tl"></div>
-            <div className="arch-crosshair tr"></div>
-            <div className="arch-crosshair bl"></div>
-            <div className="arch-crosshair br"></div>
-
             {/* Background glowing effects */}
             <div className="feat-arch-glow feat-arch-glow-left"></div>
             <div className="feat-arch-glow feat-arch-glow-right"></div>

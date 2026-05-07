@@ -1658,25 +1658,7 @@ textarea.form-input{min-height:110px;resize:vertical}
 .cn-2 { top: 130px; left: -85px; }
 .cn-3 { top: 130px; left: 193px; }
 
-/* Architectural Crosshairs */
-.arch-crosshair {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  opacity: 0.2;
-}
-.arch-crosshair::before, .arch-crosshair::after {
-  content: '';
-  position: absolute;
-  background: rgba(255, 255, 255, 0.8);
-}
-.arch-crosshair::before { width: 100%; height: 1px; top: 50%; left: 0; }
-.arch-crosshair::after { width: 1px; height: 100%; top: 0; left: 50%; }
 
-.arch-crosshair.tl { top: 32px; left: 32px; }
-.arch-crosshair.tr { top: 32px; right: 32px; }
-.arch-crosshair.bl { bottom: 32px; left: 32px; }
-.arch-crosshair.br { bottom: 32px; right: 32px; }
 
 /* The Pillars (Styled like eco-pillar-cards) */
 .feat-arch-pillars {
