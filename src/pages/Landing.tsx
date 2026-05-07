@@ -382,7 +382,7 @@ export default function Landing() {
             <ScrollReveal delay={1}>
               <div className="why-card">
                 <div className="why-card-icon"><BarChart3 size={18} /></div>
-                <p className="why-card-text"><strong>40%</strong> of developer productivity is lost daily due to constant context switching between apps.</p>
+                <p className="why-card-text"><strong>40%</strong> of developer productivity is lost daily to context switching between apps.</p>
                 <span className="why-card-source">APA Research</span>
               </div>
             </ScrollReveal>
@@ -585,7 +585,7 @@ export default function Landing() {
             <div className="section-head ecosystem-head">
               <div className="badge mb-6"><Zap size={12} /> Core Features</div>
               <h2 className="h2 ecosystem-h2">Your entire workflow,<br />in <span className="gradient-text">one sidebar.</span></h2>
-              <p>Eliminate context switching. Chat with your team, manage GitHub issues, and share code context—all without leaving the repository.</p>
+              <p>Chat with your team, manage GitHub issues, and share code snippets — all without leaving the repository.</p>
             </div>
           </ScrollReveal>
 
