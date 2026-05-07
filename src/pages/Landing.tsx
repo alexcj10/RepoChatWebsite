@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
-import { ArrowRight, Shield, Zap, Check, X, Sparkles, GitPullRequest, AlertCircle, Users, Code, Network, Cpu, Clock, DollarSign, BarChart3 } from 'lucide-react'
+import { ArrowRight, Shield, Zap, Check, X, Sparkles, GitPullRequest, AlertCircle, Users, Code, Network, Cpu, Clock, DollarSign, BarChart3, Layers, RefreshCw, MessageSquare } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
@@ -525,6 +525,57 @@ export default function Landing() {
 
             </div>
           </div>
+
+          {/* ── Ecosystem Pillar Cards ── */}
+          <div className="eco-pillars">
+            <ScrollReveal>
+              <div className="eco-pillar-card">
+                <div className="eco-pillar-icon">
+                  <Layers size={22} />
+                </div>
+                <div className="eco-pillar-text">
+                  <h4 className="h4">Zero Context Switching</h4>
+                  <p className="body-sm">Stay in GitHub — chat, triage, and review all come to you in one sidebar.</p>
+                </div>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={1}>
+              <div className="eco-pillar-card">
+                <div className="eco-pillar-icon eco-pillar-icon-green">
+                  <RefreshCw size={22} />
+                </div>
+                <div className="eco-pillar-text">
+                  <h4 className="h4">Live GitHub Sync</h4>
+                  <p className="body-sm">PRs, issues, and commits update in real-time across every conversation.</p>
+                </div>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={2}>
+              <div className="eco-pillar-card">
+                <div className="eco-pillar-icon eco-pillar-icon-cyan">
+                  <MessageSquare size={22} />
+                </div>
+                <div className="eco-pillar-text">
+                  <h4 className="h4">Unified Workspace</h4>
+                  <p className="body-sm">Chat, code context, task management, and team coordination — all in one place.</p>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* ── CTA Banner Bar ── */}
+          <ScrollReveal>
+            <div className="eco-cta-banner">
+              <div className="eco-cta-left">
+                <h3 className="h3">Start collaborating where your code lives.</h3>
+              </div>
+              <div className="eco-cta-right">
+                <p className="body-sm">No credit card required. Just your GitHub account.</p>
+                <a href="#install" className="btn btn-primary">Add to Chrome — Free</a>
+              </div>
+            </div>
+          </ScrollReveal>
+
         </div>
       </section>
       {/* ═══ CORE FEATURES GRID ═══ */}
