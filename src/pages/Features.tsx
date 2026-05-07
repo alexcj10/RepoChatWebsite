@@ -5,7 +5,8 @@ import ScrollReveal from '../components/ScrollReveal'
 export default function Features() {
   const archPanelRef = useRef<HTMLDivElement>(null)
   const archPipelineRef = useRef<HTMLDivElement>(null)
-  const [openAccordion, setOpenAccordion] = useState(0)
+  const [openItems, setOpenItems] = useState<Record<string, number>>({ comm: 0, git: 0, prod: 0, id: 0 })
+  const toggle = (section: string, i: number) => setOpenItems(prev => ({ ...prev, [section]: prev[section] === i ? -1 : i }))
 
   // Fluid architecture graph scaling — same principle as ecosystem diagram.
   // Continuously maps container width to a zoom level so the layout never overflows.
@@ -177,7 +178,7 @@ export default function Features() {
           </div>
         </ScrollReveal>
 
-        {/* ═══ CATEGORY 1: COMMUNICATION ═══ */}
+        {/* ═══ CATEGORY 1: COMMUNICATION (dark, image-left) ═══ */}
         <section className="feat-section">
           <ScrollReveal>
             <div className="feat-section-label">
@@ -186,66 +187,155 @@ export default function Features() {
               <p className="body-md" style={{ opacity: 0.6, marginTop: 8, maxWidth: 500, marginLeft: 'auto', marginRight: 'auto' }}>DMs, groups, threads, reactions — everything your team needs, inside GitHub.</p>
             </div>
           </ScrollReveal>
-
-          {/* ── Split Showcase: Screenshot + Accordion ── */}
           <ScrollReveal>
             <div className="feat-showcase">
-              {/* Left: Product Screenshot */}
               <div className="feat-showcase-visual">
                 <div className="feat-device-frame feat-device-frame--purple">
                   <div className="feat-device-dots"><span /><span /><span /></div>
-                  <img src="/group.png" alt="RepoChat — Communication Features" loading="lazy" />
+                  <img src="/group.png" alt="RepoChat — Communication" loading="lazy" />
                 </div>
               </div>
-
-              {/* Right: Accordion */}
               <div className="feat-showcase-info">
                 {[
-                  {
-                    title: 'Real-Time DMs',
-                    desc: 'Instant 1-on-1 messaging with read receipts, typing indicators, and delivery status — all synced via Supabase Realtime.',
-                    tier: '15 Friends on Free'
-                  },
-                  {
-                    title: 'Group Chats',
-                    desc: 'Create groups with admin roles, custom avatars, and member management. Link groups directly to repositories for auto-context.',
-                    tier: '5 Groups on Free'
-                  },
-                  {
-                    title: 'Reactions',
-                    desc: 'Full emoji picker with categorized browsing, skin tone support, and real-time sync across all connected users.',
-                    tier: 'All Plans'
-                  },
-                  {
-                    title: 'Threads',
-                    desc: 'Branch focused discussions from any message or context card. Keep your main chat clean while diving deep into topics.',
-                    tier: 'Pro Only'
-                  },
-                  {
-                    title: 'Presence',
-                    desc: 'See who\'s online with real-time status indicators and last-seen timestamps. Know when your team is available.',
-                    tier: 'All Plans'
-                  }
+                  { title: 'Real-Time DMs', desc: 'Instant 1-on-1 messaging with read receipts, typing indicators, and delivery status — all synced via Supabase Realtime.', tier: '15 Friends on Free' },
+                  { title: 'Group Chats', desc: 'Create groups with admin roles, custom avatars, and member management. Link groups directly to repositories for auto-context.', tier: '5 Groups on Free' },
+                  { title: 'Reactions', desc: 'Full emoji picker with categorized browsing, skin tone support, and real-time sync across all connected users.', tier: 'All Plans' },
+                  { title: 'Threads', desc: 'Branch focused discussions from any message or context card. Keep your main chat clean while diving deep into topics.', tier: 'Pro Only' },
+                  { title: 'Presence', desc: 'See who\'s online with real-time status indicators and last-seen timestamps. Know when your team is available.', tier: 'All Plans' }
                 ].map((item, i) => (
-                  <div key={i} className={`feat-accordion-item${openAccordion === i ? ' is-open' : ''}`}>
-                    <button className="feat-accordion-header" onClick={() => setOpenAccordion(openAccordion === i ? -1 : i)}>
+                  <div key={i} className={`feat-accordion-item${openItems.comm === i ? ' is-open' : ''}`}>
+                    <button className="feat-accordion-header" onClick={() => toggle('comm', i)}>
                       <span className="feat-accordion-title">{item.title}</span>
-                      <span className="feat-accordion-icon">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                      </span>
+                      <span className="feat-accordion-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
                     </button>
-                    <div className="feat-accordion-body">
-                      <div className="feat-accordion-inner">
-                        <p>{item.desc}</p>
-                        <span className={`feature-tier-badge ${item.tier === 'All Plans' ? 'all' : 'limit'}`}>{item.tier}</span>
-                      </div>
-                    </div>
+                    <div className="feat-accordion-body"><div className="feat-accordion-inner">
+                      <p>{item.desc}</p>
+                      <span className={`feature-tier-badge ${item.tier === 'All Plans' ? 'all' : 'limit'}`}>{item.tier}</span>
+                    </div></div>
                   </div>
                 ))}
               </div>
             </div>
           </ScrollReveal>
+        </section>
 
+        {/* ═══ CATEGORY 2: GITHUB INTEGRATION (light, image-right) ═══ */}
+        <section className="feat-section feat-section--light">
+          <ScrollReveal>
+            <div className="feat-section-label">
+              <span className="badge"><GitPullRequest size={12} /> GitHub Integration</span>
+              <h2 className="h3" style={{ marginTop: 20 }}>Triage without leaving the page.</h2>
+              <p className="body-md" style={{ opacity: 0.6, marginTop: 8, maxWidth: 500, marginLeft: 'auto', marginRight: 'auto' }}>Labels, milestones, assignments — manage your entire workflow from the sidebar.</p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div className="feat-showcase feat-showcase--reversed">
+              <div className="feat-showcase-visual">
+                <div className="feat-device-frame feat-device-frame--green">
+                  <div className="feat-device-dots"><span /><span /><span /></div>
+                  <img src="/triage.png" alt="RepoChat — GitHub Integration" loading="lazy" />
+                </div>
+              </div>
+              <div className="feat-showcase-info">
+                {[
+                  { title: 'Issue Triage', desc: 'Add labels, assign milestones, and update issue status with one-click sidebar actions — no page navigation needed.', tier: 'All Plans' },
+                  { title: 'PR Context Cards', desc: 'Automatically surface pull request metadata, reviewers, and CI status directly inside your chat conversations.', tier: 'All Plans' },
+                  { title: 'Smart Assignments', desc: 'Assign reviewers and owners to GitHub issues and PRs directly from the chat interface with intelligent suggestions.', tier: 'Pro Only' },
+                  { title: 'Repo-Linked Channels', desc: 'Link group chats directly to repositories. Every message inherits the repo context automatically.', tier: 'Pro Only' }
+                ].map((item, i) => (
+                  <div key={i} className={`feat-accordion-item${openItems.git === i ? ' is-open' : ''}`}>
+                    <button className="feat-accordion-header" onClick={() => toggle('git', i)}>
+                      <span className="feat-accordion-title">{item.title}</span>
+                      <span className="feat-accordion-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
+                    </button>
+                    <div className="feat-accordion-body"><div className="feat-accordion-inner">
+                      <p>{item.desc}</p>
+                      <span className={`feature-tier-badge ${item.tier === 'All Plans' ? 'all' : 'limit'}`}>{item.tier}</span>
+                    </div></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+        </section>
+
+        {/* ═══ CATEGORY 3: PRODUCTIVITY (dark, image-left) ═══ */}
+        <section className="feat-section">
+          <ScrollReveal>
+            <div className="feat-section-label">
+              <span className="badge"><ClipboardList size={12} /> Productivity</span>
+              <h2 className="h3" style={{ marginTop: 20 }}>Capture ideas where they happen.</h2>
+              <p className="body-md" style={{ opacity: 0.6, marginTop: 8, maxWidth: 500, marginLeft: 'auto', marginRight: 'auto' }}>Shared scratchpads, notes, and code snippets — always in context.</p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div className="feat-showcase">
+              <div className="feat-showcase-visual">
+                <div className="feat-device-frame feat-device-frame--cyan">
+                  <div className="feat-device-dots"><span /><span /><span /></div>
+                  <img src="/pad.png" alt="RepoChat — Productivity" loading="lazy" />
+                </div>
+              </div>
+              <div className="feat-showcase-info">
+                {[
+                  { title: 'Shared Scratchpads', desc: 'Collaborative scratchpads that live alongside your repositories. Jot down ideas, meeting notes, or architecture decisions.', tier: 'All Plans' },
+                  { title: 'Code Snippets', desc: 'Share and pin code snippets with syntax highlighting directly in your conversations. Never lose a useful snippet again.', tier: 'All Plans' },
+                  { title: 'Context Linking', desc: 'Every note and pad is automatically linked to the repo, PR, or issue it was created from — full traceability.', tier: 'Pro Only' }
+                ].map((item, i) => (
+                  <div key={i} className={`feat-accordion-item${openItems.prod === i ? ' is-open' : ''}`}>
+                    <button className="feat-accordion-header" onClick={() => toggle('prod', i)}>
+                      <span className="feat-accordion-title">{item.title}</span>
+                      <span className="feat-accordion-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
+                    </button>
+                    <div className="feat-accordion-body"><div className="feat-accordion-inner">
+                      <p>{item.desc}</p>
+                      <span className={`feature-tier-badge ${item.tier === 'All Plans' ? 'all' : 'limit'}`}>{item.tier}</span>
+                    </div></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+        </section>
+
+        {/* ═══ CATEGORY 4: IDENTITY & SHARING (light, image-right) ═══ */}
+        <section className="feat-section feat-section--light">
+          <ScrollReveal>
+            <div className="feat-section-label">
+              <span className="badge"><Dna size={12} /> Identity & Sharing</span>
+              <h2 className="h3" style={{ marginTop: 20 }}>Your Dev DNA, everywhere.</h2>
+              <p className="body-md" style={{ opacity: 0.6, marginTop: 8, maxWidth: 500, marginLeft: 'auto', marginRight: 'auto' }}>Custom profiles, shareable links, and developer presence — built for open source.</p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div className="feat-showcase feat-showcase--reversed">
+              <div className="feat-showcase-visual">
+                <div className="feat-device-frame feat-device-frame--orange">
+                  <div className="feat-device-dots"><span /><span /><span /></div>
+                  <img src="/dna.png" alt="RepoChat — Identity & Sharing" loading="lazy" />
+                </div>
+              </div>
+              <div className="feat-showcase-info">
+                {[
+                  { title: 'Dev DNA Profile', desc: 'Customizable developer profile with bio, tech stack, and contribution highlights. Your identity across every repo.', tier: 'All Plans' },
+                  { title: 'Shareable Links', desc: 'Generate share-ready links for conversations, scratchpads, and context cards. Collaborate beyond the extension.', tier: 'All Plans' },
+                  { title: 'Custom Presence', desc: 'Set custom status messages, accent colors, and availability indicators that show across all your repositories.', tier: 'All Plans' },
+                  { title: 'Activity Feed', desc: 'Track contributions, messages, and interactions across repositories with a unified activity timeline.', tier: 'Pro Only' }
+                ].map((item, i) => (
+                  <div key={i} className={`feat-accordion-item${openItems.id === i ? ' is-open' : ''}`}>
+                    <button className="feat-accordion-header" onClick={() => toggle('id', i)}>
+                      <span className="feat-accordion-title">{item.title}</span>
+                      <span className="feat-accordion-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
+                    </button>
+                    <div className="feat-accordion-body"><div className="feat-accordion-inner">
+                      <p>{item.desc}</p>
+                      <span className={`feature-tier-badge ${item.tier === 'All Plans' ? 'all' : 'limit'}`}>{item.tier}</span>
+                    </div></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
         </section>
 
         {/* ═══ FINAL CTA ═══ */}

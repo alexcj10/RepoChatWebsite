@@ -1460,7 +1460,45 @@ textarea.form-input{min-height:110px;resize:vertical}
   margin-top: var(--space-xl);
   padding-top: var(--space-l);
 }
+.feat-section--light {
+  background: rgba(255, 255, 255, 0.025);
+  border-radius: 32px;
+  padding: var(--space-l) 40px;
+  margin-left: -40px;
+  margin-right: -40px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
 .feat-section-label { text-align: center; margin-bottom: 48px; }
+
+/* ── Reversed showcase (image on right) ── */
+.feat-showcase--reversed {
+  flex-direction: row-reverse;
+}
+
+/* ── Device Frame Color Variants ── */
+.feat-device-frame--green {
+  border-color: rgba(16, 185, 129, 0.2);
+  background: linear-gradient(145deg, rgba(16, 185, 129, 0.04), rgba(15, 15, 20, 0.95));
+}
+.feat-device-frame--green .feat-device-dots span:nth-child(1) { background: #10B981; }
+.feat-device-frame--green .feat-device-dots span:nth-child(2) { background: #34D399; }
+.feat-device-frame--green .feat-device-dots span:nth-child(3) { background: #6EE7B7; }
+
+.feat-device-frame--cyan {
+  border-color: rgba(6, 182, 212, 0.2);
+  background: linear-gradient(145deg, rgba(6, 182, 212, 0.04), rgba(15, 15, 20, 0.95));
+}
+.feat-device-frame--cyan .feat-device-dots span:nth-child(1) { background: #06B6D4; }
+.feat-device-frame--cyan .feat-device-dots span:nth-child(2) { background: #22D3EE; }
+.feat-device-frame--cyan .feat-device-dots span:nth-child(3) { background: #67E8F9; }
+
+.feat-device-frame--orange {
+  border-color: rgba(234, 179, 8, 0.2);
+  background: linear-gradient(145deg, rgba(234, 179, 8, 0.04), rgba(15, 15, 20, 0.95));
+}
+.feat-device-frame--orange .feat-device-dots span:nth-child(1) { background: #EAB308; }
+.feat-device-frame--orange .feat-device-dots span:nth-child(2) { background: #FACC15; }
+.feat-device-frame--orange .feat-device-dots span:nth-child(3) { background: #FDE68A; }
 
 /* ── Feature Pipeline Architecture ── */
 .feat-arch-panel {
@@ -1907,6 +1945,15 @@ textarea.form-input{min-height:110px;resize:vertical}
   .feat-showcase-info {
     flex: 1;
     width: 100%;
+  }
+  .feat-showcase--reversed {
+    flex-direction: column;
+  }
+  .feat-section--light {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding: var(--space-l) 20px;
+    border-radius: 20px;
   }
 }
 
