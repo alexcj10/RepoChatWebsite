@@ -38,7 +38,7 @@ export default function Features() {
                   <div className="node-icon"><GitPullRequest size={24} /></div>
                   <div className="node-title">GitHub Repository</div>
                   <div className="node-tags">
-                    <span>Commits</span>
+                    <span>Code Context</span>
                     <span>PRs</span>
                     <span>Issues</span>
                   </div>
