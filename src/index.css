@@ -1469,7 +1469,12 @@ textarea.form-input{min-height:110px;resize:vertical}
   width: 100%;
   margin: 0 auto 80px;
   padding: 60px;
-  background: linear-gradient(145deg, rgba(45, 38, 32, 0.85), rgba(32, 28, 42, 0.85));
+  background: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(145deg, rgba(45, 38, 32, 0.85), rgba(32, 28, 42, 0.85));
+  background-size: 32px 32px, 32px 32px, 100% 100%;
+  background-position: center center;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 28px;
   box-shadow: 0 4px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -1575,7 +1580,8 @@ textarea.form-input{min-height:110px;resize:vertical}
 .core-ring.cr-1 { 
   width: 180px; 
   height: 180px; 
-  border: 1.5px solid rgba(163, 230, 53, 0.55);
+  border: 1.5px solid rgba(163, 230, 53, 0.4);
+  background: conic-gradient(from 0deg, transparent 70%, rgba(163, 230, 53, 0.2) 100%);
   box-shadow: inset 0 0 50px rgba(163, 230, 53, 0.1), 0 0 60px rgba(163, 230, 53, 0.15), 0 0 120px rgba(163, 230, 53, 0.08);
 }
 .core-ring.cr-2 { 
@@ -1611,6 +1617,68 @@ textarea.form-input{min-height:110px;resize:vertical}
   justify-content: center;
   color: #a3e635; 
 }
+
+/* Satellite Nodes */
+.core-node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 5;
+}
+.cn-icon {
+  width: 32px;
+  height: 32px;
+  background: rgba(15, 15, 18, 0.9);
+  border: 1.5px solid rgba(163, 230, 53, 0.3);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a3e635;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+}
+.core-node:hover .cn-icon {
+  border-color: #a3e635;
+  box-shadow: 0 0 15px rgba(163, 230, 53, 0.3);
+}
+.cn-label {
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.6);
+  background: rgba(0,0,0,0.6);
+  padding: 3px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(4px);
+}
+.cn-1 { top: -100px; left: 54px; }
+.cn-2 { top: 130px; left: -85px; }
+.cn-3 { top: 130px; left: 193px; }
+
+/* Architectural Crosshairs */
+.arch-crosshair {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  opacity: 0.2;
+}
+.arch-crosshair::before, .arch-crosshair::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+}
+.arch-crosshair::before { width: 100%; height: 1px; top: 50%; left: 0; }
+.arch-crosshair::after { width: 1px; height: 100%; top: 0; left: 50%; }
+
+.arch-crosshair.tl { top: 32px; left: 32px; }
+.arch-crosshair.tr { top: 32px; right: 32px; }
+.arch-crosshair.bl { bottom: 32px; left: 32px; }
+.arch-crosshair.br { bottom: 32px; right: 32px; }
 
 /* The Pillars (Styled like eco-pillar-cards) */
 .feat-arch-pillars {
@@ -1672,7 +1740,7 @@ textarea.form-input{min-height:110px;resize:vertical}
 .p-content h4 { font-size: 0.95rem; font-weight: 700; margin: 0 0 2px; color: #f4f4f5; }
 .p-content p { font-size: 0.75rem; margin: 0; color: #a1a1aa; line-height: 1.4; }
 
-/* SVG Connections */
+/* SVG Connections & Labels */
 .feat-arch-connections {
   flex: 1;
   min-width: 80px;
@@ -1682,6 +1750,24 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 .connections-1 { min-width: 80px; height: 100px; position: relative; }
 .connections-2 { min-width: 120px; height: 340px; position: relative; }
+
+.protocol-label {
+  position: absolute;
+  font-size: 0.45rem;
+  font-weight: 800;
+  color: #a3e635;
+  background: rgba(10, 10, 12, 0.9);
+  border: 1px solid rgba(163, 230, 53, 0.3);
+  padding: 3px 6px;
+  border-radius: 4px;
+  z-index: 10;
+  letter-spacing: 0.1em;
+  backdrop-filter: blur(4px);
+}
+.pl-1 { top: 25%; left: 40%; transform: translate(-50%, -50%); }
+.pl-2 { top: 50%; left: 40%; transform: translate(-50%, -50%); }
+.pl-3 { top: 75%; left: 40%; transform: translate(-50%, -50%); }
+
 .feat-arch-connections svg { width: 100%; height: 100%; overflow: visible; position: absolute; top: 0; left: 0; }
 .arch-line { 
   fill: none; 

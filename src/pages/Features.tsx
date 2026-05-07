@@ -1,4 +1,4 @@
-import { MessageSquare, Zap, GitPullRequest, ClipboardList, Dna } from 'lucide-react'
+import { MessageSquare, Zap, GitPullRequest, ClipboardList, Dna, Database, AppWindow, Activity } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 
 export default function Features() {
@@ -20,6 +20,12 @@ export default function Features() {
         {/* ═══ FEATURE ARCHITECTURE GRAPH ═══ */}
         <ScrollReveal>
           <div className="feat-arch-panel">
+            {/* Architectural Crosshairs */}
+            <div className="arch-crosshair tl"></div>
+            <div className="arch-crosshair tr"></div>
+            <div className="arch-crosshair bl"></div>
+            <div className="arch-crosshair br"></div>
+
             {/* Background glowing effects */}
             <div className="feat-arch-glow feat-arch-glow-left"></div>
             <div className="feat-arch-glow feat-arch-glow-right"></div>
@@ -61,11 +67,28 @@ export default function Features() {
                       </svg>
                     </span>
                   </div>
+
+                  {/* Satellite Nodes (Real RepoChat Stack) */}
+                  <div className="core-node cn-1">
+                    <div className="cn-icon"><Activity size={16} /></div>
+                    <div className="cn-label">Supabase Realtime</div>
+                  </div>
+                  <div className="core-node cn-2">
+                    <div className="cn-icon"><Database size={16} /></div>
+                    <div className="cn-label">PostgreSQL RLS</div>
+                  </div>
+                  <div className="core-node cn-3">
+                    <div className="cn-icon"><AppWindow size={16} /></div>
+                    <div className="cn-label">Chrome Extension API</div>
+                  </div>
                 </div>
               </div>
 
               {/* SVG Connections: Engine to Pillars */}
               <div className="feat-arch-connections connections-2">
+                <div className="protocol-label pl-1">WSS://</div>
+                <div className="protocol-label pl-2">REST API</div>
+                <div className="protocol-label pl-3">DOM SYNC</div>
                 <svg preserveAspectRatio="none" viewBox="0 0 150 200">
                   {/* To Comm (Top) */}
                   <path d="M0,100 C50,100 50,25 150,25" className="arch-line" />
