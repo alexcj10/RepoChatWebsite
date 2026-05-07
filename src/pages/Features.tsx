@@ -1,7 +1,43 @@
+import { useRef, useCallback, useEffect } from 'react'
 import { MessageSquare, Zap, GitPullRequest, ClipboardList, Dna, Database, AppWindow, Activity } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 
 export default function Features() {
+  const archPanelRef = useRef<HTMLDivElement>(null)
+  const archPipelineRef = useRef<HTMLDivElement>(null)
+
+  // Fluid architecture graph scaling — same principle as ecosystem diagram.
+  // Continuously maps container width to a zoom level so the layout never overflows.
+  const updateArchScale = useCallback(() => {
+    const panel = archPanelRef.current;
+    const pipeline = archPipelineRef.current;
+    if (!panel || !pipeline) return;
+
+    const BASE_WIDTH = 1050; // natural unscaled pipeline width + breathing room
+    const style = getComputedStyle(panel);
+    const padL = parseFloat(style.paddingLeft) || 0;
+    const padR = parseFloat(style.paddingRight) || 0;
+    const available = panel.clientWidth - padL - padR;
+
+    if (available >= BASE_WIDTH) {
+      pipeline.style.zoom = '1';
+    } else {
+      const scale = Math.max(available / BASE_WIDTH, 0.25);
+      pipeline.style.zoom = scale.toString();
+    }
+  }, []);
+
+  useEffect(() => {
+    updateArchScale();
+    window.addEventListener('resize', updateArchScale);
+    const ro = new ResizeObserver(updateArchScale);
+    if (archPanelRef.current) ro.observe(archPanelRef.current);
+    return () => {
+      window.removeEventListener('resize', updateArchScale);
+      ro.disconnect();
+    };
+  }, [updateArchScale]);
+
   return (
     <div className="feat-page">
       <div className="container">
@@ -19,12 +55,12 @@ export default function Features() {
 
         {/* ═══ FEATURE ARCHITECTURE GRAPH ═══ */}
         <ScrollReveal>
-          <div className="feat-arch-panel">
+          <div className="feat-arch-panel" ref={archPanelRef}>
             {/* Background glowing effects */}
             <div className="feat-arch-glow feat-arch-glow-left"></div>
             <div className="feat-arch-glow feat-arch-glow-right"></div>
 
-            <div className="feat-arch-pipeline">
+            <div className="feat-arch-pipeline" ref={archPipelineRef}>
               
               {/* Left: The Source */}
               <div className="feat-arch-column feat-arch-source">

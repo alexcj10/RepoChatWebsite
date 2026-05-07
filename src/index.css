@@ -1476,7 +1476,7 @@ textarea.form-input{min-height:110px;resize:vertical}
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow: hidden; /* Prevent any scrollbars during resize */
 }
 
 .feat-arch-glow {
@@ -1489,9 +1489,20 @@ textarea.form-input{min-height:110px;resize:vertical}
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 1000px;
   position: relative;
   z-index: 2;
+}
+
+/* ━━━ Responsive Container (JS handles fluid zoom scaling) ━━━ */
+@media (max-width: 1200px) {
+  .feat-arch-panel { padding: 40px 24px; }
+}
+@media (max-width: 800px) {
+  .feat-arch-panel { padding: 30px 16px; }
+}
+@media (max-width: 600px) {
+  .feat-arch-panel { padding: 24px 12px; border-radius: 20px; }
 }
 
 .feat-arch-column {
@@ -1767,10 +1778,7 @@ textarea.form-input{min-height:110px;resize:vertical}
   100% { stroke-dashoffset: -50; opacity: 0; }
 }
 
-@media (max-width: 900px) {
-  .feat-arch-pipeline { flex-direction: column; gap: 40px; }
-  .feat-arch-connections { display: none; }
-}
+
 
 /* ── 3D Card Deck ── */
 .feat-deck-wrapper {
