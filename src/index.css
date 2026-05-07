@@ -1825,25 +1825,28 @@ textarea.form-input{min-height:110px;resize:vertical}
   border-color: rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.04);
 }
-.feat-accordion-item[open] {
+.feat-accordion-item.is-open {
   background: rgba(139, 92, 246, 0.04);
   border-color: rgba(139, 92, 246, 0.2);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2), 0 0 20px rgba(139, 92, 246, 0.04);
 }
 
-/* Accordion Header (the <summary>) */
+/* Accordion Header (the <button>) */
 .feat-accordion-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 18px 24px;
   cursor: pointer;
-  list-style: none;
   user-select: none;
   transition: all 0.3s ease;
+  width: 100%;
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
 }
-.feat-accordion-header::-webkit-details-marker { display: none; }
-.feat-accordion-header::marker { display: none; content: ''; }
 
 .feat-accordion-title {
   font-size: 1rem;
@@ -1864,17 +1867,25 @@ textarea.form-input{min-height:110px;resize:vertical}
   transition: all 0.35s var(--ease);
   flex-shrink: 0;
 }
-.feat-accordion-item[open] .feat-accordion-icon {
+.feat-accordion-item.is-open .feat-accordion-icon {
   transform: rotate(180deg);
   background: rgba(139, 92, 246, 0.12);
   color: #a78bfa;
 }
 
-/* Accordion Body */
+/* Accordion Body — smooth height animation */
 .feat-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease);
+}
+.feat-accordion-item.is-open .feat-accordion-body {
+  max-height: 200px;
+}
+.feat-accordion-inner {
   padding: 0 24px 20px;
 }
-.feat-accordion-body p {
+.feat-accordion-inner p {
   font-size: 0.88rem;
   color: #a1a1aa;
   line-height: 1.65;

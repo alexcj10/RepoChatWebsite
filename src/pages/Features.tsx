@@ -1,10 +1,11 @@
-import { useRef, useCallback, useEffect } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import { MessageSquare, Zap, GitPullRequest, ClipboardList, Dna, Database, AppWindow, Activity } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 
 export default function Features() {
   const archPanelRef = useRef<HTMLDivElement>(null)
   const archPipelineRef = useRef<HTMLDivElement>(null)
+  const [openAccordion, setOpenAccordion] = useState(0)
 
   // Fluid architecture graph scaling — same principle as ecosystem diagram.
   // Continuously maps container width to a zoom level so the layout never overflows.
@@ -226,18 +227,20 @@ export default function Features() {
                     tier: 'All Plans'
                   }
                 ].map((item, i) => (
-                  <details key={i} className="feat-accordion-item" {...(i === 0 ? { open: true } : {})}>
-                    <summary className="feat-accordion-header">
+                  <div key={i} className={`feat-accordion-item${openAccordion === i ? ' is-open' : ''}`}>
+                    <button className="feat-accordion-header" onClick={() => setOpenAccordion(openAccordion === i ? -1 : i)}>
                       <span className="feat-accordion-title">{item.title}</span>
                       <span className="feat-accordion-icon">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       </span>
-                    </summary>
+                    </button>
                     <div className="feat-accordion-body">
-                      <p>{item.desc}</p>
-                      <span className={`feature-tier-badge ${item.tier === 'All Plans' ? 'all' : 'limit'}`}>{item.tier}</span>
+                      <div className="feat-accordion-inner">
+                        <p>{item.desc}</p>
+                        <span className={`feature-tier-badge ${item.tier === 'All Plans' ? 'all' : 'limit'}`}>{item.tier}</span>
+                      </div>
                     </div>
-                  </details>
+                  </div>
                 ))}
               </div>
             </div>
