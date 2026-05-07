@@ -250,14 +250,11 @@ export default function Features() {
 
         {/* ═══ FINAL CTA ═══ */}
         <ScrollReveal>
-          <div className="eco-cta-banner" style={{ marginTop: 'var(--space-xl)' }}>
-            <div className="eco-cta-left">
-              <h3 className="h3">Start collaborating where your code lives.</h3>
-            </div>
-            <div className="eco-cta-right">
-              <p className="body-sm">No credit card required. Just your GitHub account.</p>
-              <a href="#install" className="btn eco-cta-btn">Add to Chrome — Free</a>
-            </div>
+          <div className="feat-cta-strip">
+            <p className="feat-cta-text">
+              <span className="feat-cta-highlight">All features.</span> One extension. Zero context switching.
+            </p>
+            <a href="#install" className="btn feat-cta-btn">Add to Chrome — Free</a>
           </div>
         </ScrollReveal>
 

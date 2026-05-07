@@ -1910,6 +1910,60 @@ textarea.form-input{min-height:110px;resize:vertical}
   }
 }
 
+/* ── Features CTA Strip ── */
+.feat-cta-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: var(--space-xl);
+  padding: 20px 32px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.35s var(--ease);
+}
+.feat-cta-strip:hover {
+  border-color: rgba(139, 92, 246, 0.2);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2), 0 0 20px rgba(139, 92, 246, 0.04);
+}
+.feat-cta-text {
+  font-size: 0.95rem;
+  color: #a1a1aa;
+  margin: 0;
+  line-height: 1.5;
+}
+.feat-cta-highlight {
+  color: #f4f4f5;
+  font-weight: 700;
+}
+.feat-cta-btn {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  padding: 10px 24px;
+  border-radius: 10px;
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  color: #a78bfa;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.feat-cta-btn:hover {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+  color: #c4b5fd;
+}
+@media (max-width: 600px) {
+  .feat-cta-strip {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+    padding: 20px;
+  }
+}
+
 /* ── 3D Card Deck ── */
 .feat-deck-wrapper {
   perspective: 1200px;
