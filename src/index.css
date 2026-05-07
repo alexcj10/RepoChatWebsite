@@ -1873,16 +1873,21 @@ textarea.form-input{min-height:110px;resize:vertical}
   color: #a78bfa;
 }
 
-/* Accordion Body — smooth height animation */
+/* Accordion Body — smooth height animation via CSS grid */
 .feat-accordion-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s var(--ease);
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .feat-accordion-item.is-open .feat-accordion-body {
-  max-height: 200px;
+  grid-template-rows: 1fr;
 }
 .feat-accordion-inner {
+  overflow: hidden;
+  padding: 0 24px;
+  transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.feat-accordion-item.is-open .feat-accordion-inner {
   padding: 0 24px 20px;
 }
 .feat-accordion-inner p {
