@@ -571,7 +571,7 @@ export default function Landing() {
               </div>
               <div className="eco-cta-right">
                 <p className="body-sm">No credit card required. Just your GitHub account.</p>
-                <a href="#install" className="btn btn-primary">Add to Chrome — Free</a>
+                <a href="#install" className="btn btn-white">Add to Chrome — Free</a>
               </div>
             </div>
           </ScrollReveal>
