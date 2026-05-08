@@ -1815,7 +1815,308 @@ textarea.form-input{min-height:110px;resize:vertical}
 
 
 /* ═══════════════════════════════════════════════
-   SPLIT SHOWCASE + ACCORDION
+   FEATURE CARDS — 2×3 INTERACTIVE GRID
+   ═══════════════════════════════════════════════ */
+.feat-cards-section {
+  margin-top: 80px;
+  padding-bottom: 40px;
+}
+
+.feat-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+/* Ensure ScrollReveal wrappers stretch */
+.feat-cards-grid > .reveal {
+  display: flex;
+  height: 100%;
+}
+
+/* ── Base Card ── */
+.feat-card {
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  width: 100%;
+}
+
+.feat-card:hover {
+  transform: translateY(-6px);
+}
+
+/* ── Dark Variant (cards 1, 3, 5) ── */
+.feat-card--dark {
+  background: #0d0d11;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f4f4f5;
+}
+
+.feat-card--dark:hover {
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5), 0 0 24px rgba(139, 92, 246, 0.08);
+}
+
+/* ── Light Variant (cards 2, 4, 6) ── */
+.feat-card--light {
+  background: #f4f4f5;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  color: #111113;
+}
+
+.feat-card--light:hover {
+  border-color: rgba(139, 92, 246, 0.25);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12), 0 0 24px rgba(139, 92, 246, 0.06);
+}
+
+/* ── Media Area (image / info crossfade) ── */
+.feat-card-media {
+  position: relative;
+  aspect-ratio: 4 / 3; /* 1920×1440 */
+  overflow: hidden;
+}
+
+.feat-card--dark .feat-card-media {
+  background: #0a0a0e;
+}
+
+.feat-card--light .feat-card-media {
+  background: #e8e8ec;
+}
+
+.feat-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feat-card.is-expanded .feat-card-img {
+  opacity: 0;
+  transform: scale(1.06);
+}
+
+.feat-card:not(.is-expanded):hover .feat-card-img {
+  transform: scale(1.04);
+}
+
+/* ── Info Overlay ── */
+.feat-card-info {
+  position: absolute;
+  inset: 0;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1), transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.feat-card.is-expanded .feat-card-info {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.feat-card-desc {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.feat-card--dark .feat-card-desc {
+  color: #a1a1aa;
+}
+
+.feat-card--light .feat-card-desc {
+  color: #52525b;
+}
+
+.feat-card-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+}
+
+.feat-card-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.feat-card--dark .feat-card-features li {
+  color: #d4d4d8;
+}
+
+.feat-card--dark .feat-card-features li svg {
+  color: #a78bfa;
+  flex-shrink: 0;
+}
+
+.feat-card--light .feat-card-features li {
+  color: #3f3f46;
+}
+
+.feat-card--light .feat-card-features li svg {
+  color: #7c3aed;
+  flex-shrink: 0;
+}
+
+/* ── Card Footer ── */
+.feat-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  margin-top: auto;
+}
+
+.feat-card-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.feat-card--dark .feat-card-label {
+  color: #f4f4f5;
+}
+
+.feat-card--dark .feat-card-label svg {
+  color: #a78bfa;
+}
+
+.feat-card--light .feat-card-label {
+  color: #18181b;
+}
+
+.feat-card--light .feat-card-label svg {
+  color: #7c3aed;
+}
+
+/* ── Toggle Button ── */
+.feat-card-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  flex-shrink: 0;
+}
+
+.feat-card-toggle-icon {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark card toggle — default */
+.feat-card--dark .feat-card-toggle {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feat-card--dark .feat-card-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Dark card toggle — expanded */
+.feat-card--dark.is-expanded .feat-card-toggle {
+  background: #8b5cf6;
+  color: #fff;
+  border-color: #8b5cf6;
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4);
+}
+
+/* Light card toggle — default */
+.feat-card--light .feat-card-toggle {
+  background: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.feat-card--light .feat-card-toggle:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* Light card toggle — expanded */
+.feat-card--light.is-expanded .feat-card-toggle {
+  background: #7c3aed;
+  color: #fff;
+  border-color: #7c3aed;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35);
+}
+
+/* Toggle icon rotation on expand */
+.feat-card.is-expanded .feat-card-toggle-icon {
+  transform: rotate(90deg);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .feat-cards-section {
+    margin-top: 56px;
+  }
+  .feat-cards-grid {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .feat-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .feat-card-info {
+    padding: 24px 20px;
+  }
+  .feat-card-footer {
+    padding: 16px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .feat-cards-section {
+    margin-top: 40px;
+  }
+  .feat-card-media {
+    aspect-ratio: 4 / 3;
+  }
+  .feat-card-desc {
+    font-size: 0.85rem;
+  }
+  .feat-card-features li {
+    font-size: 0.78rem;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════
+   SPLIT SHOWCASE + ACCORDION (legacy)
    ═══════════════════════════════════════════════ */
 .feat-showcase {
   display: flex;
