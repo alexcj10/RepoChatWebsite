@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
-import { MessageSquare, GitPullRequest, ClipboardList, Dna, Database, AppWindow, Activity, Share2, Bot, Check, Globe, Lock, User } from 'lucide-react'
+import { MessageSquare, GitPullRequest, ClipboardList, Dna, Database, AppWindow, Activity, Share2, Bot, Check, Globe, Lock, User, Plus, X } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 
 const featureCards = [
@@ -365,7 +365,7 @@ export default function Features() {
                         onClick={(e) => { e.stopPropagation(); toggleCard(i); }}
                         aria-label={isExpanded ? 'Close details' : 'Show details'}
                       >
-                        <span className="feat-card-toggle-icon">{isExpanded ? '×' : '+'}</span>
+                        <span className="feat-card-toggle-icon">{isExpanded ? <X size={20} strokeWidth={2.5} /> : <Plus size={20} strokeWidth={2.5} />}</span>
                       </button>
                     </div>
                   </div>
