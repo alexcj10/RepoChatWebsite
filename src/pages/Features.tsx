@@ -341,6 +341,8 @@ export default function Features() {
                   <div
                     className={`feat-card ${isDark ? 'feat-card--dark' : 'feat-card--light'} ${isExpanded ? 'is-expanded' : ''}`}
                     id={`feat-card-${i}`}
+                    onClick={() => toggleCard(i)}
+                    style={{ cursor: 'pointer' }}
                   >
                     <div className="feat-card-media">
                       <img src={card.img} alt={card.category} className="feat-card-img" loading="lazy" />
@@ -360,7 +362,7 @@ export default function Features() {
                       </div>
                       <button
                         className="feat-card-toggle"
-                        onClick={() => toggleCard(i)}
+                        onClick={(e) => { e.stopPropagation(); toggleCard(i); }}
                         aria-label={isExpanded ? 'Close details' : 'Show details'}
                       >
                         <span className="feat-card-toggle-icon">{isExpanded ? '×' : '+'}</span>
