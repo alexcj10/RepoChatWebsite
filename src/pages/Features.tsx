@@ -373,6 +373,8 @@ export default function Features() {
           </div>
         </section>
 
+      </div>{/* close outer .container */}
+
         {/* ═══ AND SO MUCH MORE (CAROUSEL) ═══ */}
         <section className="section mini-features-section">
           <div className="container">
@@ -625,19 +627,19 @@ export default function Features() {
         </section>
 
         {/* ═══ FINAL CTA ═══ */}
-        <ScrollReveal>
-          <div className="feat-cta-banner">
-            <div className="eco-cta-left">
-              <h3 className="h3">Every feature you need. Zero context switching.</h3>
+        <div className="container">
+          <ScrollReveal>
+            <div className="feat-cta-banner">
+              <div className="eco-cta-left">
+                <h3 className="h3">Every feature you need. Zero context switching.</h3>
+              </div>
+              <div className="eco-cta-right">
+                <p className="body-sm">Free forever. No credit card required.</p>
+                <a href="#install" className="btn btn-white">Add to Chrome — Free</a>
+              </div>
             </div>
-            <div className="eco-cta-right">
-              <p className="body-sm">Free forever. No credit card required.</p>
-              <a href="#install" className="btn btn-white">Add to Chrome — Free</a>
-            </div>
-          </div>
-        </ScrollReveal>
-
-      </div>
+          </ScrollReveal>
+        </div>
     </div>
   )
 }
