@@ -2067,12 +2067,6 @@ textarea.form-input{min-height:110px;resize:vertical}
     margin-top: 56px;
   }
   .feat-cards-grid {
-    gap: 20px;
-  }
-}
-
-@media (max-width: 900px) {
-  .feat-cards-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
@@ -2081,6 +2075,14 @@ textarea.form-input{min-height:110px;resize:vertical}
   }
   .feat-card-footer {
     padding: 16px 20px;
+  }
+  
+  /* Swap the 3rd and 4th cards on mobile so the image themes alternate (Dark -> Light -> Dark -> Light -> Dark -> Light) */
+  .feat-cards-grid > :nth-child(3) {
+    order: 4;
+  }
+  .feat-cards-grid > :nth-child(4) {
+    order: 3;
   }
 }
 
