@@ -479,7 +479,8 @@ html.nav-open-lock body {
   }
 }
 
-.mini-features-section {
+.mini-features-section,
+.feat-cards-section {
   padding-top: var(--space-l) !important;
 }
 
