@@ -280,7 +280,7 @@ export default function Features() {
         </ScrollReveal>
 
         {/* ═══ WHO IS IT FOR — 3 PILLAR CARDS ═══ */}
-        <div className="eco-pillars" style={{ marginTop: 40, marginBottom: 16 }}>
+        <div className="eco-pillars" style={{ marginTop: 40, marginBottom: 64 }}>
           <ScrollReveal>
             <div className="eco-pillar-card">
               <div className="eco-pillar-header">
@@ -326,7 +326,7 @@ export default function Features() {
         <section className="feat-cards-section">
           <ScrollReveal>
             <div className="section-head" style={{ marginBottom: 48 }}>
-              <h2 className="h3">Explore every <span className="gradient-text">capability.</span></h2>
+              <h2 className="h2 ecosystem-h2">Explore every <span className="gradient-text">capability.</span></h2>
               <p className="body-md" style={{ opacity: 0.6, marginTop: 8 }}>Click any card to discover what's inside.</p>
             </div>
           </ScrollReveal>
