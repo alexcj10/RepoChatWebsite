@@ -2036,30 +2036,30 @@ textarea.form-input{min-height:110px;resize:vertical}
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Default toggle — both variants (visible border + subtle color) */
+/* Default toggle — subtle neutral */
 .feat-card .feat-card-toggle {
-  background: rgba(139, 92, 246, 0.08);
-  color: rgba(255, 255, 255, 0.6);
-  border: 1.5px solid rgba(139, 92, 246, 0.25);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.4);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
 }
 
 .feat-card .feat-card-toggle:hover {
-  background: rgba(139, 92, 246, 0.15);
-  color: #fff;
-  border-color: rgba(139, 92, 246, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Expanded toggle — solid purple, NO glow */
+/* Expanded toggle — solid white, dark icon */
 .feat-card.is-expanded .feat-card-toggle {
-  background: #8b5cf6;
-  color: #fff;
-  border-color: #8b5cf6;
+  background: #f4f4f5;
+  color: #111113;
+  border-color: #f4f4f5;
   box-shadow: none;
 }
 
 .feat-card.is-expanded .feat-card-toggle:hover {
-  background: #7c3aed;
-  border-color: #7c3aed;
+  background: #e4e4e7;
+  border-color: #e4e4e7;
 }
 
 /* Toggle icon rotation on expand */
