@@ -1909,14 +1909,41 @@ textarea.form-input{min-height:110px;resize:vertical}
 .feat-card-info {
   position: absolute;
   inset: 0;
-  padding: 32px 28px;
+  padding: 40px 36px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 20px;
+  gap: 24px;
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1), transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+/* Noise texture background */
+.feat-card-info::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("/abstract-gradient-background-with-grain-texture-captivating-noise-airbrush-minimalist-wallpaper.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: hue-rotate(var(--info-hue, 0deg)) contrast(1.1) brightness(0.5);
+  opacity: 0.95;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Dark gradient overlay on top of noise */
+.feat-card-info::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%);
+  z-index: -1;
   pointer-events: none;
 }
 
@@ -1927,51 +1954,36 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 
 .feat-card-desc {
-  font-size: 0.92rem;
-  line-height: 1.65;
+  font-size: 1.05rem;
+  line-height: 1.7;
   margin: 0;
-}
-
-.feat-card--dark .feat-card-desc {
-  color: #a1a1aa;
-}
-
-.feat-card--light .feat-card-desc {
-  color: #a1a1aa;
+  color: rgba(255, 255, 255, 0.78);
+  position: relative;
+  z-index: 1;
 }
 
 .feat-card-features {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
   padding: 0;
   margin: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .feat-card-features li {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.84rem;
+  gap: 12px;
+  font-size: 0.95rem;
   font-weight: 500;
-  line-height: 1.4;
+  line-height: 1.45;
+  color: #e4e4e7;
 }
 
-.feat-card--dark .feat-card-features li {
-  color: #d4d4d8;
-}
-
-.feat-card--dark .feat-card-features li svg {
-  color: #a78bfa;
-  flex-shrink: 0;
-}
-
-.feat-card--light .feat-card-features li {
-  color: #d4d4d8;
-}
-
-.feat-card--light .feat-card-features li svg {
+.feat-card-features li svg {
   color: #a78bfa;
   flex-shrink: 0;
 }

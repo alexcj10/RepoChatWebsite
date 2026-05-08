@@ -8,13 +8,14 @@ const featureCards = [
     img: '/group.png',
     icon: MessageSquare,
     dark: true,
-    description: 'Real-time messaging built for developer teams — DMs, groups, threads, and reactions, right inside GitHub.',
+    infoHue: '240deg',
+    description: 'Real-time messaging built into GitHub — DMs, groups, threads, and emoji reactions, powered by Supabase Realtime.',
     features: [
-      'Real-Time DMs with read receipts',
-      'Group Chats with admin roles',
-      'Emoji reactions with skin tone support',
-      'Threaded discussions for focus',
-      'Live presence & last-seen timestamps'
+      'Real-time DMs with read receipts & typing indicators',
+      'Group chats with admin roles & member management',
+      'Emoji reactions with skin-tone support on any message',
+      'Threaded replies on PR & Issue context cards',
+      'Live presence status & online/offline indicators'
     ]
   },
   {
@@ -22,13 +23,14 @@ const featureCards = [
     img: '/dna.png',
     icon: Dna,
     dark: false,
-    description: 'Your developer identity, everywhere. Custom profiles, power stats, and personalization across every repo.',
+    infoHue: '160deg',
+    description: 'Dev DNA — a full developer identity card with radar stats, language breakdown, commit pulse, and achievement badges.',
     features: [
-      'Dev DNA profile with bio & tech stack',
-      'Curated accent color palette',
-      'Custom status & availability indicators',
-      'Unified activity timeline across repos',
-      'Contribution badges on your profile'
+      'Radar chart with velocity, impact, OSS & diversity scores',
+      'Tech DNA language bar from real GitHub repo data',
+      'Weekly commit pulse graph with coding pattern detection',
+      '14 achievement badges earned from GitHub activity',
+      'One-click downloadable PNG card to share your identity'
     ]
   },
   {
@@ -36,13 +38,14 @@ const featureCards = [
     img: '/pad.png',
     icon: ClipboardList,
     dark: false,
-    description: 'Capture ideas where they happen. Collaborative scratchpads, code snippets, and notes — always in context.',
+    infoHue: '90deg',
+    description: 'Personal scratchpads with checklist tracking, star/pin system, and full CRUD — synced via Supabase or stored locally.',
     features: [
-      'Shared scratchpads alongside repos',
-      'Code snippets with syntax highlighting',
-      'Auto-linked notes to PRs & issues',
-      'Pinned resources for quick access',
-      'Full Markdown rendering support'
+      'Create, edit & delete notes with optional titles',
+      'Toggle checklist items as complete/incomplete',
+      'Pin important notes to the top of the list',
+      'Star notes for quick-access bookmarking',
+      'Cloud sync for Pro or local storage for free users'
     ]
   },
   {
@@ -50,13 +53,14 @@ const featureCards = [
     img: '/triage.png',
     icon: GitPullRequest,
     dark: true,
-    description: 'Manage your entire GitHub workflow from the sidebar. Labels, milestones, assignments — no page navigation needed.',
+    infoHue: '300deg',
+    description: 'Full GitHub triage from the chat sidebar — comment on issues, manage labels & assignees, and close/reopen without leaving the page.',
     features: [
-      'One-click issue triage & labeling',
-      'PR context cards with CI status',
-      'Smart reviewer assignments in chat',
-      'Repo-linked channels with auto-context',
-      'Webhook events in group chats'
+      'Post comments on Issues & PRs directly from chat',
+      'Add/remove labels with the built-in triage sheet',
+      'Assign & unassign users on Issues and Pull Requests',
+      'Smart Task Assignments with pending/in-review/done flow',
+      'Auto-detects public vs private repo for permission scoping'
     ]
   },
   {
@@ -64,13 +68,14 @@ const featureCards = [
     img: '/share.png',
     icon: Share2,
     dark: true,
-    description: 'Share beyond the repo. One-click links, branded popups, and cross-repo collaboration — no extension required for viewers.',
+    infoHue: '30deg',
+    description: 'Select any text on GitHub and share it instantly to friends or groups — with pinned recipients, personal messages, and template chips.',
     features: [
-      'One-click shareable conversation links',
-      'Branded popup previews — no login needed',
-      'Cross-repo sharing without duplication',
-      'Rich embed previews in GitHub issues',
-      'Expiring links for sensitive discussions'
+      'Floating share popup on any text selection on GitHub',
+      'Multi-target sharing to friends & groups simultaneously',
+      'Pinned recipients for one-tap frequent sharing',
+      'Configurable quick-reply template chips',
+      'Glass or solid panel style with adjustable backdrop blur'
     ]
   },
   {
@@ -78,16 +83,18 @@ const featureCards = [
     img: '/repobot.png',
     icon: Bot,
     dark: false,
-    description: 'Your AI-powered repository assistant. Instant summaries, architecture deep-dives, and code explanations using your own API keys.',
+    infoHue: '200deg',
+    description: 'AI-powered repo explainer — choose Quick, Detailed, ELI5, or Architecture mode, then ask follow-up questions with full context.',
     features: [
-      'Instant repository architecture summaries',
-      'Complex code explanation & walkthroughs',
-      'Deep-dive analysis of any codebase',
-      'BYO API keys — OpenAI, Anthropic & more',
-      'Context-aware responses from repo structure'
+      'Four explain modes: Quick, Detailed, ELI5 & Architecture',
+      'BYO keys — Groq, OpenAI, Claude & Google Gemini support',
+      'Streams responses in real-time with markdown rendering',
+      'Fetches live repo metadata, README & file tree as context',
+      'Follow-up Q&A with full conversation history maintained'
     ]
   }
 ]
+
 
 export default function Features() {
   const archPanelRef = useRef<HTMLDivElement>(null)
@@ -295,7 +302,7 @@ export default function Features() {
                   >
                     <div className="feat-card-media">
                       <img src={card.img} alt={card.category} className="feat-card-img" loading="lazy" />
-                      <div className="feat-card-info">
+                      <div className="feat-card-info" style={{ '--info-hue': card.infoHue } as React.CSSProperties}>
                         <p className="feat-card-desc">{card.description}</p>
                         <ul className="feat-card-features">
                           {card.features.map((f, j) => (
