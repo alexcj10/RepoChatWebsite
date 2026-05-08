@@ -290,7 +290,7 @@ export default function Features() {
                   >
                     <div className="feat-card-media">
                       <img src={card.img} alt={card.category} className="feat-card-img" loading="lazy" />
-                      <div className="feat-card-info" style={{ '--info-hue': card.infoHue } as React.CSSProperties}>
+                      <div className="feat-card-info" style={{ '--info-hue': `${card.infoHue}deg` } as React.CSSProperties}>
                         <p className="feat-card-desc">{card.description}</p>
                         <ul className="feat-card-features">
                           {card.features.map((f, j) => (
