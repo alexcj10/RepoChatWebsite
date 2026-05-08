@@ -273,33 +273,39 @@ export default function Features() {
         <div className="eco-pillars" style={{ marginTop: 40, marginBottom: 16 }}>
           <ScrollReveal>
             <div className="eco-pillar-card">
-              <div className="eco-pillar-icon">
-                <Globe size={22} />
+              <div className="eco-pillar-header">
+                <div className="eco-pillar-icon">
+                  <Globe size={24} />
+                </div>
+                <h4 className="h4">For Open Source</h4>
               </div>
               <div className="eco-pillar-text">
-                <h4 className="h4">For Open Source</h4>
                 <p className="body-sm">Manage massive community repositories, triage issues, and talk to contributors — all without leaving GitHub.</p>
               </div>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={1}>
             <div className="eco-pillar-card">
-              <div className="eco-pillar-icon eco-pillar-icon-green">
-                <Lock size={22} />
+              <div className="eco-pillar-header">
+                <div className="eco-pillar-icon eco-pillar-icon-green">
+                  <Lock size={24} />
+                </div>
+                <h4 className="h4">For Private Startups</h4>
               </div>
               <div className="eco-pillar-text">
-                <h4 className="h4">For Private Startups</h4>
                 <p className="body-sm">Keep your proprietary code secure while collaborating with your core team at lightning speed via real-time chat.</p>
               </div>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={2}>
             <div className="eco-pillar-card">
-              <div className="eco-pillar-icon eco-pillar-icon-cyan">
-                <User size={22} />
+              <div className="eco-pillar-header">
+                <div className="eco-pillar-icon eco-pillar-icon-cyan">
+                  <User size={24} />
+                </div>
+                <h4 className="h4">For Solo Developers</h4>
               </div>
               <div className="eco-pillar-text">
-                <h4 className="h4">For Solo Developers</h4>
                 <p className="body-sm">Use personal scratchpads and AI-powered repo analysis to 10x your learning speed on any new codebase.</p>
               </div>
             </div>
