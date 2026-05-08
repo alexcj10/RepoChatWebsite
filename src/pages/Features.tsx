@@ -28,7 +28,7 @@ const featureCards = [
     description: 'Personal scratchpads with checklist tracking, star/pin system, and full CRUD — synced via Supabase or stored locally.'
   },
   {
-    category: 'GitHub Integration',
+    category: 'Triage',
     img: '/triage.png',
     icon: GitPullRequest,
     dark: true,
@@ -44,7 +44,7 @@ const featureCards = [
     description: 'Select any text on GitHub and share it instantly to friends or groups — with pinned recipients, personal messages, and template chips.'
   },
   {
-    category: 'RepoBot AI',
+    category: 'RepoBot',
     img: '/repobot.png',
     icon: Bot,
     dark: false,
