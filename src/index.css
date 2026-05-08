@@ -1861,16 +1861,16 @@ textarea.form-input{min-height:110px;resize:vertical}
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5), 0 0 24px rgba(139, 92, 246, 0.08);
 }
 
-/* ── Light Variant (cards 2, 4, 6) ── */
+/* ── Light Variant — same shell as dark, only image content differs ── */
 .feat-card--light {
-  background: #f4f4f5;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  color: #111113;
+  background: #0d0d11;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f4f4f5;
 }
 
 .feat-card--light:hover {
-  border-color: rgba(139, 92, 246, 0.25);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12), 0 0 24px rgba(139, 92, 246, 0.06);
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5), 0 0 24px rgba(139, 92, 246, 0.08);
 }
 
 /* ── Media Area (image / info crossfade) ── */
@@ -1885,7 +1885,7 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 
 .feat-card--light .feat-card-media {
-  background: #e8e8ec;
+  background: #0a0a0e;
 }
 
 .feat-card-img {
@@ -1937,7 +1937,7 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 
 .feat-card--light .feat-card-desc {
-  color: #52525b;
+  color: #a1a1aa;
 }
 
 .feat-card-features {
@@ -1968,11 +1968,11 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 
 .feat-card--light .feat-card-features li {
-  color: #3f3f46;
+  color: #d4d4d8;
 }
 
 .feat-card--light .feat-card-features li svg {
-  color: #7c3aed;
+  color: #a78bfa;
   flex-shrink: 0;
 }
 
@@ -2003,11 +2003,11 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 
 .feat-card--light .feat-card-label {
-  color: #18181b;
+  color: #f4f4f5;
 }
 
 .feat-card--light .feat-card-label svg {
-  color: #7c3aed;
+  color: #a78bfa;
 }
 
 /* ── Toggle Button ── */
@@ -2051,16 +2051,16 @@ textarea.form-input{min-height:110px;resize:vertical}
   box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4);
 }
 
-/* Light card toggle — default */
+/* Light card toggle — default (dark footer) */
 .feat-card--light .feat-card-toggle {
-  background: rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .feat-card--light .feat-card-toggle:hover {
-  background: rgba(0, 0, 0, 0.08);
-  color: rgba(0, 0, 0, 0.7);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* Light card toggle — expanded */
