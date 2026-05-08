@@ -1522,7 +1522,7 @@ textarea.form-input{min-height:110px;resize:vertical}
   justify-content: center;
   align-items: center;
   overflow: hidden; /* Prevent any scrollbars during resize */
-  min-height: 560px;
+  min-height: 580px;
 }
 
 .feat-arch-glow {
