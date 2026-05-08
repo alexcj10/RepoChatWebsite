@@ -3817,48 +3817,40 @@ button.plan-btn {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(6, 182, 212, 0.06);
 }
 
+.eco-pillar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .eco-pillar-icon {
   flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #a78bfa;
-  transition: all 0.35s var(--ease);
+  transition: transform 0.35s var(--ease), color 0.3s;
 }
 
 .eco-pillar-card:hover .eco-pillar-icon {
-  background: rgba(139, 92, 246, 0.15);
-  border-color: rgba(139, 92, 246, 0.35);
-  box-shadow: 0 0 16px rgba(139, 92, 246, 0.15);
+  transform: scale(1.1);
+  color: #c4b5fd;
 }
 
 .eco-pillar-icon-green {
-  background: rgba(163, 230, 53, 0.08);
-  border-color: rgba(163, 230, 53, 0.2);
   color: #a3e635;
 }
 
 .eco-pillar-card:hover .eco-pillar-icon-green {
-  background: rgba(163, 230, 53, 0.12);
-  border-color: rgba(163, 230, 53, 0.35);
-  box-shadow: 0 0 16px rgba(163, 230, 53, 0.1);
+  color: #bef264;
 }
 
 .eco-pillar-icon-cyan {
-  background: rgba(6, 182, 212, 0.08);
-  border-color: rgba(6, 182, 212, 0.2);
   color: #06b6d4;
 }
 
 .eco-pillar-card:hover .eco-pillar-icon-cyan {
-  background: rgba(6, 182, 212, 0.12);
-  border-color: rgba(6, 182, 212, 0.35);
-  box-shadow: 0 0 16px rgba(6, 182, 212, 0.1);
+  color: #67e8f9;
 }
 
 .eco-pillar-text h4 {

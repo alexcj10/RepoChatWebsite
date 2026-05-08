@@ -530,33 +530,39 @@ export default function Landing() {
           <div className="eco-pillars">
             <ScrollReveal>
               <div className="eco-pillar-card">
-                <div className="eco-pillar-icon">
-                  <Bot size={22} />
+                <div className="eco-pillar-header">
+                  <div className="eco-pillar-icon">
+                    <Bot size={24} />
+                  </div>
+                  <h4 className="h4">RepoBot AI Assistant</h4>
                 </div>
                 <div className="eco-pillar-text">
-                  <h4 className="h4">RepoBot AI Assistant</h4>
                   <p className="body-sm">Get instant repository summaries, architecture deep dives, or explain complex code using your own API keys.</p>
                 </div>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={1}>
               <div className="eco-pillar-card">
-                <div className="eco-pillar-icon eco-pillar-icon-green">
-                  <Users size={22} />
+                <div className="eco-pillar-header">
+                  <div className="eco-pillar-icon eco-pillar-icon-green">
+                    <Users size={24} />
+                  </div>
+                  <h4 className="h4">Real-Time Team Chat</h4>
                 </div>
                 <div className="eco-pillar-text">
-                  <h4 className="h4">Real-Time Team Chat</h4>
                   <p className="body-sm">Direct messages, team groups, and online presence synced instantly via Supabase, right inside GitHub.</p>
                 </div>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={2}>
               <div className="eco-pillar-card">
-                <div className="eco-pillar-icon eco-pillar-icon-cyan">
-                  <Code size={22} />
+                <div className="eco-pillar-header">
+                  <div className="eco-pillar-icon eco-pillar-icon-cyan">
+                    <Code size={24} />
+                  </div>
+                  <h4 className="h4">In-Context Sharing</h4>
                 </div>
                 <div className="eco-pillar-text">
-                  <h4 className="h4">In-Context Sharing</h4>
                   <p className="body-sm">Highlight code snippets, PRs, or issues on GitHub to instantly share them in chat or analyze with RepoBot.</p>
                 </div>
               </div>
