@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
-import { MessageSquare, Zap, GitPullRequest, ClipboardList, Dna, Database, AppWindow, Activity, Share2, Bot, Check } from 'lucide-react'
+import { MessageSquare, Zap, GitPullRequest, ClipboardList, Dna, Database, AppWindow, Activity, Share2, Bot } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 
 const featureCards = [
@@ -8,90 +8,48 @@ const featureCards = [
     img: '/group.png',
     icon: MessageSquare,
     dark: true,
-    infoHue: '240deg',
-    description: 'Real-time messaging built into GitHub — DMs, groups, threads, and emoji reactions, powered by Supabase Realtime.',
-    features: [
-      'Real-time DMs with read receipts & typing indicators',
-      'Group chats with admin roles & member management',
-      'Emoji reactions with skin-tone support on any message',
-      'Threaded replies on PR & Issue context cards',
-      'Live presence status & online/offline indicators'
-    ]
+    infoHue: '240',
+    description: 'Real-time messaging built into GitHub — DMs, groups, threads, and emoji reactions, powered by Supabase Realtime.'
   },
   {
     category: 'Identity',
     img: '/dna.png',
     icon: Dna,
     dark: false,
-    infoHue: '160deg',
-    description: 'Dev DNA — a full developer identity card with radar stats, language breakdown, commit pulse, and achievement badges.',
-    features: [
-      'Radar chart with velocity, impact, OSS & diversity scores',
-      'Tech DNA language bar from real GitHub repo data',
-      'Weekly commit pulse graph with coding pattern detection',
-      '14 achievement badges earned from GitHub activity',
-      'One-click downloadable PNG card to share your identity'
-    ]
+    infoHue: '160',
+    description: 'Dev DNA — a full developer identity card with radar stats, language breakdown, commit pulse, and achievement badges.'
   },
   {
     category: 'Productivity',
     img: '/pad.png',
     icon: ClipboardList,
     dark: false,
-    infoHue: '90deg',
-    description: 'Personal scratchpads with checklist tracking, star/pin system, and full CRUD — synced via Supabase or stored locally.',
-    features: [
-      'Create, edit & delete notes with optional titles',
-      'Toggle checklist items as complete/incomplete',
-      'Pin important notes to the top of the list',
-      'Star notes for quick-access bookmarking',
-      'Cloud sync for Pro or local storage for free users'
-    ]
+    infoHue: '90',
+    description: 'Personal scratchpads with checklist tracking, star/pin system, and full CRUD — synced via Supabase or stored locally.'
   },
   {
     category: 'GitHub Integration',
     img: '/triage.png',
     icon: GitPullRequest,
     dark: true,
-    infoHue: '300deg',
-    description: 'Full GitHub triage from the chat sidebar — comment on issues, manage labels & assignees, and close/reopen without leaving the page.',
-    features: [
-      'Post comments on Issues & PRs directly from chat',
-      'Add/remove labels with the built-in triage sheet',
-      'Assign & unassign users on Issues and Pull Requests',
-      'Smart Task Assignments with pending/in-review/done flow',
-      'Auto-detects public vs private repo for permission scoping'
-    ]
+    infoHue: '300',
+    description: 'Full GitHub triage from the chat sidebar — comment on issues, manage labels & assignees, and close/reopen without leaving the page.'
   },
   {
     category: 'Sharing',
     img: '/share.png',
     icon: Share2,
     dark: true,
-    infoHue: '30deg',
-    description: 'Select any text on GitHub and share it instantly to friends or groups — with pinned recipients, personal messages, and template chips.',
-    features: [
-      'Floating share popup on any text selection on GitHub',
-      'Multi-target sharing to friends & groups simultaneously',
-      'Pinned recipients for one-tap frequent sharing',
-      'Configurable quick-reply template chips',
-      'Glass or solid panel style with adjustable backdrop blur'
-    ]
+    infoHue: '30',
+    description: 'Select any text on GitHub and share it instantly to friends or groups — with pinned recipients, personal messages, and template chips.'
   },
   {
     category: 'RepoBot AI',
     img: '/repobot.png',
     icon: Bot,
     dark: false,
-    infoHue: '200deg',
-    description: 'AI-powered repo explainer — choose Quick, Detailed, ELI5, or Architecture mode, then ask follow-up questions with full context.',
-    features: [
-      'Four explain modes: Quick, Detailed, ELI5 & Architecture',
-      'BYO keys — Groq, OpenAI, Claude & Google Gemini support',
-      'Streams responses in real-time with markdown rendering',
-      'Fetches live repo metadata, README & file tree as context',
-      'Follow-up Q&A with full conversation history maintained'
-    ]
+    infoHue: '200',
+    description: 'AI-powered repo explainer — choose Quick, Detailed, ELI5, or Architecture mode, then ask follow-up questions with full context.'
   }
 ]
 
@@ -304,11 +262,6 @@ export default function Features() {
                       <img src={card.img} alt={card.category} className="feat-card-img" loading="lazy" />
                       <div className="feat-card-info" style={{ '--info-hue': card.infoHue } as React.CSSProperties}>
                         <p className="feat-card-desc">{card.description}</p>
-                        <ul className="feat-card-features">
-                          {card.features.map((f, j) => (
-                            <li key={j}><Check size={14} strokeWidth={3} /> <span>{f}</span></li>
-                          ))}
-                        </ul>
                       </div>
                     </div>
                     <div className="feat-card-footer">

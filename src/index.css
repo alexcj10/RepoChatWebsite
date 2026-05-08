@@ -1954,38 +1954,12 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 
 .feat-card-desc {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   line-height: 1.7;
   margin: 0;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.85);
   position: relative;
   z-index: 1;
-}
-
-.feat-card-features {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 0;
-  margin: 0;
-  position: relative;
-  z-index: 1;
-}
-
-.feat-card-features li {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  line-height: 1.45;
-  color: #e4e4e7;
-}
-
-.feat-card-features li svg {
-  color: #a78bfa;
-  flex-shrink: 0;
 }
 
 /* ── Card Footer ── */
