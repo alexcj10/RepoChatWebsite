@@ -1917,11 +1917,11 @@ textarea.form-input{min-height:110px;resize:vertical}
 .feat-card-info {
   position: absolute;
   inset: 0;
-  padding: 40px 36px;
+  padding: clamp(20px, 3.5vw, 40px) clamp(16px, 3vw, 36px);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 24px;
+  gap: clamp(12px, 2vw, 24px);
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1), transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1962,12 +1962,40 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 
 .feat-card-desc {
-  font-size: 1.15rem;
-  line-height: 1.7;
+  font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+  line-height: 1.6;
   margin: 0;
   color: rgba(255, 255, 255, 0.85);
   position: relative;
   z-index: 1;
+}
+
+.feat-card-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.5vw, 14px);
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.feat-card-features li {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.5vw, 12px);
+  font-size: clamp(0.75rem, 1.6vw, 0.95rem);
+  font-weight: 500;
+  line-height: 1.4;
+  color: #e4e4e7;
+}
+
+.feat-card-features li svg {
+  color: #a78bfa;
+  flex-shrink: 0;
+  width: clamp(12px, 1.5vw, 14px);
+  height: clamp(12px, 1.5vw, 14px);
 }
 
 /* ── Card Footer ── */

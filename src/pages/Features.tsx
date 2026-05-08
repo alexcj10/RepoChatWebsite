@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
-import { MessageSquare, Zap, GitPullRequest, ClipboardList, Dna, Database, AppWindow, Activity, Share2, Bot } from 'lucide-react'
+import { MessageSquare, Zap, GitPullRequest, ClipboardList, Dna, Database, AppWindow, Activity, Share2, Bot, Check } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 
 const featureCards = [
@@ -9,7 +9,12 @@ const featureCards = [
     icon: MessageSquare,
     dark: true,
     infoHue: '240',
-    description: 'Real-time messaging built into GitHub — DMs, groups, threads, and emoji reactions, powered by Supabase Realtime.'
+    description: 'Real-time messaging built into GitHub — DMs, groups, threads, and emoji reactions, powered by Supabase Realtime.',
+    features: [
+      'Real-time DMs, groups & threaded replies',
+      'Emoji reactions with full skin-tone support',
+      'Live presence & typing indicators'
+    ]
   },
   {
     category: 'Identity',
@@ -17,7 +22,12 @@ const featureCards = [
     icon: Dna,
     dark: false,
     infoHue: '160',
-    description: 'Dev DNA — a full developer identity card with radar stats, language breakdown, commit pulse, and achievement badges.'
+    description: 'Dev DNA — a full developer identity card with radar stats, language breakdown, commit pulse, and achievement badges.',
+    features: [
+      'Radar chart for velocity, impact & OSS scores',
+      'Tech DNA language bar from real repo data',
+      '14 achievement badges earned from activity'
+    ]
   },
   {
     category: 'Productivity',
@@ -25,7 +35,12 @@ const featureCards = [
     icon: ClipboardList,
     dark: false,
     infoHue: '90',
-    description: 'Personal scratchpads with checklist tracking, star/pin system, and full CRUD — synced via Supabase or stored locally.'
+    description: 'Personal scratchpads with checklist tracking, star/pin system, and full CRUD — synced via Supabase or stored locally.',
+    features: [
+      'Create, edit, pin & star personal scratchpads',
+      'Interactive checklist tracking for tasks',
+      'Cloud sync (Pro) or local browser storage'
+    ]
   },
   {
     category: 'Triage',
@@ -33,7 +48,12 @@ const featureCards = [
     icon: GitPullRequest,
     dark: true,
     infoHue: '300',
-    description: 'Full GitHub triage from the chat sidebar — comment on issues, manage labels & assignees, and close/reopen without leaving the page.'
+    description: 'Full GitHub triage from the chat sidebar — comment on issues, manage labels & assignees, and close/reopen without leaving the page.',
+    features: [
+      'Post comments on Issues & PRs directly',
+      'Smart Task Assignments & label management',
+      'Auto-detects public vs private repo scopes'
+    ]
   },
   {
     category: 'Sharing',
@@ -41,7 +61,12 @@ const featureCards = [
     icon: Share2,
     dark: true,
     infoHue: '30',
-    description: 'Select any text on GitHub and share it instantly to friends or groups — with pinned recipients, personal messages, and template chips.'
+    description: 'Select any text on GitHub and share it instantly to friends or groups — with pinned recipients, personal messages, and template chips.',
+    features: [
+      'Floating share popup on any text selection',
+      'Multi-target sharing to friends & groups',
+      'Configurable quick-reply template chips'
+    ]
   },
   {
     category: 'RepoBot',
@@ -49,7 +74,12 @@ const featureCards = [
     icon: Bot,
     dark: false,
     infoHue: '200',
-    description: 'AI-powered repo explainer — choose Quick, Detailed, ELI5, or Architecture mode, then ask follow-up questions with full context.'
+    description: 'AI-powered repo explainer — choose Quick, Detailed, ELI5, or Architecture mode, then ask follow-up questions with full context.',
+    features: [
+      'Four explain modes: Quick, Detailed, ELI5 & Arch',
+      'BYO keys: Groq, OpenAI, Claude & Gemini',
+      'Fetches live repo metadata & file tree context'
+    ]
   }
 ]
 
@@ -262,6 +292,11 @@ export default function Features() {
                       <img src={card.img} alt={card.category} className="feat-card-img" loading="lazy" />
                       <div className="feat-card-info" style={{ '--info-hue': card.infoHue } as React.CSSProperties}>
                         <p className="feat-card-desc">{card.description}</p>
+                        <ul className="feat-card-features">
+                          {card.features.map((f, j) => (
+                            <li key={j}><Check size={14} strokeWidth={3} /> <span>{f}</span></li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
                     <div className="feat-card-footer">
