@@ -374,28 +374,28 @@ export default function Landing() {
           <div className="why-cards">
             <ScrollReveal>
               <div className="why-card">
-                <div className="why-card-icon"><Clock size={18} /></div>
+                <div className="why-card-icon"><Clock size={24} /></div>
                 <p className="why-card-text">Developers take <strong>23 minutes</strong> to refocus after a single context switch.</p>
                 <span className="why-card-source">UC Irvine — Gloria Mark, PhD</span>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={1}>
               <div className="why-card">
-                <div className="why-card-icon"><BarChart3 size={18} /></div>
-                <p className="why-card-text"><strong>40%</strong> of developer productivity is lost daily to app switching.</p>
+                <div className="why-card-icon"><BarChart3 size={24} /></div>
+                <p className="why-card-text"><strong>40%</strong> of developer productivity is lost daily to app context switching.</p>
                 <span className="why-card-source">APA Research</span>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={2}>
               <div className="why-card">
-                <div className="why-card-icon"><DollarSign size={18} /></div>
-                <p className="why-card-text"><strong>$10,400</strong> lost per developer per year to fragmented task switching.</p>
+                <div className="why-card-icon"><DollarSign size={24} /></div>
+                <p className="why-card-text"><strong>$10,400</strong> lost per developer per year to fragmented task context switching.</p>
                 <span className="why-card-source">Asana</span>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={3}>
               <div className="why-card">
-                <div className="why-card-icon"><AlertCircle size={18} /></div>
+                <div className="why-card-icon"><AlertCircle size={24} /></div>
                 <p className="why-card-text"><strong>62%</strong> of developers say context switching is their biggest bottleneck.</p>
                 <span className="why-card-source">Stack Overflow Survey</span>
               </div>
