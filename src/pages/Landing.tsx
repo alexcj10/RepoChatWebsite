@@ -389,7 +389,7 @@ export default function Landing() {
             <ScrollReveal delay={2}>
               <div className="why-card">
                 <div className="why-card-icon"><DollarSign size={24} /></div>
-                <p className="why-card-text"><strong>$10,400</strong> lost per developer per year to fragmented task context switching.</p>
+                <p className="why-card-text"><strong>$10,400</strong> lost per developer per year to fragmented context switching.</p>
                 <span className="why-card-source">Asana</span>
               </div>
             </ScrollReveal>
