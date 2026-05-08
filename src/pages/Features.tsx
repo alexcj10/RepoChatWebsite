@@ -181,6 +181,7 @@ export default function Features() {
                   <div className="core-rings">
                     <div className="core-ring cr-1"></div>
                     <div className="core-ring cr-2"></div>
+                    <div className="core-ring cr-3"></div>
                   </div>
                   <div className="core-center">
                     <span className="core-logo">
