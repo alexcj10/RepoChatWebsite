@@ -205,7 +205,8 @@ html.nav-open-lock body {
   font-size: 1.3rem;
   font-weight: 600;
   color: var(--text-primary);
-  display: inline-block;
+  display: block;
+  padding: 8px 0;
   transition: all 0.2s;
 }
 
