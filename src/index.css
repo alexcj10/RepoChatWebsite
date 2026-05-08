@@ -453,6 +453,14 @@ html.nav-open-lock body {
     grid-template-columns: 1fr;
     gap: 32px;
   }
+  
+  /* Swap the 3rd and 4th cards on mobile so the image themes alternate (Dark -> Light -> Dark -> Light) */
+  .features-bento-grid > :nth-child(3) {
+    order: 4;
+  }
+  .features-bento-grid > :nth-child(4) {
+    order: 3;
+  }
 }
 
 @media (max-width: 600px) {
