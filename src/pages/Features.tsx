@@ -358,12 +358,14 @@ export default function Features() {
 
         {/* ═══ FINAL CTA ═══ */}
         <ScrollReveal>
-          <div className="feat-cta-card">
-            <div className="feat-cta-glow"></div>
-            <span className="feat-cta-badge">🚀 Ready to ship?</span>
-            <h3 className="feat-cta-heading">Every feature. One extension.<br />Zero context switching.</h3>
-            <p className="feat-cta-sub">Join thousands of developers collaborating where their code lives.</p>
-            <a href="#install" className="btn feat-cta-primary">Add to Chrome — Free</a>
+          <div className="feat-cta-banner">
+            <div className="eco-cta-left">
+              <h3 className="h3">Every feature you need. Zero context switching.</h3>
+            </div>
+            <div className="eco-cta-right">
+              <p className="body-sm">Free forever. No credit card required.</p>
+              <a href="#install" className="btn btn-white">Add to Chrome — Free</a>
+            </div>
           </div>
         </ScrollReveal>
 
