@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
-import { MessageSquare, Zap, GitPullRequest, ClipboardList, Dna, Database, AppWindow, Activity, Share2, Bot, Check, Globe, Lock, User } from 'lucide-react'
+import { MessageSquare, GitPullRequest, ClipboardList, Dna, Database, AppWindow, Activity, Share2, Bot, Check, Globe, Lock, User } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 
 const featureCards = [
@@ -138,7 +138,6 @@ export default function Features() {
         <ScrollReveal>
           <div className="feat-hero-area">
             <div className="section-head" style={{ marginBottom: 0 }}>
-              <div className="badge mb-6"><Zap size={12} /> Features</div>
               <h1 className="h2">Every feature built<br /><span className="gradient-text">for developer flow.</span></h1>
               <p>Explore the tools that keep your team in sync — right where the code lives.</p>
             </div>
