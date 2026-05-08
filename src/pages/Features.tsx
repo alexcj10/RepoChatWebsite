@@ -269,7 +269,7 @@ export default function Features() {
         </ScrollReveal>
 
         {/* ═══ WHO IS IT FOR — 3 PILLAR CARDS ═══ */}
-        <div className="eco-pillars" style={{ marginTop: 56, marginBottom: 16 }}>
+        <div className="eco-pillars" style={{ marginTop: 40, marginBottom: 16 }}>
           <ScrollReveal>
             <div className="eco-pillar-card">
               <div className="eco-pillar-icon">
