@@ -52,7 +52,7 @@
   /* Fluid Spacing System */
   --space-xs: clamp(0.75rem, 0.7rem + 0.25vw, 1rem);
   --space-s: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
-  --space-m: clamp(1.5rem, 1.3rem + 1vw, 2.5rem);
+  --space-m: clamp(1rem, 1rem + 1vw, 2.5rem);
   --space-l: clamp(2.5rem, 2rem + 2.5vw, 4rem);
   --space-xl: clamp(4rem, 3rem + 5vw, 7.5rem);
 }
@@ -138,7 +138,7 @@ ul{list-style:none}
 }
 
 .navbar.scrolled{background:rgba(17,17,19,0.85);border-color:rgba(255,255,255,0.08);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
-.nav-inner{width:100%;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+.nav-inner{width:100%;padding:0 var(--space-m);display:flex;align-items:center;justify-content:space-between}
 .nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1rem;letter-spacing:-.01em;flex-shrink:0}
 .nav-links{display:flex;align-items:center;justify-content:center;gap:24px;flex:1}
 .nav-links li a{font-size:.88rem;font-weight:500;color:var(--text-secondary);transition:color .2s}
