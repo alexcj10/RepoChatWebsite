@@ -2285,7 +2285,7 @@ textarea.form-input{min-height:110px;resize:vertical}
 .feat-cta-card {
   position: relative;
   text-align: center;
-  margin-top: var(--space-xl);
+  margin-top: 56px;
   padding: 64px 40px;
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.08);
