@@ -434,7 +434,7 @@ html.nav-open-lock body {
 }
 
 .feature-card-content {
-  padding: 32px;
+  padding: 24px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -443,7 +443,7 @@ html.nav-open-lock body {
 }
 
 .feature-card-content .h3 {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   font-size: 1.4rem;
 }
 
@@ -479,7 +479,7 @@ html.nav-open-lock body {
     gap: 20px;
   }
   .feature-card-content {
-    padding: 24px;
+    padding: 16px 20px;
   }
   .feature-card-content .h3 {
     font-size: 1.2rem;
