@@ -165,11 +165,6 @@ export default function Landing() {
         </motion.div>
       </section>
 
-      {/* ═══ AURORA BEAM DIVIDER ═══ */}
-      <div className="aurora-beam">
-        <div className="aurora-beam-line" />
-      </div>
-
       {/* ═══ WHY REPOCHAT ═══ */}
       <section className="section why-section">
         <div className="container">
