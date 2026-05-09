@@ -2027,7 +2027,7 @@ textarea.form-input{min-height:110px;resize:vertical}
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
+  padding: 12px 16px;
   margin-top: auto;
   background: rgba(255, 255, 255, 0.03);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -2036,9 +2036,9 @@ textarea.form-input{min-height:110px;resize:vertical}
 .feat-card-label {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-weight: 700;
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   letter-spacing: -0.01em;
 }
 
@@ -2060,8 +2060,8 @@ textarea.form-input{min-height:110px;resize:vertical}
 
 /* ── Toggle Button ── */
 .feat-card-toggle {
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -2072,7 +2072,7 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 
 .feat-card-toggle-icon {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: 300;
   line-height: 1;
   display: grid;
@@ -2126,7 +2126,7 @@ textarea.form-input{min-height:110px;resize:vertical}
     padding: 24px 20px;
   }
   .feat-card-footer {
-    padding: 16px 20px;
+    padding: 12px 16px;
   }
   
   /* Swap the 3rd and 4th cards on mobile so the image themes alternate (Dark -> Light -> Dark -> Light -> Dark -> Light) */
