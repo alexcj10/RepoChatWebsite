@@ -1,4 +1,4 @@
-import { Shield, Lock, Eye, Database, Key, Bug, Server, Fingerprint, Layers, GitBranch, Webhook, CreditCard } from 'lucide-react'
+import { Shield, Lock, Eye, Database, Key, Bug, Server, Fingerprint, Layers, GitBranch, Webhook, CreditCard, Globe } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import { useState } from 'react'
 
@@ -97,8 +97,139 @@ const rlsStats = [
   { label: 'DB Triggers', value: '3', sub: 'Auto-notifications & sync' },
 ]
 
+/* ─── Diagram Components ─── */
+function DiagramRLS() {
+  return (
+    <div className="sec-diagram-container" style={{ flexDirection: 'column', gap: 40 }}>
+      {/* JWT Token Node */}
+      <div className="diag-node" style={{ '--card-glow': 'rgba(16, 185, 129, 0.4)' } as any}>
+        <div className="diag-node-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
+          <Key size={24} />
+        </div>
+        <div className="diag-node-title">User JWT Token</div>
+      </div>
+
+      <div style={{ height: 2, width: 2, background: 'rgba(16, 185, 129, 0.4)', boxShadow: '0 0 10px #10b981' }} />
+
+      {/* Database Cylinder */}
+      <div className="diag-db-cylinder">
+        <div className="diag-rls-gate">RLS POLICY GATE</div>
+        <div className="diag-table-row allowed">
+          <span>SELECT * FROM messages</span>
+          <span style={{ fontSize: '0.65rem' }}>uid() = user_id</span>
+        </div>
+        <div className="diag-table-row allowed">
+          <span>INSERT INTO profiles</span>
+          <span style={{ fontSize: '0.65rem' }}>uid() = id</span>
+        </div>
+        <div className="diag-table-row denied">
+          <span>SELECT * FROM users</span>
+          <span style={{ fontSize: '0.65rem' }}>uid() != user_id</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function DiagramOAuth() {
+  return (
+    <div className="sec-diagram-container" style={{ gap: 16 }}>
+      <div className="diag-node">
+        <div className="diag-node-icon" style={{ background: 'rgba(255, 255, 255, 0.1)', color: '#fff' }}>
+          <Globe size={24} />
+        </div>
+        <div className="diag-node-title">Extension</div>
+      </div>
+
+      <div className="diag-line-h" style={{ '--line-color': '#fff' } as any} />
+
+      <div className="diag-node" style={{ borderColor: 'rgba(139, 92, 246, 0.4)' }}>
+        <div className="diag-node-icon" style={{ background: 'rgba(139, 92, 246, 0.15)', color: '#8b5cf6' }}>
+          <Server size={24} />
+        </div>
+        <div className="diag-node-title">Supabase Auth</div>
+        <div className="diag-node-sub">OAuth Flow</div>
+      </div>
+
+      <div className="diag-line-h" style={{ '--line-color': '#8b5cf6' } as any} />
+
+      <div className="diag-node">
+        <div className="diag-node-icon" style={{ background: 'rgba(255, 255, 255, 0.1)', color: '#fff' }}>
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </div>
+        <div className="diag-node-title">GitHub API</div>
+      </div>
+    </div>
+  )
+}
+
+function DiagramEncryption() {
+  return (
+    <div className="sec-diagram-container" style={{ flexDirection: 'column', gap: 40 }}>
+      {/* Transit */}
+      <div className="diag-tunnel">
+        <Globe size={24} color="#a855f7" />
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div style={{ color: '#a855f7', fontWeight: 600, fontSize: '0.8rem', letterSpacing: 1 }}>TLS 1.2+ ENCRYPTED TUNNEL</div>
+          <div className="diag-line-h" style={{ width: 120, height: 2, '--line-color': '#a855f7' } as any} />
+        </div>
+        <Server size={24} color="#a855f7" />
+      </div>
+
+      {/* Rest */}
+      <div className="diag-node" style={{ width: 300, background: 'rgba(168, 85, 247, 0.05)', borderColor: 'rgba(168, 85, 247, 0.2)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <Database size={24} color="#a855f7" />
+          <div style={{ textAlign: 'left' }}>
+            <div className="diag-node-title">PostgreSQL Storage</div>
+            <div className="diag-node-sub">Volume-level AES-256 Encryption</div>
+          </div>
+        </div>
+        <div style={{ marginTop: 12, display: 'flex', gap: 8 }}>
+          {[1,2,3,4].map(i => <div key={i} style={{ width: 32, height: 8, borderRadius: 4, background: 'rgba(168, 85, 247, 0.2)' }} />)}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function DiagramIsolation() {
+  return (
+    <div className="sec-diagram-container" style={{ gap: 32 }}>
+      {/* Tenant A */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'center' }}>
+        <div style={{ width: 40, height: 40, borderRadius: 20, background: 'rgba(245, 158, 11, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Eye size={20} color="#f59e0b" />
+        </div>
+        <div className="diag-node" style={{ borderColor: 'rgba(245, 158, 11, 0.3)' }}>
+          <div className="diag-node-title" style={{ color: '#f59e0b' }}>User A Data</div>
+          <div className="diag-node-sub">Isolated Context</div>
+        </div>
+      </div>
+
+      {/* Isolation Wall */}
+      <div style={{ width: 4, height: 160, background: 'rgba(255,255,255,0.1)', borderRadius: 2, position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ background: '#141418', padding: '16px 0' }}>
+          <Shield size={24} color="#6b7280" />
+        </div>
+      </div>
+
+      {/* Tenant B */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'center' }}>
+        <div style={{ width: 40, height: 40, borderRadius: 20, background: 'rgba(59, 130, 246, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Fingerprint size={20} color="#3b82f6" />
+        </div>
+        <div className="diag-node" style={{ borderColor: 'rgba(59, 130, 246, 0.3)' }}>
+          <div className="diag-node-title" style={{ color: '#3b82f6' }}>User B Data</div>
+          <div className="diag-node-sub">Isolated Context</div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Security() {
-  const [expandedLayer, setExpandedLayer] = useState<number | null>(null)
+  const [activeTab, setActiveTab] = useState<number>(0)
 
   return (
     <div className="legal-page" style={{ paddingTop: 'calc(var(--nav-h) + clamp(64px, 10vh, 100px))' }}>
@@ -133,78 +264,52 @@ export default function Security() {
           </div>
         </ScrollReveal>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 860, margin: '0 auto var(--space-l)' }}>
-          {architectureLayers.map((layer, i) => {
-            const isExpanded = expandedLayer === i
-            return (
-              <ScrollReveal key={i} delay={(i % 3) + 1}>
-                <div
-                  className={`security-grid-card ${isExpanded ? 'expanded' : ''}`}
-                  style={{
-                    borderRadius: 20,
-                    padding: '28px 32px',
-                    cursor: 'pointer',
-                    '--card-glow': `${layer.color}40`,
-                    '--card-glow-bg': `${layer.color}30`,
-                  } as React.CSSProperties}
-                  onClick={() => setExpandedLayer(isExpanded ? null : i)}
+        <div className="sec-showcase-split">
+          
+          {/* Accordion Tabs (Left) */}
+          <div className="sec-showcase-tabs">
+            {architectureLayers.map((layer, i) => {
+              const isActive = activeTab === i;
+              return (
+                <div 
+                  key={i} 
+                  className={`sec-showcase-tab ${isActive ? 'is-active' : ''}`}
+                  onClick={() => setActiveTab(i)}
                 >
-                  {/* Header Row */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
-                    <div style={{
-                      width: 44, height: 44, borderRadius: 12,
-                      background: `${layer.color}15`,
-                      border: `1px solid ${layer.color}25`,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      color: layer.color, flexShrink: 0,
-                      transition: 'all 0.4s ease',
-                      boxShadow: isExpanded ? `0 0 20px ${layer.color}20` : 'none',
+                  <div className="sec-tab-header" style={{ '--active-color': layer.color } as any}>
+                    <div className="sec-tab-icon" style={{ 
+                      background: isActive ? `${layer.color}20` : 'rgba(255,255,255,0.05)', 
+                      color: isActive ? layer.color : 'var(--text-secondary)'
                     }}>
                       {layer.icon}
                     </div>
-                    <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.01em', margin: 0 }}>{layer.title}</h3>
-                      <div style={{
-                        width: 28, height: 28, borderRadius: 8,
-                        background: 'rgba(255,255,255,0.04)',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        color: 'var(--text-muted)', fontSize: '0.85rem', fontWeight: 600,
-                        transition: 'transform 0.3s ease',
-                        transform: isExpanded ? 'rotate(180deg)' : 'rotate(0)',
-                        flexShrink: 0,
-                      }}>
-                        ▾
-                      </div>
-                    </div>
+                    <div className="sec-tab-title">{layer.title}</div>
                   </div>
-
-                  {/* Body Content */}
-                  <div style={{ paddingLeft: 12 }}>
-                    <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>{layer.desc}</p>
-                  </div>
-
-                  {/* Expandable Details */}
-                  <div style={{
-                    maxHeight: isExpanded ? 300 : 0,
-                    overflow: 'hidden',
-                    transition: 'max-height 0.5s cubic-bezier(.22,1,.36,1), padding 0.5s ease',
-                    paddingTop: isExpanded ? 20 : 0,
-                    marginTop: isExpanded ? 16 : 0,
-                    borderTop: isExpanded ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
-                  }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 10, paddingLeft: 16 }}>
+                  
+                  <div className="sec-tab-content">
+                    <div className="sec-tab-desc">{layer.desc}</div>
+                    <div className="sec-tab-details">
                       {layer.details.map((detail, j) => (
-                        <div key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-                          <span style={{ color: layer.color, fontSize: '0.7rem', marginTop: 5, flexShrink: 0 }}>●</span>
-                          <span style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>{detail}</span>
+                        <div key={j} className="sec-tab-detail-item">
+                          <span style={{ color: layer.color, marginTop: 4 }}>●</span>
+                          <span>{detail}</span>
                         </div>
                       ))}
                     </div>
                   </div>
                 </div>
-              </ScrollReveal>
-            )
-          })}
+              )
+            })}
+          </div>
+
+          {/* Diagram Stage (Right) */}
+          <div className="sec-showcase-stage-wrapper">
+            {activeTab === 0 && <DiagramRLS />}
+            {activeTab === 1 && <DiagramOAuth />}
+            {activeTab === 2 && <DiagramEncryption />}
+            {activeTab === 3 && <DiagramIsolation />}
+          </div>
+
         </div>
 
         {/* ─── Chrome Extension Permissions ─── */}
