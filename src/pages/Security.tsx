@@ -1,4 +1,4 @@
-import { Shield, Lock, Eye, Database, Key, Bug, Server, Fingerprint, Layers, Webhook, CreditCard, GitBranch } from 'lucide-react'
+import { Shield, Lock, Eye, Database, Key, Bug, Server, Layers, Webhook, GitBranch } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 
 /* ─── Security Architecture Layers ─── */
@@ -64,29 +64,8 @@ const extensionSecurity = {
   hostPermissions: 'https://github.com/* and https://api.github.com/* — The extension only runs on GitHub pages and communicates with the GitHub API. It does not request access to your browsing history, bookmarks, downloads, or any other website.',
 }
 
-/* ─── Server-Side Security ─── */
-const serverSecurity = [
-  {
-    icon: <Webhook size={22} />,
-    title: 'Webhook Signature Verification',
-    desc: 'Payment webhooks from Dodo Payments are verified using standardwebhooks cryptographic signature validation. Invalid signatures are rejected with a 401 response — preventing spoofed payment events.',
-  },
-  {
-    icon: <Fingerprint size={22} />,
-    title: 'JWT Authentication on Edge Functions',
-    desc: 'Supabase Edge Functions (create-checkout, dodo-webhook) authenticate users via JWT tokens. The checkout flow validates auth.getUser() before creating payment sessions, ensuring only authenticated users can initiate purchases.',
-  },
-  {
-    icon: <Server size={22} />,
-    title: 'SECURITY DEFINER Functions',
-    desc: 'Database triggers (handle_new_friend_request, handle_friend_request_update, handle_new_group_invitation) use SECURITY DEFINER to run with elevated privileges while maintaining strict input validation — ensuring automated actions cannot be exploited.',
-  },
-  {
-    icon: <CreditCard size={22} />,
-    title: 'Zero Payment Data Storage',
-    desc: 'All payment processing is handled by Dodo Payments. We never see, store, or process credit card numbers, CVVs, or billing details. The service role key used for webhook processing is stored as an environment variable, never in client-side code.',
-  },
-]
+
+
 
 /* ─── RLS Policy Stats ─── */
 const rlsStats = [
@@ -337,7 +316,7 @@ export default function Security() {
 
         </div>
 
-        {/* ─── Chrome Extension Permissions ─── */}
+        {/* ─── Chrome Extension Permissions — Deep-Dive Card (Option A) ─── */}
         <ScrollReveal>
           <div className="section-head" style={{ paddingTop: 'var(--space-l)', marginBottom: 48 }}>
             <h2 className="h2 ecosystem-h2">Extension <span className="gradient-text">permissions.</span></h2>
@@ -345,61 +324,101 @@ export default function Security() {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal>
-          <div className="security-grid-card" style={{
-            maxWidth: 860, margin: '0 auto var(--space-l)',
-            borderRadius: 20,
-            padding: '32px',
-            '--card-glow': 'rgba(139, 92, 246, 0.4)',
-            '--card-glow-bg': 'rgba(139, 92, 246, 0.3)',
-          } as React.CSSProperties}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-              {extensionSecurity.permissions.map((perm, i) => (
-                <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
-                  <div style={{
-                    width: 36, height: 36, borderRadius: 10,
-                    background: 'rgba(139,92,246,0.1)',
-                    border: '1px solid rgba(139,92,246,0.15)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: 'var(--accent)', flexShrink: 0,
-                  }}>
-                    {perm.icon}
-                  </div>
-                  <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <span style={{ fontWeight: 700, fontSize: '0.92rem', color: 'var(--text-primary)' }}>{perm.name}</span>
-                      <span style={{
-                        fontSize: '0.6rem', fontWeight: 700,
-                        padding: '2px 8px', borderRadius: 999,
-                        background: 'rgba(16, 185, 129, 0.1)',
-                        color: '#10b981',
-                        border: '1px solid rgba(16, 185, 129, 0.18)',
-                        textTransform: 'uppercase', letterSpacing: '0.03em',
-                      }}>Required</span>
+        <div className="sec-deep-cards">
+          <ScrollReveal>
+            <div className="sec-deep-card" style={{ '--card-accent': '#a855f7' } as React.CSSProperties}>
+              <div className="sec-deep-card-header">
+                <div className="sec-deep-card-icon" style={{ color: '#a855f7' }}>
+                  <Shield size={22} />
+                </div>
+                <h3>Minimal Chrome Extension Permissions</h3>
+              </div>
+              <div className="sec-deep-card-grid">
+                <div className="sec-deep-card-text">
+                  <p>
+                    RepoChat requests only 3 permissions and 2 host domains — the absolute minimum needed to function. No access to browsing history, bookmarks, downloads, cookies, or any website outside GitHub.
+                  </p>
+                  <div className="sec-deep-card-details">
+                    {extensionSecurity.permissions.map((perm, i) => (
+                      <div key={i} className="sec-deep-detail-item">
+                        <div className="sec-deep-detail-dot" style={{ background: '#a855f7' }} />
+                        <span><strong>{perm.name}</strong> — {perm.desc}</span>
+                      </div>
+                    ))}
+                    <div className="sec-deep-detail-item">
+                      <div className="sec-deep-detail-dot" style={{ background: '#a855f7' }} />
+                      <span><strong>Host permissions</strong> — {extensionSecurity.hostPermissions}</span>
                     </div>
-                    <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginTop: 4 }}>{perm.desc}</p>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            {/* Host Permissions Note */}
-            <div style={{
-              marginTop: 24, paddingTop: 20,
-              borderTop: '1px solid rgba(255,255,255,0.06)',
-            }}>
-              <div style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
-                <Shield size={14} style={{ color: 'var(--accent)', marginTop: 3, flexShrink: 0 }} />
-                <div>
-                  <span style={{ fontWeight: 600, fontSize: '0.82rem', color: 'var(--text-primary)' }}>Host Permissions: </span>
-                  <span style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>{extensionSecurity.hostPermissions}</span>
+                <div className="sec-code-block">
+                  <div className="sec-code-block-label">manifest.json</div>
+                  <pre>
+{`{
+  `}<span className="code-string">"manifest_version"</span>{`: 3,
+  `}<span className="code-string">"permissions"</span>{`: [
+    `}<span className="code-string">"storage"</span>{`,
+    `}<span className="code-string">"activeTab"</span>{`,
+    `}<span className="code-string">"scripting"</span>{`
+  ],
+  `}<span className="code-string">"host_permissions"</span>{`: [
+    `}<span className="code-string">"https://github.com/*"</span>{`,
+    `}<span className="code-string">"https://api.github.com/*"</span>{`
+  ],
+  `}<span className="code-string">"content_scripts"</span>{`: [{
+    `}<span className="code-string">"matches"</span>{`: [`}<span className="code-string">"https://github.com/*"</span>{`],
+    `}<span className="code-string">"run_at"</span>{`: `}<span className="code-string">"document_end"</span>{`
+  }],
+  `}<span className="code-string">"web_accessible_resources"</span>{`: [{
+    `}<span className="code-string">"resources"</span>{`: [`}<span className="code-string">"assets/*"</span>{`],
+    `}<span className="code-string">"matches"</span>{`: [`}<span className="code-string">"https://github.com/*"</span>{`]
+  }]
+}`}
+                  </pre>
                 </div>
               </div>
             </div>
+          </ScrollReveal>
+        </div>
+
+        {/* ─── Permission Comparison Table (Option B) ─── */}
+        <ScrollReveal>
+          <div className="sec-perm-table-wrap">
+            <table className="sec-perm-table">
+              <thead>
+                <tr>
+                  <th>Permission</th>
+                  <th><span className="sec-perm-badge sec-perm-badge--yes">✓ Accesses</span></th>
+                  <th><span className="sec-perm-badge sec-perm-badge--no">✕ Cannot Access</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>storage</code></td>
+                  <td>Theme, accent color, layout preferences (local only)</td>
+                  <td>Browsing history, cookies, passwords, autofill data</td>
+                </tr>
+                <tr>
+                  <td><code>activeTab</code></td>
+                  <td>Current GitHub page URL (repo, PR, issue context)</td>
+                  <td>Other tabs, other websites, background page tracking</td>
+                </tr>
+                <tr>
+                  <td><code>scripting</code></td>
+                  <td>Injects RepoChat sidebar UI into GitHub pages</td>
+                  <td>Page content modification, form data, keystrokes</td>
+                </tr>
+                <tr>
+                  <td><code>host_permissions</code></td>
+                  <td>github.com/* and api.github.com/* only</td>
+                  <td>Any non-GitHub website, Google, social media, email</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </ScrollReveal>
 
-        {/* ─── Server-Side Security ─── */}
+        {/* ─── Server-Side Security — Deep-Dive Cards (Option C) ─── */}
         <ScrollReveal>
           <div className="section-head" style={{ paddingTop: 'var(--space-l)', marginBottom: 48 }}>
             <h2 className="h2 ecosystem-h2">Server-side <span className="gradient-text">protections.</span></h2>
@@ -407,46 +426,137 @@ export default function Security() {
           </div>
         </ScrollReveal>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: 16,
-          maxWidth: 860,
-          margin: '0 auto var(--space-l)',
-        }}>
-          {serverSecurity.map((item, i) => {
-            const hues = ['#8b5cf6', '#a855f7', '#3b82f6', '#f59e0b']
-            const opacities = ['30', '30', '30', '30']
-            const color = hues[i]
-            return (
-              <ScrollReveal key={i} delay={(i % 3) + 1}>
-                <div className="security-grid-card" style={{
-                  borderRadius: 18,
-                  padding: '28px 24px',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 12,
-                  '--card-glow': `${color}40`,
-                  '--card-glow-bg': `${color}${opacities[i]}`,
-                } as React.CSSProperties}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                    <div style={{
-                      width: 40, height: 40, borderRadius: 12,
-                      background: `${color}15`,
-                      border: `1px solid ${color}25`,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      color: color,
-                    }}>
-                      {item.icon}
-                    </div>
-                    <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.01em', margin: 0 }}>{item.title}</h3>
-                  </div>
-                  <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>{item.desc}</p>
+        <div className="sec-deep-cards">
+
+          {/* ──── Server Card 1: Edge Function Security ──── */}
+          <ScrollReveal>
+            <div className="sec-deep-card" style={{ '--card-accent': '#3b82f6' } as React.CSSProperties}>
+              <div className="sec-deep-card-header">
+                <div className="sec-deep-card-icon" style={{ color: '#3b82f6' }}>
+                  <Webhook size={22} />
                 </div>
-              </ScrollReveal>
-            )
-          })}
+                <h3>Edge Function Security</h3>
+              </div>
+              <div className="sec-deep-card-grid">
+                <div className="sec-deep-card-text">
+                  <p>
+                    All Supabase Edge Functions enforce authentication and integrity checks before processing any request. Payment webhooks use cryptographic signature verification; checkout sessions require valid JWT authentication.
+                  </p>
+                  <div className="sec-deep-card-details">
+                    <div className="sec-deep-detail-item">
+                      <div className="sec-deep-detail-dot" style={{ background: '#3b82f6' }} />
+                      <span>Webhook signatures verified via <strong>standardwebhooks</strong> cryptographic library — invalid signatures return 401</span>
+                    </div>
+                    <div className="sec-deep-detail-item">
+                      <div className="sec-deep-detail-dot" style={{ background: '#3b82f6' }} />
+                      <span>Checkout sessions require <strong>supabase.auth.getUser()</strong> validation — unauthenticated requests are rejected</span>
+                    </div>
+                    <div className="sec-deep-detail-item">
+                      <div className="sec-deep-detail-dot" style={{ background: '#3b82f6' }} />
+                      <span>All payment API keys stored as <strong>Deno.env</strong> environment variables — never in client-side code</span>
+                    </div>
+                    <div className="sec-deep-detail-item">
+                      <div className="sec-deep-detail-dot" style={{ background: '#3b82f6' }} />
+                      <span>CORS configured to reject unauthorized origins and methods</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="sec-code-block">
+                  <div className="sec-code-block-label">dodo-webhook/index.ts</div>
+                  <pre>
+{`-- `}<span className="code-comment">Webhook signature verification</span>{`
+`}<span className="code-keyword">const</span>{` wh = `}<span className="code-keyword">new</span>{` `}<span className="code-fn">WebhookVerifier</span>{`(
+  `}<span className="code-fn">Deno.env.get</span>{`(`}<span className="code-string">"DODO_WEBHOOK_SECRET"</span>{`)
+);
+
+wh.`}<span className="code-fn">verify</span>{`(rawBody, {
+  `}<span className="code-string">"webhook-id"</span>{`:        req.headers.get(...),
+  `}<span className="code-string">"webhook-signature"</span>{`: req.headers.get(...),
+  `}<span className="code-string">"webhook-timestamp"</span>{`: req.headers.get(...),
+});
+
+`}<span className="code-comment">// If verification fails:</span>{`
+`}<span className="code-keyword">return new</span>{` `}<span className="code-fn">Response</span>{`(
+  `}<span className="code-string">"Invalid signature"</span>{`, { status: `}<span className="code-table">401</span>{` }
+);
+
+-- `}<span className="code-comment">JWT auth on create-checkout</span>{`
+`}<span className="code-keyword">const</span>{` { data: { user }, error } =
+  `}<span className="code-keyword">await</span>{` `}<span className="code-fn">supabase.auth.getUser</span>{`();
+
+`}<span className="code-keyword">if</span>{` (authError || !user)
+  `}<span className="code-keyword">return new</span>{` `}<span className="code-fn">Response</span>{`(`}<span className="code-string">"Unauthorized"</span>{`, { status: `}<span className="code-table">401</span>{` });`}
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* ──── Server Card 2: Database Triggers & Zero Payment Storage ──── */}
+          <ScrollReveal delay={1}>
+            <div className="sec-deep-card" style={{ '--card-accent': '#f59e0b' } as React.CSSProperties}>
+              <div className="sec-deep-card-header">
+                <div className="sec-deep-card-icon" style={{ color: '#f59e0b' }}>
+                  <Server size={22} />
+                </div>
+                <h3>Database Triggers & Zero Payment Storage</h3>
+              </div>
+              <div className="sec-deep-card-grid">
+                <div className="sec-deep-card-text">
+                  <p>
+                    Automated database triggers handle friend request notifications and group invitations using SECURITY DEFINER functions — running with elevated privileges while maintaining strict input validation. All payment processing is handled externally by Dodo Payments.
+                  </p>
+                  <div className="sec-deep-card-details">
+                    <div className="sec-deep-detail-item">
+                      <div className="sec-deep-detail-dot" style={{ background: '#f59e0b' }} />
+                      <span><strong>handle_new_friend_request</strong> — Auto-creates notification for target user via SECURITY DEFINER trigger</span>
+                    </div>
+                    <div className="sec-deep-detail-item">
+                      <div className="sec-deep-detail-dot" style={{ background: '#f59e0b' }} />
+                      <span><strong>handle_friend_request_update</strong> — Syncs friends table + cleans up notification on accept/reject</span>
+                    </div>
+                    <div className="sec-deep-detail-item">
+                      <div className="sec-deep-detail-dot" style={{ background: '#f59e0b' }} />
+                      <span><strong>handle_new_group_invitation</strong> — Notifies invited users with group name and role via SECURITY DEFINER</span>
+                    </div>
+                    <div className="sec-deep-detail-item">
+                      <div className="sec-deep-detail-dot" style={{ background: '#f59e0b' }} />
+                      <span><strong>Zero PCI scope</strong> — We never see, store, or process credit card numbers, CVVs, or billing details</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="sec-code-block">
+                  <div className="sec-code-block-label">SQL</div>
+                  <pre>
+{`-- `}<span className="code-comment">Auto-notification trigger</span>{`
+`}<span className="code-keyword">CREATE FUNCTION</span>{` `}<span className="code-fn">handle_new_friend_request</span>{`()
+`}<span className="code-keyword">RETURNS</span>{` TRIGGER `}<span className="code-keyword">AS</span>{` $$
+`}<span className="code-keyword">DECLARE</span>{`
+  sender_profile `}<span className="code-table">profiles</span>{`%ROWTYPE;
+  target_id UUID;
+`}<span className="code-keyword">BEGIN</span>{`
+  `}<span className="code-keyword">SELECT</span>{` * `}<span className="code-keyword">INTO</span>{` sender_profile
+    `}<span className="code-keyword">FROM</span>{` `}<span className="code-table">profiles</span>{`
+    `}<span className="code-keyword">WHERE</span>{` id `}<span className="code-op">=</span>{` NEW.sender_id;
+
+  `}<span className="code-keyword">INSERT INTO</span>{` `}<span className="code-table">notifications</span>{`
+    (user_id, type, payload)
+  `}<span className="code-keyword">VALUES</span>{` (
+    target_id,
+    `}<span className="code-string">'invite_received'</span>{`,
+    `}<span className="code-fn">jsonb_build_object</span>{`(
+      `}<span className="code-string">'sender'</span>{`, sender_profile
+    )
+  );
+  `}<span className="code-keyword">RETURN</span>{` NEW;
+`}<span className="code-keyword">END</span>{`;
+$$ `}<span className="code-keyword">LANGUAGE</span>{` plpgsql `}<span className="code-keyword">SECURITY DEFINER</span>{`;`}
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+
         </div>
 
         {/* ─── Responsible Disclosure ─── */}

@@ -4184,3 +4184,111 @@ button.plan-btn {
 .sec-code-block .code-table {
   color: #f472b6;
 }
+
+/* ─── PERMISSION COMPARISON TABLE ─── */
+
+.sec-perm-table-wrap {
+  max-width: 900px;
+  margin: 0 auto var(--space-l);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sec-perm-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: rgba(15, 15, 20, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  font-size: 0.84rem;
+}
+
+.sec-perm-table thead {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.sec-perm-table th {
+  padding: 16px 20px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sec-perm-table td {
+  padding: 14px 20px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.sec-perm-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.sec-perm-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.sec-perm-table td:first-child {
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.sec-perm-table td:first-child code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.82rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(139, 92, 246, 0.08);
+  color: #a78bfa;
+  border: 1px solid rgba(139, 92, 246, 0.12);
+}
+
+.sec-perm-table td:nth-child(2) {
+  color: #6ee7b7;
+}
+
+.sec-perm-table td:nth-child(3) {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.sec-perm-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.sec-perm-badge--yes {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+.sec-perm-badge--no {
+  background: rgba(239, 68, 68, 0.08);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.12);
+}
+
+@media (max-width: 600px) {
+  .sec-perm-table {
+    font-size: 0.76rem;
+  }
+  .sec-perm-table th,
+  .sec-perm-table td {
+    padding: 10px 12px;
+  }
+}
