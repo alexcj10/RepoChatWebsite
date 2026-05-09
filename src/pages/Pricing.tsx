@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { Zap, Globe, Check, X, Sparkles, Shield, ArrowRight, CheckCircle2 } from 'lucide-react'
+import { Globe, Check, X, Sparkles, Shield, ArrowRight, CheckCircle2 } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import FAQ from '../components/FAQ'
 import AuthModal from '../components/AuthModal'
@@ -164,10 +164,9 @@ export default function Pricing() {
     <div className="legal-page">
       <div className="container">
         <ScrollReveal>
-          <div className="section-head" style={{ marginBottom: 'var(--space-m)' }}>
-            <div className="badge mb-6"><Zap size={12} /> Pricing</div>
-            <h1 className="h2">Simple, Transparent<br /><span className="gradient-text">Pricing</span></h1>
-            <p>Start free. Upgrade when you need more. Cancel anytime.</p>
+          <div className="section-head ecosystem-head" style={{ marginBottom: 'var(--space-m)' }}>
+            <h1 className="h2 ecosystem-h2">Simple, Transparent <span className="gradient-text">Pricing.</span></h1>
+            <p className="ecosystem-p">Start free. Upgrade when you need more. Cancel anytime.</p>
           </div>
         </ScrollReveal>
 
