@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
-import { ArrowRight, Shield, Check, X, Sparkles, GitPullRequest, AlertCircle, Users, Code, Network, Cpu, Clock, DollarSign, BarChart3, Bot } from 'lucide-react'
+import { ArrowRight, Check, X, Sparkles, GitPullRequest, AlertCircle, Users, Code, Network, Cpu, Clock, DollarSign, BarChart3, Bot } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
@@ -912,7 +912,7 @@ export default function Landing() {
           <div className="grid-2" style={{ gap: 64 }}>
             <ScrollReveal>
               <div className="trust-content">
-                <div className="badge mb-6"><Shield size={12} /> Security</div>
+                <div className="ecosystem-badge">Security</div>
                 <h2 className="h3 mb-4">Built on trust.</h2>
                 <p className="body-md mb-8">Every table protected with PostgreSQL Row Level Security. Your data is completely isolated.</p>
                 <ul className="price-features" style={{ marginTop: 0 }}>
