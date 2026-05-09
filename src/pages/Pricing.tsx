@@ -161,7 +161,7 @@ export default function Pricing() {
   }
 
   return (
-    <div className="legal-page">
+    <div className="legal-page" style={{ paddingTop: 'calc(var(--nav-h) + clamp(64px, 10vh, 100px))' }}>
       <div className="container">
         <ScrollReveal>
           <div className="section-head" style={{ marginBottom: 'var(--space-m)' }}>
