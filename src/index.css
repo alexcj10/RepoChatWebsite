@@ -4024,7 +4024,7 @@ button.plan-btn {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  max-width: 1080px;
+  max-width: 1280px;
   margin: 0 auto var(--space-l);
 }
 
@@ -4187,7 +4187,7 @@ button.plan-btn {
 /* ─── PERMISSION COMPARISON TABLE ─── */
 
 .sec-perm-table-wrap {
-  max-width: 1080px;
+  max-width: 1280px;
   margin: 0 auto var(--space-l);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
