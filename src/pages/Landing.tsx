@@ -62,7 +62,7 @@ export default function Landing() {
     },
     {
       title: 'Conversation Threads',
-      desc: 'Organize discussions into focused threads to keep your main workspace clean.',
+      desc: 'Organize discussions into focused threads to keep your workspace clean.',
       img: '/ctg.png',
       badge: 'CTG'
     },
