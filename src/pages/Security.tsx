@@ -559,57 +559,101 @@ $$ `}<span className="code-keyword">LANGUAGE</span>{` plpgsql `}<span className=
 
         </div>
 
-        {/* ─── Responsible Disclosure ─── */}
+        {/* ─── Responsible Disclosure — Deep-Dive Card ─── */}
         <ScrollReveal>
-          <div className="security-grid-card" style={{
-            maxWidth: 860, margin: '0 auto var(--space-l)',
-            borderRadius: 20,
-            padding: '32px',
-            '--card-glow': 'rgba(245, 158, 11, 0.4)',
-            '--card-glow-bg': 'rgba(245, 158, 11, 0.25)',
-          } as React.CSSProperties}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
-              <div style={{
-                width: 44, height: 44, borderRadius: 12,
-                background: 'rgba(245, 158, 11, 0.12)',
-                border: '1px solid rgba(245, 158, 11, 0.2)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: '#f59e0b', flexShrink: 0,
-              }}>
-                <Bug size={22} />
-              </div>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>Responsible Disclosure</h3>
-            </div>
-            <div style={{ paddingLeft: 0 }}>
-              <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: 20 }}>
-                If you discover a security vulnerability in RepoChat, please report it to us privately. We take all security reports seriously and will respond within 48 hours. We appreciate responsible disclosure and will credit reporters if desired.
-              </p>
-              <a href="mailto:alexcj10@yahoo.com" style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                padding: '10px 24px', borderRadius: 999,
-                background: 'rgba(245, 158, 11, 0.12)',
-                border: '1px solid rgba(245, 158, 11, 0.25)',
-                color: '#f59e0b', fontWeight: 600, fontSize: '0.85rem',
-                transition: 'all 0.3s ease',
-                textDecoration: 'none',
-              }}>
-                alexcj10@yahoo.com
-              </a>
-            </div>
+          <div className="section-head" style={{ paddingTop: 'var(--space-l)', marginBottom: 48 }}>
+            <h2 className="h2 ecosystem-h2">Responsible <span className="gradient-text">disclosure.</span></h2>
+            <p className="body-md" style={{ opacity: 0.6, marginTop: 8 }}>Found a vulnerability? Here's how to report it</p>
           </div>
         </ScrollReveal>
 
+        <div className="sec-deep-cards">
+          <ScrollReveal>
+            <div className="sec-deep-card" style={{ '--card-accent': '#f59e0b' } as React.CSSProperties}>
+              <div className="sec-deep-card-header">
+                <div className="sec-deep-card-icon" style={{ color: '#f59e0b' }}>
+                  <Bug size={22} />
+                </div>
+                <h3>Security Vulnerability Reporting</h3>
+              </div>
+              <div className="sec-deep-card-grid">
+                <div className="sec-deep-card-text">
+                  <p>
+                    If you discover a security vulnerability in RepoChat, please report it privately. We take all security reports seriously and commit to responsible handling of every disclosure.
+                  </p>
+                  <div className="sec-deep-card-details">
+                    <div className="sec-deep-detail-item">
+                      <div className="sec-deep-detail-dot" style={{ background: '#f59e0b' }} />
+                      <span><strong>Do not</strong> open a public GitHub issue for security vulnerabilities</span>
+                    </div>
+                    <div className="sec-deep-detail-item">
+                      <div className="sec-deep-detail-dot" style={{ background: '#f59e0b' }} />
+                      <span>Email us directly at the address shown — we will acknowledge within <strong>48 hours</strong></span>
+                    </div>
+                    <div className="sec-deep-detail-item">
+                      <div className="sec-deep-detail-dot" style={{ background: '#f59e0b' }} />
+                      <span>Include reproduction steps, affected components, and potential impact in your report</span>
+                    </div>
+                    <div className="sec-deep-detail-item">
+                      <div className="sec-deep-detail-dot" style={{ background: '#f59e0b' }} />
+                      <span>We will credit reporters publicly if desired once the vulnerability is resolved</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="sec-code-block">
+                  <div className="sec-code-block-label">Process</div>
+                  <pre>
+{``}<span className="code-fn">1.</span>{` `}<span className="code-string">Report</span>{`
+   Email: `}<span className="code-fn">alexcj10@yahoo.com</span>{`
+   Include: steps, scope, severity
+
+`}<span className="code-fn">2.</span>{` `}<span className="code-string">Acknowledge</span>{`
+   Response within `}<span className="code-table">48 hours</span>{`
+   Status: investigating / confirmed
+
+`}<span className="code-fn">3.</span>{` `}<span className="code-string">Fix & Verify</span>{`
+   Patch developed and tested
+   Reporter validates the fix
+
+`}<span className="code-fn">4.</span>{` `}<span className="code-string">Disclose</span>{`
+   Public acknowledgment (if desired)
+   Security advisory published
+
+`}<span className="code-comment">-- All reports handled confidentially</span>{`
+`}<span className="code-comment">-- No legal action for good-faith research</span>
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+
         {/* ─── Trust Summary ─── */}
         <ScrollReveal>
-          <div style={{
-            textAlign: 'center', maxWidth: 640, margin: '0 auto',
-            paddingTop: 'var(--space-m)', paddingBottom: 'var(--space-l)',
-          }}>
+          <div className="sec-trust-footer">
             <h2 className="h3">Our Security Promise</h2>
-            <p className="body-md" style={{ lineHeight: 1.8, marginTop: 16 }}>
-              We believe that developer tools should be trustworthy by default. RepoChat is designed so that even if our application code had a vulnerability, the database-level security (Row Level Security) would still prevent unauthorized access to your data. Every RLS policy, every SECURITY DEFINER function, and every trigger is written with the assumption that the client cannot be trusted.
+            <p className="body-md" style={{ lineHeight: 1.8, marginTop: 16, maxWidth: 680 }}>
+              RepoChat is designed so that even if our application code had a vulnerability, the database-level security (Row Level Security) would still prevent unauthorized access to your data. Every RLS policy, every SECURITY DEFINER function, and every trigger is written with the assumption that the client cannot be trusted.
             </p>
-            <p className="body-sm" style={{ marginTop: 20 }}>
+            <div className="sec-trust-badges">
+              <div className="sec-trust-badge">
+                <Shield size={16} />
+                <span>Defense in Depth</span>
+              </div>
+              <div className="sec-trust-badge">
+                <Database size={16} />
+                <span>Database-Level Isolation</span>
+              </div>
+              <div className="sec-trust-badge">
+                <Lock size={16} />
+                <span>Zero-Trust Architecture</span>
+              </div>
+              <div className="sec-trust-badge">
+                <Key size={16} />
+                <span>No Plaintext Secrets</span>
+              </div>
+            </div>
+            <p className="body-sm" style={{ marginTop: 24, opacity: 0.5 }}>
               Questions about our security practices? Contact us at{' '}
               <a href="mailto:alexcj10@yahoo.com" style={{ color: 'var(--accent)', textDecoration: 'none' }}>alexcj10@yahoo.com</a>
             </p>
