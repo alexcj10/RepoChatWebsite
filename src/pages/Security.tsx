@@ -1,6 +1,5 @@
-import { Shield, Lock, Eye, Database, Key, Bug, Server, Fingerprint, Layers, GitBranch, Webhook, CreditCard, Globe } from 'lucide-react'
+import { Shield, Lock, Eye, Database, Key, Bug, Server, Fingerprint, Layers, Webhook, CreditCard, GitBranch } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
-import { useState } from 'react'
 
 /* ─── Security Architecture Layers ─── */
 const architectureLayers = [
@@ -97,172 +96,7 @@ const rlsStats = [
   { label: 'DB Triggers', value: '3', sub: 'Auto-notifications & sync' },
 ]
 
-/* ─── Diagram Components ─── */
-/* ─── Diagram Components ─── */
-function DiagramRLS() {
-  return (
-    <div className="sec-diagram-container">
-      <div className="arch-elegant-row">
-        {/* Node 1: Client */}
-        <div className="arch-elegant-node">
-          <Globe className="arch-elegant-node-icon" size={24} />
-          <div className="arch-elegant-node-title">Client</div>
-          <div className="arch-elegant-node-sub" style={{ color: '#10b981' }}>+ JWT Token</div>
-        </div>
-
-        {/* Path 1 */}
-        <div className="arch-elegant-path-h"></div>
-
-        {/* Node 2: Edge / Gateway */}
-        <div className="arch-elegant-node" style={{ padding: '16px 24px', minWidth: '120px' }}>
-          <div className="arch-elegant-node-title" style={{ fontSize: '0.85rem' }}>RLS Policy</div>
-          <div className="arch-elegant-node-sub" style={{ fontFamily: 'monospace', color: 'var(--text-secondary)' }}>auth.uid()</div>
-        </div>
-
-        {/* Path 2 */}
-        <div className="arch-elegant-path-h"></div>
-
-        {/* Node 3: DB */}
-        <div className="arch-elegant-node">
-          <Database className="arch-elegant-node-icon" size={24} />
-          <div className="arch-elegant-node-title">PostgreSQL</div>
-          <div className="arch-elegant-node-sub">Scoped Data</div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function DiagramOAuth() {
-  return (
-    <div className="sec-diagram-container">
-      <div className="arch-elegant-row">
-        {/* Node 1: Extension */}
-        <div className="arch-elegant-node">
-          <Layers className="arch-elegant-node-icon" size={24} />
-          <div className="arch-elegant-node-title">Extension</div>
-          <div className="arch-elegant-node-sub">Client Init</div>
-        </div>
-
-        {/* Path 1 */}
-        <div className="arch-elegant-path-h">
-          <div className="arch-elegant-badge">1. Auth</div>
-        </div>
-
-        {/* Node 2: GitHub API */}
-        <div className="arch-elegant-node">
-          <GithubIcon size={24} className="arch-elegant-node-icon" />
-          <div className="arch-elegant-node-title">GitHub API</div>
-          <div className="arch-elegant-node-sub">OAuth Provider</div>
-        </div>
-
-        {/* Path 2 */}
-        <div className="arch-elegant-path-h">
-          <div className="arch-elegant-badge" style={{ color: '#8b5cf6' }}>2. Token</div>
-        </div>
-
-        {/* Node 3: Supabase */}
-        <div className="arch-elegant-node">
-          <Server className="arch-elegant-node-icon" size={24} color="#8b5cf6" />
-          <div className="arch-elegant-node-title">Supabase</div>
-          <div className="arch-elegant-node-sub">Session Minting</div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function GithubIcon({ size, className }: { size: number, className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" width={size} height={size} stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-    </svg>
-  )
-}
-
-function DiagramEncryption() {
-  return (
-    <div className="sec-diagram-container" style={{ padding: '60px 40px' }}>
-      <div className="arch-elegant-col">
-        {/* Top Row: Transit */}
-        <div className="arch-elegant-row">
-          <div className="arch-elegant-node" style={{ minWidth: 140 }}>
-            <Globe className="arch-elegant-node-icon" size={20} />
-            <div className="arch-elegant-node-title">Client</div>
-          </div>
-          
-          <div className="arch-elegant-path-h">
-            <div className="arch-elegant-badge" style={{ color: '#a855f7', display: 'flex', alignItems: 'center', gap: 6 }}>
-              <Lock size={12} /> TLS 1.2+
-            </div>
-          </div>
-          
-          <div className="arch-elegant-node" style={{ minWidth: 140 }}>
-            <Server className="arch-elegant-node-icon" size={20} />
-            <div className="arch-elegant-node-title">Server</div>
-          </div>
-        </div>
-
-        <div className="arch-elegant-path-v"></div>
-
-        {/* Bottom Row: Rest */}
-        <div className="arch-elegant-row">
-          <div className="arch-elegant-node" style={{ minWidth: 140 }}>
-            <Database className="arch-elegant-node-icon" size={20} />
-            <div className="arch-elegant-node-title">Database</div>
-          </div>
-          
-          <div className="arch-elegant-path-h">
-            <div className="arch-elegant-badge" style={{ color: '#a855f7', display: 'flex', alignItems: 'center', gap: 6 }}>
-              <Lock size={12} /> AES-256
-            </div>
-          </div>
-          
-          <div className="arch-elegant-node" style={{ minWidth: 140 }}>
-            <Database className="arch-elegant-node-icon" size={20} />
-            <div className="arch-elegant-node-title">Volume</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function DiagramIsolation() {
-  return (
-    <div className="sec-diagram-container">
-      <div className="arch-elegant-row">
-        {/* User A */}
-        <div className="arch-elegant-node" style={{ borderColor: 'rgba(245, 158, 11, 0.2)' }}>
-          <div style={{ width: 40, height: 40, borderRadius: 20, background: 'rgba(245, 158, 11, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 8 }}>
-            <Eye size={20} color="#f59e0b" />
-          </div>
-          <div className="arch-elegant-node-title">User A Context</div>
-          <div className="arch-elegant-node-sub">Private Workspace</div>
-        </div>
-
-        {/* Boundary */}
-        <div className="arch-elegant-divider">
-          <div className="arch-elegant-badge" style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(10px)' }}>
-            <Shield size={12} /> Boundary
-          </div>
-        </div>
-
-        {/* User B */}
-        <div className="arch-elegant-node" style={{ borderColor: 'rgba(59, 130, 246, 0.2)' }}>
-          <div style={{ width: 40, height: 40, borderRadius: 20, background: 'rgba(59, 130, 246, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 8 }}>
-            <Fingerprint size={20} color="#3b82f6" />
-          </div>
-          <div className="arch-elegant-node-title">User B Context</div>
-          <div className="arch-elegant-node-sub">Private Workspace</div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export default function Security() {
-  const [activeTab, setActiveTab] = useState<number>(0)
 
   return (
     <div className="legal-page" style={{ paddingTop: 'calc(var(--nav-h) + clamp(64px, 10vh, 100px))' }}>
@@ -289,7 +123,7 @@ export default function Security() {
           </div>
         </ScrollReveal>
 
-        {/* ─── Architecture Layers ─── */}
+        {/* ─── Architecture Deep-Dive Cards ─── */}
         <ScrollReveal>
           <div className="section-head" style={{ marginBottom: 48 }}>
             <h2 className="h2 ecosystem-h2">Security <span className="gradient-text">architecture.</span></h2>
@@ -297,51 +131,204 @@ export default function Security() {
           </div>
         </ScrollReveal>
 
-        <div className="sec-showcase-split">
-          
-          {/* Accordion Tabs (Left) */}
-          <div className="sec-showcase-tabs">
-            {architectureLayers.map((layer, i) => {
-              const isActive = activeTab === i;
-              return (
-                <div 
-                  key={i} 
-                  className={`sec-showcase-tab ${isActive ? 'is-active' : ''}`}
-                  onClick={() => setActiveTab(i)}
-                >
-                  <div className="sec-tab-header" style={{ '--active-color': layer.color } as any}>
-                    <div className="sec-tab-icon" style={{ 
-                      background: isActive ? `${layer.color}20` : 'rgba(255,255,255,0.05)', 
-                      color: isActive ? layer.color : 'var(--text-secondary)'
-                    }}>
-                      {layer.icon}
-                    </div>
-                    <div className="sec-tab-title">{layer.title}</div>
-                  </div>
-                  
-                  <div className="sec-tab-content">
-                    <div className="sec-tab-desc">{layer.desc}</div>
-                    <div className="sec-tab-details">
-                      {layer.details.map((detail, j) => (
-                        <div key={j} className="sec-tab-detail-item">
-                          <span style={{ color: layer.color, marginTop: 4 }}>●</span>
-                          <span>{detail}</span>
-                        </div>
-                      ))}
-                    </div>
+        <div className="sec-deep-cards">
+
+          {/* ──── Card 1: PostgreSQL RLS ──── */}
+          <ScrollReveal>
+            <div className="sec-deep-card" style={{ '--card-accent': '#10b981' } as React.CSSProperties}>
+              <div className="sec-deep-card-header">
+                <div className="sec-deep-card-icon" style={{ background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
+                  <Database size={22} />
+                </div>
+                <h3>PostgreSQL Row Level Security</h3>
+              </div>
+              <div className="sec-deep-card-grid">
+                <div className="sec-deep-card-text">
+                  <p>
+                    Every table — profiles, messages, friend_requests, groups, group_members, notifications, chat_clears, and user_notes — has RLS enabled with granular policies. Users can only SELECT, INSERT, UPDATE, or DELETE their own data. Even with a leaked database URL, cross-user access is impossible.
+                  </p>
+                  <div className="sec-deep-card-details">
+                    {architectureLayers[0].details.map((d, i) => (
+                      <div key={i} className="sec-deep-detail-item">
+                        <div className="sec-deep-detail-dot" style={{ background: '#10b981' }} />
+                        <span>{d}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              )
-            })}
-          </div>
+                <div className="sec-code-block">
+                  <div className="sec-code-block-label">SQL</div>
+                  <pre>
+{`-- `}<span className="code-comment">RLS policy on messages table</span>{`
+`}<span className="code-keyword">CREATE POLICY</span>{` `}<span className="code-string">"Users read own messages"</span>{`
+  `}<span className="code-keyword">ON</span>{` `}<span className="code-table">messages</span>{` `}<span className="code-keyword">FOR</span>{` SELECT
+  `}<span className="code-keyword">USING</span>{` (`}<span className="code-fn">auth.uid</span>{`() `}<span className="code-op">=</span>{` user_id);
 
-          {/* Diagram Stage (Right) */}
-          <div className="sec-showcase-stage-wrapper">
-            {activeTab === 0 && <DiagramRLS />}
-            {activeTab === 1 && <DiagramOAuth />}
-            {activeTab === 2 && <DiagramEncryption />}
-            {activeTab === 3 && <DiagramIsolation />}
-          </div>
+-- `}<span className="code-comment">DM policy enforcement</span>{`
+`}<span className="code-keyword">CREATE POLICY</span>{` `}<span className="code-string">"DM access control"</span>{`
+  `}<span className="code-keyword">ON</span>{` `}<span className="code-table">messages</span>{` `}<span className="code-keyword">FOR</span>{` SELECT
+  `}<span className="code-keyword">USING</span>{` (
+    `}<span className="code-fn">auth.uid</span>{`() `}<span className="code-op">=</span>{` sender_id `}<span className="code-keyword">OR</span>{`
+    `}<span className="code-fn">auth.uid</span>{`() `}<span className="code-op">=</span>{` receiver_id
+  );
+
+-- `}<span className="code-comment">Group membership gate</span>{`
+`}<span className="code-keyword">CREATE FUNCTION</span>{` `}<span className="code-fn">is_group_member</span>{`(gid uuid)
+  `}<span className="code-keyword">RETURNS</span>{` boolean
+  `}<span className="code-keyword">SECURITY DEFINER</span>{` `}<span className="code-keyword">AS</span>{` $$
+    `}<span className="code-keyword">SELECT EXISTS</span>{` (
+      `}<span className="code-keyword">SELECT</span>{` 1 `}<span className="code-keyword">FROM</span>{` `}<span className="code-table">group_members</span>{`
+      `}<span className="code-keyword">WHERE</span>{` group_id `}<span className="code-op">=</span>{` gid
+      `}<span className="code-keyword">AND</span>{` user_id `}<span className="code-op">=</span>{` `}<span className="code-fn">auth.uid</span>{`()
+    );
+  $$ `}<span className="code-keyword">LANGUAGE</span>{` sql;`}
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* ──── Card 2: GitHub OAuth 2.0 ──── */}
+          <ScrollReveal delay={1}>
+            <div className="sec-deep-card" style={{ '--card-accent': '#8b5cf6' } as React.CSSProperties}>
+              <div className="sec-deep-card-header">
+                <div className="sec-deep-card-icon" style={{ background: 'rgba(139, 92, 246, 0.1)', border: '1px solid rgba(139, 92, 246, 0.15)', color: '#8b5cf6' }}>
+                  <Key size={22} />
+                </div>
+                <h3>GitHub OAuth 2.0 Authentication</h3>
+              </div>
+              <div className="sec-deep-card-grid">
+                <div className="sec-deep-card-text">
+                  <p>
+                    We never see, store, or process your GitHub password. Authentication is handled entirely through Supabase Auth + GitHub OAuth 2.0 flow. Your credentials stay with GitHub at all times.
+                  </p>
+                  <div className="sec-deep-card-details">
+                    {architectureLayers[1].details.map((d, i) => (
+                      <div key={i} className="sec-deep-detail-item">
+                        <div className="sec-deep-detail-dot" style={{ background: '#8b5cf6' }} />
+                        <span>{d}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="sec-code-block">
+                  <div className="sec-code-block-label">Flow</div>
+                  <pre>
+{`-- `}<span className="code-comment">OAuth 2.0 authentication flow</span>{`
+
+`}<span className="code-fn">1.</span>{` User clicks `}<span className="code-string">"Sign in with GitHub"</span>{`
+   Extension → `}<span className="code-fn">supabase.auth.signInWithOAuth</span>{`()
+
+`}<span className="code-fn">2.</span>{` GitHub redirects with auth code
+   github.com/callback → `}<span className="code-string">code=abc123</span>{`
+
+`}<span className="code-fn">3.</span>{` Supabase exchanges code for session
+   `}<span className="code-fn">supabase.auth.setSession</span>{`(`}<span className="code-string">access_token</span>{`)
+
+`}<span className="code-fn">4.</span>{` Token cleanup (immediate)
+   `}<span className="code-fn">history.replaceState</span>{`() `}<span className="code-comment">// strip hash</span>{`
+
+`}<span className="code-comment">-- Result: JWT stored in Supabase</span>{`
+`}<span className="code-comment">-- Password: NEVER leaves GitHub</span>{`
+`}<span className="code-comment">-- Plaintext tokens: NEVER stored</span>
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* ──── Card 3: Encryption ──── */}
+          <ScrollReveal delay={2}>
+            <div className="sec-deep-card" style={{ '--card-accent': '#6366f1' } as React.CSSProperties}>
+              <div className="sec-deep-card-header">
+                <div className="sec-deep-card-icon" style={{ background: 'rgba(99, 102, 241, 0.1)', border: '1px solid rgba(99, 102, 241, 0.15)', color: '#6366f1' }}>
+                  <Lock size={22} />
+                </div>
+                <h3>Encryption in Transit & at Rest</h3>
+              </div>
+              <div className="sec-deep-card-grid">
+                <div className="sec-deep-card-text">
+                  <p>
+                    All data transmitted between your browser and Supabase is encrypted using TLS 1.2+. All data stored in the PostgreSQL database is encrypted at rest via Supabase's infrastructure-level AES-256 encryption.
+                  </p>
+                  <div className="sec-deep-card-details">
+                    {architectureLayers[2].details.map((d, i) => (
+                      <div key={i} className="sec-deep-detail-item">
+                        <div className="sec-deep-detail-dot" style={{ background: '#6366f1' }} />
+                        <span>{d}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="sec-code-block">
+                  <div className="sec-code-block-label">Layers</div>
+                  <pre>
+{`-- `}<span className="code-comment">Encryption coverage across RepoChat</span>{`
+
+`}<span className="code-fn">IN TRANSIT</span>{`
+  ├─ `}<span className="code-string">HTTPS / TLS 1.2+</span>{`   All API calls
+  ├─ `}<span className="code-string">WSS (encrypted)</span>{`    Realtime channels
+  └─ `}<span className="code-string">Bearer token</span>{`       GitHub API auth
+
+`}<span className="code-fn">AT REST</span>{`
+  ├─ `}<span className="code-string">AES-256</span>{`            PostgreSQL storage
+  ├─ `}<span className="code-string">Encrypted volumes</span>{`  Database backups
+  └─ `}<span className="code-string">Encrypted buckets</span>{`  avatars, chat_images
+
+`}<span className="code-fn">KEY MANAGEMENT</span>{`
+  ├─ `}<span className="code-comment">Service role keys → env variables</span>{`
+  └─ `}<span className="code-comment">Anon key → client-safe, RLS-gated</span>
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* ──── Card 4: Data Isolation ──── */}
+          <ScrollReveal delay={3}>
+            <div className="sec-deep-card" style={{ '--card-accent': '#f59e0b' } as React.CSSProperties}>
+              <div className="sec-deep-card-header">
+                <div className="sec-deep-card-icon" style={{ background: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.15)', color: '#f59e0b' }}>
+                  <Eye size={22} />
+                </div>
+                <h3>Complete Data Isolation</h3>
+              </div>
+              <div className="sec-deep-card-grid">
+                <div className="sec-deep-card-text">
+                  <p>
+                    Your messages, notes, friend lists, groups, and settings are completely isolated from other users. RLS policies ensure database queries can never return another user's data, even in the event of an application-level bug.
+                  </p>
+                  <div className="sec-deep-card-details">
+                    {architectureLayers[3].details.map((d, i) => (
+                      <div key={i} className="sec-deep-detail-item">
+                        <div className="sec-deep-detail-dot" style={{ background: '#f59e0b' }} />
+                        <span>{d}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="sec-code-block">
+                  <div className="sec-code-block-label">Query</div>
+                  <pre>
+{`-- `}<span className="code-comment">What User A sees</span>{`
+`}<span className="code-keyword">SELECT</span>{` * `}<span className="code-keyword">FROM</span>{` `}<span className="code-table">messages</span>{`;
+`}<span className="code-comment">-- → Returns ONLY rows where</span>{`
+`}<span className="code-comment">--   user_id = auth.uid() of User A</span>{`
+
+-- `}<span className="code-comment">What User B sees (same query)</span>{`
+`}<span className="code-keyword">SELECT</span>{` * `}<span className="code-keyword">FROM</span>{` `}<span className="code-table">messages</span>{`;
+`}<span className="code-comment">-- → Returns ONLY rows where</span>{`
+`}<span className="code-comment">--   user_id = auth.uid() of User B</span>{`
+
+`}<span className="code-comment">-- User A's data is INVISIBLE to B</span>{`
+`}<span className="code-comment">-- User B's data is INVISIBLE to A</span>{`
+`}<span className="code-comment">-- Even with leaked DB credentials,</span>{`
+`}<span className="code-comment">-- RLS still enforces boundaries</span>
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
 
         </div>
 

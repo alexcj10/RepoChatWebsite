@@ -4017,266 +4017,172 @@ button.plan-btn {
 }
 
 /* ============================================
-   SECURITY ARCHITECTURE SHOWCASE
+   SECURITY ARCHITECTURE — DEEP-DIVE CARDS
    ============================================ */
-.sec-showcase-split {
-  display: grid;
-  grid-template-columns: 350px 1fr;
-  gap: 40px;
-  width: 100%;
-  margin: 0 auto var(--space-l);
-  align-items: stretch;
-}
 
-@media (max-width: 1100px) {
-  .sec-showcase-split {
-    grid-template-columns: 300px 1fr;
-    gap: 32px;
-  }
-}
-
-@media (max-width: 900px) {
-  .sec-showcase-split {
-    grid-template-columns: 1fr;
-    /* On mobile, Diagram (order 1) comes before Accordion (order 2) */
-  }
-  .sec-showcase-stage-wrapper {
-    order: 1;
-  }
-  .sec-showcase-tabs {
-    order: 2;
-  }
-}
-
-/* Accordion Tabs */
-.sec-showcase-tabs {
+.sec-deep-cards {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto var(--space-l);
 }
 
-.sec-showcase-tab {
+.sec-deep-card {
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.sec-showcase-tab:hover {
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.sec-showcase-tab.is-active {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-}
-
-.sec-tab-header {
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 40px;
   position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.sec-tab-header::before {
+.sec-deep-card:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Left accent bar */
+.sec-deep-card::before {
   content: '';
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
   width: 3px;
-  background: transparent;
-  transition: background 0.3s ease;
+  background: var(--card-accent, rgba(255,255,255,0.1));
+  border-radius: 3px 0 0 3px;
 }
 
-.sec-showcase-tab.is-active .sec-tab-header::before {
-  background: var(--active-color, #10b981);
+/* Card header */
+.sec-deep-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
-.sec-tab-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+.sec-deep-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
-.sec-tab-title {
-  font-weight: 600;
-  font-size: 1.05rem;
+.sec-deep-card-header h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
   color: var(--text-primary);
-  line-height: 1.3;
+  margin: 0;
+  letter-spacing: -0.02em;
 }
 
-.sec-tab-content {
-  padding: 0 24px 24px 24px;
-  display: none;
-  animation: fadeIn 0.4s ease;
+/* Inner 2-column grid */
+.sec-deep-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
 }
 
-.sec-showcase-tab.is-active .sec-tab-content {
-  display: block;
+@media (max-width: 768px) {
+  .sec-deep-card {
+    padding: 28px 24px;
+  }
+  .sec-deep-card-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }
 
-.sec-tab-desc {
-  font-size: 0.85rem;
+/* Left column — text content */
+.sec-deep-card-text p {
+  font-size: 0.88rem;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 16px;
+  line-height: 1.75;
+  margin: 0 0 20px 0;
 }
 
-.sec-tab-details {
+.sec-deep-card-details {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
-.sec-tab-detail-item {
+.sec-deep-detail-item {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-/* Diagram Stage */
-.sec-showcase-stage-wrapper {
+.sec-deep-detail-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+/* Right column — code block */
+.sec-code-block {
   background: #0a0a0c;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 24px;
+  overflow-x: auto;
   position: relative;
-  overflow: hidden;
-  box-shadow: inset 0 0 60px rgba(0,0,0,0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 400px;
 }
 
-/* Subtle soft center glow instead of harsh grid */
-.sec-showcase-stage-wrapper::before {
-  content: '';
+.sec-code-block-label {
   position: absolute;
-  top: 50%; left: 50%;
-  width: 600px; height: 600px;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.sec-diagram-container {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  padding: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: fadeInStage 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-@keyframes fadeInStage {
-  from { opacity: 0; transform: scale(0.98) translateY(10px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-/* ============================================
-   ELEGANT MINIMALIST DIAGRAM CLASSES
-   ============================================ */
-
-.arch-elegant-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-  width: 100%;
-}
-
-.arch-elegant-col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-  width: 100%;
-}
-
-.arch-elegant-node {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 24px 32px;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  backdrop-filter: blur(10px);
-  text-align: center;
-  min-width: 160px;
-}
-
-.arch-elegant-node-icon {
-  color: var(--text-secondary);
-  margin-bottom: 4px;
-}
-
-.arch-elegant-node-title {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
-}
-
-.arch-elegant-node-sub {
-  font-size: 0.75rem;
+  top: 12px;
+  right: 16px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   color: var(--text-muted);
+  opacity: 0.5;
 }
 
-.arch-elegant-path-h {
-  height: 1px;
-  flex: 1;
-  min-width: 40px;
-  max-width: 120px;
-  background: rgba(255,255,255,0.1);
-  position: relative;
-}
-
-.arch-elegant-path-v {
-  width: 1px;
-  height: 40px;
-  background: rgba(255,255,255,0.1);
-  position: relative;
-}
-
-.arch-elegant-badge {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  background: #141418;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 600;
+.sec-code-block pre {
+  margin: 0;
+  font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 0.8rem;
+  line-height: 1.8;
   color: var(--text-secondary);
-  white-space: nowrap;
+  white-space: pre;
+  tab-size: 2;
 }
 
-.arch-elegant-divider {
-  width: 1px;
-  height: 200px;
-  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1), transparent);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.sec-code-block .code-keyword {
+  color: #c084fc;
+}
+
+.sec-code-block .code-string {
+  color: #34d399;
+}
+
+.sec-code-block .code-comment {
+  color: rgba(255, 255, 255, 0.25);
+  font-style: italic;
+}
+
+.sec-code-block .code-fn {
+  color: #60a5fa;
+}
+
+.sec-code-block .code-op {
+  color: #fbbf24;
+}
+
+.sec-code-block .code-table {
+  color: #f472b6;
 }
