@@ -4400,7 +4400,12 @@ button.plan-btn {
   padding-bottom: 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
+}
+
+.legal-meta span {
+  white-space: nowrap;
 }
 
 .legal-section {
