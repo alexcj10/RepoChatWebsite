@@ -204,9 +204,15 @@ export default function Privacy() {
 
   useEffect(() => {
     // Auto-scroll the sidebar so the active link is always visible
-    const activeLink = document.querySelector('.legal-sidebar-link.active');
-    if (activeLink) {
-      activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    const sidebar = document.querySelector('.legal-sidebar');
+    if (activeSection === SECTIONS[0].id && sidebar) {
+      // If returning to the top, scroll the entire sidebar to 0 to reveal the search bar
+      sidebar.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const activeLink = document.querySelector('.legal-sidebar-link.active');
+      if (activeLink) {
+        activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     }
   }, [activeSection]);
 
