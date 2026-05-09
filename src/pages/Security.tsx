@@ -569,9 +569,9 @@ $$ `}<span className="code-keyword">LANGUAGE</span>{` plpgsql `}<span className=
 
         <div className="sec-deep-cards">
           <ScrollReveal>
-            <div className="sec-deep-card" style={{ '--card-accent': '#f59e0b' } as React.CSSProperties}>
+            <div className="sec-deep-card" style={{ '--card-accent': '#ef4444' } as React.CSSProperties}>
               <div className="sec-deep-card-header">
-                <div className="sec-deep-card-icon" style={{ color: '#f59e0b' }}>
+                <div className="sec-deep-card-icon" style={{ color: '#ef4444' }}>
                   <Bug size={22} />
                 </div>
                 <h3>Security Vulnerability Reporting</h3>
