@@ -4215,7 +4215,6 @@ button.plan-btn {
   font-weight: 600;
   color: var(--text-secondary);
   font-size: 0.78rem;
-  text-transform: uppercase;
   letter-spacing: 0.04em;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -4267,8 +4266,8 @@ button.plan-btn {
   font-weight: 700;
   padding: 3px 10px;
   border-radius: 999px;
-  text-transform: uppercase;
   letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 .sec-perm-badge--yes {
