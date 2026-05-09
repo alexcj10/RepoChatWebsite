@@ -4148,29 +4148,28 @@ button.plan-btn {
 
 /* Diagram Stage */
 .sec-showcase-stage-wrapper {
-  background: #141418;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0a0a0c;
+  border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 24px;
   position: relative;
   overflow: hidden;
-  box-shadow: inset 0 0 80px rgba(0,0,0,0.5), 0 20px 40px rgba(0,0,0,0.4);
+  box-shadow: inset 0 0 60px rgba(0,0,0,0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 450px;
+  min-height: 400px;
 }
 
-/* Blueprint grid background */
+/* Subtle soft center glow instead of harsh grid */
 .sec-showcase-stage-wrapper::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 24px 24px;
+  top: 50%; left: 50%;
+  width: 600px; height: 600px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 60%);
+  pointer-events: none;
   z-index: 0;
-  opacity: 0.5;
 }
 
 .sec-diagram-container {
@@ -4190,103 +4189,94 @@ button.plan-btn {
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-/* Specific Diagram UI Elements */
+/* ============================================
+   ELEGANT MINIMALIST DIAGRAM CLASSES
+   ============================================ */
 
-/* RLS Diagram */
-.diag-db-cylinder {
-  width: 220px;
-  background: rgba(16, 185, 129, 0.05);
-  border: 1px solid rgba(16, 185, 129, 0.2);
-  border-radius: 12px;
-  padding: 20px;
-  position: relative;
-}
-.diag-db-cylinder::before {
-  content: '';
-  position: absolute;
-  top: -10px; left: -1px; right: -1px; height: 20px;
-  border: 1px solid rgba(16, 185, 129, 0.2);
-  border-radius: 50%;
-  background: #141418;
-}
-.diag-rls-gate {
-  position: absolute;
-  top: -60px; left: 50%;
-  transform: translateX(-50%);
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid #10b981;
-  padding: 8px 16px;
-  border-radius: 8px;
-  color: #10b981;
-  font-weight: 700;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
-}
-.diag-table-row {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 8px 12px;
-  border-radius: 6px;
-  margin-bottom: 8px;
-  font-size: 0.75rem;
-  font-family: monospace;
+.arch-elegant-row {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  width: 100%;
 }
-.diag-table-row.allowed { border-color: rgba(16, 185, 129, 0.4); color: #10b981; }
-.diag-table-row.denied { border-color: rgba(239, 68, 68, 0.4); color: #ef4444; opacity: 0.5; text-decoration: line-through; }
 
-/* General Diagram Nodes */
-.diag-node {
-  background: rgba(20, 20, 25, 0.8);
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 20px;
+.arch-elegant-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  width: 100%;
+}
+
+.arch-elegant-node {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 24px 32px;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
   backdrop-filter: blur(10px);
-  min-width: 140px;
   text-align: center;
-  position: relative;
+  min-width: 160px;
 }
-.diag-node-icon {
-  width: 48px; height: 48px;
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-}
-.diag-node-title { font-weight: 600; font-size: 0.9rem; }
-.diag-node-sub { font-size: 0.7rem; color: var(--text-muted); }
 
-/* Animated Data Lines */
-.diag-line-h {
-  height: 2px;
+.arch-elegant-node-icon {
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.arch-elegant-node-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.arch-elegant-node-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.arch-elegant-path-h {
+  height: 1px;
   flex: 1;
   min-width: 40px;
+  max-width: 120px;
   background: rgba(255,255,255,0.1);
   position: relative;
-  overflow: hidden;
-}
-.diag-line-h::after {
-  content: '';
-  position: absolute; top: 0; left: 0; height: 100%; width: 40px;
-  background: linear-gradient(90deg, transparent, var(--line-color, rgba(255,255,255,0.8)), transparent);
-  animation: data-flow-x 1.5s linear infinite;
-}
-@keyframes data-flow-x {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(300%); }
 }
 
-/* Encryption Diagram */
-.diag-tunnel {
-  border: 2px dashed rgba(168, 85, 247, 0.4);
-  border-radius: 999px;
-  padding: 20px 40px;
+.arch-elegant-path-v {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.1);
+  position: relative;
+}
+
+.arch-elegant-badge {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #141418;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.arch-elegant-divider {
+  width: 1px;
+  height: 200px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1), transparent);
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 32px;
-  background: rgba(168, 85, 247, 0.05);
+  justify-content: center;
 }

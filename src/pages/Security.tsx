@@ -98,33 +98,35 @@ const rlsStats = [
 ]
 
 /* ─── Diagram Components ─── */
+/* ─── Diagram Components ─── */
 function DiagramRLS() {
   return (
-    <div className="sec-diagram-container" style={{ flexDirection: 'column', gap: 40 }}>
-      {/* JWT Token Node */}
-      <div className="diag-node" style={{ '--card-glow': 'rgba(16, 185, 129, 0.4)' } as any}>
-        <div className="diag-node-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
-          <Key size={24} />
+    <div className="sec-diagram-container">
+      <div className="arch-elegant-row">
+        {/* Node 1: Client */}
+        <div className="arch-elegant-node">
+          <Globe className="arch-elegant-node-icon" size={24} />
+          <div className="arch-elegant-node-title">Client</div>
+          <div className="arch-elegant-node-sub" style={{ color: '#10b981' }}>+ JWT Token</div>
         </div>
-        <div className="diag-node-title">User JWT Token</div>
-      </div>
 
-      <div style={{ height: 2, width: 2, background: 'rgba(16, 185, 129, 0.4)', boxShadow: '0 0 10px #10b981' }} />
+        {/* Path 1 */}
+        <div className="arch-elegant-path-h"></div>
 
-      {/* Database Cylinder */}
-      <div className="diag-db-cylinder">
-        <div className="diag-rls-gate">RLS POLICY GATE</div>
-        <div className="diag-table-row allowed">
-          <span>SELECT * FROM messages</span>
-          <span style={{ fontSize: '0.65rem' }}>uid() = user_id</span>
+        {/* Node 2: Edge / Gateway */}
+        <div className="arch-elegant-node" style={{ padding: '16px 24px', minWidth: '120px' }}>
+          <div className="arch-elegant-node-title" style={{ fontSize: '0.85rem' }}>RLS Policy</div>
+          <div className="arch-elegant-node-sub" style={{ fontFamily: 'monospace', color: 'var(--text-secondary)' }}>auth.uid()</div>
         </div>
-        <div className="diag-table-row allowed">
-          <span>INSERT INTO profiles</span>
-          <span style={{ fontSize: '0.65rem' }}>uid() = id</span>
-        </div>
-        <div className="diag-table-row denied">
-          <span>SELECT * FROM users</span>
-          <span style={{ fontSize: '0.65rem' }}>uid() != user_id</span>
+
+        {/* Path 2 */}
+        <div className="arch-elegant-path-h"></div>
+
+        {/* Node 3: DB */}
+        <div className="arch-elegant-node">
+          <Database className="arch-elegant-node-icon" size={24} />
+          <div className="arch-elegant-node-title">PostgreSQL</div>
+          <div className="arch-elegant-node-sub">Scoped Data</div>
         </div>
       </div>
     </div>
@@ -133,60 +135,93 @@ function DiagramRLS() {
 
 function DiagramOAuth() {
   return (
-    <div className="sec-diagram-container" style={{ gap: 16 }}>
-      <div className="diag-node">
-        <div className="diag-node-icon" style={{ background: 'rgba(255, 255, 255, 0.1)', color: '#fff' }}>
-          <Globe size={24} />
+    <div className="sec-diagram-container">
+      <div className="arch-elegant-row">
+        {/* Node 1: Extension */}
+        <div className="arch-elegant-node">
+          <Layers className="arch-elegant-node-icon" size={24} />
+          <div className="arch-elegant-node-title">Extension</div>
+          <div className="arch-elegant-node-sub">Client Init</div>
         </div>
-        <div className="diag-node-title">Extension</div>
-      </div>
 
-      <div className="diag-line-h" style={{ '--line-color': '#fff' } as any} />
-
-      <div className="diag-node" style={{ borderColor: 'rgba(139, 92, 246, 0.4)' }}>
-        <div className="diag-node-icon" style={{ background: 'rgba(139, 92, 246, 0.15)', color: '#8b5cf6' }}>
-          <Server size={24} />
+        {/* Path 1 */}
+        <div className="arch-elegant-path-h">
+          <div className="arch-elegant-badge">1. Auth</div>
         </div>
-        <div className="diag-node-title">Supabase Auth</div>
-        <div className="diag-node-sub">OAuth Flow</div>
-      </div>
 
-      <div className="diag-line-h" style={{ '--line-color': '#8b5cf6' } as any} />
-
-      <div className="diag-node">
-        <div className="diag-node-icon" style={{ background: 'rgba(255, 255, 255, 0.1)', color: '#fff' }}>
-          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        {/* Node 2: GitHub API */}
+        <div className="arch-elegant-node">
+          <GithubIcon size={24} className="arch-elegant-node-icon" />
+          <div className="arch-elegant-node-title">GitHub API</div>
+          <div className="arch-elegant-node-sub">OAuth Provider</div>
         </div>
-        <div className="diag-node-title">GitHub API</div>
+
+        {/* Path 2 */}
+        <div className="arch-elegant-path-h">
+          <div className="arch-elegant-badge" style={{ color: '#8b5cf6' }}>2. Token</div>
+        </div>
+
+        {/* Node 3: Supabase */}
+        <div className="arch-elegant-node">
+          <Server className="arch-elegant-node-icon" size={24} color="#8b5cf6" />
+          <div className="arch-elegant-node-title">Supabase</div>
+          <div className="arch-elegant-node-sub">Session Minting</div>
+        </div>
       </div>
     </div>
   )
 }
 
+function GithubIcon({ size, className }: { size: number, className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" width={size} height={size} stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+    </svg>
+  )
+}
+
 function DiagramEncryption() {
   return (
-    <div className="sec-diagram-container" style={{ flexDirection: 'column', gap: 40 }}>
-      {/* Transit */}
-      <div className="diag-tunnel">
-        <Globe size={24} color="#a855f7" />
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <div style={{ color: '#a855f7', fontWeight: 600, fontSize: '0.8rem', letterSpacing: 1 }}>TLS 1.2+ ENCRYPTED TUNNEL</div>
-          <div className="diag-line-h" style={{ width: 120, height: 2, '--line-color': '#a855f7' } as any} />
-        </div>
-        <Server size={24} color="#a855f7" />
-      </div>
-
-      {/* Rest */}
-      <div className="diag-node" style={{ width: 300, background: 'rgba(168, 85, 247, 0.05)', borderColor: 'rgba(168, 85, 247, 0.2)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <Database size={24} color="#a855f7" />
-          <div style={{ textAlign: 'left' }}>
-            <div className="diag-node-title">PostgreSQL Storage</div>
-            <div className="diag-node-sub">Volume-level AES-256 Encryption</div>
+    <div className="sec-diagram-container" style={{ padding: '60px 40px' }}>
+      <div className="arch-elegant-col">
+        {/* Top Row: Transit */}
+        <div className="arch-elegant-row">
+          <div className="arch-elegant-node" style={{ minWidth: 140 }}>
+            <Globe className="arch-elegant-node-icon" size={20} />
+            <div className="arch-elegant-node-title">Client</div>
+          </div>
+          
+          <div className="arch-elegant-path-h">
+            <div className="arch-elegant-badge" style={{ color: '#a855f7', display: 'flex', alignItems: 'center', gap: 6 }}>
+              <Lock size={12} /> TLS 1.2+
+            </div>
+          </div>
+          
+          <div className="arch-elegant-node" style={{ minWidth: 140 }}>
+            <Server className="arch-elegant-node-icon" size={20} />
+            <div className="arch-elegant-node-title">Server</div>
           </div>
         </div>
-        <div style={{ marginTop: 12, display: 'flex', gap: 8 }}>
-          {[1,2,3,4].map(i => <div key={i} style={{ width: 32, height: 8, borderRadius: 4, background: 'rgba(168, 85, 247, 0.2)' }} />)}
+
+        <div className="arch-elegant-path-v"></div>
+
+        {/* Bottom Row: Rest */}
+        <div className="arch-elegant-row">
+          <div className="arch-elegant-node" style={{ minWidth: 140 }}>
+            <Database className="arch-elegant-node-icon" size={20} />
+            <div className="arch-elegant-node-title">Database</div>
+          </div>
+          
+          <div className="arch-elegant-path-h">
+            <div className="arch-elegant-badge" style={{ color: '#a855f7', display: 'flex', alignItems: 'center', gap: 6 }}>
+              <Lock size={12} /> AES-256
+            </div>
+          </div>
+          
+          <div className="arch-elegant-node" style={{ minWidth: 140 }}>
+            <Database className="arch-elegant-node-icon" size={20} />
+            <div className="arch-elegant-node-title">Volume</div>
+          </div>
         </div>
       </div>
     </div>
@@ -195,33 +230,31 @@ function DiagramEncryption() {
 
 function DiagramIsolation() {
   return (
-    <div className="sec-diagram-container" style={{ gap: 32 }}>
-      {/* Tenant A */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'center' }}>
-        <div style={{ width: 40, height: 40, borderRadius: 20, background: 'rgba(245, 158, 11, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Eye size={20} color="#f59e0b" />
+    <div className="sec-diagram-container">
+      <div className="arch-elegant-row">
+        {/* User A */}
+        <div className="arch-elegant-node" style={{ borderColor: 'rgba(245, 158, 11, 0.2)' }}>
+          <div style={{ width: 40, height: 40, borderRadius: 20, background: 'rgba(245, 158, 11, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 8 }}>
+            <Eye size={20} color="#f59e0b" />
+          </div>
+          <div className="arch-elegant-node-title">User A Context</div>
+          <div className="arch-elegant-node-sub">Private Workspace</div>
         </div>
-        <div className="diag-node" style={{ borderColor: 'rgba(245, 158, 11, 0.3)' }}>
-          <div className="diag-node-title" style={{ color: '#f59e0b' }}>User A Data</div>
-          <div className="diag-node-sub">Isolated Context</div>
-        </div>
-      </div>
 
-      {/* Isolation Wall */}
-      <div style={{ width: 4, height: 160, background: 'rgba(255,255,255,0.1)', borderRadius: 2, position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ background: '#141418', padding: '16px 0' }}>
-          <Shield size={24} color="#6b7280" />
+        {/* Boundary */}
+        <div className="arch-elegant-divider">
+          <div className="arch-elegant-badge" style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(10px)' }}>
+            <Shield size={12} /> Boundary
+          </div>
         </div>
-      </div>
 
-      {/* Tenant B */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'center' }}>
-        <div style={{ width: 40, height: 40, borderRadius: 20, background: 'rgba(59, 130, 246, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Fingerprint size={20} color="#3b82f6" />
-        </div>
-        <div className="diag-node" style={{ borderColor: 'rgba(59, 130, 246, 0.3)' }}>
-          <div className="diag-node-title" style={{ color: '#3b82f6' }}>User B Data</div>
-          <div className="diag-node-sub">Isolated Context</div>
+        {/* User B */}
+        <div className="arch-elegant-node" style={{ borderColor: 'rgba(59, 130, 246, 0.2)' }}>
+          <div style={{ width: 40, height: 40, borderRadius: 20, background: 'rgba(59, 130, 246, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 8 }}>
+            <Fingerprint size={20} color="#3b82f6" />
+          </div>
+          <div className="arch-elegant-node-title">User B Context</div>
+          <div className="arch-elegant-node-sub">Private Workspace</div>
         </div>
       </div>
     </div>
