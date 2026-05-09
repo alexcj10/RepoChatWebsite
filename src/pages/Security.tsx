@@ -209,7 +209,7 @@ export default function Security() {
 
         {/* ─── Chrome Extension Permissions ─── */}
         <ScrollReveal>
-          <div className="section-head" style={{ marginBottom: 48 }}>
+          <div className="section-head" style={{ paddingTop: 'var(--space-l)', marginBottom: 48 }}>
             <h2 className="h2 ecosystem-h2">Extension <span className="gradient-text">permissions.</span></h2>
             <p className="body-md" style={{ opacity: 0.6, marginTop: 8 }}>Only the absolute minimum Chrome permissions required</p>
           </div>
@@ -271,7 +271,7 @@ export default function Security() {
 
         {/* ─── Server-Side Security ─── */}
         <ScrollReveal>
-          <div className="section-head" style={{ marginBottom: 48 }}>
+          <div className="section-head" style={{ paddingTop: 'var(--space-l)', marginBottom: 48 }}>
             <h2 className="h2 ecosystem-h2">Server-side <span className="gradient-text">protections.</span></h2>
             <p className="body-md" style={{ opacity: 0.6, marginTop: 8 }}>Backend security across Supabase Edge Functions and database triggers</p>
           </div>
