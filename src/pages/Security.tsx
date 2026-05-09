@@ -61,7 +61,7 @@ const extensionSecurity = {
     { name: 'activeTab', desc: 'Reads the current GitHub URL context (PR number, issue, branch) to attach contextual metadata to messages', icon: <GitBranch size={16} /> },
     { name: 'scripting', desc: 'Injects the RepoChat chat UI sidebar into GitHub pages — required for the extension to function', icon: <Layers size={16} /> },
   ],
-  hostPermissions: 'https://github.com/* — The extension only runs on GitHub pages. It does not request access to your browsing history, bookmarks, downloads, or any other website.',
+  hostPermissions: 'https://github.com/* and https://api.github.com/* — The extension only runs on GitHub pages and communicates with the GitHub API. It does not request access to your browsing history, bookmarks, downloads, or any other website.',
 }
 
 /* ─── Server-Side Security ─── */
@@ -159,13 +159,13 @@ export default function Security() {
                 <div className="sec-code-block">
                   <div className="sec-code-block-label">SQL</div>
                   <pre>
-{`-- `}<span className="code-comment">RLS policy on messages table</span>{`
-`}<span className="code-keyword">CREATE POLICY</span>{` `}<span className="code-string">"Users read own messages"</span>{`
-  `}<span className="code-keyword">ON</span>{` `}<span className="code-table">messages</span>{` `}<span className="code-keyword">FOR</span>{` SELECT
+{`-- `}<span className="code-comment">RLS policy on user_notes table</span>{`
+`}<span className="code-keyword">CREATE POLICY</span>{` `}<span className="code-string">"Users can view their own notes"</span>{`
+  `}<span className="code-keyword">ON</span>{` `}<span className="code-table">user_notes</span>{` `}<span className="code-keyword">FOR</span>{` SELECT
   `}<span className="code-keyword">USING</span>{` (`}<span className="code-fn">auth.uid</span>{`() `}<span className="code-op">=</span>{` user_id);
 
--- `}<span className="code-comment">DM policy enforcement</span>{`
-`}<span className="code-keyword">CREATE POLICY</span>{` `}<span className="code-string">"DM access control"</span>{`
+-- `}<span className="code-comment">DM message policy</span>{`
+`}<span className="code-keyword">CREATE POLICY</span>{` `}<span className="code-string">"Allow users to view their own messages"</span>{`
   `}<span className="code-keyword">ON</span>{` `}<span className="code-table">messages</span>{` `}<span className="code-keyword">FOR</span>{` SELECT
   `}<span className="code-keyword">USING</span>{` (
     `}<span className="code-fn">auth.uid</span>{`() `}<span className="code-op">=</span>{` sender_id `}<span className="code-keyword">OR</span>{`
