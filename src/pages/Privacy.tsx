@@ -1,25 +1,208 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
+import { Search } from 'lucide-react';
 
 const SECTIONS = [
-  { id: 'about', title: '1. About RepoChat' },
-  { id: 'applicability', title: '2. Applicability' },
-  { id: 'information-we-collect', title: '3. Information We Collect' },
-  { id: 'how-we-use', title: '4. How We Use Information' },
-  { id: 'how-we-retain', title: '5. How We Retain Information' },
-  { id: 'how-we-disclose', title: '6. How We Disclose Information' },
-  { id: 'security', title: '7. How We Secure Information' },
-  { id: 'third-party', title: '8. Third-Party Services' },
-  { id: 'international', title: '9. International Data Transfers' },
-  { id: 'your-rights', title: '10. Your Privacy Rights' },
-  { id: 'children', title: '11. Children\'s Privacy' },
-  { id: 'changes', title: '12. Changes to This Policy' },
-  { id: 'contact', title: '13. Contact Us' },
+  {
+    id: 'about',
+    title: '1. Introduction & Scope',
+    content: (
+      <>
+        <p>
+          RepoChat ("we", "us", "our") provides a developer-centric communication platform built natively into the GitHub interface via a browser extension (collectively, the "Services"). We recognize that as software engineers, you place an absolute premium on data privacy, security, and the sanctity of your proprietary code. 
+        </p>
+        <p>
+          This comprehensive Privacy Policy serves as our legally binding transparent disclosure of exactly how your personal data, metadata, and communications are collected, processed, and cryptographically secured when you interact with our Services, our backend APIs, or our web property (repoch.at). This policy applies to all users universally. If you do not agree with our data practices as outlined below, you must immediately uninstall the extension and revoke our OAuth permissions.
+        </p>
+      </>
+    ),
+    rawText: "Introduction Scope developer-centric communication browser extension software engineers data privacy security proprietary code Privacy Policy legally binding transparent disclosure metadata cryptographically secured backend APIs repoch.at OAuth permissions"
+  },
+  {
+    id: 'collection-auth',
+    title: '2. Authentication & Profile Data Collection',
+    content: (
+      <>
+        <p>
+          RepoChat operates on a strictly passwordless architecture. We do not possess, nor do we want, the capability to handle traditional usernames and passwords. When you authenticate into the Service, we utilize the industry-standard GitHub OAuth 2.0 protocol.
+        </p>
+        <p>
+          Through this protocol, we request read-only access to specific, programmatic metadata from the GitHub API. Specifically, we collect and store: your immutable GitHub user ID, your public username, your display name, your public avatar URL, and an ephemeral OAuth access token. This token is securely utilized by our backend (via `src/lib/githubProxy.ts`) to proxy requests on your behalf, such as fetching repository context or searching for other GitHub users to add as friends. We never request access to your private code repositories.
+        </p>
+      </>
+    ),
+    rawText: "Authentication Profile Data passwordless architecture GitHub OAuth 2.0 protocol programmatic metadata immutable GitHub user ID username display name public avatar URL ephemeral OAuth access token githubProxy.ts proxy requests repository context friends private code repositories"
+  },
+  {
+    id: 'collection-ugc',
+    title: '3. User-Generated Content & Collaboration Data',
+    content: (
+      <>
+        <p>
+          To facilitate real-time communication, we must necessarily process the content you generate within the extension. This includes direct messages sent to peers, messages broadcasted in repository-specific group chats (which are intrinsically linked to a `github_full_name` identifier), diagnostic notes saved in your "Pads," and custom task lists you curate.
+        </p>
+        <p>
+          All such User-Generated Content is transmitted over secure WebSocket connections and persisted in our PostgreSQL databases. We collect timestamps, sender/recipient IDs, and message payload data solely to ensure the reliable delivery, synchronization, and historical retrieval of your collaborative efforts across multiple devices.
+        </p>
+      </>
+    ),
+    rawText: "User-Generated Content Collaboration Data real-time communication direct messages repository-specific group chats github_full_name Pads custom task lists secure WebSocket connections PostgreSQL databases timestamps sender recipient IDs payload data synchronization historical retrieval"
+  },
+  {
+    id: 'telemetry',
+    title: '4. Telemetry, Analytics, and Tracking',
+    content: (
+      <>
+        <p>
+          In an era of rampant surveillance capitalism, RepoChat takes a radically different approach. <strong>We do not integrate any third-party tracking pixels, marketing analytics SDKs, or behavioral profiling tools</strong> into our extension or our web application. We do not use Google Analytics, Mixpanel, or similar services.
+        </p>
+        <p>
+          We strictly collect bare-minimum, non-identifying operational telemetry required to keep our servers running. This includes server-side request logging (IP addresses, user-agent strings, and request timestamps) specifically utilized by our infrastructure to detect DDoS attacks, enforce API rate limits, and debug critical application crashes. We utilize local browser storage purely to cache your offline data and maintain your active session state—not to track you across the internet.
+        </p>
+      </>
+    ),
+    rawText: "Telemetry Analytics Tracking surveillance capitalism zero third-party tracking pixels marketing SDKs behavioral profiling Google Analytics Mixpanel non-identifying operational telemetry server-side request logging IP addresses user-agent strings DDoS attacks API rate limits local browser storage cache offline data session state"
+  },
+  {
+    id: 'data-use',
+    title: '5. How We Utilize Your Information',
+    content: (
+      <>
+        <p>We process the data we collect under the legal basis of fulfilling our contractual obligations to you. We use your data exclusively to:</p>
+        <ul>
+          <li><strong>Operate the Service:</strong> Route messages, synchronize your Pads to the cloud, and render the user interface within the GitHub DOM.</li>
+          <li><strong>Enforce Security:</strong> Authenticate your identity via GitHub and prevent unauthorized access to your chat history.</li>
+          <li><strong>Process Subscriptions:</strong> Validate webhook payloads from our payment processor to automatically upgrade or downgrade your Pro tier status.</li>
+          <li><strong>Provide Support:</strong> Investigate bug reports and respond to technical inquiries initiated by you.</li>
+        </ul>
+      </>
+    ),
+    rawText: "Utilize Information legal basis contractual obligations Route messages synchronize Pads GitHub DOM Enforce Security Authenticate identity Process Subscriptions webhook payloads payment processor Pro tier Support bug reports technical inquiries"
+  },
+  {
+    id: 'security-rls',
+    title: '6. Infrastructure Security & Row Level Security (RLS)',
+    content: (
+      <>
+        <p>
+          We implement rigorous, enterprise-grade security protocols. All data in transit between your browser and our servers is encrypted using standard TLS/SSL cryptographic protocols. All data at rest within our databases is encrypted at the volume level.
+        </p>
+        <p>
+          At the application layer, we utilize strict <strong>Row Level Security (RLS)</strong> policies enforced directly at the PostgreSQL database level. This means that access control is deeply embedded in the database schema itself. Cryptographic policies guarantee that an authenticated user can only query, read, or modify database rows (messages, notes, friend requests) that explicitly belong to their authenticated `auth.uid()`. It is mathematically impossible for a user to query another user's private data through our APIs.
+        </p>
+      </>
+    ),
+    rawText: "Infrastructure Security Row Level Security RLS enterprise-grade TLS SSL cryptographic protocols encrypted at rest PostgreSQL database schema access control auth.uid private data APIs"
+  },
+  {
+    id: 'subprocessors',
+    title: '7. Third-Party Subprocessors & Data Sharing',
+    content: (
+      <>
+        <p>
+          We absolutely do not sell your personal data. We only share data with essential third-party infrastructure providers (subprocessors) necessary to run RepoChat. These include:
+        </p>
+        <ul>
+          <li><strong>Supabase:</strong> Our core backend infrastructure provider. They host our PostgreSQL databases, manage WebSocket edge functions, and securely store your chat histories.</li>
+          <li><strong>GitHub:</strong> We interface with their API to facilitate OAuth login and fetch public repository context.</li>
+          <li><strong>Dodo Payments:</strong> Our merchant of record. If you purchase a Pro subscription, your credit card and billing details are processed securely by Dodo. RepoChat's servers never touch, process, or store your raw financial data; we only receive secure webhook events confirming subscription status.</li>
+        </ul>
+        <p>We may also disclose data if compelled by a legally binding court order or subpoena originating from a recognized governmental authority.</p>
+      </>
+    ),
+    rawText: "Third-Party Subprocessors Data Sharing infrastructure providers Supabase backend PostgreSQL WebSocket edge functions GitHub OAuth Dodo Payments merchant of record Pro subscription credit card billing details webhook events court order subpoena governmental authority"
+  },
+  {
+    id: 'retention',
+    title: '8. Data Retention & Cryptographic Deletion',
+    content: (
+      <>
+        <p>
+          We retain your profile metadata and communication history only for as long as your account remains active. If you initiate an account deletion request, your primary database records—including private messages, pads, and lists—are immediately subjected to a hard cryptographic delete command. 
+        </p>
+        <p>
+          Please note that messages you have contributed to public repository group chats may be anonymized rather than deleted, ensuring that the conversational context is not destroyed for remaining participants. Database backups are immutable and are automatically purged on a rolling 30-day schedule. Therefore, it may take up to 30 days for your deleted data to be entirely eradicated from all encrypted backup media.
+        </p>
+      </>
+    ),
+    rawText: "Data Retention Cryptographic Deletion profile metadata communication history account deletion request hard cryptographic delete public repository group chats anonymized conversational context Database backups immutable 30-day schedule eradicated encrypted backup media"
+  },
+  {
+    id: 'international',
+    title: '9. International Data Transfers',
+    content: (
+      <>
+        <p>
+          RepoChat utilizes cloud infrastructure distributed across multiple global regions to ensure low-latency WebSocket connections. Consequently, your data may be routed, processed, and stored in jurisdictions outside your country of residence, including the United States. 
+        </p>
+        <p>
+          By utilizing the Services, you explicitly consent to the transfer of your data across international borders. We ensure that our subprocessors adhere to stringent international data protection frameworks, including the execution of Standard Contractual Clauses (SCCs), to safeguard your privacy rights regardless of the geographic location of the servers.
+        </p>
+      </>
+    ),
+    rawText: "International Data Transfers cloud infrastructure global regions low-latency WebSocket United States international borders subprocessors Standard Contractual Clauses SCCs privacy rights geographic location"
+  },
+  {
+    id: 'rights',
+    title: '10. Your Global Privacy Rights',
+    content: (
+      <>
+        <p>We believe privacy is a fundamental human right. Regardless of whether you reside in a jurisdiction governed by the GDPR, CCPA, or other regional laws, we extend the following rights to all RepoChat users:</p>
+        <ul>
+          <li><strong>The Right to Access:</strong> You may request a comprehensive export of all data tied to your GitHub ID.</li>
+          <li><strong>The Right to Erasure:</strong> You may request the total deletion of your account and associated data.</li>
+          <li><strong>The Right to Rectification:</strong> You may correct inaccurate profile data directly through the GitHub integration.</li>
+        </ul>
+        <p>To exercise any of these rights, please contact our administrative team. We commit to fulfilling verifiable data requests within 30 calendar days.</p>
+      </>
+    ),
+    rawText: "Global Privacy Rights human right GDPR CCPA Right to Access export data GitHub ID Right to Erasure total deletion Right to Rectification correct profile data verifiable data requests 30 calendar days"
+  },
+  {
+    id: 'changes',
+    title: '11. Modifications to This Policy',
+    content: (
+      <>
+        <p>
+          As RepoChat evolves, our data processing practices may change. We reserve the right to update this Privacy Policy at any time. Material changes to our data collection architecture will be communicated via in-app notifications or via an update to the "Effective Date" at the top of this document. Continued use of the extension after the effective date of an updated policy constitutes your legally binding acceptance of the revised terms.
+        </p>
+      </>
+    ),
+    rawText: "Modifications Policy data processing practices update Privacy Policy Material changes collection architecture in-app notifications Effective Date binding acceptance revised terms"
+  },
+  {
+    id: 'contact',
+    title: '12. Legal Contact Information',
+    content: (
+      <>
+        <p>
+          If you are a security researcher, a privacy advocate, or a user with specific concerns regarding how your data is handled within the RepoChat ecosystem, you are encouraged to contact our privacy team directly:
+        </p>
+        <p>
+          <strong>Data Privacy Officer / Support:</strong> <a href="mailto:alexcj10@yahoo.com">alexcj10@yahoo.com</a>
+        </p>
+      </>
+    ),
+    rawText: "Legal Contact Information security researcher privacy advocate Data Privacy Officer Support alexcj10@yahoo.com"
+  }
 ];
 
 export default function Privacy() {
   const [activeSection, setActiveSection] = useState('about');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Filter sections based on search query
+  const filteredSections = useMemo(() => {
+    if (!searchQuery.trim()) return SECTIONS;
+    const query = searchQuery.toLowerCase();
+    return SECTIONS.filter(section => 
+      section.title.toLowerCase().includes(query) || 
+      section.rawText.toLowerCase().includes(query)
+    );
+  }, [searchQuery]);
 
   useEffect(() => {
+    if (searchQuery) return; // Disable scroll tracking when searching
+    
     const handleScroll = () => {
       const sections = SECTIONS.map(s => document.getElementById(s.id));
       const scrollPosition = window.scrollY + 200; // Offset for navbar
@@ -35,7 +218,7 @@ export default function Privacy() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [searchQuery]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -49,15 +232,55 @@ export default function Privacy() {
     <div className="legal-layout">
       {/* Sidebar Navigation */}
       <aside className="legal-sidebar">
-        {SECTIONS.map((section) => (
-          <div
-            key={section.id}
-            className={`legal-sidebar-link ${activeSection === section.id ? 'active' : ''}`}
-            onClick={() => scrollToSection(section.id)}
-          >
-            {section.title}
+        
+        {/* Search Bar */}
+        <div className="legal-search-container" style={{ marginBottom: 16 }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            background: 'rgba(255, 255, 255, 0.03)',
+            border: '1px solid rgba(255, 255, 255, 0.08)',
+            borderRadius: 8,
+            padding: '8px 12px',
+            gap: 8,
+            transition: 'border-color 0.2s ease',
+          }}
+          className="search-input-wrapper">
+            <Search size={14} color="var(--text-muted)" />
+            <input 
+              type="text" 
+              placeholder="Search Policy..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                outline: 'none',
+                color: 'var(--text-primary)',
+                fontSize: '0.85rem',
+                width: '100%'
+              }}
+            />
           </div>
-        ))}
+        </div>
+
+        <div className="legal-sidebar-links" style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {filteredSections.length === 0 ? (
+            <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', padding: '8px 12px' }}>
+              No sections found.
+            </div>
+          ) : (
+            filteredSections.map((section) => (
+              <div
+                key={section.id}
+                className={`legal-sidebar-link ${activeSection === section.id && !searchQuery ? 'active' : ''}`}
+                onClick={() => scrollToSection(section.id)}
+              >
+                {section.title}
+              </div>
+            ))
+          )}
+        </div>
       </aside>
 
       {/* Main Content */}
@@ -69,176 +292,22 @@ export default function Privacy() {
           <span>Last Updated: May 9, 2026</span>
         </div>
 
-        <section id="about" className="legal-section">
-          <h2>1. About RepoChat</h2>
-          <p>
-            RepoChat ("we", "us", "our") provides a browser extension and platform designed to bring 
-            real-time communication and collaboration directly into GitHub repositories. Our services 
-            include direct messaging, group chats, shared context, and integrations (collectively, the "Services").
-          </p>
-          <p>
-            At RepoChat, we respect your privacy. This Privacy Policy explains our practices regarding 
-            the collection, use, disclosure, and processing of your personal information when you use 
-            our Services or visit our website.
-          </p>
-        </section>
-
-        <section id="applicability" className="legal-section">
-          <h2>2. Applicability</h2>
-          <p>
-            This Privacy Policy applies to the personal information we collect when you:
-          </p>
-          <ul>
-            <li>Visit our website (repoch.at) or any affiliated web properties.</li>
-            <li>Install and use the RepoChat browser extension.</li>
-            <li>Interact with our APIs, servers, and related services.</li>
-            <li>Communicate with our support or sales teams.</li>
-          </ul>
-          <p>
-            This policy does not apply to third-party services that integrate with RepoChat (including GitHub), 
-            whose privacy practices are governed by their own policies.
-          </p>
-        </section>
-
-        <section id="information-we-collect" className="legal-section">
-          <h2>3. Information We Collect</h2>
-          
-          <h3>Information You Provide Directly</h3>
-          <ul>
-            <li><strong>Account Information:</strong> When you authenticate via GitHub OAuth, we collect your GitHub user ID, username, display name, avatar URL, and an OAuth access token. We never receive or store your GitHub password.</li>
-            <li><strong>Communication Data:</strong> We store the messages, links, reactions, and notes you send through the Services to ensure they are delivered and synchronized across your devices.</li>
-            <li><strong>Support Inquiries:</strong> If you contact us for support, we collect the content of your messages, email address, and any technical information you choose to provide.</li>
-          </ul>
-
-          <h3>Information We Collect Automatically</h3>
-          <ul>
-            <li><strong>Usage Information:</strong> We collect aggregated, non-identifying telemetry data regarding how you interact with the extension (e.g., feature usage frequency, theme preferences).</li>
-            <li><strong>Device and Log Data:</strong> Like most online services, we collect standard log data including IP addresses, browser types, operating systems, and timestamps to ensure security and prevent abuse.</li>
-            <li><strong>Cookies and Local Storage:</strong> We use local storage purely for functional purposes (such as maintaining your active session and caching offline data). We do not use tracking or advertising cookies.</li>
-          </ul>
-        </section>
-
-        <section id="how-we-use" className="legal-section">
-          <h2>4. How We Use Information</h2>
-          <p>We use the information we collect for the following purposes:</p>
-          <ul>
-            <li><strong>Service Delivery:</strong> To operate, maintain, and provide the core functionalities of RepoChat, including message routing and synchronization.</li>
-            <li><strong>Authentication:</strong> To securely verify your identity via GitHub and manage your session.</li>
-            <li><strong>Improvement:</strong> To analyze performance metrics and improve the reliability and user experience of our applications.</li>
-            <li><strong>Security:</strong> To detect, investigate, and prevent unauthorized access, abuse, and other technical or security issues.</li>
-            <li><strong>Communication:</strong> To send important administrative notices, security alerts, and support responses.</li>
-          </ul>
-        </section>
-
-        <section id="how-we-retain" className="legal-section">
-          <h2>5. How We Retain Information</h2>
-          <p>
-            We retain your personal information only for as long as your account is active or as necessary 
-            to fulfill the purposes outlined in this Privacy Policy.
-          </p>
-          <p>
-            If you request account deletion, your profile data, private notes, and authentication tokens 
-            are immediately permanently deleted from our primary databases. Messages sent in group channels 
-            may be anonymized and retained to preserve conversation continuity for other users. Backups 
-            are purged on a rolling 30-day schedule.
-          </p>
-        </section>
-
-        <section id="how-we-disclose" className="legal-section">
-          <h2>6. How We Disclose Information</h2>
-          <p>We do not sell your personal information. We only disclose information under the following circumstances:</p>
-          <ul>
-            <li><strong>Other Users:</strong> Your username, avatar, and online status are visible to other RepoChat users you interact with. Your messages are visible to the intended recipients.</li>
-            <li><strong>Service Providers:</strong> We use trusted third-party services for infrastructure hosting (e.g., Supabase) and payment processing (e.g., Dodo Payments). These providers are bound by strict data processing agreements.</li>
-            <li><strong>Legal Compliance:</strong> We may disclose information if legally required to do so to comply with applicable laws, legal processes, or governmental requests, or to protect our rights and the safety of our users.</li>
-            <li><strong>Business Transfers:</strong> If we are involved in a merger, acquisition, or sale of assets, your data may be transferred as part of that transaction, subject to the same privacy commitments.</li>
-          </ul>
-        </section>
-
-        <section id="security" className="legal-section">
-          <h2>7. How We Secure Information</h2>
-          <p>
-            We implement robust administrative, technical, and physical safeguards designed to protect 
-            your data. All data is encrypted in transit using TLS/SSL and encrypted at rest in our databases.
-          </p>
-          <p>
-            We utilize strict Row Level Security (RLS) policies within our database infrastructure, 
-            ensuring that users can strictly access only their own data or data explicitly shared with them. 
-            While we strive to use commercially acceptable means to protect your information, no method 
-            of transmission over the Internet is 100% secure.
-          </p>
-        </section>
-
-        <section id="third-party" className="legal-section">
-          <h2>8. Third-Party Services</h2>
-          <p>
-            RepoChat relies on third-party infrastructure to operate reliably. Our key subprocessors include:
-          </p>
-          <ul>
-            <li><strong>Supabase:</strong> For PostgreSQL database hosting, authentication, and real-time WebSocket infrastructure.</li>
-            <li><strong>GitHub:</strong> For OAuth authentication and contextual repository metadata.</li>
-            <li><strong>Dodo Payments:</strong> For secure processing of premium subscriptions. (RepoChat does not directly handle or store credit card numbers).</li>
-          </ul>
-        </section>
-
-        <section id="international" className="legal-section">
-          <h2>9. International Data Transfers</h2>
-          <p>
-            RepoChat is operated globally. Your personal information may be transferred to, and processed in, 
-            countries other than the country in which you are resident. These countries may have data 
-            protection laws that are different from the laws of your country.
-          </p>
-          <p>
-            When we transfer data internationally, we ensure appropriate safeguards are in place, such as 
-            Standard Contractual Clauses, to protect your information in accordance with this Privacy Policy.
-          </p>
-        </section>
-
-        <section id="your-rights" className="legal-section">
-          <h2>10. Your Privacy Rights</h2>
-          <p>Depending on your location, you may have the following rights regarding your personal data:</p>
-          <ul>
-            <li><strong>Access:</strong> The right to request copies of your personal information.</li>
-            <li><strong>Rectification:</strong> The right to request correction of inaccurate information.</li>
-            <li><strong>Erasure:</strong> The right to request the deletion of your personal data ("Right to be Forgotten").</li>
-            <li><strong>Restriction:</strong> The right to request that we restrict the processing of your data.</li>
-            <li><strong>Data Portability:</strong> The right to receive your data in a structured, machine-readable format.</li>
-          </ul>
-          <p>
-            You can exercise these rights by managing your settings directly within the RepoChat extension 
-            or by contacting us directly.
-          </p>
-        </section>
-
-        <section id="children" className="legal-section">
-          <h2>11. Children's Privacy</h2>
-          <p>
-            Our Services are not directed to, and we do not knowingly collect personal information from, 
-            children under the age of 16. If we become aware that we have inadvertently received personal 
-            information from a child under the age of 16, we will delete such information from our records.
-          </p>
-        </section>
-
-        <section id="changes" className="legal-section">
-          <h2>12. Changes to This Policy</h2>
-          <p>
-            We may update this Privacy Policy from time to time to reflect changes in our practices or 
-            relevant laws. We will notify you of any material changes by posting the updated policy on 
-            this page and updating the "Last Updated" date. Continued use of our Services after changes 
-            take effect constitutes your acceptance of the revised policy.
-          </p>
-        </section>
-
-        <section id="contact" className="legal-section">
-          <h2>13. Contact Us</h2>
-          <p>
-            If you have any questions, concerns, or requests regarding this Privacy Policy or our data 
-            practices, please contact us at:
-          </p>
-          <p>
-            <strong>Email:</strong> <a href="mailto:alexcj10@yahoo.com">alexcj10@yahoo.com</a>
-          </p>
-        </section>
+        {filteredSections.length === 0 ? (
+          <div className="legal-no-results" style={{
+            padding: '40px', textAlign: 'center', background: 'rgba(255,255,255,0.02)', borderRadius: 16, border: '1px solid rgba(255,255,255,0.05)'
+          }}>
+            <Search size={32} color="var(--text-muted)" style={{ margin: '0 auto 16px', opacity: 0.5 }} />
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: 8 }}>No results found</h3>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>We couldn't find anything matching "{searchQuery}".</p>
+          </div>
+        ) : (
+          filteredSections.map(section => (
+            <section key={section.id} id={section.id} className="legal-section">
+              <h2>{section.title}</h2>
+              {section.content}
+            </section>
+          ))
+        )}
       </main>
     </div>
   );
