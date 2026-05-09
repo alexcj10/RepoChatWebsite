@@ -91,10 +91,10 @@ const serverSecurity = [
 
 /* ─── RLS Policy Stats ─── */
 const rlsStats = [
-  { label: 'Tables Protected', value: '8+', sub: 'profiles, messages, groups, group_members, friend_requests, notifications, chat_clears, user_notes' },
-  { label: 'RLS Policies Active', value: '20+', sub: 'SELECT, INSERT, UPDATE, DELETE per table' },
-  { label: 'SECURITY DEFINER', value: '6+', sub: 'Helper functions to prevent recursion & enforce auth' },
-  { label: 'DB Triggers', value: '3', sub: 'Auto-notifications, friend sync, group invites' },
+  { label: 'Tables Protected', value: '8+', sub: 'Profiles, messages, groups & more' },
+  { label: 'RLS Policies Active', value: '20+', sub: 'SELECT, INSERT, UPDATE, DELETE' },
+  { label: 'SECURITY DEFINER', value: '6+', sub: 'Auth helper functions' },
+  { label: 'DB Triggers', value: '3', sub: 'Auto-notifications & sync' },
 ]
 
 export default function Security() {
@@ -114,45 +114,14 @@ export default function Security() {
 
         {/* ─── RLS Stats Bar ─── */}
         <ScrollReveal>
-          <div className="rls-stats-grid" style={{
-            maxWidth: 900,
-            margin: '0 auto var(--space-l)',
-          }}>
-            {rlsStats.map((s, i) => {
-              const hues = ['#10b981', '#8b5cf6', '#3b82f6', '#f59e0b']
-              const opacities = ['30', '30', '30', '30']
-              const color = hues[i]
-              return (
-                <div key={i} className="security-grid-card" style={{
-                  borderRadius: 16,
-                  padding: '24px 20px',
-                  textAlign: 'center',
-                  '--card-glow': `${color}40`,
-                  '--card-glow-bg': `${color}${opacities[i]}`,
-                  background: `
-                    radial-gradient(circle at top left, ${color}${opacities[i]} 0%, transparent 70%),
-                    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                    rgba(15, 15, 20, 0.5)
-                  `,
-                  backgroundSize: '100% 100%, 24px 24px, 24px 24px',
-                } as React.CSSProperties}>
-                  <div style={{
-                    fontSize: '2.2rem', fontWeight: 900,
-                    backgroundImage: `linear-gradient(135deg, #ffffff 0%, ${color} 100%)`,
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    color: 'transparent',
-                    letterSpacing: '-0.04em',
-                    lineHeight: 1.1,
-                    marginBottom: 4
-                  }}>{s.value}</div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 2 }}>{s.label}</div>
-                  <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>{s.sub}</div>
-                </div>
-              )
-            })}
+          <div className="sec-stats-strip">
+            {rlsStats.map((s, i) => (
+              <div key={i} className="sec-stat-card">
+                <div className="sec-stat-value">{s.value}</div>
+                <div className="sec-stat-label">{s.label}</div>
+                <div className="sec-stat-sub">{s.sub}</div>
+              </div>
+            ))}
           </div>
         </ScrollReveal>
 
