@@ -127,9 +127,9 @@ export default function Security() {
 
         {/* ─── Architecture Layers ─── */}
         <ScrollReveal>
-          <div style={{ textAlign: 'center', marginBottom: 'var(--space-m)', paddingTop: 'var(--space-m)' }}>
-            <h2 className="h3">Security Architecture</h2>
-            <p className="body-md" style={{ marginTop: 8 }}>Four layers of defense protecting your data</p>
+          <div className="section-head" style={{ marginBottom: 48 }}>
+            <h2 className="h2 ecosystem-h2">Security <span className="gradient-text">architecture.</span></h2>
+            <p className="body-md" style={{ opacity: 0.6, marginTop: 8 }}>Four layers of defense protecting your data</p>
           </div>
         </ScrollReveal>
 
