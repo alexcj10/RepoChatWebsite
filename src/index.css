@@ -343,6 +343,109 @@ html.nav-open-lock body {
 .hero-mockup{position:relative;z-index:2;width:100%;max-width:min(clamp(800px, 85vw, 1140px), 100%);margin:0 auto;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:0 32px 80px -20px rgba(0,0,0,.8),0 0 60px -20px var(--accent-glow)}
 .hero-mockup img{width:100%;display:block}
 
+/* ═══ Aurora Beam Divider ═══ */
+.aurora-beam {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  z-index: 3;
+  margin-top: -80px;
+  margin-bottom: -80px;
+}
+
+.aurora-beam-line {
+  position: relative;
+  width: 100%;
+  height: 1.5px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(167, 139, 250, 0.15) 15%,
+    rgba(196, 181, 253, 0.4) 50%,
+    rgba(167, 139, 250, 0.15) 85%,
+    transparent 100%
+  );
+  border-radius: 2px;
+  animation: aurora-pulse 4s ease-in-out infinite;
+}
+
+/* Wide soft glow — the main ambient band */
+.aurora-beam-line::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  height: 300px;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(139, 92, 246, 0.5) 0%,
+    rgba(124, 58, 237, 0.3) 20%,
+    rgba(99, 102, 241, 0.15) 40%,
+    rgba(79, 70, 229, 0.06) 65%,
+    transparent 100%
+  );
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+/* Intense neon bloom — tighter glow */
+.aurora-beam-line::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  height: 120px;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(167, 139, 250, 0.65) 0%,
+    rgba(139, 92, 246, 0.4) 25%,
+    rgba(99, 102, 241, 0.15) 55%,
+    transparent 85%
+  );
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+/* Pulse animation */
+@keyframes aurora-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 20px rgba(167, 139, 250, 0.6),
+      0 0 60px rgba(139, 92, 246, 0.4),
+      0 0 120px rgba(139, 92, 246, 0.25),
+      0 0 200px rgba(139, 92, 246, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 30px rgba(167, 139, 250, 0.9),
+      0 0 80px rgba(139, 92, 246, 0.6),
+      0 0 160px rgba(139, 92, 246, 0.35),
+      0 0 280px rgba(139, 92, 246, 0.15),
+      0 0 400px rgba(139, 92, 246, 0.06);
+  }
+}
+
+@media (max-width: 768px) {
+  .aurora-beam {
+    height: 240px;
+    margin-top: -60px;
+    margin-bottom: -60px;
+  }
+  .aurora-beam-line::before {
+    height: 200px;
+  }
+  .aurora-beam-line::after {
+    height: 80px;
+  }
+}
 /* Fix for Mobile Desktop Mode (tall viewports with desktop widths) */
 @media (min-width: 769px) and (orientation: portrait) {
   .hero { min-height: auto; padding-bottom: var(--space-m); }
