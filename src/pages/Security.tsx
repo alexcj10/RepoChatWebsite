@@ -101,14 +101,13 @@ export default function Security() {
   const [expandedLayer, setExpandedLayer] = useState<number | null>(null)
 
   return (
-    <div className="legal-page">
+    <div className="legal-page" style={{ paddingTop: 'calc(var(--nav-h) + clamp(64px, 10vh, 100px))' }}>
       <div className="container">
 
         {/* ─── Hero Header ─── */}
         <ScrollReveal>
           <div className="section-head" style={{ marginBottom: 'var(--space-m)' }}>
-            <div className="badge mb-6"><Shield size={14} /> Security</div>
-            <h1 className="h2">Security at<br /><span className="gradient-text">Every Layer</span></h1>
+            <h1 className="h2">Security at<br /><span className="gradient-text">every layer.</span></h1>
             <p>RepoChat is built with security as a foundational requirement — not an afterthought. Every layer of our stack enforces strict data isolation and authentication.</p>
           </div>
         </ScrollReveal>
