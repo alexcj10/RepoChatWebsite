@@ -137,7 +137,7 @@ export default function Security() {
           <ScrollReveal>
             <div className="sec-deep-card" style={{ '--card-accent': '#10b981' } as React.CSSProperties}>
               <div className="sec-deep-card-header">
-                <div className="sec-deep-card-icon" style={{ background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
+                <div className="sec-deep-card-icon" style={{ color: '#10b981' }}>
                   <Database size={22} />
                 </div>
                 <h3>PostgreSQL Row Level Security</h3>
@@ -194,7 +194,7 @@ export default function Security() {
           <ScrollReveal delay={1}>
             <div className="sec-deep-card" style={{ '--card-accent': '#8b5cf6' } as React.CSSProperties}>
               <div className="sec-deep-card-header">
-                <div className="sec-deep-card-icon" style={{ background: 'rgba(139, 92, 246, 0.1)', border: '1px solid rgba(139, 92, 246, 0.15)', color: '#8b5cf6' }}>
+                <div className="sec-deep-card-icon" style={{ color: '#8b5cf6' }}>
                   <Key size={22} />
                 </div>
                 <h3>GitHub OAuth 2.0 Authentication</h3>
@@ -246,7 +246,7 @@ export default function Security() {
           <ScrollReveal delay={2}>
             <div className="sec-deep-card" style={{ '--card-accent': '#6366f1' } as React.CSSProperties}>
               <div className="sec-deep-card-header">
-                <div className="sec-deep-card-icon" style={{ background: 'rgba(99, 102, 241, 0.1)', border: '1px solid rgba(99, 102, 241, 0.15)', color: '#6366f1' }}>
+                <div className="sec-deep-card-icon" style={{ color: '#6366f1' }}>
                   <Lock size={22} />
                 </div>
                 <h3>Encryption in Transit & at Rest</h3>
@@ -293,7 +293,7 @@ export default function Security() {
           <ScrollReveal delay={3}>
             <div className="sec-deep-card" style={{ '--card-accent': '#f59e0b' } as React.CSSProperties}>
               <div className="sec-deep-card-header">
-                <div className="sec-deep-card-icon" style={{ background: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.15)', color: '#f59e0b' }}>
+                <div className="sec-deep-card-icon" style={{ color: '#f59e0b' }}>
                   <Eye size={22} />
                 </div>
                 <h3>Complete Data Isolation</h3>
