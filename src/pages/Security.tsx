@@ -176,12 +176,14 @@ export default function Security() {
 `}<span className="code-keyword">CREATE FUNCTION</span>{` `}<span className="code-fn">is_group_member</span>{`(gid uuid)
   `}<span className="code-keyword">RETURNS</span>{` boolean
   `}<span className="code-keyword">SECURITY DEFINER</span>{` `}<span className="code-keyword">AS</span>{` $$
-    `}<span className="code-keyword">SELECT EXISTS</span>{` (
+  `}<span className="code-keyword">BEGIN</span>{`
+    `}<span className="code-keyword">RETURN EXISTS</span>{` (
       `}<span className="code-keyword">SELECT</span>{` 1 `}<span className="code-keyword">FROM</span>{` `}<span className="code-table">group_members</span>{`
       `}<span className="code-keyword">WHERE</span>{` group_id `}<span className="code-op">=</span>{` gid
       `}<span className="code-keyword">AND</span>{` user_id `}<span className="code-op">=</span>{` `}<span className="code-fn">auth.uid</span>{`()
     );
-  $$ `}<span className="code-keyword">LANGUAGE</span>{` sql;`}
+  `}<span className="code-keyword">END</span>{`;
+  $$ `}<span className="code-keyword">LANGUAGE</span>{` plpgsql;`}
                   </pre>
                 </div>
               </div>
@@ -219,18 +221,21 @@ export default function Security() {
 `}<span className="code-fn">1.</span>{` User clicks `}<span className="code-string">"Sign in with GitHub"</span>{`
    Extension → `}<span className="code-fn">supabase.auth.signInWithOAuth</span>{`()
 
-`}<span className="code-fn">2.</span>{` GitHub redirects with auth code
-   github.com/callback → `}<span className="code-string">code=abc123</span>{`
+`}<span className="code-fn">2.</span>{` GitHub redirects with tokens in hash
+   github.com → `}<span className="code-string">#access_token=...&refresh_token=...</span>{`
 
-`}<span className="code-fn">3.</span>{` Supabase exchanges code for session
-   `}<span className="code-fn">supabase.auth.setSession</span>{`(`}<span className="code-string">access_token</span>{`)
+`}<span className="code-fn">3.</span>{` Extension captures tokens from hash
+   `}<span className="code-fn">supabase.auth.setSession</span>{`({
+     `}<span className="code-string">access_token</span>{`, `}<span className="code-string">refresh_token</span>{`
+   })
 
-`}<span className="code-fn">4.</span>{` Token cleanup (immediate)
-   `}<span className="code-fn">history.replaceState</span>{`() `}<span className="code-comment">// strip hash</span>{`
+`}<span className="code-fn">4.</span>{` Cleanup (immediate)
+   `}<span className="code-fn">localStorage.setItem</span>{`(`}<span className="code-string">'repochat-github-token'</span>{`, provider_token)
+   `}<span className="code-fn">history.replaceState</span>{`() `}<span className="code-comment">// strip hash from URL</span>{`
 
-`}<span className="code-comment">-- Result: JWT stored in Supabase</span>{`
+`}<span className="code-comment">-- Result: JWT stored in Supabase session</span>{`
 `}<span className="code-comment">-- Password: NEVER leaves GitHub</span>{`
-`}<span className="code-comment">-- Plaintext tokens: NEVER stored</span>
+`}<span className="code-comment">-- URL tokens: stripped immediately</span>
                   </pre>
                 </div>
               </div>
@@ -313,12 +318,12 @@ export default function Security() {
 {`-- `}<span className="code-comment">What User A sees</span>{`
 `}<span className="code-keyword">SELECT</span>{` * `}<span className="code-keyword">FROM</span>{` `}<span className="code-table">messages</span>{`;
 `}<span className="code-comment">-- → Returns ONLY rows where</span>{`
-`}<span className="code-comment">--   user_id = auth.uid() of User A</span>{`
+`}<span className="code-comment">--   sender_id OR receiver_id = User A</span>{`
 
 -- `}<span className="code-comment">What User B sees (same query)</span>{`
 `}<span className="code-keyword">SELECT</span>{` * `}<span className="code-keyword">FROM</span>{` `}<span className="code-table">messages</span>{`;
 `}<span className="code-comment">-- → Returns ONLY rows where</span>{`
-`}<span className="code-comment">--   user_id = auth.uid() of User B</span>{`
+`}<span className="code-comment">--   sender_id OR receiver_id = User B</span>{`
 
 `}<span className="code-comment">-- User A's data is INVISIBLE to B</span>{`
 `}<span className="code-comment">-- User B's data is INVISIBLE to A</span>{`
