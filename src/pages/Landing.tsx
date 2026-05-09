@@ -175,7 +175,9 @@ export default function Landing() {
               <div className="why-header-inner">
                 <div className="ecosystem-badge">Why RepoChat</div>
                 <h3 className="why-title">Your tools don't talk to each other.<br/><span className="gradient-text">You pay the price.</span></h3>
-                <p className="body-lg">Developers bounce between 9+ tools daily — GitHub, Slack, Jira, Email, Notion — losing focus with every switch. RepoChat unifies communication and code context in one sidebar, right where you work.</p>
+                <p className="body-lg">
+                  Developers bounce between 9+ tools daily — GitHub, Slack, Jira, Email, Notion — losing focus with every switch. RepoChat unifies communication and code context in one sidebar, right where you work.
+                </p>
               </div>
             </ScrollReveal>
           </div>
