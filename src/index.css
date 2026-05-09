@@ -3965,7 +3965,7 @@ button.plan-btn {
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   max-width: 900px;
-  margin: 0 auto var(--space-xl);
+  margin: 0 auto clamp(5rem, 4rem + 5vw, 9rem);
 }
 
 .sec-stat-card {
