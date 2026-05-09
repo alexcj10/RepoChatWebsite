@@ -203,13 +203,28 @@ export default function Privacy() {
   }, [searchQuery]);
 
   useEffect(() => {
+    // Auto-scroll the sidebar so the active link is always visible
+    const activeLink = document.querySelector('.legal-sidebar-link.active');
+    if (activeLink) {
+      activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, [activeSection]);
+
+  useEffect(() => {
     if (searchQuery) return; // Disable scroll tracking when searching
     
     const handleScroll = () => {
       if (isScrollingRef.current) return;
       
-      // Check if we're at the very bottom of the page
-      const isAtBottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 50;
+      const scrollY = window.scrollY;
+      const innerHeight = window.innerHeight;
+      const scrollHeight = Math.max(
+        document.body.scrollHeight, document.documentElement.scrollHeight,
+        document.body.offsetHeight, document.documentElement.offsetHeight
+      );
+      
+      // Highly robust check for reaching the footer
+      const isAtBottom = scrollY + innerHeight >= scrollHeight - 300;
       
       if (isAtBottom) {
         setActiveSection(SECTIONS[SECTIONS.length - 1].id);
