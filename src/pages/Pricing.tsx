@@ -292,7 +292,7 @@ export default function Pricing() {
         {/* ===== FAQ ===== */}
         <div style={{ paddingBottom: 'var(--space-l)' }}>
           <ScrollReveal>
-            <div className="section-head" style={{ marginTop: 'var(--space-l)', marginBottom: 'var(--space-m)', paddingTop: 'var(--space-m)' }}>
+            <div className="section-head" style={{ marginTop: 'var(--space-l)', marginBottom: 'var(--space-m)', paddingTop: 'var(--space-l)' }}>
               <h2 className="h3">Frequently Asked Questions</h2>
             </div>
           </ScrollReveal>
