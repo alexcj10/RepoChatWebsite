@@ -326,9 +326,9 @@ export default function Security() {
 
         <div className="sec-deep-cards">
           <ScrollReveal>
-            <div className="sec-deep-card" style={{ '--card-accent': '#a855f7' } as React.CSSProperties}>
+            <div className="sec-deep-card" style={{ '--card-accent': '#ec4899' } as React.CSSProperties}>
               <div className="sec-deep-card-header">
-                <div className="sec-deep-card-icon" style={{ color: '#a855f7' }}>
+                <div className="sec-deep-card-icon" style={{ color: '#ec4899' }}>
                   <Shield size={22} />
                 </div>
                 <h3>Minimal Chrome Extension Permissions</h3>
@@ -341,12 +341,12 @@ export default function Security() {
                   <div className="sec-deep-card-details">
                     {extensionSecurity.permissions.map((perm, i) => (
                       <div key={i} className="sec-deep-detail-item">
-                        <div className="sec-deep-detail-dot" style={{ background: '#a855f7' }} />
+                        <div className="sec-deep-detail-dot" style={{ background: '#ec4899' }} />
                         <span><strong>{perm.name}</strong> — {perm.desc}</span>
                       </div>
                     ))}
                     <div className="sec-deep-detail-item">
-                      <div className="sec-deep-detail-dot" style={{ background: '#a855f7' }} />
+                      <div className="sec-deep-detail-dot" style={{ background: '#ec4899' }} />
                       <span><strong>Host permissions</strong> — {extensionSecurity.hostPermissions}</span>
                     </div>
                   </div>
@@ -494,9 +494,9 @@ wh.`}<span className="code-fn">verify</span>{`(rawBody, {
 
           {/* ──── Server Card 2: Database Triggers & Zero Payment Storage ──── */}
           <ScrollReveal delay={1}>
-            <div className="sec-deep-card" style={{ '--card-accent': '#f59e0b' } as React.CSSProperties}>
+            <div className="sec-deep-card" style={{ '--card-accent': '#14b8a6' } as React.CSSProperties}>
               <div className="sec-deep-card-header">
-                <div className="sec-deep-card-icon" style={{ color: '#f59e0b' }}>
+                <div className="sec-deep-card-icon" style={{ color: '#14b8a6' }}>
                   <Server size={22} />
                 </div>
                 <h3>Database Triggers & Zero Payment Storage</h3>
@@ -508,19 +508,19 @@ wh.`}<span className="code-fn">verify</span>{`(rawBody, {
                   </p>
                   <div className="sec-deep-card-details">
                     <div className="sec-deep-detail-item">
-                      <div className="sec-deep-detail-dot" style={{ background: '#f59e0b' }} />
+                      <div className="sec-deep-detail-dot" style={{ background: '#14b8a6' }} />
                       <span><strong>handle_new_friend_request</strong> — Auto-creates notification for target user via SECURITY DEFINER trigger</span>
                     </div>
                     <div className="sec-deep-detail-item">
-                      <div className="sec-deep-detail-dot" style={{ background: '#f59e0b' }} />
+                      <div className="sec-deep-detail-dot" style={{ background: '#14b8a6' }} />
                       <span><strong>handle_friend_request_update</strong> — Syncs friends table + cleans up notification on accept/reject</span>
                     </div>
                     <div className="sec-deep-detail-item">
-                      <div className="sec-deep-detail-dot" style={{ background: '#f59e0b' }} />
+                      <div className="sec-deep-detail-dot" style={{ background: '#14b8a6' }} />
                       <span><strong>handle_new_group_invitation</strong> — Notifies invited users with group name and role via SECURITY DEFINER</span>
                     </div>
                     <div className="sec-deep-detail-item">
-                      <div className="sec-deep-detail-dot" style={{ background: '#f59e0b' }} />
+                      <div className="sec-deep-detail-dot" style={{ background: '#14b8a6' }} />
                       <span><strong>Zero PCI scope</strong> — We never see, store, or process credit card numbers, CVVs, or billing details</span>
                     </div>
                   </div>
@@ -583,19 +583,19 @@ $$ `}<span className="code-keyword">LANGUAGE</span>{` plpgsql `}<span className=
                   </p>
                   <div className="sec-deep-card-details">
                     <div className="sec-deep-detail-item">
-                      <div className="sec-deep-detail-dot" style={{ background: '#f59e0b' }} />
+                      <div className="sec-deep-detail-dot" style={{ background: '#ef4444' }} />
                       <span><strong>Do not</strong> open a public GitHub issue for security vulnerabilities</span>
                     </div>
                     <div className="sec-deep-detail-item">
-                      <div className="sec-deep-detail-dot" style={{ background: '#f59e0b' }} />
+                      <div className="sec-deep-detail-dot" style={{ background: '#ef4444' }} />
                       <span>Email us directly at the address shown — we will acknowledge within <strong>48 hours</strong></span>
                     </div>
                     <div className="sec-deep-detail-item">
-                      <div className="sec-deep-detail-dot" style={{ background: '#f59e0b' }} />
+                      <div className="sec-deep-detail-dot" style={{ background: '#ef4444' }} />
                       <span>Include reproduction steps, affected components, and potential impact in your report</span>
                     </div>
                     <div className="sec-deep-detail-item">
-                      <div className="sec-deep-detail-dot" style={{ background: '#f59e0b' }} />
+                      <div className="sec-deep-detail-dot" style={{ background: '#ef4444' }} />
                       <span>We will credit reporters publicly if desired once the vulnerability is resolved</span>
                     </div>
                   </div>
