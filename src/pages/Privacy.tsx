@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useRef } from 'react';
 import { Search } from 'lucide-react';
 
 const SECTIONS = [
@@ -189,6 +189,8 @@ const SECTIONS = [
 export default function Privacy() {
   const [activeSection, setActiveSection] = useState('about');
   const [searchQuery, setSearchQuery] = useState('');
+  const isScrollingRef = useRef(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Filter sections based on search query
   const filteredSections = useMemo(() => {
@@ -204,6 +206,16 @@ export default function Privacy() {
     if (searchQuery) return; // Disable scroll tracking when searching
     
     const handleScroll = () => {
+      if (isScrollingRef.current) return;
+      
+      // Check if we're at the very bottom of the page
+      const isAtBottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 50;
+      
+      if (isAtBottom) {
+        setActiveSection(SECTIONS[SECTIONS.length - 1].id);
+        return;
+      }
+
       const sections = SECTIONS.map(s => document.getElementById(s.id));
       const scrollPosition = window.scrollY + 200; // Offset for navbar
 
@@ -221,10 +233,17 @@ export default function Privacy() {
   }, [searchQuery]);
 
   const scrollToSection = (id: string) => {
+    setActiveSection(id);
     const element = document.getElementById(id);
     if (element) {
+      isScrollingRef.current = true;
       const y = element.getBoundingClientRect().top + window.scrollY - 100;
       window.scrollTo({ top: y, behavior: 'smooth' });
+      
+      clearTimeout(scrollTimeoutRef.current);
+      scrollTimeoutRef.current = setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 1000);
     }
   };
 
