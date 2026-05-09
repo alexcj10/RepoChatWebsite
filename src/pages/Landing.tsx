@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
-import { ArrowRight, Shield, Zap, Check, X, Sparkles, GitPullRequest, AlertCircle, Users, Code, Network, Cpu, Clock, DollarSign, BarChart3, Bot } from 'lucide-react'
+import { ArrowRight, Shield, Check, X, Sparkles, GitPullRequest, AlertCircle, Users, Code, Network, Cpu, Clock, DollarSign, BarChart3, Bot } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
@@ -173,7 +173,7 @@ export default function Landing() {
           <div className="why-header">
             <ScrollReveal>
               <div className="why-header-inner">
-                <div className="badge mb-6">Why RepoChat</div>
+                <div className="ecosystem-badge">Why RepoChat</div>
                 <h3 className="why-title">Your tools don't talk to each other.<br/><span className="gradient-text">You pay the price.</span></h3>
                 <p className="body-lg">Developers bounce between 9+ tools daily — GitHub, Slack, Jira, Email, Notion — losing focus with every switch. RepoChat unifies communication and code context in one sidebar, right where you work.</p>
               </div>
@@ -589,7 +589,7 @@ export default function Landing() {
         <div className="container">
           <ScrollReveal>
             <div className="section-head ecosystem-head">
-              <div className="badge mb-6"><Zap size={12} /> Core Features</div>
+              <div className="ecosystem-badge">Core Features</div>
               <h2 className="h2 ecosystem-h2">Your entire workflow,<br />in <span className="gradient-text">one sidebar.</span></h2>
               <p>Chat with your team, manage GitHub issues, and share code snippets — all without leaving the repository.</p>
             </div>
@@ -870,7 +870,7 @@ export default function Landing() {
         <div className="container">
           <ScrollReveal>
             <div className="section-head ecosystem-head">
-              <div className="badge mb-6"><Zap size={12} /> Pricing</div>
+              <div className="ecosystem-badge">Pricing</div>
               <h2 className="h2 ecosystem-h2">Simple <span className="gradient-text">pricing.</span></h2>
               <p>Start free, upgrade when you need more.</p>
             </div>
