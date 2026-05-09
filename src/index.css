@@ -436,6 +436,10 @@ html.nav-open-lock body {
 .feature-card-content {
   padding: 32px;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .feature-card-content .h3 {
@@ -446,6 +450,7 @@ html.nav-open-lock body {
 .feature-card-content .body-md {
   opacity: 0.7;
   line-height: 1.6;
+  font-size: 0.95rem;
 }
 
 @media (max-width: 1100px) {
@@ -478,6 +483,9 @@ html.nav-open-lock body {
   }
   .feature-card-content .h3 {
     font-size: 1.2rem;
+  }
+  .feature-card-content .body-md {
+    font-size: 0.9rem;
   }
 }
 
