@@ -1,318 +1,245 @@
-import { Shield, Eye, Database, Key, CreditCard, Trash2, UserCheck, Cookie, Baby, RefreshCw, Mail } from 'lucide-react'
-import ScrollReveal from '../components/ScrollReveal'
+import { useEffect, useState } from 'react';
 
-/* ─── Privacy Highlights ─── */
-const highlights = [
-  { icon: <Key size={20} />, label: 'No Passwords', sub: 'GitHub OAuth only', color: '#8b5cf6' },
-  { icon: <Database size={20} />, label: 'RLS Protected', sub: 'Per-user data isolation', color: '#10b981' },
-  { icon: <Eye size={20} />, label: 'No Tracking', sub: 'Zero analytics cookies', color: '#3b82f6' },
-  { icon: <CreditCard size={20} />, label: 'No Card Storage', sub: 'Dodo Payments handles billing', color: '#f59e0b' },
-]
-
-/* ─── Privacy Sections ─── */
-type SubSection = {
-  desc: string
-  items: string[]
-  subtitle?: string
-  note?: string
-}
-
-const sections: { icon: React.ReactNode; title: string; color: string; subsections: SubSection[] }[] = [
-  {
-    icon: <Database size={22} />,
-    title: '1. Information We Collect',
-    color: '#10b981',
-    subsections: [
-      {
-        subtitle: '1.1 Information from GitHub OAuth',
-        desc: 'When you sign in with GitHub, we receive:',
-        items: [
-          'Your GitHub username and display name',
-          'Your GitHub avatar URL',
-          'Your GitHub user ID',
-          'An OAuth access token (used to interact with GitHub on your behalf)',
-        ],
-        note: 'We never receive or store your GitHub password.',
-      },
-      {
-        subtitle: '1.2 Messages & Content',
-        desc: 'We store the messages you send through RepoChat, including:',
-        items: [
-          'Direct messages to other users',
-          'Group chat messages',
-          'Notes and tasks created in the Pad feature',
-          'GitHub context attached to messages (PR/Issue URLs, metadata)',
-          'Message reactions and stars',
-        ],
-      },
-      {
-        subtitle: '1.3 Usage Data',
-        desc: 'We collect minimal usage data including:',
-        items: [
-          'Online/offline presence status and last seen timestamps',
-          'Chat preferences (theme, accent color, layout)',
-          'Feature usage patterns (aggregate, non-identifying)',
-        ],
-      },
-    ],
-  },
-  {
-    icon: <Eye size={22} />,
-    title: '2. How We Use Your Information',
-    color: '#8b5cf6',
-    subsections: [
-      {
-        desc: 'We use the information we collect to:',
-        items: [
-          'Provide, maintain, and improve the RepoChat service',
-          'Deliver messages and notifications to intended recipients',
-          'Display your profile to other users (username, avatar)',
-          'Manage your subscription and billing (Pro users)',
-          'Detect and prevent abuse or violations of our Terms of Service',
-        ],
-      },
-    ],
-  },
-  {
-    icon: <Shield size={22} />,
-    title: '3. How We Store Your Data',
-    color: '#3b82f6',
-    subsections: [
-      {
-        desc: 'All data is stored securely in Supabase, a PostgreSQL-based cloud database with enterprise-grade security. Key protections include:',
-        items: [
-          'Row Level Security (RLS) — Every table has RLS policies ensuring users can only access their own data',
-          'Encrypted at rest — All database storage is encrypted',
-          'Encrypted in transit — All connections use TLS/SSL',
-          'Isolated access — No user can read or modify another user\'s messages, notes, or settings',
-        ],
-      },
-    ],
-  },
-  {
-    icon: <CreditCard size={22} />,
-    title: '4. Third-Party Services',
-    color: '#f59e0b',
-    subsections: [
-      {
-        desc: 'We use the following third-party services:',
-        items: [
-          'Supabase — Database, authentication, and file storage',
-          'Dodo Payments — Payment processing for Pro subscriptions',
-          'GitHub OAuth — Authentication',
-        ],
-        note: 'We do not sell, trade, or share your personal data with any other third parties.',
-      },
-    ],
-  },
-  {
-    icon: <Trash2 size={22} />,
-    title: '5. Data Retention',
-    color: '#ef4444',
-    subsections: [
-      {
-        desc: 'We retain your data for as long as your account is active. When you delete your account:',
-        items: [
-          'Your profile data is permanently deleted',
-          'Your messages remain in group chats for continuity but are anonymized',
-          'Your notes and custom lists are permanently deleted',
-          'Your presence data is removed immediately',
-        ],
-      },
-    ],
-  },
-  {
-    icon: <UserCheck size={22} />,
-    title: '6. Your Rights',
-    color: '#06b6d4',
-    subsections: [
-      {
-        desc: 'You have the right to:',
-        items: [
-          'Access your personal data at any time through the extension',
-          'Delete your account and associated data by contacting us',
-          'Export your data upon request',
-          'Withdraw consent for data processing at any time',
-        ],
-      },
-    ],
-  },
-  {
-    icon: <Cookie size={22} />,
-    title: '7. Cookies & Local Storage',
-    color: '#a855f7',
-    subsections: [
-      {
-        desc: 'RepoChat uses browser localStorage to store:',
-        items: [
-          'Authentication session tokens',
-          'Theme and layout preferences',
-          'Cached data for offline functionality (Free tier)',
-        ],
-        note: 'We do not use tracking cookies or analytics cookies.',
-      },
-    ],
-  },
-  {
-    icon: <Baby size={22} />,
-    title: '8. Children\'s Privacy',
-    color: '#ec4899',
-    subsections: [
-      {
-        desc: 'RepoChat is not intended for use by anyone under the age of 13. We do not knowingly collect personal information from children under 13.',
-        items: [],
-      },
-    ],
-  },
-  {
-    icon: <RefreshCw size={22} />,
-    title: '9. Changes to This Policy',
-    color: '#14b8a6',
-    subsections: [
-      {
-        desc: 'We may update this Privacy Policy from time to time. We will notify users of material changes by posting the updated policy on this page with a revised "Last updated" date.',
-        items: [],
-      },
-    ],
-  },
-  {
-    icon: <Mail size={22} />,
-    title: '10. Contact Us',
-    color: '#6366f1',
-    subsections: [
-      {
-        desc: 'If you have questions about this Privacy Policy, please contact us at:',
-        items: [
-          'Email: alexcj10@yahoo.com',
-        ],
-      },
-    ],
-  },
-]
+const SECTIONS = [
+  { id: 'about', title: '1. About RepoChat' },
+  { id: 'applicability', title: '2. Applicability' },
+  { id: 'information-we-collect', title: '3. Information We Collect' },
+  { id: 'how-we-use', title: '4. How We Use Information' },
+  { id: 'how-we-retain', title: '5. How We Retain Information' },
+  { id: 'how-we-disclose', title: '6. How We Disclose Information' },
+  { id: 'security', title: '7. How We Secure Information' },
+  { id: 'third-party', title: '8. Third-Party Services' },
+  { id: 'international', title: '9. International Data Transfers' },
+  { id: 'your-rights', title: '10. Your Privacy Rights' },
+  { id: 'children', title: '11. Children\'s Privacy' },
+  { id: 'changes', title: '12. Changes to This Policy' },
+  { id: 'contact', title: '13. Contact Us' },
+];
 
 export default function Privacy() {
+  const [activeSection, setActiveSection] = useState('about');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = SECTIONS.map(s => document.getElementById(s.id));
+      const scrollPosition = window.scrollY + 200; // Offset for navbar
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(SECTIONS[i].id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const y = element.getBoundingClientRect().top + window.scrollY - 100;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="legal-page">
-      <div className="container">
-
-        {/* ─── Hero Header ─── */}
-        <ScrollReveal>
-          <div className="section-head" style={{ marginBottom: 'var(--space-m)' }}>
-            <div className="badge mb-6"><Shield size={14} /> Privacy</div>
-            <h1 className="h2">Your Privacy<br /><span className="gradient-text">Comes First</span></h1>
-            <p>We believe in transparency. Here's exactly how RepoChat handles your data — no legalese, no surprises.</p>
-            <p className="body-sm" style={{ marginTop: 8, color: 'var(--text-muted)' }}>Last updated: April 24, 2026</p>
+    <div className="legal-layout">
+      {/* Sidebar Navigation */}
+      <aside className="legal-sidebar">
+        {SECTIONS.map((section) => (
+          <div
+            key={section.id}
+            className={`legal-sidebar-link ${activeSection === section.id ? 'active' : ''}`}
+            onClick={() => scrollToSection(section.id)}
+          >
+            {section.title}
           </div>
-        </ScrollReveal>
+        ))}
+      </aside>
 
-        {/* ─── Highlights Bar ─── */}
-        <ScrollReveal>
-          <div className="rls-stats-grid" style={{
-            maxWidth: 900,
-            margin: '0 auto var(--space-l)',
-          }}>
-            {highlights.map((h, i) => (
-              <div key={i} className="security-grid-card" style={{
-                borderRadius: 16,
-                padding: '24px 20px',
-                textAlign: 'center',
-                '--card-glow': `${h.color}40`,
-                '--card-glow-bg': `${h.color}20`,
-                background: `
-                  radial-gradient(circle at top left, ${h.color}20 0%, transparent 70%),
-                  linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                  rgba(15, 15, 20, 0.5)
-                `,
-                backgroundSize: '100% 100%, 24px 24px, 24px 24px',
-              } as React.CSSProperties}>
-                <div style={{
-                  width: 44, height: 44, borderRadius: 12,
-                  background: `${h.color}15`,
-                  border: `1px solid ${h.color}25`,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: h.color, margin: '0 auto 12px',
-                }}>
-                  {h.icon}
-                </div>
-                <div style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 2 }}>{h.label}</div>
-                <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>{h.sub}</div>
-              </div>
-            ))}
-          </div>
-        </ScrollReveal>
-
-        {/* ─── Sections ─── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 860, margin: '0 auto' }}>
-          {sections.map((section, i) => (
-            <ScrollReveal key={i} delay={((i % 3) + 1) as 1 | 2 | 3}>
-              <div
-                className="security-grid-card"
-                style={{
-                  borderRadius: 20,
-                  padding: '28px 32px',
-                  '--card-glow': `${section.color}40`,
-                  '--card-glow-bg': `${section.color}30`,
-                } as React.CSSProperties}
-              >
-                {/* Section Header */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
-                  <div style={{
-                    width: 44, height: 44, borderRadius: 12,
-                    background: `${section.color}15`,
-                    border: `1px solid ${section.color}25`,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: section.color, flexShrink: 0,
-                  }}>
-                    {section.icon}
-                  </div>
-                  <h2 style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.01em', margin: 0 }}>
-                    {section.title}
-                  </h2>
-                </div>
-
-                {/* Subsections */}
-                {section.subsections.map((sub, j) => (
-                  <div key={j} style={{ marginBottom: j < section.subsections.length - 1 ? 24 : 0 }}>
-                    {sub.subtitle && (
-                      <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: 8, opacity: 0.9 }}>
-                        {sub.subtitle}
-                      </h3>
-                    )}
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.7, marginBottom: sub.items.length > 0 ? 12 : 0 }}>
-                      {sub.desc}
-                    </p>
-                    {sub.items.length > 0 && (
-                      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                        {sub.items.map((item, k) => (
-                          <li key={k} style={{
-                            display: 'flex', alignItems: 'flex-start', gap: 10,
-                            fontSize: '0.84rem', color: 'var(--text-secondary)',
-                            lineHeight: 1.6, marginBottom: 6,
-                            paddingLeft: 4,
-                          }}>
-                            <span style={{ color: section.color, flexShrink: 0, fontWeight: 700, fontSize: '0.75rem', marginTop: 3 }}>✓</span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                    {sub.note && (
-                      <p style={{
-                        marginTop: 12, fontSize: '0.82rem', fontWeight: 600,
-                        color: section.color, opacity: 0.85,
-                      }}>
-                        {sub.note}
-                      </p>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </ScrollReveal>
-          ))}
+      {/* Main Content */}
+      <main className="legal-content">
+        <h1>Privacy Policy</h1>
+        
+        <div className="legal-meta">
+          <span>Effective Date: May 9, 2026</span>
+          <span>Last Updated: May 9, 2026</span>
         </div>
 
-      </div>
+        <section id="about" className="legal-section">
+          <h2>1. About RepoChat</h2>
+          <p>
+            RepoChat ("we", "us", "our") provides a browser extension and platform designed to bring 
+            real-time communication and collaboration directly into GitHub repositories. Our services 
+            include direct messaging, group chats, shared context, and integrations (collectively, the "Services").
+          </p>
+          <p>
+            At RepoChat, we respect your privacy. This Privacy Policy explains our practices regarding 
+            the collection, use, disclosure, and processing of your personal information when you use 
+            our Services or visit our website.
+          </p>
+        </section>
+
+        <section id="applicability" className="legal-section">
+          <h2>2. Applicability</h2>
+          <p>
+            This Privacy Policy applies to the personal information we collect when you:
+          </p>
+          <ul>
+            <li>Visit our website (repoch.at) or any affiliated web properties.</li>
+            <li>Install and use the RepoChat browser extension.</li>
+            <li>Interact with our APIs, servers, and related services.</li>
+            <li>Communicate with our support or sales teams.</li>
+          </ul>
+          <p>
+            This policy does not apply to third-party services that integrate with RepoChat (including GitHub), 
+            whose privacy practices are governed by their own policies.
+          </p>
+        </section>
+
+        <section id="information-we-collect" className="legal-section">
+          <h2>3. Information We Collect</h2>
+          
+          <h3>Information You Provide Directly</h3>
+          <ul>
+            <li><strong>Account Information:</strong> When you authenticate via GitHub OAuth, we collect your GitHub user ID, username, display name, avatar URL, and an OAuth access token. We never receive or store your GitHub password.</li>
+            <li><strong>Communication Data:</strong> We store the messages, links, reactions, and notes you send through the Services to ensure they are delivered and synchronized across your devices.</li>
+            <li><strong>Support Inquiries:</strong> If you contact us for support, we collect the content of your messages, email address, and any technical information you choose to provide.</li>
+          </ul>
+
+          <h3>Information We Collect Automatically</h3>
+          <ul>
+            <li><strong>Usage Information:</strong> We collect aggregated, non-identifying telemetry data regarding how you interact with the extension (e.g., feature usage frequency, theme preferences).</li>
+            <li><strong>Device and Log Data:</strong> Like most online services, we collect standard log data including IP addresses, browser types, operating systems, and timestamps to ensure security and prevent abuse.</li>
+            <li><strong>Cookies and Local Storage:</strong> We use local storage purely for functional purposes (such as maintaining your active session and caching offline data). We do not use tracking or advertising cookies.</li>
+          </ul>
+        </section>
+
+        <section id="how-we-use" className="legal-section">
+          <h2>4. How We Use Information</h2>
+          <p>We use the information we collect for the following purposes:</p>
+          <ul>
+            <li><strong>Service Delivery:</strong> To operate, maintain, and provide the core functionalities of RepoChat, including message routing and synchronization.</li>
+            <li><strong>Authentication:</strong> To securely verify your identity via GitHub and manage your session.</li>
+            <li><strong>Improvement:</strong> To analyze performance metrics and improve the reliability and user experience of our applications.</li>
+            <li><strong>Security:</strong> To detect, investigate, and prevent unauthorized access, abuse, and other technical or security issues.</li>
+            <li><strong>Communication:</strong> To send important administrative notices, security alerts, and support responses.</li>
+          </ul>
+        </section>
+
+        <section id="how-we-retain" className="legal-section">
+          <h2>5. How We Retain Information</h2>
+          <p>
+            We retain your personal information only for as long as your account is active or as necessary 
+            to fulfill the purposes outlined in this Privacy Policy.
+          </p>
+          <p>
+            If you request account deletion, your profile data, private notes, and authentication tokens 
+            are immediately permanently deleted from our primary databases. Messages sent in group channels 
+            may be anonymized and retained to preserve conversation continuity for other users. Backups 
+            are purged on a rolling 30-day schedule.
+          </p>
+        </section>
+
+        <section id="how-we-disclose" className="legal-section">
+          <h2>6. How We Disclose Information</h2>
+          <p>We do not sell your personal information. We only disclose information under the following circumstances:</p>
+          <ul>
+            <li><strong>Other Users:</strong> Your username, avatar, and online status are visible to other RepoChat users you interact with. Your messages are visible to the intended recipients.</li>
+            <li><strong>Service Providers:</strong> We use trusted third-party services for infrastructure hosting (e.g., Supabase) and payment processing (e.g., Dodo Payments). These providers are bound by strict data processing agreements.</li>
+            <li><strong>Legal Compliance:</strong> We may disclose information if legally required to do so to comply with applicable laws, legal processes, or governmental requests, or to protect our rights and the safety of our users.</li>
+            <li><strong>Business Transfers:</strong> If we are involved in a merger, acquisition, or sale of assets, your data may be transferred as part of that transaction, subject to the same privacy commitments.</li>
+          </ul>
+        </section>
+
+        <section id="security" className="legal-section">
+          <h2>7. How We Secure Information</h2>
+          <p>
+            We implement robust administrative, technical, and physical safeguards designed to protect 
+            your data. All data is encrypted in transit using TLS/SSL and encrypted at rest in our databases.
+          </p>
+          <p>
+            We utilize strict Row Level Security (RLS) policies within our database infrastructure, 
+            ensuring that users can strictly access only their own data or data explicitly shared with them. 
+            While we strive to use commercially acceptable means to protect your information, no method 
+            of transmission over the Internet is 100% secure.
+          </p>
+        </section>
+
+        <section id="third-party" className="legal-section">
+          <h2>8. Third-Party Services</h2>
+          <p>
+            RepoChat relies on third-party infrastructure to operate reliably. Our key subprocessors include:
+          </p>
+          <ul>
+            <li><strong>Supabase:</strong> For PostgreSQL database hosting, authentication, and real-time WebSocket infrastructure.</li>
+            <li><strong>GitHub:</strong> For OAuth authentication and contextual repository metadata.</li>
+            <li><strong>Dodo Payments:</strong> For secure processing of premium subscriptions. (RepoChat does not directly handle or store credit card numbers).</li>
+          </ul>
+        </section>
+
+        <section id="international" className="legal-section">
+          <h2>9. International Data Transfers</h2>
+          <p>
+            RepoChat is operated globally. Your personal information may be transferred to, and processed in, 
+            countries other than the country in which you are resident. These countries may have data 
+            protection laws that are different from the laws of your country.
+          </p>
+          <p>
+            When we transfer data internationally, we ensure appropriate safeguards are in place, such as 
+            Standard Contractual Clauses, to protect your information in accordance with this Privacy Policy.
+          </p>
+        </section>
+
+        <section id="your-rights" className="legal-section">
+          <h2>10. Your Privacy Rights</h2>
+          <p>Depending on your location, you may have the following rights regarding your personal data:</p>
+          <ul>
+            <li><strong>Access:</strong> The right to request copies of your personal information.</li>
+            <li><strong>Rectification:</strong> The right to request correction of inaccurate information.</li>
+            <li><strong>Erasure:</strong> The right to request the deletion of your personal data ("Right to be Forgotten").</li>
+            <li><strong>Restriction:</strong> The right to request that we restrict the processing of your data.</li>
+            <li><strong>Data Portability:</strong> The right to receive your data in a structured, machine-readable format.</li>
+          </ul>
+          <p>
+            You can exercise these rights by managing your settings directly within the RepoChat extension 
+            or by contacting us directly.
+          </p>
+        </section>
+
+        <section id="children" className="legal-section">
+          <h2>11. Children's Privacy</h2>
+          <p>
+            Our Services are not directed to, and we do not knowingly collect personal information from, 
+            children under the age of 16. If we become aware that we have inadvertently received personal 
+            information from a child under the age of 16, we will delete such information from our records.
+          </p>
+        </section>
+
+        <section id="changes" className="legal-section">
+          <h2>12. Changes to This Policy</h2>
+          <p>
+            We may update this Privacy Policy from time to time to reflect changes in our practices or 
+            relevant laws. We will notify you of any material changes by posting the updated policy on 
+            this page and updating the "Last Updated" date. Continued use of our Services after changes 
+            take effect constitutes your acceptance of the revised policy.
+          </p>
+        </section>
+
+        <section id="contact" className="legal-section">
+          <h2>13. Contact Us</h2>
+          <p>
+            If you have any questions, concerns, or requests regarding this Privacy Policy or our data 
+            practices, please contact us at:
+          </p>
+          <p>
+            <strong>Email:</strong> <a href="mailto:alexcj10@yahoo.com">alexcj10@yahoo.com</a>
+          </p>
+        </section>
+      </main>
     </div>
-  )
+  );
 }
