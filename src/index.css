@@ -374,7 +374,7 @@ html.nav-open-lock body {
   left: 0;
   right: 0;
   transform: translateY(-50%);
-  height: 180px;
+  height: 280px;
   background: linear-gradient(
     180deg,
     transparent 0%,
@@ -398,7 +398,7 @@ html.nav-open-lock body {
   left: 0;
   right: 0;
   transform: translateY(-50%);
-  height: 50px;
+  height: 80px;
   background: linear-gradient(
     180deg,
     transparent 0%,
