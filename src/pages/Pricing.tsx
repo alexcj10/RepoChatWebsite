@@ -257,7 +257,7 @@ export default function Pricing() {
         {/* ===== COMPARISON TABLE ===== */}
         <div>
           <ScrollReveal>
-            <div className="section-head" style={{ marginTop: 'var(--space-l)', marginBottom: 48, paddingTop: 'var(--space-m)' }}>
+            <div className="section-head" style={{ marginTop: 'var(--space-xl)', marginBottom: 48, paddingTop: 'var(--space-m)' }}>
               <h2 className="h2 ecosystem-h2">Full <span className="gradient-text">Comparison.</span></h2>
               <p className="body-md" style={{ opacity: 0.6, marginTop: 8 }}>See exactly what you get on each plan.</p>
             </div>
