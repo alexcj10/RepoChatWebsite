@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { Globe, Check, X, Sparkles, Shield, ArrowRight, CheckCircle2 } from 'lucide-react'
+import { Globe, Check, X, Sparkles, Shield, ArrowRight, CheckCircle2, Bot, KeyRound } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import FAQ from '../components/FAQ'
 import AuthModal from '../components/AuthModal'
@@ -19,6 +19,7 @@ const freeFeatures = [
   { text: 'GitHub Context Sharing', included: true },
   { text: 'Smart Triage & Reactions', included: true },
   { text: 'Interface Personalization', included: true },
+  { text: 'RepoBot AI (BYOK)', included: true },
   { text: 'Unlimited Everything', included: false },
   { text: 'Continuous Cloud Sync', included: false },
   { text: 'Priority Support', included: false },
@@ -36,6 +37,7 @@ const proFeatures = [
   { text: 'Unlimited Starred Messages', highlight: true },
   { text: 'Unlimited Archived Chats', highlight: true },
   { text: 'All Free features included', highlight: false },
+  { text: 'RepoBot AI (BYOK)', highlight: false },
   { text: 'Continuous Cloud Data Sync', highlight: false },
   { text: 'Priority Access to Features', highlight: false },
   { text: 'Premium Developer Support', highlight: false },
@@ -62,6 +64,7 @@ const comparisonRows = [
   { feature: 'Chat Export', free: true, pro: true },
   { feature: 'Theming & Personalization', free: true, pro: true },
   { feature: 'Keyboard Shortcuts', free: true, pro: true },
+  { feature: 'RepoBot AI (BYOK)', free: true, pro: true },
   { feature: 'Cloud Data Sync', free: false, pro: true },
   { feature: 'Priority Feature Access', free: false, pro: true },
   { feature: 'Premium Developer Support', free: false, pro: true },
@@ -253,6 +256,44 @@ export default function Pricing() {
             </div>
           </ScrollReveal>
         </div>
+
+        {/* ===== REPOBOT BYOK CALLOUT ===== */}
+        <ScrollReveal>
+          <div className="repobot-byok-banner">
+            <div className="repobot-byok-icon">
+              <Bot size={28} />
+            </div>
+            <div className="repobot-byok-content">
+              <h3 className="repobot-byok-title">
+                RepoBot AI — <span className="gradient-text">Free for Everyone</span>
+              </h3>
+              <p className="repobot-byok-desc">
+                RepoBot is our built-in AI repo explainer that works with <strong>your own API keys</strong> (BYOK). Get instant repo summaries, architecture deep dives, and code explanations — no subscription required.
+              </p>
+              <div className="repobot-byok-providers">
+                <div className="repobot-byok-provider">
+                  <KeyRound size={12} />
+                  <span>Groq</span>
+                </div>
+                <div className="repobot-byok-provider">
+                  <KeyRound size={12} />
+                  <span>OpenAI</span>
+                </div>
+                <div className="repobot-byok-provider">
+                  <KeyRound size={12} />
+                  <span>Claude</span>
+                </div>
+                <div className="repobot-byok-provider">
+                  <KeyRound size={12} />
+                  <span>Gemini</span>
+                </div>
+              </div>
+              <p className="repobot-byok-note">
+                <Shield size={12} /> Keys are stored locally on your device. We never see or store them.
+              </p>
+            </div>
+          </div>
+        </ScrollReveal>
 
         {/* ===== COMPARISON TABLE ===== */}
         <div>
