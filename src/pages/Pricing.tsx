@@ -260,11 +260,9 @@ export default function Pricing() {
         {/* ===== REPOBOT BYOK CALLOUT ===== */}
         <ScrollReveal>
           <div className="repobot-byok-banner">
-            <div className="repobot-byok-icon">
-              <Bot size={28} />
-            </div>
             <div className="repobot-byok-content">
               <h3 className="repobot-byok-title">
+                <Bot size={20} className="repobot-byok-inline-icon" />
                 RepoBot AI — <span className="gradient-text">Free for Everyone</span>
               </h3>
               <p className="repobot-byok-desc">
