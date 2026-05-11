@@ -24,6 +24,7 @@ const comparisonRows = [
   { feature: 'Chat Export', free: true, pro: true },
   { feature: 'Theming & Personalization', free: true, pro: true },
   { feature: 'Keyboard Shortcuts', free: true, pro: true },
+  { feature: 'RepoBot AI (BYOK)', free: true, pro: true },
   { feature: 'Cloud Data Sync', free: false, pro: true },
   { feature: 'Priority Feature Access', free: false, pro: true },
   { feature: 'Premium Developer Support', free: false, pro: true },
