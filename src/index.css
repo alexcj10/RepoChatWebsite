@@ -1560,7 +1560,7 @@ html.nav-open-lock body {
 .footer::before {
   content: '';
   position: absolute;
-  bottom: -180px;
+  bottom: -220px;
   left: 0;
   width: 100%;
   height: 100%;
