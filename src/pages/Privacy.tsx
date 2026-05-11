@@ -190,7 +190,7 @@ export default function Privacy() {
   const [activeSection, setActiveSection] = useState('about');
   const [searchQuery, setSearchQuery] = useState('');
   const isScrollingRef = useRef(false);
-  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Filter sections based on search query
   const filteredSections = useMemo(() => {

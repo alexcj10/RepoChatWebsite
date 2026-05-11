@@ -237,7 +237,7 @@ export default function Terms() {
   const [activeSection, setActiveSection] = useState('acceptance');
   const [searchQuery, setSearchQuery] = useState('');
   const isScrollingRef = useRef(false);
-  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Filter sections based on search query
   const filteredSections = useMemo(() => {
