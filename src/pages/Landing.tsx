@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
 import { ArrowRight, Check, X, Sparkles, GitPullRequest, AlertCircle, Users, Code, Network, Cpu, Clock, DollarSign, BarChart3, Bot } from 'lucide-react'
-import { motion, useScroll, useTransform, useInView, animate } from 'framer-motion'
+import { motion, useScroll, useTransform, useInView, animate, useMotionValue, useSpring } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
 import FAQ from '../components/FAQ'
@@ -136,6 +136,34 @@ export default function Landing() {
   const mockupScale = useTransform(heroProgress, [0, 1], [1, .9])
   const mockupOpacity = useTransform(heroProgress, [0, .8, 1], [1, 1, 0])
 
+  // 3D Mouse Tilt Effect for Hero Image
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+  
+  const springConfig = { damping: 25, stiffness: 150, mass: 0.5 }
+  const mouseXSpring = useSpring(mouseX, springConfig)
+  const mouseYSpring = useSpring(mouseY, springConfig)
+  
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"])
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"])
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const xPct = x / width - 0.5;
+    const yPct = y / height - 0.5;
+    mouseX.set(xPct);
+    mouseY.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   const handleGridScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const target = e.currentTarget;
     const scrollLeft = target.scrollLeft;
@@ -182,8 +210,21 @@ export default function Landing() {
           </ScrollReveal>
         </div>
 
-        {/* Hero mockup — fluid scaling */}
-        <motion.div className="hero-mockup" style={{ scale: mockupScale, opacity: mockupOpacity, width: 'calc(100% - 48px)' }}>
+        {/* Hero mockup — fluid scaling & 3D mouse tilt animation */}
+        <motion.div 
+          className="hero-mockup" 
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          style={{ 
+            scale: mockupScale, 
+            opacity: mockupOpacity, 
+            width: 'calc(100% - 48px)',
+            rotateX,
+            rotateY,
+            transformPerspective: 1200,
+            transformStyle: "preserve-3d"
+          }}
+        >
           <img src="/RC_main_UI.png" alt="RepoChat — Main UI" fetchPriority="high" decoding="async" />
         </motion.div>
       </section>
