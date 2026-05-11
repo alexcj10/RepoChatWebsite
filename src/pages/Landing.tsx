@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
 import { ArrowRight, Check, X, Sparkles, GitPullRequest, AlertCircle, Users, Code, Network, Cpu, Clock, DollarSign, BarChart3, Bot } from 'lucide-react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, useInView, animate } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
 import FAQ from '../components/FAQ'
@@ -39,6 +39,28 @@ function CellValue({ value }: { value: string | boolean }) {
       : <span className="pricing-cell-icon no"><X size={15} strokeWidth={2.5} /></span>
   }
   return <span className="pricing-cell-text">{value}</span>
+}
+
+function AnimatedNumber({ value, decimals = 0 }: { value: number; decimals?: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (inView && ref.current) {
+      const controls = animate(0, value, {
+        duration: 2.5,
+        ease: "easeOut",
+        onUpdate(v) {
+          if (ref.current) {
+            ref.current.textContent = v.toFixed(decimals);
+          }
+        }
+      });
+      return () => controls.stop();
+    }
+  }, [inView, value, decimals]);
+
+  return <span ref={ref}>0</span>;
 }
 
 export default function Landing() {
@@ -408,13 +430,13 @@ export default function Landing() {
           <ScrollReveal>
             <div className="why-big-stats">
               <div className="why-big-stat">
-                <span className="why-big-num">9.4</span>
+                <span className="why-big-num"><AnimatedNumber value={9.4} decimals={1} /></span>
                 <span className="why-big-desc">tools used daily on average by developers</span>
                 <span className="why-big-src">Atlassian</span>
               </div>
               <div className="why-big-divider" />
               <div className="why-big-stat">
-                <span className="why-big-num">23<span className="why-big-unit">min</span></span>
+                <span className="why-big-num"><AnimatedNumber value={23} /><span className="why-big-unit">min</span></span>
                 <span className="why-big-desc">average time to refocus after every context switch</span>
                 <span className="why-big-src">UC Irvine</span>
               </div>
