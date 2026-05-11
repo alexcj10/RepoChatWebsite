@@ -1614,14 +1614,24 @@ html.nav-open-lock body {
 }
 
 .footer-bottom {
-  padding-top: 32px;
+  margin-top: 60px;
+  padding-top: 24px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.9);
   position: relative;
-  z-index: 2
+  z-index: 2;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 1), 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+@media(max-width: 600px) {
+  .footer-bottom {
+    font-size: 0.75rem;
+    margin-top: 40px;
+  }
 }
 
 @media(max-width:900px) {
