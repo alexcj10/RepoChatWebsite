@@ -1287,19 +1287,19 @@ html.nav-open-lock body {
 }
 
 .repobot-byok-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 8px;
   color: #fff;
+  line-height: 1.4;
 }
 
 .repobot-byok-inline-icon {
   color: var(--accent);
-  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: -3px;
+  margin-right: 8px;
 }
 
 .repobot-byok-desc {
