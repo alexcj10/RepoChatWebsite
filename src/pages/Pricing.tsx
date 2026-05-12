@@ -263,7 +263,7 @@ export default function Pricing() {
             <div className="repobot-byok-content">
               <h3 className="repobot-byok-title">
                 <Bot size={20} className="repobot-byok-inline-icon" />
-                RepoBot AI — <span className="gradient-text">Free for Everyone</span>
+                RepoBot AI <span className="gradient-text">Free for Everyone</span>
               </h3>
               <p className="repobot-byok-desc">
                 RepoBot is our built-in AI repo explainer that works with <strong>your own API keys</strong> (BYOK). Get instant repo summaries, architecture deep dives, and code explanations — no subscription required.
