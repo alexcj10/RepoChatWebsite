@@ -1001,7 +1001,7 @@ export default function Landing() {
       <section className="section" style={{ padding: '40px 0 80px', position: 'relative', overflow: 'hidden', textAlign: 'center' }}>
         <div className="container">
           <ScrollReveal>
-            <h2 className="h1" style={{ fontSize: 'clamp(3rem, 18vw, 12rem)', fontWeight: 200, letterSpacing: '-0.03em', marginBottom: 0, lineHeight: 1, color: 'rgba(255,255,255,0.9)' }}>RepoChat.</h2>
+            <h2 className="h1" style={{ fontSize: 'clamp(3rem, 18vw, 12rem)', fontFamily: "'Plus Jakarta Sans', 'Inter', system-ui, sans-serif", fontWeight: 200, letterSpacing: '-0.03em', marginBottom: 0, lineHeight: 1, color: 'rgba(255,255,255,0.9)' }}>RepoChat.</h2>
           </ScrollReveal>
         </div>
       </section>
