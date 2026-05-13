@@ -519,25 +519,28 @@ html.nav-open-lock body {
 
 .btn-white {
   background-color: #fff;
-  color: #111113
+  color: #111113;
+  box-shadow: 0 4px 14px 0 rgba(255, 255, 255, 0.1);
 }
 
 .btn-white:hover {
   background-color: #f4f4f5;
-  box-shadow: none;
-  transform: none
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(255, 255, 255, 0.2);
 }
 
 .btn-ghost {
-  background-color: transparent;
-  color: var(--text-secondary);
-  border: 1px solid var(--border)
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 .btn-ghost:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  transform: none;
-  box-shadow: none
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .btn-accent {
