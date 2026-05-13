@@ -125,7 +125,7 @@ ul {
    TYPOGRAPHY
    ============================================ */
 .h1 {
-  font-family: 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   font-size: clamp(2.5rem, 6.5vw, 4.5rem);
   font-weight: 700;
   line-height: 1.0;
