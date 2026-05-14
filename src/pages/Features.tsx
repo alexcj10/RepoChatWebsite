@@ -325,7 +325,6 @@ export default function Features() {
         {/* ═══ DUAL VIEW MODE BANNER ═══ */}
         <ScrollReveal>
           <div className="feat-view-banner">
-            <div className="feat-view-banner-glow" />
             <div className="feat-view-icons">
               <div className="feat-view-icon-box">
                 <Columns size={22} />
