@@ -170,7 +170,7 @@ export default function Landing() {
     const maxScrollLeft = target.scrollWidth - target.clientWidth;
     if (maxScrollLeft <= 0) return;
     const progress = scrollLeft / maxScrollLeft;
-    const newIndex = Math.round(progress * 14); // 15 items total, index 0 to 14
+    const newIndex = Math.round(progress * 15); // 16 items total, index 0 to 15
     if (newIndex !== activeMiniFeature) {
       setActiveMiniFeature(newIndex);
     }
@@ -886,6 +886,25 @@ export default function Landing() {
                     <path d="M30 35 L35 38" stroke="white" strokeWidth="1" opacity="0.4" />
                     <path d="M20 30 L55 40" stroke="white" strokeWidth="0.8" opacity="0.3" />
                     <path d="M10 10 L20 20 M90 50 L80 40" stroke="white" strokeWidth="0.5" opacity="0.2" />
+                  </svg>
+                )
+              },
+              { 
+                title: 'Dual View Mode', 
+                desc: 'Compact sidebar or expanded split view with threaded chats.', 
+                hue: '200deg',
+                visual: (
+                  <svg viewBox="0 0 100 60" className="visual-svg">
+                    {/* Left panel (compact) */}
+                    <rect x="10" y="10" width="25" height="40" rx="3" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.9" />
+                    <path d="M15 18 H30 M15 24 H28 M15 30 H26" stroke="white" strokeWidth="1" strokeLinecap="round" opacity="0.4" />
+                    {/* Arrow */}
+                    <path d="M42 30 L52 30 M49 26 L53 30 L49 34" fill="none" stroke="#06B6D4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.8" />
+                    {/* Right panel (expanded split) */}
+                    <rect x="58" y="10" width="34" height="40" rx="3" fill="none" stroke="#06B6D4" strokeWidth="2" opacity="0.9" />
+                    <line x1="75" y1="10" x2="75" y2="50" stroke="#06B6D4" strokeWidth="1" opacity="0.5" />
+                    <path d="M62 18 H72 M62 24 H70 M62 30 H71" stroke="white" strokeWidth="1" strokeLinecap="round" opacity="0.4" />
+                    <path d="M78 18 H89 M78 24 H87 M78 30 H88" stroke="white" strokeWidth="1" strokeLinecap="round" opacity="0.3" />
                   </svg>
                 )
               },

@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
-import { MessageSquare, GitPullRequest, ClipboardList, Dna, Database, AppWindow, Activity, Share2, Bot, Check, Globe, Lock, User, Plus, X } from 'lucide-react'
+import { MessageSquare, GitPullRequest, ClipboardList, Dna, Database, AppWindow, Activity, Share2, Bot, Check, Globe, Lock, User, Plus, X, Columns, Maximize2 } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 
 const featureCards = [
@@ -96,7 +96,7 @@ export default function Features() {
     const maxScrollLeft = target.scrollWidth - target.clientWidth;
     if (maxScrollLeft <= 0) return;
     const progress = scrollLeft / maxScrollLeft;
-    const newIndex = Math.round(progress * 14); // 15 items total
+    const newIndex = Math.round(progress * 15); // 16 items total
     setActiveMiniFeature(newIndex);
   };
 
@@ -321,6 +321,28 @@ export default function Features() {
             </div>
           </ScrollReveal>
         </div>
+
+        {/* ═══ DUAL VIEW MODE BANNER ═══ */}
+        <ScrollReveal>
+          <div className="feat-view-banner">
+            <div className="feat-view-banner-glow" />
+            <div className="feat-view-icons">
+              <div className="feat-view-icon-box">
+                <Columns size={22} />
+                <span>Split View</span>
+              </div>
+              <div className="feat-view-divider">+</div>
+              <div className="feat-view-icon-box">
+                <Maximize2 size={22} />
+                <span>Expanded</span>
+              </div>
+            </div>
+            <div className="feat-view-text">
+              <h3 className="h4">Two modes. Zero compromise.</h3>
+              <p className="body-sm">Use RepoChat as a compact sidebar for quick chats, or expand into a full split view with threaded conversations, thread search, and side-by-side context — all without leaving GitHub.</p>
+            </div>
+          </div>
+        </ScrollReveal>
 
         {/* ═══ FEATURE CARDS — 2×3 GRID ═══ */}
         <section className="feat-cards-section">
@@ -587,6 +609,22 @@ export default function Features() {
                   )
                 },
                 { 
+                  title: 'Dual View Mode', 
+                  desc: 'Compact sidebar or expanded split view with threaded chats.', 
+                  hue: '200deg',
+                  visual: (
+                    <svg viewBox="0 0 100 60" className="visual-svg">
+                      <rect x="10" y="10" width="25" height="40" rx="3" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.9" />
+                      <path d="M15 18 H30 M15 24 H28 M15 30 H26" stroke="white" strokeWidth="1" strokeLinecap="round" opacity="0.4" />
+                      <path d="M42 30 L52 30 M49 26 L53 30 L49 34" fill="none" stroke="#06B6D4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.8" />
+                      <rect x="58" y="10" width="34" height="40" rx="3" fill="none" stroke="#06B6D4" strokeWidth="2" opacity="0.9" />
+                      <line x1="75" y1="10" x2="75" y2="50" stroke="#06B6D4" strokeWidth="1" opacity="0.5" />
+                      <path d="M62 18 H72 M62 24 H70 M62 30 H71" stroke="white" strokeWidth="1" strokeLinecap="round" opacity="0.4" />
+                      <path d="M78 18 H89 M78 24 H87 M78 30 H88" stroke="white" strokeWidth="1" strokeLinecap="round" opacity="0.3" />
+                    </svg>
+                  )
+                },
+                { 
                   title: 'Smart Mentions', 
                   desc: 'Notify team members with context-aware @mentions.', 
                   hue: '300deg',
@@ -618,7 +656,7 @@ export default function Features() {
             </div>
 
             <div className="mini-features-pagination">
-              {Array.from({ length: 15 }).map((_, i) => (
+              {Array.from({ length: 16 }).map((_, i) => (
                 <div 
                   key={i} 
                   className={`pagination-dot ${i === activeMiniFeature ? 'active' : ''}`}
