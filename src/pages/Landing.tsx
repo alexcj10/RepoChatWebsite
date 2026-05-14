@@ -516,7 +516,7 @@ export default function Landing() {
                     <div className="box-item">Smart Triage</div>
                     <div className="box-item">Inline Comments</div>
                     <div className="box-item">Code Context</div>
-                    <div className="box-item">DevDNA Analytics</div>
+                    <div className="box-item">Thread Discussions</div>
                   </div>
                   <div className="box-connector-left">
                     <div className="connector-dot-orange">!</div>
