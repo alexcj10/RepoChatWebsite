@@ -3373,25 +3373,25 @@ textarea.form-input {
   gap: 8px;
   padding: 16px 20px;
   border-radius: 14px;
-  background: rgba(16, 185, 129, 0.08);
-  border: 1px solid rgba(16, 185, 129, 0.18);
+  background: rgba(125, 211, 252, 0.08);
+  border: 1px solid rgba(125, 211, 252, 0.18);
   min-width: 90px;
   transition: all 0.3s ease;
 }
 
 .feat-view-banner:hover .feat-view-icon-box {
-  background: rgba(16, 185, 129, 0.14);
-  border-color: rgba(16, 185, 129, 0.35);
+  background: rgba(125, 211, 252, 0.14);
+  border-color: rgba(125, 211, 252, 0.35);
 }
 
 .feat-view-icon-box svg {
-  color: #34d399;
+  color: #7DD3FC;
 }
 
 .feat-view-icon-box span {
   font-size: 0.72rem;
   font-weight: 600;
-  color: #34d399;
+  color: #7DD3FC;
   letter-spacing: 0.02em;
 }
 
