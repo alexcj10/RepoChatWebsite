@@ -512,11 +512,11 @@ export default function Landing() {
                   <div className="box-title">Github Context</div>
                   <div className="box-items">
                     <div className="box-item">Pull Requests</div>
-                    <div className="box-item">Code Snippets</div>
                     <div className="box-item">Issue Tracking</div>
-                    <div className="box-item">Commit History</div>
-                    <div className="box-item">File Changes</div>
+                    <div className="box-item">Smart Triage</div>
+                    <div className="box-item">Inline Comments</div>
                     <div className="box-item">Code Context</div>
+                    <div className="box-item">DevDNA Analytics</div>
                   </div>
                   <div className="box-connector-left">
                     <div className="connector-dot-orange">!</div>
