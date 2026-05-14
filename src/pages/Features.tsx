@@ -673,7 +673,7 @@ export default function Features() {
                 <h3 className="h3">Every feature you need. Zero context switching.</h3>
               </div>
               <div className="eco-cta-right">
-                <p className="body-sm">Free forever. No credit card required.</p>
+                <p className="body-sm">Free to start. No credit card required.</p>
                 <a href="#install" className="btn btn-white">Add to Chrome — Free</a>
               </div>
             </div>
